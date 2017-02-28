@@ -1,0 +1,25 @@
+# macOS
+.DS_Store
+*.a
+*.app
+
+# Linux
+*.o
+*.d
+*~
+
+# Windows
+*.exe
+*.dll
+
+# Xcode
+*.mode1v3
+*.pbxuser
+*.perspectivev3
+xcuserdata
+xcshareddata
+build
+
+# Codeblocks
+*.layout
+*.depend

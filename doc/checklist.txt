@@ -1,0 +1,7 @@
+Versioning Checklist
+--------------------
+
+* update version in src/config.h
+* update version in Xcode project
+* commit changes
+* tag version & push
