@@ -25,6 +25,13 @@
 #include "config.h"
 #include "Loaf.h"
 
+// choose modifier key based on platform
+#ifdef __APPLE__
+	#define MOD_KEY OF_KEY_SUPER
+#else
+	#define MOD_KEY OF_KEY_CONTROL
+#endif
+
 // OF APP
 //--------------------------------------------------------------
 void ofApp::setup() {
@@ -108,7 +115,7 @@ void ofApp::exit() {
 void ofApp::keyPressed(int key) {
 
 	// handle special key events
-	if(ofGetKeyPressed(OF_KEY_SUPER)) {
+	if(ofGetKeyPressed(MOD_KEY)) {
 		switch(key) {
 			case 'f':
 				ofToggleFullscreen();
