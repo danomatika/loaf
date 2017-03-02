@@ -67,7 +67,7 @@ bool Script::load(const string &path, const vector<string> *args) {
 		return reload();
 	}
 	currentScript = script;
-	ofLogVerbose(PACKAGE) << "loading \"" << name << "\"";
+	ofLogVerbose(PACKAGE) << "loading " << name;
 	
 	// clear or set arg table
 	if(args == nullptr) {

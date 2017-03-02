@@ -41,8 +41,9 @@ bool CommandLine::parse(int argc, char **argv) {
 		SENDHOST,
 		SENDPORT,
 		LISTENPORT,
-		START,
+		STARTLISTENING,
 		FULLSCREEN,
+		IGNORECHANGES,
 		VERBOSE
 	};
 
@@ -54,9 +55,10 @@ bool CommandLine::parse(int argc, char **argv) {
 		{SENDHOST, 0, "a", "address", Options::Arg::NonEmpty, "  -a, --address \tOSC host address to send to (default: localhost)"},
 		{SENDPORT, 0, "p", "port", Options::Arg::Integer, "  -p, --port \tOSC port to send to (default: 8880)"},
 		{LISTENPORT, 0, "l", "listen", Options::Arg::Integer, "  -l, --listen \tOSC port to listen on (default: 9990)"},
-		{START, 0, "s", "start", Options::Arg::None, "  -s, --start \tstart listening for OSC messages?"},
-		{FULLSCREEN, 0, "f", "fullscreen", Options::Arg::None, "  -f, --fullscreen \tstart in fullscreen?"},
-		{VERBOSE, 0, "v", "verbose", Options::Arg::None, "  -v, --verbose \tVerbose printing?"},
+		{STARTLISTENING, 0, "s", "start", Options::Arg::None, "  -s, --start \tstart listening for OSC messages"},
+		{FULLSCREEN, 0, "f", "fullscreen", Options::Arg::None, "  -f, --fullscreen \tstart in fullscreen"},
+		{IGNORECHANGES, 0, "i", "ignore", Options::Arg::None, "  -i, --ignore \tignore script changes"},
+		{VERBOSE, 0, "v", "verbose", Options::Arg::None, "  -v, --verbose \tverbose printing"},
 		{UNKNOWN, 0, "", "", Options::Arg::Unknown, "\nArguments:"},
 		{UNKNOWN, 0, "", "", Options::Arg::None, "  PATH \toptional lua script or folder to run"},
 		{UNKNOWN, 0, "", "", Options::Arg::Unknown, "  args... \targuments to pass to the lua script"},
@@ -89,11 +91,12 @@ bool CommandLine::parse(int argc, char **argv) {
 		}
 		changed = true;
 	}
-	if(options.isSet(SENDHOST))   {sendHost = options.getString(SENDHOST); changed = true;}
-	if(options.isSet(SENDPORT))   {sendPort = options.getUInt(SENDPORT); changed = true;}
-	if(options.isSet(LISTENPORT)) {listenPort = options.getUInt(LISTENPORT); changed = true;}
-	if(options.isSet(START))      {start = true; changed = true;}
-	if(options.isSet(FULLSCREEN)) {fullscreen = true; changed = true;}
-	if(options.isSet(VERBOSE))    {verbose = true; changed = true;}
+	if(options.isSet(SENDHOST))       {sendHost = options.getString(SENDHOST); changed = true;}
+	if(options.isSet(SENDPORT))       {sendPort = options.getUInt(SENDPORT); changed = true;}
+	if(options.isSet(LISTENPORT))     {listenPort = options.getUInt(LISTENPORT); changed = true;}
+	if(options.isSet(STARTLISTENING)) {startListening = true; changed = true;}
+	if(options.isSet(FULLSCREEN))     {fullscreen = true; changed = true;}
+	if(options.isSet(IGNORECHANGES))  {ignore = true; changed = true;}
+	if(options.isSet(VERBOSE))        {verbose = true; changed = true;}
 	return true;
 }

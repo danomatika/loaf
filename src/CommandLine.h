@@ -33,15 +33,16 @@ class CommandLine {
 		/// parse commandline args, returns true on success
 		bool parse(int argc, char **argv);
 	
-		/// was an option or argument changed from it's default?
+		/// was an option or argument changed from its default?
 		bool changed = false;
 	
 		/// options
 		unsigned int sendPort = 0;
 		std::string sendHost = "";
 		unsigned int listenPort = 0;
-		bool start = false;
+		bool startListening = false;
 		bool fullscreen = false;
+		bool ignoreChanges = false;
 		bool verbose = false;
 	
 		/// arguments

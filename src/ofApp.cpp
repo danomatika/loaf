@@ -39,6 +39,7 @@ void ofApp::setup() {
 	});
 	
 	// apply any commandline options
+	bool watch = true;
 	if(options) {
 		if(options->verbose) {
 			setVerbose(options->verbose);
@@ -52,8 +53,12 @@ void ofApp::setup() {
 		if(options->listenPort > 0) {
 			listener.setPort(options->listenPort);
 		}
-		if(options->start) {
+		if(options->startListening) {
 			listener.start();
+		}
+		if(options->ignoreChanges) {
+			watch = false;
+			ofLogVerbose(PACKAGE) << "ignoring script changes";
 		}
 		if(options->fullscreen) {
 			ofSetFullscreen(options->fullscreen);
@@ -69,7 +74,9 @@ void ofApp::setup() {
 	}
 	
 	// path watching
-	watcher.start();
+	if(watch) {
+		watcher.start();
+	}
 }
 
 //--------------------------------------------------------------
@@ -183,10 +190,10 @@ void ofApp::gotMessage(ofMessage msg) {
 void ofApp::setVerbose(bool verbose) {
 	if(verbose) {
 		ofSetLogLevel(PACKAGE, OF_LOG_VERBOSE);
-		ofLogVerbose(PACKAGE) << "verbose: " << (verbose ? "on" : "off");
+		ofLogVerbose(PACKAGE) << "verbose " << (verbose ? "on" : "off");
 	}
 	else {
-		ofLogVerbose(PACKAGE) << "verbose: " << (verbose ? "on" : "off");
+		ofLogVerbose(PACKAGE) << "verbose " << (verbose ? "on" : "off");
 		ofSetLogLevel(PACKAGE, OF_LOG_NOTICE);
 	}
 }
@@ -245,13 +252,13 @@ void ofApp::oscReceived(const ofxOscMessage & message) {
 void ofApp::pathChanged(const PathWatcher::Event &event) {
 	switch(event.change) {
 		case PathWatcher::CREATED:
-			ofLogVerbose(PACKAGE) << "path created: " << event.path;
+			ofLogVerbose(PACKAGE) << "path created " << event.path;
 			break;
 		case PathWatcher::MODIFIED:
-			ofLogVerbose(PACKAGE) << "path modified: " << event.path;
+			ofLogVerbose(PACKAGE) << "path modified " << event.path;
 			break;
 		case PathWatcher::DELETED:
-			ofLogVerbose(PACKAGE) << "path deleted: " << event.path;
+			ofLogVerbose(PACKAGE) << "path deleted " << event.path;
 			return;
 		default: // NONE
 			return;
