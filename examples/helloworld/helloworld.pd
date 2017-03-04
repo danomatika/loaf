@@ -1,16 +1,17 @@
-#N canvas 0 23 338 269 10;
-#X obj 27 225 netsend -u -b;
-#X msg 45 169 connect localhost 9999;
-#X msg 66 194 disconnect;
-#X obj 27 53 oscformat /circle/x;
-#X obj 171 54 oscformat /circle/y;
-#X obj 30 26 hsl 128 15 -200 200 0 0 empty empty empty -2 -8 0 10 -262144
+#N canvas 0 23 339 269 10;
+#X obj 27 235 netsend -u -b;
+#X msg 45 179 connect localhost 9999;
+#X msg 66 204 disconnect;
+#X obj 27 63 oscformat /circle/x;
+#X obj 171 64 oscformat /circle/y;
+#X obj 30 36 hsl 128 15 -200 200 0 0 empty empty empty -2 -8 0 10 -262144
 -1 -1 0 1;
-#X obj 174 26 hsl 128 15 -200 200 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 5400 1;
-#X obj 27 113 list prepend send;
-#X obj 27 138 list trim;
-#X text 193 169 <- start here;
+#X obj 174 36 hsl 128 15 -200 200 0 0 empty empty empty -2 -8 0 10
+-262144 -1 -1 0 1;
+#X obj 27 123 list prepend send;
+#X obj 27 148 list trim;
+#X text 193 179 <- start here;
+#X text 104 9 change center position;
 #X connect 1 0 0 0;
 #X connect 2 0 0 0;
 #X connect 3 0 7 0;

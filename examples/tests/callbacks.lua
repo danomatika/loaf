@@ -1,4 +1,4 @@
--- ofApp callback tests
+-- event callback tests
 -- prints to the console
 
 updateOnce = false
