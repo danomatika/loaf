@@ -202,7 +202,7 @@ bool Script::initState() {
 	// script arguments
 	lua.newTable("arg");
 	lua.pushTable("arg");
-	lua.setString(0, ofFilePath::getFileName(currentScript)); // arg[0]
+	lua.setString(0, currentScript); // arg[0]
 	for(int i = 0; i < arg.size(); ++i) {
 		lua.setString(i+1, arg[i]);
 	}
