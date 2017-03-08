@@ -1,5 +1,6 @@
 -- a custom lua module aka script library
 -- this method creates the tables locally so as to avoid global scope by default
+-- ref: http://lua-users.org/wiki/ModulesTutorial
 
 -- create local table to hold module contents
 local hello = {}

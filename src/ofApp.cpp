@@ -203,6 +203,12 @@ void ofApp::setVerbose(bool verbose) {
 		ofLogVerbose(PACKAGE) << "verbose " << (verbose ? "on" : "off");
 		ofSetLogLevel(PACKAGE, OF_LOG_NOTICE);
 	}
+	this->verbose = verbose;
+}
+
+//--------------------------------------------------------------
+bool ofApp::isVerbose() {
+	return verbose;
 }
 
 // OSC

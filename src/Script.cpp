@@ -23,6 +23,9 @@
 #include "Script.h"
 
 #include "config.h"
+#include "ofAppRunner.h"
+#include "ofGraphics.h"
+#include "ofFileUtils.h"
 #include "ofxOsc.h"
 
 // declare the wrapped modules

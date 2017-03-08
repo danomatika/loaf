@@ -58,6 +58,9 @@ class ofApp : public ofBaseApp {
 		/// set loaf verbosity
 		void setVerbose(bool verbose);
 	
+		/// get loaf verbosity level
+		bool isVerbose();
+	
 	/// \section Osc
 	
 		/// osc received callback
@@ -77,4 +80,8 @@ class ofApp : public ofBaseApp {
 		OscSender sender; //< OSC message sender
 		OscReceiver listener; //< OSC message listener
 		string baseAddress = BASE_ADDRESS; //< base OSC address for loaf control messages
+	
+	private:
+	
+		bool verbose = false; //< current verbosity
 };

@@ -2866,6 +2866,9 @@ static swig_lua_class _wrap_class_string = { "string", "string", &SWIGTYPE_p_std
 static int _wrap_setVerbose(lua_State* L) { int SWIG_arg = 0; bool arg1 ; SWIG_check_num_args("loaf::setVerbose",1,1)
   if(!lua_isboolean(L,1)) SWIG_fail_arg("loaf::setVerbose",1,"bool"); arg1 = (lua_toboolean(L, 1)!=0); loaf::setVerbose(arg1);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_isVerbose(lua_State* L) { int SWIG_arg = 0; bool result; SWIG_check_num_args("loaf::isVerbose",0,0)
+  result = (bool)loaf::isVerbose(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
 static int _wrap_printMessage__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = 0 ; bool arg2 ;
   SWIG_check_num_args("loaf::printMessage",2,2)
   if(!lua_isuserdata(L,1)) SWIG_fail_arg("loaf::printMessage",1,"ofxOscMessage const &");
@@ -2949,6 +2952,7 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
 };
 static swig_lua_method swig_SwigModule_methods[]= {
     { "setVerbose", _wrap_setVerbose},
+    { "isVerbose", _wrap_isVerbose},
     { "printMessage", _wrap_printMessage},
     { "startListening", _wrap_startListening},
     { "stopListening", _wrap_stopListening},

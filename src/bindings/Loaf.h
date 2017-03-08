@@ -36,6 +36,12 @@ static void setVerbose(bool verbose) {
 	app->setVerbose(verbose);
 }
 
+/// get loaf verbosity
+static bool isVerbose() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	return app->isVerbose();
+}
+
 /// print an OSC message and it's arguments to the console
 static void printMessage(const ofxOscMessage &message, bool details=false) {
 	cout << message.getAddress();
