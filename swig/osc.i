@@ -110,10 +110,18 @@ namespace osc {
 // convenience attributes
 %attributestring(ofxOscMessage, string, address, getAddress, setAddress)
 %attributestring(ofxOscMessage, string, remoteHost, getRemoteHost)
+%attributestring(ofxOscMessage, string, typeString, getTypeString)
 %attribute(ofxOscMessage, int, remotePort, getRemotePort)
 %attribute(ofxOscMessage, int, numArgs, getNumArgs);
+
 %attribute(ofxOscBundle, int, messageCount, getMessageCount);
 %attribute(ofxOscBundle, int, bundleCount, getBundleCount);
+
+%attribute(ofxOscReceiver, int, port, getPort);
+%attribute(ofxOscReceiver, bool, listening, isListening);
+
+%attributestring(ofxOscSender, string, host, getHost);
+%attribute(ofxOscSender, int, port, getPort);
 
 %extend ofxOscMessage {
 
