@@ -109,7 +109,7 @@ namespace osc {
 
 // convenience attributes
 %attributestring(ofxOscMessage, string, address, getAddress, setAddress)
-%attributestring(ofxOscMessage, string, remoteHost, getRemoteIp)
+%attributestring(ofxOscMessage, string, remoteHost, getRemoteHost)
 %attribute(ofxOscMessage, int, remotePort, getRemotePort)
 %attribute(ofxOscMessage, int, numArgs, getNumArgs);
 %attribute(ofxOscBundle, int, messageCount, getMessageCount);
