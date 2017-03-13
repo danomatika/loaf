@@ -15,11 +15,17 @@
 %include <attribute.i>
 
 // STL types
+using namespace std;
 %include <std_string.i>
+
+// SWIG doesn't understand C++ streams
+%ignore operator <<;
 
 // other types we need to know about
 typedef int int32_t;
 typedef long long int64_t;
+typedef unsigned int uint32_t;
+typedef unsigned long long uint64_t;
 
 // SWIG needs to know about the deprecation macro
 #define OF_DEPRECATED_MSG(m, f)
@@ -57,6 +63,7 @@ namespace osc {
 %ignore ofxOscArgChar;
 %ignore ofxOscArgMidiMessage;
 %ignore ofxOscArgBool;
+%ignore ofxOscArgNone;
 %ignore ofxOscArgTrigger;
 %ignore ofxOscArgTimetag;
 %ignore ofxOscArgBlob;
@@ -101,9 +108,76 @@ namespace osc {
 %include "ofxOsc/src/ofxOscSender.h"
 
 // convenience attributes
-%attributestring(ofxOscMessage, std::string, address, getAddress, setAddress)
-%attributestring(ofxOscMessage, std::string, remoteIp, getRemoteIp)
+%attributestring(ofxOscMessage, string, address, getAddress, setAddress)
+%attributestring(ofxOscMessage, string, remoteHost, getRemoteIp)
 %attribute(ofxOscMessage, int, remotePort, getRemotePort)
 %attribute(ofxOscMessage, int, numArgs, getNumArgs);
 %attribute(ofxOscBundle, int, messageCount, getMessageCount);
 %attribute(ofxOscBundle, int, bundleCount, getBundleCount);
+
+%extend ofxOscMessage {
+
+	// message tostring method
+	const char* __str__() {
+		static char str[255]; // provide a valid return pointer
+		stringstream stream;
+		stream << $self->getAddress();
+		for(int i = 0; i < $self->getNumArgs(); ++i) {
+			stream << " ";
+			switch($self->getArgType(i)) {
+				case OFXOSC_TYPE_INT32:
+					stream << $self->getArgAsInt32(i);
+					break;
+				case OFXOSC_TYPE_INT64:
+					stream << $self->getArgAsInt64(i);
+					break;
+				case OFXOSC_TYPE_FLOAT:
+					stream << $self->getArgAsFloat(i);
+					break;
+				case OFXOSC_TYPE_DOUBLE:
+					stream << $self->getArgAsDouble(i);
+					break;
+				case OFXOSC_TYPE_STRING:
+					stream << $self->getArgAsString(i);
+					break;
+				case OFXOSC_TYPE_SYMBOL:
+					stream << $self->getArgAsSymbol(i);
+					break;
+				case OFXOSC_TYPE_CHAR:
+					stream << $self->getArgAsChar(i);
+					break;
+				case OFXOSC_TYPE_MIDI_MESSAGE:
+					stream << ofToHex($self->getArgAsMidiMessage(i));
+					break;
+				case OFXOSC_TYPE_TRUE:
+					stream << "T";
+					break;
+				case OFXOSC_TYPE_FALSE:
+					stream << "F";
+					break;
+				case OFXOSC_TYPE_NONE:
+					stream << "NONE";
+					break;
+				case OFXOSC_TYPE_TRIGGER:
+					stream << "TRIGGER";
+					break;
+				case OFXOSC_TYPE_TIMETAG:
+					stream << "TIMETAG";
+					break;
+				case OFXOSC_TYPE_BLOB:
+					stream << "BLOB";
+					break;
+				case OFXOSC_TYPE_BUNDLE:
+					stream << "BUNDLE";
+					break;
+				case OFXOSC_TYPE_RGBA_COLOR:
+					stream << ofToHex($self->getArgAsRgbaColor(i));
+					break;
+				default:
+					break;
+			}
+		}
+		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
+		return str;
+	}
+};

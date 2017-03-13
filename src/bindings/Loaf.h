@@ -42,65 +42,6 @@ static bool isVerbose() {
 	return app->isVerbose();
 }
 
-/// print an OSC message and it's arguments to the console
-static void printMessage(const ofxOscMessage &message, bool details=false) {
-	cout << message.getAddress();
-	if(details) {
-		cout << " from " << message.getRemoteIp() << " "
-		     << (int) message.getRemotePort() << endl;
-	}
-	stringstream line;
-	for(int i = 0; i< message.getNumArgs(); ++i) {
-		if(details) {
-			line << "  " << message.getArgTypeName(i);
-		}
-		else {
-			line << " ";
-		}
-		switch(message.getArgType(i)) {
-			case OFXOSC_TYPE_INT32:
-				line << (details ? ": " : "") << message.getArgAsInt32(i);
-				break;
-			case OFXOSC_TYPE_INT64:
-				line << (details ? ": " : "") << message.getArgAsInt64(i);
-				break;
-			case OFXOSC_TYPE_FLOAT:
-				line << (details ? ": " : "") << message.getArgAsFloat(i);
-				break;
-			case OFXOSC_TYPE_DOUBLE:
-				line << (details ? ": " : "") << message.getArgAsDouble(i);
-				break;
-			case OFXOSC_TYPE_STRING:
-				line << (details ? ": " : "") << message.getArgAsString(i);
-				break;
-			case OFXOSC_TYPE_SYMBOL:
-				line << (details ? ": " : "") << message.getArgAsSymbol(i);
-				break;
-			case OFXOSC_TYPE_CHAR:
-				line << (details ? ": " : "") << message.getArgAsChar(i);
-				break;
-			case OFXOSC_TYPE_MIDI_MESSAGE:
-				line << (details ? ": " : "") << ofToHex(message.getArgAsMidiMessage(i));
-				break;
-			case OFXOSC_TYPE_RGBA_COLOR:
-				line << (details ? ": " : "") << ofToHex(message.getArgAsRgbaColor(i));
-				break;
-			case OFXOSC_TYPE_TRUE:
-			case OFXOSC_TYPE_FALSE:
-			case OFXOSC_TYPE_NONE:
-			case OFXOSC_TYPE_TRIGGER:
-			case OFXOSC_TYPE_TIMETAG:
-			case OFXOSC_TYPE_BLOB:
-			case OFXOSC_TYPE_BUNDLE:
-				break;
-			default:
-				continue;
-		}
-		cout << line.str() << endl;
-		line.str("");
-	}
-}
-
 /// \section OSC Server
 
 /// start the OSC server thread

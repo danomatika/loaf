@@ -2698,8 +2698,10 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 #define SWIGTYPE_p_ofxOscBundle swig_types[3]
 #define SWIGTYPE_p_ofxOscMessage swig_types[4]
 #define SWIGTYPE_p_std__string swig_types[5]
-static swig_type_info *swig_types[7];
-static swig_module_info swig_module = {swig_types, 6, 0, 0, 0, 0};
+#define SWIGTYPE_p_unsigned_int swig_types[6]
+#define SWIGTYPE_p_unsigned_long_long swig_types[7]
+static swig_type_info *swig_types[9];
+static swig_module_info swig_module = {swig_types, 8, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2869,28 +2871,6 @@ static int _wrap_setVerbose(lua_State* L) { int SWIG_arg = 0; bool arg1 ; SWIG_c
 static int _wrap_isVerbose(lua_State* L) { int SWIG_arg = 0; bool result; SWIG_check_num_args("loaf::isVerbose",0,0)
   result = (bool)loaf::isVerbose(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
-static int _wrap_printMessage__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = 0 ; bool arg2 ;
-  SWIG_check_num_args("loaf::printMessage",2,2)
-  if(!lua_isuserdata(L,1)) SWIG_fail_arg("loaf::printMessage",1,"ofxOscMessage const &");
-  if(!lua_isboolean(L,2)) SWIG_fail_arg("loaf::printMessage",2,"bool");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
-    SWIG_fail_ptr("printMessage",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (lua_toboolean(L, 2)!=0);
-  loaf::printMessage((ofxOscMessage const &)*arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_printMessage__SWIG_1(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = 0 ;
-  SWIG_check_num_args("loaf::printMessage",1,1)
-  if(!lua_isuserdata(L,1)) SWIG_fail_arg("loaf::printMessage",1,"ofxOscMessage const &");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
-    SWIG_fail_ptr("printMessage",1,SWIGTYPE_p_ofxOscMessage); }  loaf::printMessage((ofxOscMessage const &)*arg1);
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_printMessage(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) { int _v; {
-      void *ptr; if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_ofxOscMessage, 0)) {
-        _v = 0; }  else { _v = 1; }  }  if (_v) { return _wrap_printMessage__SWIG_1(L);}  }  if (argc == 2) { int _v; {
-      void *ptr; if (lua_isuserdata(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_ofxOscMessage, 0)) {
-        _v = 0; }  else { _v = 1; }  }  if (_v) { { _v = lua_isboolean(L,argv[1]); }  if (_v) {
-        return _wrap_printMessage__SWIG_0(L);}  }  } 
-  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'printMessage'\n" "  Possible C/C++ prototypes are:\n"
-  "    loaf::printMessage(ofxOscMessage const &,bool)\n" "    loaf::printMessage(ofxOscMessage const &)\n");
-  lua_error(L);return 0; }
 static int _wrap_startListening(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::startListening",0,0)
   loaf::startListening(); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_stopListening(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::stopListening",0,0)
@@ -2953,7 +2933,6 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
 static swig_lua_method swig_SwigModule_methods[]= {
     { "setVerbose", _wrap_setVerbose},
     { "isVerbose", _wrap_isVerbose},
-    { "printMessage", _wrap_printMessage},
     { "startListening", _wrap_startListening},
     { "stopListening", _wrap_stopListening},
     { "isListening", _wrap_isListening},
@@ -2999,6 +2978,8 @@ static swig_type_info _swigt__p_long_long = {"_p_long_long", "int64_t *|long lon
 static swig_type_info _swigt__p_ofxOscBundle = {"_p_ofxOscBundle", "ofxOscBundle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ofxOscMessage = {"_p_ofxOscMessage", "ofxOscMessage *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)&_wrap_class_string, 0};
+static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "uint32_t *|unsigned int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "uint64_t *|unsigned long long *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p__ofxOscArgType,
@@ -3007,6 +2988,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ofxOscBundle,
   &_swigt__p_ofxOscMessage,
   &_swigt__p_std__string,
+  &_swigt__p_unsigned_int,
+  &_swigt__p_unsigned_long_long,
 };
 
 static swig_cast_info _swigc__p__ofxOscArgType[] = {  {&_swigt__p__ofxOscArgType, 0, 0, 0},{0, 0, 0, 0}};
@@ -3015,6 +2998,8 @@ static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0}
 static swig_cast_info _swigc__p_ofxOscBundle[] = {  {&_swigt__p_ofxOscBundle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ofxOscMessage[] = {  {&_swigt__p_ofxOscMessage, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p__ofxOscArgType,
@@ -3023,6 +3008,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ofxOscBundle,
   _swigc__p_ofxOscMessage,
   _swigc__p_std__string,
+  _swigc__p_unsigned_int,
+  _swigc__p_unsigned_long_long,
 };
 
 
