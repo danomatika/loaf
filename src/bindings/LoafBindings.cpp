@@ -2692,16 +2692,11 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p__ofxOscArgType swig_types[0]
-#define SWIGTYPE_p_int swig_types[1]
-#define SWIGTYPE_p_long_long swig_types[2]
-#define SWIGTYPE_p_ofxOscBundle swig_types[3]
-#define SWIGTYPE_p_ofxOscMessage swig_types[4]
-#define SWIGTYPE_p_std__string swig_types[5]
-#define SWIGTYPE_p_unsigned_int swig_types[6]
-#define SWIGTYPE_p_unsigned_long_long swig_types[7]
-static swig_type_info *swig_types[9];
-static swig_module_info swig_module = {swig_types, 8, 0, 0, 0, 0};
+#define SWIGTYPE_p_ofxOscBundle swig_types[0]
+#define SWIGTYPE_p_ofxOscMessage swig_types[1]
+#define SWIGTYPE_p_std__string swig_types[2]
+static swig_type_info *swig_types[4];
+static swig_module_info swig_module = {swig_types, 3, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2719,9 +2714,6 @@ typedef struct{} LANGUAGE_OBJ;
 
 
 #include "Loaf.h"
-
-
-#include <stdio.h>
 
 
 #include <typeinfo>
@@ -2972,44 +2964,24 @@ static swig_lua_namespace swig_SwigModule = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p__ofxOscArgType = {"_p__ofxOscArgType", "enum _ofxOscArgType *|ofxOscArgType *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_int = {"_p_int", "int *|int32_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_long_long = {"_p_long_long", "int64_t *|long long *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ofxOscBundle = {"_p_ofxOscBundle", "ofxOscBundle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ofxOscMessage = {"_p_ofxOscMessage", "ofxOscMessage *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)&_wrap_class_string, 0};
-static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "uint32_t *|unsigned int *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "uint64_t *|unsigned long long *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p__ofxOscArgType,
-  &_swigt__p_int,
-  &_swigt__p_long_long,
   &_swigt__p_ofxOscBundle,
   &_swigt__p_ofxOscMessage,
   &_swigt__p_std__string,
-  &_swigt__p_unsigned_int,
-  &_swigt__p_unsigned_long_long,
 };
 
-static swig_cast_info _swigc__p__ofxOscArgType[] = {  {&_swigt__p__ofxOscArgType, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ofxOscBundle[] = {  {&_swigt__p_ofxOscBundle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ofxOscMessage[] = {  {&_swigt__p_ofxOscMessage, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p__ofxOscArgType,
-  _swigc__p_int,
-  _swigc__p_long_long,
   _swigc__p_ofxOscBundle,
   _swigc__p_ofxOscMessage,
   _swigc__p_std__string,
-  _swigc__p_unsigned_int,
-  _swigc__p_unsigned_long_long,
 };
 
 
@@ -3340,10 +3312,10 @@ const char* SWIG_LUACODE=
   "-- variable argument OSC sender\n"
   "function loaf.send(address, ...)\n"
   "    local msg = osc.Message()\n"
-  "    if type(address) == \"string\" then\n"
+  "    if type(address) == \"string\" and address:sub(1,1) == \"/\" then\n"
   "        msg.address = address\n"
   "    else\n"
-  "        print(\"send: error, first argument is not a string\")\n"
+  "        print(\"send: error, first argument is not an address string\")\n"
   "        return\n"
   "    end\n"
   "    for i,v in ipairs{...} do\n"

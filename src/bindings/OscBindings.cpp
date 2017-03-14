@@ -2703,8 +2703,10 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 #define SWIGTYPE_p_ofxOscSender swig_types[25]
 #define SWIGTYPE_p_osc__OscPacketListener swig_types[26]
 #define SWIGTYPE_p_std__string swig_types[27]
-static swig_type_info *swig_types[29];
-static swig_module_info swig_module = {swig_types, 28, 0, 0, 0, 0};
+#define SWIGTYPE_p_unsigned_int swig_types[28]
+#define SWIGTYPE_p_unsigned_long_long swig_types[29]
+static swig_type_info *swig_types[31];
+static swig_module_info swig_module = {swig_types, 30, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2738,14 +2740,76 @@ SWIGINTERN int SWIG_lua_isnilstring(lua_State *L, int idx) {
   return ret;
 }
 
+SWIGINTERN char const *ofxOscMessage___str__(ofxOscMessage *self){
+		static char str[255]; // provide a valid return pointer
+		stringstream stream;
+		stream << self->getAddress();
+		for(int i = 0; i < self->getNumArgs(); ++i) {
+			stream << " ";
+			switch(self->getArgType(i)) {
+				case OFXOSC_TYPE_INT32:
+					stream << self->getArgAsInt32(i);
+					break;
+				case OFXOSC_TYPE_INT64:
+					stream << self->getArgAsInt64(i);
+					break;
+				case OFXOSC_TYPE_FLOAT:
+					stream << self->getArgAsFloat(i);
+					break;
+				case OFXOSC_TYPE_DOUBLE:
+					stream << self->getArgAsDouble(i);
+					break;
+				case OFXOSC_TYPE_STRING:
+					stream << self->getArgAsString(i);
+					break;
+				case OFXOSC_TYPE_SYMBOL:
+					stream << self->getArgAsSymbol(i);
+					break;
+				case OFXOSC_TYPE_CHAR:
+					stream << self->getArgAsChar(i);
+					break;
+				case OFXOSC_TYPE_MIDI_MESSAGE:
+					stream << ofToHex(self->getArgAsMidiMessage(i));
+					break;
+				case OFXOSC_TYPE_TRUE:
+					stream << "T";
+					break;
+				case OFXOSC_TYPE_FALSE:
+					stream << "F";
+					break;
+				case OFXOSC_TYPE_NONE:
+					stream << "NONE";
+					break;
+				case OFXOSC_TYPE_TRIGGER:
+					stream << "TRIGGER";
+					break;
+				case OFXOSC_TYPE_TIMETAG:
+					stream << "TIMETAG";
+					break;
+				case OFXOSC_TYPE_BLOB:
+					stream << "BLOB";
+					break;
+				case OFXOSC_TYPE_BUNDLE:
+					stream << "BUNDLE";
+					break;
+				case OFXOSC_TYPE_RGBA_COLOR:
+					stream << ofToHex(self->getArgAsRgbaColor(i));
+					break;
+				default:
+					break;
+			}
+		}
+		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
+		return str;
+	}
 
-#define ofxOscMessage_address_get(self_) *new std::string(self_->getAddress())
+#define ofxOscMessage_address_get(self_) *new string(self_->getAddress())
   
 
 #define ofxOscMessage_address_set(self_, val_) self_->setAddress(val_)
     
 
-#define ofxOscMessage_remoteIp_get(self_) *new std::string(self_->getRemoteIp())
+#define ofxOscMessage_remoteHost_get(self_) *new string(self_->getRemoteIp())
   
 
 #define ofxOscMessage_remotePort_get(self_) self_->getRemotePort()
@@ -3382,12 +3446,12 @@ static int _wrap_Message_address_get(lua_State* L) { int SWIG_arg = 0; ofxOscMes
     SWIG_fail_ptr("Message_address_get",1,SWIGTYPE_p_ofxOscMessage); } 
   result = (std::string *) &ofxOscMessage_address_get(arg1); lua_pushlstring(L,result->data(),result->size()); SWIG_arg++;
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Message_remoteIp_get(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
-  std::string *result = 0 ; SWIG_check_num_args("ofxOscMessage::remoteIp",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::remoteIp",1,"ofxOscMessage *");
+static int _wrap_Message_remoteHost_get(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
+  std::string *result = 0 ; SWIG_check_num_args("ofxOscMessage::remoteHost",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::remoteHost",1,"ofxOscMessage *");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
-    SWIG_fail_ptr("Message_remoteIp_get",1,SWIGTYPE_p_ofxOscMessage); } 
-  result = (std::string *) &ofxOscMessage_remoteIp_get(arg1); lua_pushlstring(L,result->data(),result->size()); SWIG_arg++;
+    SWIG_fail_ptr("Message_remoteHost_get",1,SWIGTYPE_p_ofxOscMessage); } 
+  result = (std::string *) &ofxOscMessage_remoteHost_get(arg1); lua_pushlstring(L,result->data(),result->size()); SWIG_arg++;
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_remotePort_get(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
   int result; SWIG_check_num_args("ofxOscMessage::remotePort",1,1)
@@ -3401,6 +3465,12 @@ static int _wrap_Message_numArgs_get(lua_State* L) { int SWIG_arg = 0; ofxOscMes
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
     SWIG_fail_ptr("Message_numArgs_get",1,SWIGTYPE_p_ofxOscMessage); }  result = (int)ofxOscMessage_numArgs_get(arg1);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Message___tostring(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
+  char *result = 0 ; SWIG_check_num_args("ofxOscMessage::__str__",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::__str__",1,"ofxOscMessage *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
+    SWIG_fail_ptr("Message___tostring",1,SWIGTYPE_p_ofxOscMessage); }  result = (char *)ofxOscMessage___str__(arg1);
+  lua_pushstring(L,(const char *)result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static void swig_delete_Message(void *obj) {
 ofxOscMessage *arg1 = (ofxOscMessage *) obj;
 delete arg1;
@@ -3415,7 +3485,7 @@ static int _proxy__wrap_new_Message(lua_State *L) {
 }
 static swig_lua_attribute swig_Message_attributes[] = {
     { "address", _wrap_Message_address_get, _wrap_Message_address_set },
-    { "remoteIp", _wrap_Message_remoteIp_get, SWIG_Lua_set_immutable },
+    { "remoteHost", _wrap_Message_remoteHost_get, SWIG_Lua_set_immutable },
     { "remotePort", _wrap_Message_remotePort_get, SWIG_Lua_set_immutable },
     { "numArgs", _wrap_Message_numArgs_get, SWIG_Lua_set_immutable },
     {0,0,0}
@@ -3463,9 +3533,11 @@ static swig_lua_method swig_Message_methods[]= {
     { "addTimetagArg", _wrap_Message_addTimetagArg},
     { "addBlobArg", _wrap_Message_addBlobArg},
     { "addRgbaColorArg", _wrap_Message_addRgbaColorArg},
+    { "__tostring", _wrap_Message___tostring},
     {0,0}
 };
 static swig_lua_method swig_Message_meta[] = {
+    { "__tostring", _wrap_Message___tostring},
     {0,0}
 };
 
@@ -3968,6 +4040,8 @@ static swig_type_info _swigt__p_ofxOscReceiver = {"_p_ofxOscReceiver", "ofxOscRe
 static swig_type_info _swigt__p_ofxOscSender = {"_p_ofxOscSender", "ofxOscSender *", 0, 0, (void*)&_wrap_class_Sender, 0};
 static swig_type_info _swigt__p_osc__OscPacketListener = {"_p_osc__OscPacketListener", "osc::OscPacketListener *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)&_wrap_class_string, 0};
+static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "uint32_t *|unsigned int *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "uint64_t *|unsigned long long *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p__ofxOscArgType,
@@ -3998,6 +4072,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ofxOscSender,
   &_swigt__p_osc__OscPacketListener,
   &_swigt__p_std__string,
+  &_swigt__p_unsigned_int,
+  &_swigt__p_unsigned_long_long,
 };
 
 static swig_cast_info _swigc__p__ofxOscArgType[] = {  {&_swigt__p__ofxOscArgType, 0, 0, 0},{0, 0, 0, 0}};
@@ -4028,6 +4104,8 @@ static swig_cast_info _swigc__p_ofxOscReceiver[] = {  {&_swigt__p_ofxOscReceiver
 static swig_cast_info _swigc__p_ofxOscSender[] = {  {&_swigt__p_ofxOscSender, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_osc__OscPacketListener[] = {  {&_swigt__p_ofxOscReceiver, _p_ofxOscReceiverTo_p_osc__OscPacketListener, 0, 0},  {&_swigt__p_osc__OscPacketListener, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p__ofxOscArgType,
@@ -4058,6 +4136,8 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ofxOscSender,
   _swigc__p_osc__OscPacketListener,
   _swigc__p_std__string,
+  _swigc__p_unsigned_int,
+  _swigc__p_unsigned_long_long,
 };
 
 
