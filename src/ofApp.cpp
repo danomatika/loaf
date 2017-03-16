@@ -54,14 +54,23 @@ void ofApp::setup() {
 		else {
 			ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
 		}
+		else {
+			ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
+		}
 		if(options->sendPort > 0) {
 			setSendPort(options->sendPort);
 		}
 		else {
 			ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
 		}
+		else {
+			ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
+		}
 		if(options->listenPort > 0) {
 			setListenPort(options->listenPort);
+		}
+		else {
+			ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
 		}
 		else {
 			ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
