@@ -54,11 +54,20 @@ void ofApp::setup() {
 		if(options->sendHost != "") {
 			sender.setHost(options->sendHost);
 		}
+		else {
+			ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
+		}
 		if(options->sendPort > 0) {
 			sender.setPort(options->sendPort);
 		}
+		else {
+			ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
+		}
 		if(options->listenPort > 0) {
 			listener.setPort(options->listenPort);
+		}
+		else {
+			ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
 		}
 		if(options->startListening) {
 			listener.start();
@@ -78,6 +87,11 @@ void ofApp::setup() {
 		// cleanup
 		delete options;
 		options = nullptr;
+	}
+	else { // make sure to print the current osc communication settings
+		ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
+		ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
+		ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
 	}
 	
 	// path watching
