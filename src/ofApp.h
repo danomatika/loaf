@@ -63,7 +63,22 @@ class ofApp : public ofBaseApp {
 	
 	/// \section Osc
 	
-		/// osc received callback
+		/// start listening for osc messages
+		void startListening();
+	
+		/// stop listenig for osc messages
+		void stopListening();
+	
+		/// set the listen port, checks for valid range
+		void setListenPort(int port);
+	
+		/// set the sender host
+		void setSendHost(const string &host);
+	
+		/// set the sender port, checks for valid range
+		void setSendPort(int port);
+	
+		/// osc message callback
 		void oscReceived(const ofxOscMessage &message);
 	
 	/// \section PathWatcher
@@ -77,8 +92,8 @@ class ofApp : public ofBaseApp {
 		PathWatcher watcher; //< path change watcher
 		Script script; //< script manager
 		
-		OscSender sender; //< OSC message sender
-		OscReceiver listener; //< OSC message listener
+		ofxOscSender sender; //< OSC message sender
+		ofxOscReceiver listener; //< OSC message listener
 		string baseAddress = BASE_ADDRESS; //< base OSC address for loaf control messages
 	
 	private:

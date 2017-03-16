@@ -38,12 +38,9 @@ void ofApp::setup() {
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	
-	// osc
-	sender.set(SEND_HOST, SEND_PORT);
-	listener.setPort(LISTEN_PORT);
-	listener.setCallback([this](const ofxOscMessage &message) {
-		oscReceived(message);
-	});
+	// osc defaults
+	sender.setup(SEND_HOST, SEND_PORT);
+	listener.setup(LISTEN_PORT, false); // don't start yet...
 	
 	// apply any commandline options
 	bool watch = true;
@@ -52,16 +49,25 @@ void ofApp::setup() {
 			setVerbose(options->verbose);
 		}
 		if(options->sendHost != "") {
-			sender.setHost(options->sendHost);
+			setSendHost(options->sendHost);
+		}
+		else {
+			ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
 		}
 		if(options->sendPort > 0) {
-			sender.setPort(options->sendPort);
+			setSendPort(options->sendPort);
+		}
+		else {
+			ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
 		}
 		if(options->listenPort > 0) {
-			listener.setPort(options->listenPort);
+			setListenPort(options->listenPort);
+		}
+		else {
+			ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
 		}
 		if(options->startListening) {
-			listener.start();
+			startListening();
 		}
 		if(options->ignoreChanges) {
 			watch = false;
@@ -79,6 +85,11 @@ void ofApp::setup() {
 		delete options;
 		options = nullptr;
 	}
+	else { // make sure to print the current osc communication settings
+		ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
+		ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
+		ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
+	}
 	
 	// path watching
 	if(watch) {
@@ -89,7 +100,13 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update() {
 	
-	listener.update();
+	// process osc messages
+	while(listener.hasWaitingMessages()) {
+		ofxOscMessage message;
+		if(listener.getNextMessage(message)) {
+			oscReceived(message);
+		}
+	}
 	
 	// process any change events
 	while(watcher.waitingEvents()) {
@@ -108,7 +125,7 @@ void ofApp::draw() {
 //--------------------------------------------------------------
 void ofApp::exit() {
 	script.lua.scriptExit();
-	listener.stop();
+	listener.clear();
 }
 
 //--------------------------------------------------------------
@@ -212,6 +229,56 @@ bool ofApp::isVerbose() {
 }
 
 // OSC
+//--------------------------------------------------------------
+void ofApp::startListening() {
+	if(listener.setup()) {
+		ofLogVerbose(PACKAGE) << "started listening";
+	}
+}
+
+//--------------------------------------------------------------
+void ofApp::stopListening() {
+	if(listener.isListening()) {
+		ofLogVerbose(PACKAGE) << "stopped listening";
+	}
+	listener.clear();
+}
+
+//--------------------------------------------------------------
+void ofApp::setListenPort(int port) {
+	if(port < 1024) {
+		ofLogWarning(PACKAGE) << "port must be > 1024";
+		return;
+	}
+	if(listener.getPort() == port) {
+		return; // silently ignore
+	}
+	listener.setup(port, listener.isListening());
+	ofLogVerbose(PACKAGE) << "listen port: " << port;
+}
+
+//--------------------------------------------------------------
+void ofApp::setSendHost(const string &host) {
+	if(sender.getHost() == host) {
+		return; // silently ignore
+	}
+	sender.setup(host, sender.getPort());
+	ofLogVerbose(PACKAGE) << "send host: " << host;
+}
+
+//--------------------------------------------------------------
+void ofApp::setSendPort(int port) {
+	if(port < 1024) {
+		ofLogWarning(PACKAGE) << "port must be > 1024";
+		return;
+	}
+	if(sender.getPort() == port) {
+		return; // silently ignore
+	}
+	sender.setup(sender.getHost(), port);
+	ofLogVerbose(PACKAGE) << "send port: " << port;
+}
+
 //--------------------------------------------------------------
 void ofApp::oscReceived(const ofxOscMessage & message) {
 	if(message.getAddress() == baseAddress + "/load") {

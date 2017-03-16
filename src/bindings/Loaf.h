@@ -47,13 +47,13 @@ static bool isVerbose() {
 /// start the OSC server thread
 static void startListening() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
-	app->listener.start();
+	app->startListening();
 }
 
 /// stop the OSC server thread
 static void stopListening() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
-	app->listener.stop();
+	app->stopListening();
 }
 
 /// is the OSC server thread listening?
@@ -65,11 +65,7 @@ static bool isListening() {
 /// set the OSC server port, restart server if running
 static void setListenPort(int port) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
-	OscReceiver &listener = app->listener;
-	if(listener.getPort() == port) {
-		return; // silently ignore
-	}
-	listener.setPort(port);
+	app->setListenPort(port);
 }
 
 /// get the OSC server port
@@ -83,11 +79,7 @@ static int getListenPort() {
 /// set the OSC send host ip/name
 static void setSendHost(string host) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
-	OscSender &sender = app->sender;
-	if(sender.getHost() == host) {
-		return; // silently ignore
-	}
-	sender.setHost(host);
+	app->setSendHost(host);
 }
 
 /// get the OSC send host ip/name
@@ -99,11 +91,7 @@ static string getSendHost() {
 /// set the OSC send port
 static void setSendPort(int port) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
-	OscSender &sender = app->sender;
-	if(sender.getPort() == port) {
-		return; // silently ignore
-	}
-	sender.setPort(port);
+	app->setSendPort(port);
 }
 
 /// get the OSC send port

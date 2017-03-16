@@ -3759,6 +3759,15 @@ static int _wrap_Receiver_copy(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver 
   SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxOscReceiver,0); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
   return SWIG_arg; }
 static int _wrap_Receiver_setup__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
+  int arg2 ; bool arg3 ; bool result; SWIG_check_num_args("ofxOscReceiver::setup",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::setup",1,"ofxOscReceiver *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscReceiver::setup",2,"int");
+  if(!lua_isboolean(L,3)) SWIG_fail_arg("ofxOscReceiver::setup",3,"bool");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
+    SWIG_fail_ptr("Receiver_setup",1,SWIGTYPE_p_ofxOscReceiver); }  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (lua_toboolean(L, 3)!=0); result = (bool)(arg1)->setup(arg2,arg3); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Receiver_setup__SWIG_1(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
   int arg2 ; bool result; SWIG_check_num_args("ofxOscReceiver::setup",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::setup",1,"ofxOscReceiver *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscReceiver::setup",2,"int");
@@ -3766,20 +3775,25 @@ static int _wrap_Receiver_setup__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxOsc
     SWIG_fail_ptr("Receiver_setup",1,SWIGTYPE_p_ofxOscReceiver); }  arg2 = (int)lua_tonumber(L, 2);
   result = (bool)(arg1)->setup(arg2); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
-static int _wrap_Receiver_setup__SWIG_1(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
+static int _wrap_Receiver_setup__SWIG_2(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
   bool result; SWIG_check_num_args("ofxOscReceiver::setup",1,1)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::setup",1,"ofxOscReceiver *");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
     SWIG_fail_ptr("Receiver_setup",1,SWIGTYPE_p_ofxOscReceiver); }  result = (bool)(arg1)->setup();
   lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Receiver_setup(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 1) { int _v;
-    { void *ptr; if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_ofxOscReceiver, 0)) {
-        _v = 0; }  else { _v = 1; }  }  if (_v) { return _wrap_Receiver_setup__SWIG_1(L);}  }  if (argc == 2) { int _v; {
-      void *ptr; if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_ofxOscReceiver, 0)) {
-        _v = 0; }  else { _v = 1; }  }  if (_v) { { _v = lua_isnumber(L,argv[1]); }  if (_v) {
-        return _wrap_Receiver_setup__SWIG_0(L);}  }  } 
+static int _wrap_Receiver_setup(lua_State* L) { int argc; int argv[4]={ 1,2,3,4} ; argc = lua_gettop(L); if (argc == 1) {
+    int _v; { void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_ofxOscReceiver, 0)) { _v = 0; }
+       else { _v = 1; }  }  if (_v) { return _wrap_Receiver_setup__SWIG_2(L);}  }  if (argc == 2) { int _v; { void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_ofxOscReceiver, 0)) { _v = 0; }
+       else { _v = 1; }  }  if (_v) { { _v = lua_isnumber(L,argv[1]); }  if (_v) { return _wrap_Receiver_setup__SWIG_1(L);}  }  }
+   if (argc == 3) { int _v; { void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_ofxOscReceiver, 0)) { _v = 0; }
+       else { _v = 1; }  }  if (_v) { { _v = lua_isnumber(L,argv[1]); }  if (_v) { { _v = lua_isboolean(L,argv[2]); }  if (_v) {
+          return _wrap_Receiver_setup__SWIG_0(L);}  }  }  } 
   SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'Receiver_setup'\n" "  Possible C/C++ prototypes are:\n"
-  "    ofxOscReceiver::setup(int)\n" "    ofxOscReceiver::setup()\n"); lua_error(L);return 0; }
+  "    ofxOscReceiver::setup(int,bool)\n" "    ofxOscReceiver::setup(int)\n" "    ofxOscReceiver::setup()\n");
+  lua_error(L);return 0; }
 static int _wrap_Receiver_clear(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
   SWIG_check_num_args("ofxOscReceiver::clear",1,1)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::clear",1,"ofxOscReceiver *");

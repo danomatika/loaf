@@ -37,9 +37,7 @@ end
 function oscReceived(message)
 	
 	-- print received message
-	loaf.printMessage(message)
-	-- can also print extended details with:
-	--loaf.printMessage(message, true)
+	print(tostring(message))
 
 	-- parse messages based on address
 	if message.address == "/circle/x" then

@@ -11,14 +11,10 @@
 #include "Loaf.h"
 %}
 
-%include <attribute.i>
-
 // STL types
+using namespace std;
 %include <stl.i>
 %include <std_string.i>
-
-// types we need to know about
-%import(module="osc") "osc.i"
 
 ////////////////////////////////////////////////////////////////////////////////
 // ----- BINDINGS --------------------------------------------------------------
@@ -33,10 +29,10 @@
 -- variable argument OSC sender
 function loaf.send(address, ...)
     local msg = osc.Message()
-    if type(address) == "string" then
+    if type(address) == "string" and address:sub(1,1) == "/" then
         msg.address = address
     else
-        print("send: error, first argument is not a string")
+        print("send: error, first argument is not an address string")
         return
     end
     for i,v in ipairs{...} do
