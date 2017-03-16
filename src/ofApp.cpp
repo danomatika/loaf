@@ -52,25 +52,25 @@ void ofApp::setup() {
 			setVerbose(options->verbose);
 		}
 		if(options->sendHost != "") {
-			sender.setHost(options->sendHost);
+			setSendHost(options->sendHost);
 		}
 		else {
 			ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
 		}
 		if(options->sendPort > 0) {
-			sender.setPort(options->sendPort);
+			setSendPort(options->sendPort);
 		}
 		else {
 			ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
 		}
 		if(options->listenPort > 0) {
-			listener.setPort(options->listenPort);
+			setListenPort(options->listenPort);
 		}
 		else {
 			ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
 		}
 		if(options->startListening) {
-			listener.start();
+			startListening();
 		}
 		if(options->ignoreChanges) {
 			watch = false;
@@ -226,6 +226,32 @@ bool ofApp::isVerbose() {
 }
 
 // OSC
+
+//--------------------------------------------------------------
+void ofApp::startListening() {
+	listener.start();
+}
+
+//--------------------------------------------------------------
+void ofApp::stopListening() {
+	listener.stop();
+}
+
+//--------------------------------------------------------------
+void ofApp::setListenPort(int port) {
+	listener.setPort(port);
+}
+
+//--------------------------------------------------------------
+void ofApp::setSendHost(const string &host) {
+	sender.setHost(host);
+}
+
+//--------------------------------------------------------------
+void ofApp::setSendPort(int port) {
+	sender.setPort(port);
+}
+
 //--------------------------------------------------------------
 void ofApp::oscReceived(const ofxOscMessage & message) {
 	if(message.getAddress() == baseAddress + "/load") {

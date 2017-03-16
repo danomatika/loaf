@@ -63,6 +63,21 @@ class ofApp : public ofBaseApp {
 	
 	/// \section Osc
 	
+		/// start listening for osc messages
+		void startListening();
+	
+		/// stop listenig for osc messages
+		void stopListening();
+	
+		/// set the listen port, checks for valid range
+		void setListenPort(int port);
+	
+		/// set the sender host
+		void setSendHost(const string &host);
+	
+		/// set the sender port, checks for valid range
+		void setSendPort(int port);
+	
 		/// osc received callback
 		void oscReceived(const ofxOscMessage &message);
 	
