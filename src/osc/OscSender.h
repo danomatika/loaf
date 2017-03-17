@@ -37,12 +37,8 @@ class OscSender : public ofxOscSender {
 		}
 	
 		void setHost(const string & host) {
-			if(h == host) {
-				return; // silently ignore
-			}
 			h = host;
 			ofxOscSender::setup(h, p);
-			ofLogVerbose(PACKAGE) << "send host: " << host;
 		}
 
 		string getHost() {
@@ -50,16 +46,8 @@ class OscSender : public ofxOscSender {
 		}
 	
 		void setPort(int port) {
-			if(port < 1024) {
-				ofLogWarning(PACKAGE) << "port must be > 1024";
-				return;
-			}
-			if(p == port) {
-				return; // silently ignore
-			}
 			p = port;
 			ofxOscSender::setup(h, p);
-			ofLogVerbose(PACKAGE) << "send port: " << port;
 		}
 		
 		int getPort() {

@@ -33,6 +33,7 @@
 #endif
 
 // OF APP
+
 //--------------------------------------------------------------
 void ofApp::setup() {
 	ofSetVerticalSync(true);
@@ -51,52 +52,50 @@ void ofApp::setup() {
 		if(options->verbose) {
 			setVerbose(options->verbose);
 		}
+		if(options->ignoreChanges) {
+			watch = false;
+			ofLogVerbose(PACKAGE) << "ignoring script changes";
+		}
+		
+		// load script set via commandline
+		if(options->path != "") {
+			script.load(options->path, &options->args);
+			watcher.addPath(options->path);
+		}
+		
+		// the following should override script
 		if(options->sendHost != "") {
 			setSendHost(options->sendHost);
-		}
-		else {
-			ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
 		}
 		if(options->sendPort > 0) {
 			setSendPort(options->sendPort);
 		}
-		else {
-			ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
-		}
 		if(options->listenPort > 0) {
 			setListenPort(options->listenPort);
 		}
-		else {
-			ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
-		}
 		if(options->startListening) {
 			startListening();
-		}
-		if(options->ignoreChanges) {
-			watch = false;
-			ofLogVerbose(PACKAGE) << "ignoring script changes";
 		}
 		if(options->fullscreen) {
 			ofSetFullscreen(options->fullscreen);
 			ofLogVerbose(PACKAGE) << "starting fullscreen";
 		}
-		if(options->path != "") { // load script set via commandline
-			script.load(options->path, &options->args);
-			watcher.addPath(options->path);
-		}
 		// cleanup
 		delete options;
 		options = nullptr;
-	}
-	else { // make sure to print the current osc communication settings
-		ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
-		ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
-		ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
 	}
 	
 	// path watching
 	if(watch) {
 		watcher.start();
+	}
+	
+	// print the current osc communication settings
+	ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
+	ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
+	ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
+	if(listener.isListening()) {
+		ofLogVerbose(PACKAGE) << "started listening";
 	}
 }
 
@@ -229,27 +228,61 @@ bool ofApp::isVerbose() {
 
 //--------------------------------------------------------------
 void ofApp::startListening() {
+	bool wasListening = listener.isListening();
 	listener.start();
+	if(!wasListening && !options) {
+		ofLogVerbose(PACKAGE) << "started listening";
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::stopListening() {
+	bool wasListening = listener.isListening();
 	listener.stop();
+	if(wasListening && !options) {
+		ofLogVerbose(PACKAGE) << "stopped listening";
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::setListenPort(int port) {
+	if(port < 1024) {
+		ofLogWarning(PACKAGE) << "listen port must be > 1024";
+		return;
+	}
+	if(listener.getPort() == port) {
+		return; // silently ignore
+	}
 	listener.setPort(port);
+	if(!options) {
+		ofLogVerbose(PACKAGE) << "listen port: " << port;
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::setSendHost(const string &host) {
+	if(sender.getHost() == host) {
+		return; // silently ignore
+	}
 	sender.setHost(host);
+	if(!options) {
+		ofLogVerbose(PACKAGE) << "send host: " << host;
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::setSendPort(int port) {
+	if(port < 1024) {
+		ofLogWarning(PACKAGE) << "send port must be > 1024";
+		return;
+	}
+	if(sender.getPort() == port) {
+		return; // silently ignore
+	}
 	sender.setPort(port);
+	if(!options) {
+		ofLogVerbose(PACKAGE) << "send port: " << port;
+	}
 }
 
 //--------------------------------------------------------------
@@ -301,6 +334,7 @@ void ofApp::oscReceived(const ofxOscMessage & message) {
 }
 
 // PATCH WATCHER
+
 //--------------------------------------------------------------
 void ofApp::pathChanged(const PathWatcher::Event &event) {
 	switch(event.change) {

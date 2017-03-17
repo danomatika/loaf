@@ -44,10 +44,10 @@ class OscReceiver {
 		void update();
 
 		/// start the listening thread, opens connection
-		void start();
+		bool start();
 
 		/// stop the listening thread, closes connection
-		void stop();
+		bool stop();
 
 		/// is the thread running?
 		bool isListening();
@@ -56,10 +56,6 @@ class OscReceiver {
 		int getPort();
 
 	protected:
-	
-		/// underlying thread start/stop functions
-		bool _start();
-		bool _stop();
 		
 		unsigned int port; //< listening port
 		ofPtr<ofxOscReceiver> receiver; //< wrapper receiver instance

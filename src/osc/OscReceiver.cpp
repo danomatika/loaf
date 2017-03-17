@@ -31,19 +31,11 @@ OscReceiver::OscReceiver() {
 
 //--------------------------------------------------------------
 void OscReceiver::setPort(int port) {
-	if(port < 1024) {
-		ofLogWarning(PACKAGE) << "port must be > 1024";
-		return;
-	}
-	if(this->port == port) {
-		return; // silently ignore
-	}
 	this->port = port;
 	if(isListening()) {
-		_stop();
-		_start();
+		stop();
+		start();
 	}
-	ofLogVerbose(PACKAGE) << "listen port: " << port;
 }
 
 //--------------------------------------------------------------
@@ -66,33 +58,7 @@ void OscReceiver::update() {
 }
 
 //--------------------------------------------------------------
-void OscReceiver::start() {
-	if(_start()) {
-		ofLogVerbose(PACKAGE) << "started listening";
-	}
-}
-
-//--------------------------------------------------------------
-void OscReceiver::stop() {
-	if(_stop()) {
-		ofLogVerbose(PACKAGE) << "stopped listening";
-	}
-}
-
-//--------------------------------------------------------------
-bool OscReceiver::isListening() {
-	return receiver.get() != NULL;
-}
-
-//--------------------------------------------------------------
-int OscReceiver::getPort() {
-	return port;
-}
-
-// PROTECTED
-
-//--------------------------------------------------------------
-bool OscReceiver::_start() {
+bool OscReceiver::start() {
 	if(receiver.get() != NULL) {
 		return false; // silently ignore
 	}
@@ -106,10 +72,20 @@ bool OscReceiver::_start() {
 }
 
 //--------------------------------------------------------------
-bool OscReceiver::_stop() {
+bool OscReceiver::stop() {
 	if(receiver.get() == NULL) {
 		return false;
 	}
 	receiver.reset();
 	return true;
+}
+
+//--------------------------------------------------------------
+bool OscReceiver::isListening() {
+	return receiver.get() != NULL;
+}
+
+//--------------------------------------------------------------
+int OscReceiver::getPort() {
+	return port;
 }
