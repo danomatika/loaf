@@ -64,7 +64,7 @@ works like this:
     image = of.Image()
     image:load("image.jpg")
 
-This also means Lua's require function works as expected when importing other Lua scripts or modules inot the main script.
+This also means Lua's require function works as expected when importing other Lua scripts or modules into  the main script.
 
 ### Using Lua and OF
 
