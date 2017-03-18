@@ -46,11 +46,21 @@ _Note: A more comprehensive User Guide will be added in the future._
 
 ### Basic usage
 
-* drag a .lua script onto loaf to run it
+* drag a Lua script or folder with a main.lua onto loaf to run it
 * either save the script somehow (in a text editor) and/or use Super+R in loaf to reload it automatically
 * toggle fullscreen with Super+F
 * script errors are shown on the app window and on the console if you run it in a terminal application
 * prints are shown in the console (useful for debugging)
+
+loaf supports opening Lua scripts (.lua) and folders which contain a main.lua file. The folder option is useful for project encapsulation. Any filepaths are automatically relative to the script's parent folder, ie. loading an image from script.lua in the following project layout:
+
+    project/script.lua
+    project/image.jpg
+
+works like this:
+
+    image = of.Image()
+    image:load("image.jpg")
 
 ### Using Lua and OF
 
