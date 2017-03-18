@@ -70,7 +70,7 @@ The best place to start is to look at the examples included with loaf zip and on
 
 ### Setting Window Size
 
-By default, loaf starts as a 640x480 window. If you want a different resoltion or fullscreen, you can simply call the corresponding OF functions in your script:
+By default, loaf starts as a 640x480 window. If you want a different resolution or to go fullscreen, you can simply call the corresponding OF functions in your script:
 
     function setup()
         of.setWindowShape(1024, 768) -- resizes the window, like Processing size()
