@@ -23,3 +23,7 @@ build
 # Codeblocks
 *.layout
 *.depend
+
+# build/release
+*.zip
+
