@@ -5,6 +5,7 @@
 
 if [ $# -lt 1 ] ; then
 	echo "release_zip: missing version string as argument"
+	exit 1
 fi
 
 VERS=$1
