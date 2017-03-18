@@ -117,7 +117,7 @@ loaf requires the following addons:
 * [ofxLua](https://github.com/danomatika/ofxLua)
 * ofxOsc (included with openFrameworks)
 
-Project files for building loaf are not included so you will need to generate them for your operating system and development environment using the OF ProjectGenerator which is included with the openFrameworks distribution.
+Project files for building loaf on Windows or Linux are not included so you will need to generate them for your operating system and development environment using the OF ProjectGenerator which is included with the openFrameworks distribution.
 
 To (re)generate project files for an existing project:
 
@@ -139,6 +139,10 @@ To build and run it on the terminal:
 
     make
     make run
+
+### Windows
+
+_Instructions for Visual Studio to be added here._
 
 DEVELOPING
 ----------
