@@ -68,6 +68,15 @@ A quick overview of using Lua and the Lua bindings for openFrameworks can be fou
 
 The best place to start is to look at the examples included with loaf zip and on the [loaf Github repo](https://github.com/danomatika/loaf/tree/master/examples).
 
+### Setting Window Size
+
+By default, loaf starts as a 640x480 window. If you want a different resoltion or fullscreen, you can simply call the corresponding OF functions in your script:
+
+    function setup()
+        of.setWindowShape(1024, 768) -- resizes the window, like Processing size()
+        of.setFullscreen(true) -- go fullscreen! also the -f commandline option
+    end
+
 ### loaf Commandline Options
 
 loaf has a number of options which can be set when running it from the commandline, the most basic being a script to run:
