@@ -38,7 +38,7 @@ loaf's design is influenced by the [LÖVE](https://love2d.org) Lua game engine a
 QUICK START
 -----------
 
-Download a release build from [docs.danomatika.com/releases/loaf](http://docs.danomatika.com/releases/loaf/) (currently macOS only) or build loaf after git cloning from [Github](https://github.com/danomatika/loaf)
+Download a release build from **[docs.danomatika.com/releases/loaf](http://docs.danomatika.com/releases/loaf/)** (currently macOS only) or build loaf after git cloning from [Github](https://github.com/danomatika/loaf)
 
 Once you have a copy of loaf, drag the loaf.app into your Applications folder (macOS) or simple run it from the loaf folder by double-clicking.
 
