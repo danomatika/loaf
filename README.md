@@ -52,7 +52,9 @@ _Note: A more comprehensive User Guide will be added in the future._
 * script errors are shown on the app window and on the console if you run it in a terminal application
 * prints are shown in the console (useful for debugging)
 
-loaf supports opening Lua scripts (.lua) and folders which contain a main.lua file. The folder option is useful for project encapsulation. Any filepaths are automatically relative to the script's parent folder, ie. loading an image from script.lua in the following project layout:
+### Scripts, Folders, and Data Path
+
+loaf supports opening Lua scripts (.lua) and folders which contain a main.lua file. The folder option is useful for project encapsulation. Any data file paths are automatically relative to the script's parent folder, ie. loading an image from script.lua in the following project layout:
 
     project/script.lua
     project/image.jpg
@@ -61,6 +63,8 @@ works like this:
 
     image = of.Image()
     image:load("image.jpg")
+
+This also means Lua's require function works as expected when importing other Lua scripts or modules inot the main script.
 
 ### Using Lua and OF
 
@@ -106,7 +110,7 @@ Arguments:
   args...          arguments to pass to the lua script
 ~~~
 
-You can also pass arguments to the script itself by passing them after the script file:
+You can also pass arguments to the script itself by placing them after the script path:
 
     loaf script.lua hello 123
 
