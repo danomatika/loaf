@@ -66,7 +66,7 @@ works like this:
 
 A quick overview of using Lua and the Lua bindings for openFrameworks can be found in the [ofxLua readme](https://github.com/danomatika/ofxLua#of-api-bindings).
 
-The best place to start is to look at the examples included with loaf zip and on the [loaf Github repo](https://github.com/danomatika/loaf/tree/master/examples). Another useful source is the [ofxLua example scripts](https://github.com/danomatika/ofxLua/tree/master/luaExample/bin/data/scripts).
+The best place to start is to look at the examples included with loaf zip and on the [loaf Github repo](https://github.com/danomatika/loaf/tree/master/examples).
 
 ### loaf Commandline Options
 
