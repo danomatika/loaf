@@ -58,3 +58,9 @@ loaf.sendMessage(message)
 bundle = osc.Bundle()
 bundle:addMessage(message)
 loaf.sendBundle(bundle)
+
+function oscReceived(message)
+	
+	-- print received message
+	print(tostring(message))
+end
