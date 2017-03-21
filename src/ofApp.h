@@ -79,7 +79,7 @@ class ofApp : public ofBaseApp {
 		/// set the sender port, checks for valid range
 		void setSendPort(int port);
 	
-		/// osc message callback
+		/// osc received callback
 		void oscReceived(const ofxOscMessage &message);
 	
 	/// \section PathWatcher

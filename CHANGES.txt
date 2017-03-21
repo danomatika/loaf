@@ -1,0 +1,7 @@
+1.0.0: 2017 Mar 17
+
+first release
+
+0.1.0: Nov 2016
+
+initial work & testing
