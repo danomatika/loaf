@@ -40,7 +40,7 @@ void ofApp::setup() {
 	
 	// osc defaults
 	sender.setup(SEND_HOST, SEND_PORT);
-	listener.setup(LISTEN_PORT, false); // don't start yet...
+	listener.setPort(LISTEN_PORT); // don't start yet...
 	
 	// apply any commandline options
 	bool watch = true;
@@ -54,23 +54,14 @@ void ofApp::setup() {
 		else {
 			ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
 		}
-		else {
-			ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
-		}
 		if(options->sendPort > 0) {
 			setSendPort(options->sendPort);
 		}
 		else {
 			ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
 		}
-		else {
-			ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
-		}
 		if(options->listenPort > 0) {
 			setListenPort(options->listenPort);
-		}
-		else {
-			ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
 		}
 		else {
 			ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
@@ -134,7 +125,7 @@ void ofApp::draw() {
 //--------------------------------------------------------------
 void ofApp::exit() {
 	script.lua.scriptExit();
-	listener.clear();
+	listener.stop();
 }
 
 //--------------------------------------------------------------
@@ -240,7 +231,7 @@ bool ofApp::isVerbose() {
 // OSC
 //--------------------------------------------------------------
 void ofApp::startListening() {
-	if(listener.setup()) {
+	if(listener.start()) {
 		ofLogVerbose(PACKAGE) << "started listening";
 	}
 }
@@ -250,7 +241,7 @@ void ofApp::stopListening() {
 	if(listener.isListening()) {
 		ofLogVerbose(PACKAGE) << "stopped listening";
 	}
-	listener.clear();
+	listener.stop();
 }
 
 //--------------------------------------------------------------
@@ -262,7 +253,7 @@ void ofApp::setListenPort(int port) {
 	if(listener.getPort() == port) {
 		return; // silently ignore
 	}
-	listener.setup(port, listener.isListening());
+	listener.setPort(port);
 	ofLogVerbose(PACKAGE) << "listen port: " << port;
 }
 
@@ -271,7 +262,7 @@ void ofApp::setSendHost(const string &host) {
 	if(sender.getHost() == host) {
 		return; // silently ignore
 	}
-	sender.setup(host, sender.getPort());
+	sender.setHost(host);
 	ofLogVerbose(PACKAGE) << "send host: " << host;
 }
 
@@ -284,7 +275,7 @@ void ofApp::setSendPort(int port) {
 	if(sender.getPort() == port) {
 		return; // silently ignore
 	}
-	sender.setup(sender.getHost(), port);
+	sender.setPort(port);
 	ofLogVerbose(PACKAGE) << "send port: " << port;
 }
 

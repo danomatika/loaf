@@ -2741,66 +2741,35 @@ SWIGINTERN int SWIG_lua_isnilstring(lua_State *L, int idx) {
   return ret;
 }
 
+SWIGINTERN char const *ofxOscBundle___str__(ofxOscBundle *self){
+		static char str[255]; // provide a valid return pointer
+		stringstream stream;
+		stream << (*self);
+		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
+		//cout << stream.str() << endl;
+		return str;
+	}
 SWIGINTERN char const *ofxOscMessage___str__(ofxOscMessage *self){
 		static char str[255]; // provide a valid return pointer
 		stringstream stream;
-		stream << self->getAddress();
-		for(int i = 0; i < self->getNumArgs(); ++i) {
-			stream << " ";
-			switch(self->getArgType(i)) {
-				case OFXOSC_TYPE_INT32:
-					stream << self->getArgAsInt32(i);
-					break;
-				case OFXOSC_TYPE_INT64:
-					stream << self->getArgAsInt64(i);
-					break;
-				case OFXOSC_TYPE_FLOAT:
-					stream << self->getArgAsFloat(i);
-					break;
-				case OFXOSC_TYPE_DOUBLE:
-					stream << self->getArgAsDouble(i);
-					break;
-				case OFXOSC_TYPE_STRING:
-					stream << self->getArgAsString(i);
-					break;
-				case OFXOSC_TYPE_SYMBOL:
-					stream << self->getArgAsSymbol(i);
-					break;
-				case OFXOSC_TYPE_CHAR:
-					stream << self->getArgAsChar(i);
-					break;
-				case OFXOSC_TYPE_MIDI_MESSAGE:
-					stream << ofToHex(self->getArgAsMidiMessage(i));
-					break;
-				case OFXOSC_TYPE_TRUE:
-					stream << "T";
-					break;
-				case OFXOSC_TYPE_FALSE:
-					stream << "F";
-					break;
-				case OFXOSC_TYPE_NONE:
-					stream << "NONE";
-					break;
-				case OFXOSC_TYPE_TRIGGER:
-					stream << "TRIGGER";
-					break;
-				case OFXOSC_TYPE_TIMETAG:
-					stream << "TIMETAG";
-					break;
-				case OFXOSC_TYPE_BLOB:
-					stream << "BLOB";
-					break;
-				case OFXOSC_TYPE_BUNDLE:
-					stream << "BUNDLE";
-					break;
-				case OFXOSC_TYPE_RGBA_COLOR:
-					stream << ofToHex(self->getArgAsRgbaColor(i));
-					break;
-				default:
-					break;
-			}
-		}
+		stream << (*self);
 		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
+		return str;
+	}
+SWIGINTERN char const *ofxOscReceiver___str__(ofxOscReceiver *self){
+		static char str[255]; // provide a valid return pointer
+		stringstream stream;
+		stream << (*self);
+		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
+		//cout << stream.str() << endl;
+		return str;
+	}
+SWIGINTERN char const *ofxOscSender___str__(ofxOscSender *self){
+		static char str[255]; // provide a valid return pointer
+		stringstream stream;
+		stream << (*self);
+		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
+		//cout << stream.str() << endl;
 		return str;
 	}
 
@@ -2829,6 +2798,7 @@ SWIGINTERN char const *ofxOscMessage___str__(ofxOscMessage *self){
   
 
 #define ofxOscReceiver_port_get(self_) self_->getPort()
+#define ofxOscReceiver_port_set(self_, val_) self_->setPort(val_)
   
 
 #define ofxOscReceiver_listening_get(self_) self_->isListening()
@@ -2837,7 +2807,11 @@ SWIGINTERN char const *ofxOscMessage___str__(ofxOscMessage *self){
 #define ofxOscSender_host_get(self_) *new string(self_->getHost())
   
 
+#define ofxOscSender_host_set(self_, val_) self_->setHost(val_)
+    
+
 #define ofxOscSender_port_get(self_) self_->getPort()
+#define ofxOscSender_port_set(self_, val_) self_->setPort(val_)
   
 #ifdef __cplusplus
 extern "C" {
@@ -3080,6 +3054,12 @@ static int _wrap_Bundle_bundleCount_get(lua_State* L) { int SWIG_arg = 0; ofxOsc
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscBundle,0))){
     SWIG_fail_ptr("Bundle_bundleCount_get",1,SWIGTYPE_p_ofxOscBundle); }  result = (int)ofxOscBundle_bundleCount_get(arg1);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Bundle___tostring(lua_State* L) { int SWIG_arg = 0; ofxOscBundle *arg1 = (ofxOscBundle *) 0 ;
+  char *result = 0 ; SWIG_check_num_args("ofxOscBundle::__str__",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscBundle::__str__",1,"ofxOscBundle *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscBundle,0))){
+    SWIG_fail_ptr("Bundle___tostring",1,SWIGTYPE_p_ofxOscBundle); }  result = (char *)ofxOscBundle___str__(arg1);
+  lua_pushstring(L,(const char *)result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static void swig_delete_Bundle(void *obj) {
 ofxOscBundle *arg1 = (ofxOscBundle *) obj;
 delete arg1;
@@ -3106,9 +3086,11 @@ static swig_lua_method swig_Bundle_methods[]= {
     { "getMessageCount", _wrap_Bundle_getMessageCount},
     { "getBundleAt", _wrap_Bundle_getBundleAt},
     { "getMessageAt", _wrap_Bundle_getMessageAt},
+    { "__tostring", _wrap_Bundle___tostring},
     {0,0}
 };
 static swig_lua_method swig_Bundle_meta[] = {
+    { "__tostring", _wrap_Bundle___tostring},
     {0,0}
 };
 
@@ -3239,28 +3221,28 @@ static int _wrap_Message_getTypeString(lua_State* L) { int SWIG_arg = 0; ofxOscM
   result = ((ofxOscMessage const *)arg1)->getTypeString(); lua_pushlstring(L,(&result)->data(),(&result)->size()); SWIG_arg++;
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_getArgAsInt(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ; int arg2 ;
-  int32_t result; SWIG_check_num_args("ofxOscMessage::getArgAsInt",2,2)
+  std::int32_t result; SWIG_check_num_args("ofxOscMessage::getArgAsInt",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::getArgAsInt",1,"ofxOscMessage const *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::getArgAsInt",2,"int");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
     SWIG_fail_ptr("Message_getArgAsInt",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (int)lua_tonumber(L, 2);
-  result = (int32_t)((ofxOscMessage const *)arg1)->getArgAsInt(arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  result = (std::int32_t)((ofxOscMessage const *)arg1)->getArgAsInt(arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_getArgAsInt32(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ; int arg2 ;
-  int32_t result; SWIG_check_num_args("ofxOscMessage::getArgAsInt32",2,2)
+  std::int32_t result; SWIG_check_num_args("ofxOscMessage::getArgAsInt32",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::getArgAsInt32",1,"ofxOscMessage const *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::getArgAsInt32",2,"int");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
     SWIG_fail_ptr("Message_getArgAsInt32",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (int)lua_tonumber(L, 2);
-  result = (int32_t)((ofxOscMessage const *)arg1)->getArgAsInt32(arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  result = (std::int32_t)((ofxOscMessage const *)arg1)->getArgAsInt32(arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_getArgAsInt64(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ; int arg2 ;
-  int64_t result; SWIG_check_num_args("ofxOscMessage::getArgAsInt64",2,2)
+  std::int64_t result; SWIG_check_num_args("ofxOscMessage::getArgAsInt64",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::getArgAsInt64",1,"ofxOscMessage const *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::getArgAsInt64",2,"int");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
     SWIG_fail_ptr("Message_getArgAsInt64",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (int)lua_tonumber(L, 2);
-  result = (int64_t)((ofxOscMessage const *)arg1)->getArgAsInt64(arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  result = (std::int64_t)((ofxOscMessage const *)arg1)->getArgAsInt64(arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_getArgAsFloat(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ; int arg2 ;
   float result; SWIG_check_num_args("ofxOscMessage::getArgAsFloat",2,2)
@@ -3305,12 +3287,12 @@ static int _wrap_Message_getArgAsChar(lua_State* L) { int SWIG_arg = 0; ofxOscMe
   result = (char)((ofxOscMessage const *)arg1)->getArgAsChar(arg2); lua_pushlstring(L, &result, 1); SWIG_arg++; return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_getArgAsMidiMessage(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
-  int arg2 ; uint32_t result; SWIG_check_num_args("ofxOscMessage::getArgAsMidiMessage",2,2)
+  int arg2 ; std::uint32_t result; SWIG_check_num_args("ofxOscMessage::getArgAsMidiMessage",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::getArgAsMidiMessage",1,"ofxOscMessage const *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::getArgAsMidiMessage",2,"int");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
     SWIG_fail_ptr("Message_getArgAsMidiMessage",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (int)lua_tonumber(L, 2);
-  result = (uint32_t)((ofxOscMessage const *)arg1)->getArgAsMidiMessage(arg2);
+  result = (std::uint32_t)((ofxOscMessage const *)arg1)->getArgAsMidiMessage(arg2);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_getArgAsBool(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ; int arg2 ;
   bool result; SWIG_check_num_args("ofxOscMessage::getArgAsBool",2,2)
@@ -3353,13 +3335,13 @@ static int _wrap_Message_getArgAsInfinitum(lua_State* L) { int SWIG_arg = 0; ofx
   result = (bool)((ofxOscMessage const *)arg1)->getArgAsInfinitum(arg2); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_getArgAsTimetag(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
-  int arg2 ; uint64_t result; SWIG_check_num_args("ofxOscMessage::getArgAsTimetag",2,2)
+  int arg2 ; std::uint64_t result; SWIG_check_num_args("ofxOscMessage::getArgAsTimetag",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::getArgAsTimetag",1,"ofxOscMessage const *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::getArgAsTimetag",2,"int");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
     SWIG_fail_ptr("Message_getArgAsTimetag",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (int)lua_tonumber(L, 2);
-  result = (uint64_t)((ofxOscMessage const *)arg1)->getArgAsTimetag(arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+  result = (std::uint64_t)((ofxOscMessage const *)arg1)->getArgAsTimetag(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_getArgAsBlob(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ; int arg2 ;
   ofBuffer result; SWIG_check_num_args("ofxOscMessage::getArgAsBlob",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::getArgAsBlob",1,"ofxOscMessage const *");
@@ -3370,33 +3352,33 @@ static int _wrap_Message_getArgAsBlob(lua_State* L) { int SWIG_arg = 0; ofxOscMe
     SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_ofBuffer,1); SWIG_arg++; }  return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
 static int _wrap_Message_getArgAsRgbaColor(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
-  int arg2 ; uint32_t result; SWIG_check_num_args("ofxOscMessage::getArgAsRgbaColor",2,2)
+  int arg2 ; std::uint32_t result; SWIG_check_num_args("ofxOscMessage::getArgAsRgbaColor",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::getArgAsRgbaColor",1,"ofxOscMessage const *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::getArgAsRgbaColor",2,"int");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
     SWIG_fail_ptr("Message_getArgAsRgbaColor",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (int)lua_tonumber(L, 2);
-  result = (uint32_t)((ofxOscMessage const *)arg1)->getArgAsRgbaColor(arg2); lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Message_addIntArg(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ; int32_t arg2 ;
-  SWIG_check_num_args("ofxOscMessage::addIntArg",2,2)
+  result = (std::uint32_t)((ofxOscMessage const *)arg1)->getArgAsRgbaColor(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Message_addIntArg(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
+  std::int32_t arg2 ; SWIG_check_num_args("ofxOscMessage::addIntArg",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::addIntArg",1,"ofxOscMessage *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addIntArg",2,"int32_t");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addIntArg",2,"std::int32_t");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
-    SWIG_fail_ptr("Message_addIntArg",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (int32_t)lua_tonumber(L, 2);
+    SWIG_fail_ptr("Message_addIntArg",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (std::int32_t)lua_tonumber(L, 2);
   (arg1)->addIntArg(arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_addInt32Arg(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
-  int32_t arg2 ; SWIG_check_num_args("ofxOscMessage::addInt32Arg",2,2)
+  std::int32_t arg2 ; SWIG_check_num_args("ofxOscMessage::addInt32Arg",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::addInt32Arg",1,"ofxOscMessage *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addInt32Arg",2,"int32_t");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addInt32Arg",2,"std::int32_t");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
-    SWIG_fail_ptr("Message_addInt32Arg",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (int32_t)lua_tonumber(L, 2);
+    SWIG_fail_ptr("Message_addInt32Arg",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (std::int32_t)lua_tonumber(L, 2);
   (arg1)->addInt32Arg(arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_addInt64Arg(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
-  int64_t arg2 ; SWIG_check_num_args("ofxOscMessage::addInt64Arg",2,2)
+  std::int64_t arg2 ; SWIG_check_num_args("ofxOscMessage::addInt64Arg",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::addInt64Arg",1,"ofxOscMessage *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addInt64Arg",2,"int64_t");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addInt64Arg",2,"std::int64_t");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
-    SWIG_fail_ptr("Message_addInt64Arg",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (int64_t)lua_tonumber(L, 2);
+    SWIG_fail_ptr("Message_addInt64Arg",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (std::int64_t)lua_tonumber(L, 2);
   (arg1)->addInt64Arg(arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_addFloatArg(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ; float arg2 ;
   SWIG_check_num_args("ofxOscMessage::addFloatArg",2,2)
@@ -3436,12 +3418,12 @@ static int _wrap_Message_addCharArg(lua_State* L) { int SWIG_arg = 0; ofxOscMess
     SWIG_fail_ptr("Message_addCharArg",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (lua_tostring(L, 2))[0]; (arg1)->addCharArg(arg2);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_addMidiMessageArg(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
-  uint32_t arg2 ; SWIG_check_num_args("ofxOscMessage::addMidiMessageArg",2,2)
+  std::uint32_t arg2 ; SWIG_check_num_args("ofxOscMessage::addMidiMessageArg",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::addMidiMessageArg",1,"ofxOscMessage *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addMidiMessageArg",2,"uint32_t");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addMidiMessageArg",2,"std::uint32_t");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
     SWIG_fail_ptr("Message_addMidiMessageArg",1,SWIGTYPE_p_ofxOscMessage); } 
-  SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative") arg2 = (uint32_t)lua_tonumber(L, 2);
+  SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative") arg2 = (std::uint32_t)lua_tonumber(L, 2);
   (arg1)->addMidiMessageArg(arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_addBoolArg(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ; bool arg2 ;
   SWIG_check_num_args("ofxOscMessage::addBoolArg",2,2)
@@ -3475,11 +3457,11 @@ static int _wrap_Message_addInfinitumArg(lua_State* L) { int SWIG_arg = 0; ofxOs
     SWIG_fail_ptr("Message_addInfinitumArg",1,SWIGTYPE_p_ofxOscMessage); }  (arg1)->addInfinitumArg(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_addTimetagArg(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
-  uint64_t arg2 ; SWIG_check_num_args("ofxOscMessage::addTimetagArg",2,2)
+  std::uint64_t arg2 ; SWIG_check_num_args("ofxOscMessage::addTimetagArg",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::addTimetagArg",1,"ofxOscMessage *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addTimetagArg",2,"uint64_t");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addTimetagArg",2,"std::uint64_t");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
-    SWIG_fail_ptr("Message_addTimetagArg",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (uint64_t)lua_tonumber(L, 2);
+    SWIG_fail_ptr("Message_addTimetagArg",1,SWIGTYPE_p_ofxOscMessage); }  arg2 = (std::uint64_t)lua_tonumber(L, 2);
   (arg1)->addTimetagArg(arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_addBlobArg(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
   ofBuffer *arg2 = 0 ; SWIG_check_num_args("ofxOscMessage::addBlobArg",2,2)
@@ -3491,12 +3473,12 @@ static int _wrap_Message_addBlobArg(lua_State* L) { int SWIG_arg = 0; ofxOscMess
     SWIG_fail_ptr("Message_addBlobArg",2,SWIGTYPE_p_ofBuffer); }  (arg1)->addBlobArg((ofBuffer const &)*arg2); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_addRgbaColorArg(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
-  uint32_t arg2 ; SWIG_check_num_args("ofxOscMessage::addRgbaColorArg",2,2)
+  std::uint32_t arg2 ; SWIG_check_num_args("ofxOscMessage::addRgbaColorArg",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscMessage::addRgbaColorArg",1,"ofxOscMessage *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addRgbaColorArg",2,"uint32_t");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscMessage::addRgbaColorArg",2,"std::uint32_t");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
     SWIG_fail_ptr("Message_addRgbaColorArg",1,SWIGTYPE_p_ofxOscMessage); } 
-  SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative") arg2 = (uint32_t)lua_tonumber(L, 2);
+  SWIG_contract_assert((lua_tonumber(L,2)>=0),"number must not be negative") arg2 = (std::uint32_t)lua_tonumber(L, 2);
   (arg1)->addRgbaColorArg(arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Message_setRemoteEndpoint(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = (ofxOscMessage *) 0 ;
   std::string *arg2 = 0 ; int arg3 ; std::string temp2 ; SWIG_check_num_args("ofxOscMessage::setRemoteEndpoint",3,3)
@@ -3758,54 +3740,33 @@ static int _wrap_Receiver_copy(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver 
   result = (ofxOscReceiver *) &(arg1)->copy((ofxOscReceiver const &)*arg2);
   SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxOscReceiver,0); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
   return SWIG_arg; }
-static int _wrap_Receiver_setup__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
-  int arg2 ; bool arg3 ; bool result; SWIG_check_num_args("ofxOscReceiver::setup",3,3)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::setup",1,"ofxOscReceiver *");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscReceiver::setup",2,"int");
-  if(!lua_isboolean(L,3)) SWIG_fail_arg("ofxOscReceiver::setup",3,"bool");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
-    SWIG_fail_ptr("Receiver_setup",1,SWIGTYPE_p_ofxOscReceiver); }  arg2 = (int)lua_tonumber(L, 2);
-  arg3 = (lua_toboolean(L, 3)!=0); result = (bool)(arg1)->setup(arg2,arg3); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Receiver_setup__SWIG_1(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
-  int arg2 ; bool result; SWIG_check_num_args("ofxOscReceiver::setup",2,2)
+static int _wrap_Receiver_setup(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ; int arg2 ;
+  bool result; SWIG_check_num_args("ofxOscReceiver::setup",2,2)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::setup",1,"ofxOscReceiver *");
   if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscReceiver::setup",2,"int");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
     SWIG_fail_ptr("Receiver_setup",1,SWIGTYPE_p_ofxOscReceiver); }  arg2 = (int)lua_tonumber(L, 2);
   result = (bool)(arg1)->setup(arg2); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
-static int _wrap_Receiver_setup__SWIG_2(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
-  bool result; SWIG_check_num_args("ofxOscReceiver::setup",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::setup",1,"ofxOscReceiver *");
+static int _wrap_Receiver_start(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ; bool result;
+  SWIG_check_num_args("ofxOscReceiver::start",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::start",1,"ofxOscReceiver *");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
-    SWIG_fail_ptr("Receiver_setup",1,SWIGTYPE_p_ofxOscReceiver); }  result = (bool)(arg1)->setup();
+    SWIG_fail_ptr("Receiver_start",1,SWIGTYPE_p_ofxOscReceiver); }  result = (bool)(arg1)->start();
   lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_Receiver_setup(lua_State* L) { int argc; int argv[4]={ 1,2,3,4} ; argc = lua_gettop(L); if (argc == 1) {
-    int _v; { void *ptr;
-      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_ofxOscReceiver, 0)) { _v = 0; }
-       else { _v = 1; }  }  if (_v) { return _wrap_Receiver_setup__SWIG_2(L);}  }  if (argc == 2) { int _v; { void *ptr;
-      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_ofxOscReceiver, 0)) { _v = 0; }
-       else { _v = 1; }  }  if (_v) { { _v = lua_isnumber(L,argv[1]); }  if (_v) { return _wrap_Receiver_setup__SWIG_1(L);}  }  }
-   if (argc == 3) { int _v; { void *ptr;
-      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_ofxOscReceiver, 0)) { _v = 0; }
-       else { _v = 1; }  }  if (_v) { { _v = lua_isnumber(L,argv[1]); }  if (_v) { { _v = lua_isboolean(L,argv[2]); }  if (_v) {
-          return _wrap_Receiver_setup__SWIG_0(L);}  }  }  } 
-  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'Receiver_setup'\n" "  Possible C/C++ prototypes are:\n"
-  "    ofxOscReceiver::setup(int,bool)\n" "    ofxOscReceiver::setup(int)\n" "    ofxOscReceiver::setup()\n");
-  lua_error(L);return 0; }
-static int _wrap_Receiver_clear(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
-  SWIG_check_num_args("ofxOscReceiver::clear",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::clear",1,"ofxOscReceiver *");
+static int _wrap_Receiver_stop(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
+  SWIG_check_num_args("ofxOscReceiver::stop",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::stop",1,"ofxOscReceiver *");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
-    SWIG_fail_ptr("Receiver_clear",1,SWIGTYPE_p_ofxOscReceiver); }  (arg1)->clear(); return SWIG_arg; if(0) SWIG_fail; fail:
+    SWIG_fail_ptr("Receiver_stop",1,SWIGTYPE_p_ofxOscReceiver); }  (arg1)->stop(); return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
 static int _wrap_Receiver_isListening(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
   bool result; SWIG_check_num_args("ofxOscReceiver::isListening",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::isListening",1,"ofxOscReceiver *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::isListening",1,"ofxOscReceiver const *");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
-    SWIG_fail_ptr("Receiver_isListening",1,SWIGTYPE_p_ofxOscReceiver); }  result = (bool)(arg1)->isListening();
-  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+    SWIG_fail_ptr("Receiver_isListening",1,SWIGTYPE_p_ofxOscReceiver); } 
+  result = (bool)((ofxOscReceiver const *)arg1)->isListening(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Receiver_hasWaitingMessages(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
   bool result; SWIG_check_num_args("ofxOscReceiver::hasWaitingMessages",1,1)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::hasWaitingMessages",1,"ofxOscReceiver *");
@@ -3830,11 +3791,19 @@ static int _wrap_Receiver_getParameter(lua_State* L) { int SWIG_arg = 0; ofxOscR
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_ofAbstractParameter,0))){
     SWIG_fail_ptr("Receiver_getParameter",2,SWIGTYPE_p_ofAbstractParameter); }  result = (bool)(arg1)->getParameter(*arg2);
   lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Receiver_setPort(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ; int arg2 ;
+  bool result; SWIG_check_num_args("ofxOscReceiver::setPort",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::setPort",1,"ofxOscReceiver *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscReceiver::setPort",2,"int");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
+    SWIG_fail_ptr("Receiver_setPort",1,SWIGTYPE_p_ofxOscReceiver); }  arg2 = (int)lua_tonumber(L, 2);
+  result = (bool)(arg1)->setPort(arg2); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
 static int _wrap_Receiver_getPort(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ; int result;
   SWIG_check_num_args("ofxOscReceiver::getPort",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::getPort",1,"ofxOscReceiver *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::getPort",1,"ofxOscReceiver const *");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
-    SWIG_fail_ptr("Receiver_getPort",1,SWIGTYPE_p_ofxOscReceiver); }  result = (int)(arg1)->getPort();
+    SWIG_fail_ptr("Receiver_getPort",1,SWIGTYPE_p_ofxOscReceiver); }  result = (int)((ofxOscReceiver const *)arg1)->getPort();
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Receiver_disableReuse(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
   SWIG_check_num_args("ofxOscReceiver::disableReuse",1,1)
@@ -3848,6 +3817,13 @@ static int _wrap_Receiver_enableReuse(lua_State* L) { int SWIG_arg = 0; ofxOscRe
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
     SWIG_fail_ptr("Receiver_enableReuse",1,SWIGTYPE_p_ofxOscReceiver); }  (arg1)->enableReuse(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Receiver_port_set(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ; int arg2 ;
+  SWIG_check_num_args("ofxOscReceiver::port",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::port",1,"ofxOscReceiver *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscReceiver::port",2,"int");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
+    SWIG_fail_ptr("Receiver_port_set",1,SWIGTYPE_p_ofxOscReceiver); }  arg2 = (int)lua_tonumber(L, 2);
+  ofxOscReceiver_port_set(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Receiver_port_get(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ; int result;
   SWIG_check_num_args("ofxOscReceiver::port",1,1)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::port",1,"ofxOscReceiver *");
@@ -3860,6 +3836,12 @@ static int _wrap_Receiver_listening_get(lua_State* L) { int SWIG_arg = 0; ofxOsc
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
     SWIG_fail_ptr("Receiver_listening_get",1,SWIGTYPE_p_ofxOscReceiver); }  result = (bool)ofxOscReceiver_listening_get(arg1);
   lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Receiver___tostring(lua_State* L) { int SWIG_arg = 0; ofxOscReceiver *arg1 = (ofxOscReceiver *) 0 ;
+  char *result = 0 ; SWIG_check_num_args("ofxOscReceiver::__str__",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscReceiver::__str__",1,"ofxOscReceiver *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscReceiver,0))){
+    SWIG_fail_ptr("Receiver___tostring",1,SWIGTYPE_p_ofxOscReceiver); }  result = (char *)ofxOscReceiver___str__(arg1);
+  lua_pushstring(L,(const char *)result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static void swig_delete_Receiver(void *obj) {
 ofxOscReceiver *arg1 = (ofxOscReceiver *) obj;
 delete arg1;
@@ -3873,24 +3855,28 @@ static int _proxy__wrap_new_Receiver(lua_State *L) {
     return 1;
 }
 static swig_lua_attribute swig_Receiver_attributes[] = {
-    { "port", _wrap_Receiver_port_get, SWIG_Lua_set_immutable },
+    { "port", _wrap_Receiver_port_get, _wrap_Receiver_port_set },
     { "listening", _wrap_Receiver_listening_get, SWIG_Lua_set_immutable },
     {0,0,0}
 };
 static swig_lua_method swig_Receiver_methods[]= {
     { "copy", _wrap_Receiver_copy},
     { "setup", _wrap_Receiver_setup},
-    { "clear", _wrap_Receiver_clear},
+    { "start", _wrap_Receiver_start},
+    { "stop", _wrap_Receiver_stop},
     { "isListening", _wrap_Receiver_isListening},
     { "hasWaitingMessages", _wrap_Receiver_hasWaitingMessages},
     { "getNextMessage", _wrap_Receiver_getNextMessage},
     { "getParameter", _wrap_Receiver_getParameter},
+    { "setPort", _wrap_Receiver_setPort},
     { "getPort", _wrap_Receiver_getPort},
     { "disableReuse", _wrap_Receiver_disableReuse},
     { "enableReuse", _wrap_Receiver_enableReuse},
+    { "__tostring", _wrap_Receiver___tostring},
     {0,0}
 };
 static swig_lua_method swig_Receiver_meta[] = {
+    { "__tostring", _wrap_Receiver___tostring},
     {0,0}
 };
 
@@ -4016,18 +4002,32 @@ static int _wrap_Sender_sendParameter(lua_State* L) { int SWIG_arg = 0; ofxOscSe
     SWIG_fail_ptr("Sender_sendParameter",2,SWIGTYPE_p_ofAbstractParameter); } 
   (arg1)->sendParameter((ofAbstractParameter const &)*arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
   return SWIG_arg; }
+static int _wrap_Sender_setHost(lua_State* L) { int SWIG_arg = 0; ofxOscSender *arg1 = (ofxOscSender *) 0 ;
+  std::string *arg2 = 0 ; std::string temp2 ; SWIG_check_num_args("ofxOscSender::setHost",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::setHost",1,"ofxOscSender *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("ofxOscSender::setHost",2,"std::string const &");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscSender,0))){
+    SWIG_fail_ptr("Sender_setHost",1,SWIGTYPE_p_ofxOscSender); }  temp2.assign(lua_tostring(L,2),lua_rawlen(L,2)); arg2=&temp2;
+  (arg1)->setHost((std::string const &)*arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Sender_getHost(lua_State* L) { int SWIG_arg = 0; ofxOscSender *arg1 = (ofxOscSender *) 0 ; std::string result;
   SWIG_check_num_args("ofxOscSender::getHost",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::getHost",1,"ofxOscSender *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::getHost",1,"ofxOscSender const *");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscSender,0))){
-    SWIG_fail_ptr("Sender_getHost",1,SWIGTYPE_p_ofxOscSender); }  result = (arg1)->getHost();
+    SWIG_fail_ptr("Sender_getHost",1,SWIGTYPE_p_ofxOscSender); }  result = ((ofxOscSender const *)arg1)->getHost();
   lua_pushlstring(L,(&result)->data(),(&result)->size()); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
   return SWIG_arg; }
+static int _wrap_Sender_setPort(lua_State* L) { int SWIG_arg = 0; ofxOscSender *arg1 = (ofxOscSender *) 0 ; int arg2 ;
+  SWIG_check_num_args("ofxOscSender::setPort",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::setPort",1,"ofxOscSender *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscSender::setPort",2,"int");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscSender,0))){
+    SWIG_fail_ptr("Sender_setPort",1,SWIGTYPE_p_ofxOscSender); }  arg2 = (int)lua_tonumber(L, 2); (arg1)->setPort(arg2);
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Sender_getPort(lua_State* L) { int SWIG_arg = 0; ofxOscSender *arg1 = (ofxOscSender *) 0 ; int result;
   SWIG_check_num_args("ofxOscSender::getPort",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::getPort",1,"ofxOscSender *");
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::getPort",1,"ofxOscSender const *");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscSender,0))){
-    SWIG_fail_ptr("Sender_getPort",1,SWIGTYPE_p_ofxOscSender); }  result = (int)(arg1)->getPort();
+    SWIG_fail_ptr("Sender_getPort",1,SWIGTYPE_p_ofxOscSender); }  result = (int)((ofxOscSender const *)arg1)->getPort();
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Sender_disableBroadcast(lua_State* L) { int SWIG_arg = 0; ofxOscSender *arg1 = (ofxOscSender *) 0 ;
   SWIG_check_num_args("ofxOscSender::disableBroadcast",1,1)
@@ -4041,6 +4041,14 @@ static int _wrap_Sender_enableBroadcast(lua_State* L) { int SWIG_arg = 0; ofxOsc
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscSender,0))){
     SWIG_fail_ptr("Sender_enableBroadcast",1,SWIGTYPE_p_ofxOscSender); }  (arg1)->enableBroadcast(); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Sender_host_set(lua_State* L) { int SWIG_arg = 0; ofxOscSender *arg1 = (ofxOscSender *) 0 ;
+  std::string *arg2 = 0 ; std::string temp2 ; SWIG_check_num_args("ofxOscSender::host",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::host",1,"ofxOscSender *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("ofxOscSender::host",2,"std::string const &");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscSender,0))){
+    SWIG_fail_ptr("Sender_host_set",1,SWIGTYPE_p_ofxOscSender); }  temp2.assign(lua_tostring(L,2),lua_rawlen(L,2)); arg2=&temp2;
+  ofxOscSender_host_set(arg1,(std::string const &)*arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
 static int _wrap_Sender_host_get(lua_State* L) { int SWIG_arg = 0; ofxOscSender *arg1 = (ofxOscSender *) 0 ;
   std::string *result = 0 ; SWIG_check_num_args("ofxOscSender::host",1,1)
   if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::host",1,"ofxOscSender *");
@@ -4048,11 +4056,23 @@ static int _wrap_Sender_host_get(lua_State* L) { int SWIG_arg = 0; ofxOscSender 
     SWIG_fail_ptr("Sender_host_get",1,SWIGTYPE_p_ofxOscSender); }  result = (std::string *) &ofxOscSender_host_get(arg1);
   lua_pushlstring(L,result->data(),result->size()); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
   return SWIG_arg; }
+static int _wrap_Sender_port_set(lua_State* L) { int SWIG_arg = 0; ofxOscSender *arg1 = (ofxOscSender *) 0 ; int arg2 ;
+  SWIG_check_num_args("ofxOscSender::port",2,2) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::port",1,"ofxOscSender *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxOscSender::port",2,"int");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscSender,0))){
+    SWIG_fail_ptr("Sender_port_set",1,SWIGTYPE_p_ofxOscSender); }  arg2 = (int)lua_tonumber(L, 2);
+  ofxOscSender_port_set(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_Sender_port_get(lua_State* L) { int SWIG_arg = 0; ofxOscSender *arg1 = (ofxOscSender *) 0 ; int result;
   SWIG_check_num_args("ofxOscSender::port",1,1) if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::port",1,"ofxOscSender *");
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscSender,0))){
     SWIG_fail_ptr("Sender_port_get",1,SWIGTYPE_p_ofxOscSender); }  result = (int)ofxOscSender_port_get(arg1);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Sender___tostring(lua_State* L) { int SWIG_arg = 0; ofxOscSender *arg1 = (ofxOscSender *) 0 ;
+  char *result = 0 ; SWIG_check_num_args("ofxOscSender::__str__",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxOscSender::__str__",1,"ofxOscSender *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscSender,0))){
+    SWIG_fail_ptr("Sender___tostring",1,SWIGTYPE_p_ofxOscSender); }  result = (char *)ofxOscSender___str__(arg1);
+  lua_pushstring(L,(const char *)result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static void swig_delete_Sender(void *obj) {
 ofxOscSender *arg1 = (ofxOscSender *) obj;
 delete arg1;
@@ -4066,8 +4086,8 @@ static int _proxy__wrap_new_Sender(lua_State *L) {
     return 1;
 }
 static swig_lua_attribute swig_Sender_attributes[] = {
-    { "host", _wrap_Sender_host_get, SWIG_Lua_set_immutable },
-    { "port", _wrap_Sender_port_get, SWIG_Lua_set_immutable },
+    { "host", _wrap_Sender_host_get, _wrap_Sender_host_set },
+    { "port", _wrap_Sender_port_get, _wrap_Sender_port_set },
     {0,0,0}
 };
 static swig_lua_method swig_Sender_methods[]= {
@@ -4077,13 +4097,17 @@ static swig_lua_method swig_Sender_methods[]= {
     { "sendMessage", _wrap_Sender_sendMessage},
     { "sendBundle", _wrap_Sender_sendBundle},
     { "sendParameter", _wrap_Sender_sendParameter},
+    { "setHost", _wrap_Sender_setHost},
     { "getHost", _wrap_Sender_getHost},
+    { "setPort", _wrap_Sender_setPort},
     { "getPort", _wrap_Sender_getPort},
     { "disableBroadcast", _wrap_Sender_disableBroadcast},
     { "enableBroadcast", _wrap_Sender_enableBroadcast},
+    { "__tostring", _wrap_Sender___tostring},
     {0,0}
 };
 static swig_lua_method swig_Sender_meta[] = {
+    { "__tostring", _wrap_Sender___tostring},
     {0,0}
 };
 

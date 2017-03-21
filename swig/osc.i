@@ -117,75 +117,59 @@ namespace osc {
 %attribute(ofxOscBundle, int, messageCount, getMessageCount);
 %attribute(ofxOscBundle, int, bundleCount, getBundleCount);
 
-%attribute(ofxOscReceiver, int, port, getPort);
+%attribute(ofxOscReceiver, int, port, getPort, setPort);
 %attribute(ofxOscReceiver, bool, listening, isListening);
 
-%attributestring(ofxOscSender, string, host, getHost);
-%attribute(ofxOscSender, int, port, getPort);
+%attributestring(ofxOscSender, string, host, getHost, setHost);
+%attribute(ofxOscSender, int, port, getPort, setPort);
 
 %extend ofxOscMessage {
 
-	// message tostring method
+	// tostring method
 	const char* __str__() {
 		static char str[255]; // provide a valid return pointer
 		stringstream stream;
-		stream << $self->getAddress();
-		for(int i = 0; i < $self->getNumArgs(); ++i) {
-			stream << " ";
-			switch($self->getArgType(i)) {
-				case OFXOSC_TYPE_INT32:
-					stream << $self->getArgAsInt32(i);
-					break;
-				case OFXOSC_TYPE_INT64:
-					stream << $self->getArgAsInt64(i);
-					break;
-				case OFXOSC_TYPE_FLOAT:
-					stream << $self->getArgAsFloat(i);
-					break;
-				case OFXOSC_TYPE_DOUBLE:
-					stream << $self->getArgAsDouble(i);
-					break;
-				case OFXOSC_TYPE_STRING:
-					stream << $self->getArgAsString(i);
-					break;
-				case OFXOSC_TYPE_SYMBOL:
-					stream << $self->getArgAsSymbol(i);
-					break;
-				case OFXOSC_TYPE_CHAR:
-					stream << $self->getArgAsChar(i);
-					break;
-				case OFXOSC_TYPE_MIDI_MESSAGE:
-					stream << ofToHex($self->getArgAsMidiMessage(i));
-					break;
-				case OFXOSC_TYPE_TRUE:
-					stream << "T";
-					break;
-				case OFXOSC_TYPE_FALSE:
-					stream << "F";
-					break;
-				case OFXOSC_TYPE_NONE:
-					stream << "NONE";
-					break;
-				case OFXOSC_TYPE_TRIGGER:
-					stream << "TRIGGER";
-					break;
-				case OFXOSC_TYPE_TIMETAG:
-					stream << "TIMETAG";
-					break;
-				case OFXOSC_TYPE_BLOB:
-					stream << "BLOB";
-					break;
-				case OFXOSC_TYPE_BUNDLE:
-					stream << "BUNDLE";
-					break;
-				case OFXOSC_TYPE_RGBA_COLOR:
-					stream << ofToHex($self->getArgAsRgbaColor(i));
-					break;
-				default:
-					break;
-			}
-		}
+		stream << (*$self);
 		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
 		return str;
 	}
 };
+
+%extend ofxOscBundle {
+
+	// tostring method
+	const char* __str__() {
+		static char str[255]; // provide a valid return pointer
+		stringstream stream;
+		stream << (*$self);
+		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
+		//cout << stream.str() << endl;
+		return str;
+	}
+}
+
+%extend ofxOscReceiver {
+
+	// tostring method
+	const char* __str__() {
+		static char str[255]; // provide a valid return pointer
+		stringstream stream;
+		stream << (*$self);
+		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
+		//cout << stream.str() << endl;
+		return str;
+	}
+}
+
+%extend ofxOscSender {
+
+	// tostring method
+	const char* __str__() {
+		static char str[255]; // provide a valid return pointer
+		stringstream stream;
+		stream << (*$self);
+		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
+		//cout << stream.str() << endl;
+		return str;
+	}
+}

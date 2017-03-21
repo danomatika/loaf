@@ -24,10 +24,11 @@
 
 #include "ofMain.h"
 
+#include "config.h"
 #include "Script.h"
 #include "PathWatcher.h"
-#include "osc/OscSender.h"
-#include "osc/OscReceiver.h"
+#include "ofxOscSender.h"
+#include "ofxOscReceiver.h"
 #include "CommandLine.h"
 
 class ofApp : public ofBaseApp {
