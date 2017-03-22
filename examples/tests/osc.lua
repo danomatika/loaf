@@ -67,8 +67,11 @@ print("bundle: "..tostring(bundle))
 
 -- receive messages manually
 receiver = osc.Receiver()
-receiver.port = 9999
-receiver:start()
+settings = osc.ReceiverSettings()
+settings.port = 9999
+settings.start = false -- don't start yet
+receiver:setup(settings)
+receiver:start() -- start manually
 print("receiver: "..tostring(receiver))
 
 function update()

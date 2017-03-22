@@ -117,11 +117,13 @@ namespace osc {
 %attribute(ofxOscBundle, int, messageCount, getMessageCount);
 %attribute(ofxOscBundle, int, bundleCount, getBundleCount);
 
-%attribute(ofxOscReceiver, int, port, getPort, setPort);
+%attribute(ofxOscReceiver, int, port, getPort);
 %attribute(ofxOscReceiver, bool, listening, isListening);
+%attribute(ofxOscReceiver, ofxOscReceiverSettings&, settings, getSettings)
 
-%attributestring(ofxOscSender, string, host, getHost, setHost);
-%attribute(ofxOscSender, int, port, getPort, setPort);
+%attributestring(ofxOscSender, string, host, getHost);
+%attribute(ofxOscSender, int, port, getPort);
+%attribute(ofxOscSender, ofxOscSenderSettings&, settings, getSettings)
 
 %extend ofxOscMessage {
 

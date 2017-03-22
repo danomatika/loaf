@@ -41,7 +41,10 @@ void ofApp::setup() {
 	
 	// osc defaults
 	sender.setup(SEND_HOST, SEND_PORT);
-	listener.setPort(LISTEN_PORT); // don't start yet...
+	ofxOscReceiverSettings settings;
+	settings.port = LISTEN_PORT;
+	settings.start = false; // manual start
+	listener.setup(settings);
 	
 	// apply any commandline options
 	bool watch = true;
@@ -88,8 +91,8 @@ void ofApp::setup() {
 	}
 	
 	// print the current osc communication settings
-	ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
-	ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
+	ofLogVerbose(PACKAGE) << "send host: " << sender.getSettings().host;
+	ofLogVerbose(PACKAGE) << "send port: " << sender.getSettings().port;
 	ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
 	if(listener.isListening()) {
 		ofLogVerbose(PACKAGE) << "started listening";
@@ -256,7 +259,9 @@ void ofApp::setListenPort(int port) {
 	if(listener.getPort() == port) {
 		return; // silently ignore
 	}
-	listener.setPort(port);
+	ofxOscReceiverSettings settings = listener.getSettings();
+	settings.port = port;
+	listener.setup(settings);
 	if(!options) {
 		ofLogVerbose(PACKAGE) << "listen port: " << port;
 	}
@@ -267,7 +272,9 @@ void ofApp::setSendHost(const string &host) {
 	if(sender.getHost() == host) {
 		return; // silently ignore
 	}
-	sender.setHost(host);
+	ofxOscSenderSettings settings = sender.getSettings();
+	settings.host = host;
+	sender.setup(settings);
 	if(!options) {
 		ofLogVerbose(PACKAGE) << "send host: " << host;
 	}
@@ -282,7 +289,9 @@ void ofApp::setSendPort(int port) {
 	if(sender.getPort() == port) {
 		return; // silently ignore
 	}
-	sender.setPort(port);
+	ofxOscSenderSettings settings = sender.getSettings();
+	settings.port = port;
+	sender.setup(settings);
 	if(!options) {
 		ofLogVerbose(PACKAGE) << "send port: " << port;
 	}
