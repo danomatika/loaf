@@ -107,6 +107,8 @@ namespace osc {
 %include "ofxOsc/src/ofxOscReceiver.h"
 %include "ofxOsc/src/ofxOscSender.h"
 
+#ifdef ATTRIBUTES
+
 // convenience attributes
 %attributestring(ofxOscMessage, string, address, getAddress, setAddress)
 %attributestring(ofxOscMessage, string, remoteHost, getRemoteIp)
@@ -114,6 +116,8 @@ namespace osc {
 %attribute(ofxOscMessage, int, numArgs, getNumArgs);
 %attribute(ofxOscBundle, int, messageCount, getMessageCount);
 %attribute(ofxOscBundle, int, bundleCount, getBundleCount);
+
+#endif
 
 %extend ofxOscMessage {
 

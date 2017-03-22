@@ -25,7 +25,7 @@ message:addBlobArg(of.Buffer("hello\0world")) -- binary data as string
 
 -- print the message
 local types = ""
-for i = 0,message.numArgs-1 do
+for i = 0,message:getNumArgs()-1 do
 	types = types..message:getArgType(i)
 end
 if message:getArgType(0) == osc.TYPE_INT32 then

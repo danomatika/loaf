@@ -2672,23 +2672,6 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 
 /* ------------------------------ end luarun.swg  ------------------------------ */
 
-/*  Errors in SWIG */
-#define  SWIG_UnknownError    	   -1
-#define  SWIG_IOError        	   -2
-#define  SWIG_RuntimeError   	   -3
-#define  SWIG_IndexError     	   -4
-#define  SWIG_TypeError      	   -5
-#define  SWIG_DivisionByZero 	   -6
-#define  SWIG_OverflowError  	   -7
-#define  SWIG_SyntaxError    	   -8
-#define  SWIG_ValueError     	   -9
-#define  SWIG_SystemError    	   -10
-#define  SWIG_AttributeError 	   -11
-#define  SWIG_MemoryError    	   -12
-#define  SWIG_NullReferenceError   -13
-
-
-
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
@@ -2716,18 +2699,6 @@ typedef struct{} LANGUAGE_OBJ;
 #include "Loaf.h"
 
 
-#include <typeinfo>
-#include <stdexcept>
-
-
-#define SWIG_exception(a,b)\
-{ lua_pushfstring(L,"%s:%s",#a,b);SWIG_fail; }
-
-
-#include <typeinfo>
-#include <stdexcept>
-
-
 #include <string>
 
 
@@ -2737,17 +2708,6 @@ SWIGINTERN int SWIG_lua_isnilstring(lua_State *L, int idx) {
    ret = lua_isnil(L, idx);
   return ret;
 }
-
-
-#include <vector>
-
-
-#include <map>
-#include <algorithm>
-#include <stdexcept>
-
-
-#include <utility>
 
 #ifdef __cplusplus
 extern "C" {
@@ -3313,7 +3273,7 @@ const char* SWIG_LUACODE=
   "function loaf.send(address, ...)\n"
   "    local msg = osc.Message()\n"
   "    if type(address) == \"string\" and address:sub(1,1) == \"/\" then\n"
-  "        msg.address = address\n"
+  "        msg:setAddress(address)\n"
   "    else\n"
   "        print(\"send: error, first argument is not an address string\")\n"
   "        return\n"

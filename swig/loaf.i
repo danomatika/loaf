@@ -13,7 +13,6 @@
 
 // STL types
 using namespace std;
-%include <stl.i>
 %include <std_string.i>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -30,7 +29,7 @@ using namespace std;
 function loaf.send(address, ...)
     local msg = osc.Message()
     if type(address) == "string" and address:sub(1,1) == "/" then
-        msg.address = address
+        msg:setAddress(address)
     else
         print("send: error, first argument is not an address string")
         return

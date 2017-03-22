@@ -72,6 +72,8 @@ A quick overview of using Lua and the Lua bindings for openFrameworks can be fou
 
 The best place to start is to look at the examples included with loaf zip and on the [loaf Github repo](https://github.com/danomatika/loaf/tree/master/examples).
 
+There are also simple syntax lists for each of the three Lua bindings modules: of, osc, and loaf. These can be found in `doc/modules` and are a good place to start for creating autocompletion files for you favorite text editor.
+
 ### Setting Window Size
 
 By default, loaf starts as a 640x480 window. If you want a different resolution or to go fullscreen, you can simply call the corresponding OF functions in your script:

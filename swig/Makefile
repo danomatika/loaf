@@ -27,8 +27,15 @@ OF_HEADERS = ../../../../libs/openFrameworks
 # path to addons
 ADDON_DIR = ../../../../addons
 
+# no attribute by default, build with make ATTRIBUTES=true
+ifeq ($(ATTRIBUTES), true)
+	ATTRIBUTES_CFLAGS = -DATTRIBUTES
+else
+	ATTRIBUTES_CFLAGS =
+endif
+
 # C & C++ flags
-CFLAGS = -I$(OF_HEADERS) -I$(ADDON_DIR) -I$(DEST_DIR) -DSWIG_NOINCLUDE
+CFLAGS = -I$(OF_HEADERS) -I$(ADDON_DIR) -I$(DEST_DIR) -DSWIG_NOINCLUDE $(ATTRIBUTES_CFLAGS)
 CXXFLAGS = $(CFLAGS)
 
 .PHONY: all bindings debug clean
@@ -53,8 +60,8 @@ move:
 	mv *.cpp $(DEST_DIR)
 
 # outputs debug symbols
-debug:
-	$(SWIG) -c++ -$(LANG) -debug-lsymbols $(CXXFLAGS) $(TARGET).i > debug.txt
+symbols:
+	$(SWIG) -c++ -$(LANG) -debug-lsymbols $(CXXFLAGS) $(TARGET).i > $(TARGET)_symbols.txt
 	rm -f *.cxx
 
 # clean up
