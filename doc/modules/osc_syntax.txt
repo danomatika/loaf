@@ -1,3 +1,4 @@
+osc
 osc.Bundle
 osc.Message
 osc.ParameterSync
@@ -20,67 +21,77 @@ osc.TYPE_SYMBOL
 osc.TYPE_TIMETAG
 osc.TYPE_TRIGGER
 osc.TYPE_TRUE
-osc.ParameterSync.setup
-osc.ParameterSync.update
-osc.Receiver.disableReuse
-osc.Receiver.enableReuse
-osc.Receiver.getNextMessage
-osc.Receiver.getParameter
-osc.Receiver.hasWaitingMessages
-osc.Receiver.setup
-osc.Sender.disableBroadcast
-osc.Sender.enableBroadcast
-osc.Sender.sendBundle
-osc.Sender.sendMessage
-osc.Sender.sendParameter
-osc.Sender.setup
-osc.Message.addBlobArg
-osc.Message.addBoolArg
-osc.Message.addCharArg
-osc.Message.addDoubleArg
-osc.Message.addFloatArg
-osc.Message.addImpulseArg
-osc.Message.addInfinitumArg
-osc.Message.addInt32Arg
-osc.Message.addInt64Arg
-osc.Message.addIntArg
-osc.Message.addMidiMessageArg
-osc.Message.addRgbaColorArg
-osc.Message.addStringArg
-osc.Message.addSymbolArg
-osc.Message.addTimetagArg
-osc.Message.addTriggerArg
-osc.Message.clear
-osc.Message.copy
-osc.Message.getAddress
-osc.Message.getArgAsBlob
-osc.Message.getArgAsBool
-osc.Message.getArgAsChar
-osc.Message.getArgAsDouble
-osc.Message.getArgAsFloat
-osc.Message.getArgAsImpulse
-osc.Message.getArgAsInfinitum
-osc.Message.getArgAsInt
-osc.Message.getArgAsInt32
-osc.Message.getArgAsInt64
-osc.Message.getArgAsMidiMessage
-osc.Message.getArgAsRgbaColor
-osc.Message.getArgAsString
-osc.Message.getArgAsSymbol
-osc.Message.getArgAsTimetag
-osc.Message.getArgAsTrigger
-osc.Message.getArgType
-osc.Message.getArgTypeName
-osc.Message.getNumArgs
-osc.Message.getRemoteIp
-osc.Message.getRemotePort
-osc.Message.setAddress
-osc.Message.setRemoteEndpoint
-osc.Bundle.addBundle
-osc.Bundle.addMessage
-osc.Bundle.clear
-osc.Bundle.copy
-osc.Bundle.getBundleAt
-osc.Bundle.getBundleCount
-osc.Bundle.getMessageAt
-osc.Bundle.getMessageCount
+
+osc.ParameterSync
+  setup
+  update
+
+osc.Receiver
+  disableReuse
+  enableReuse
+  getNextMessage
+  getParameter
+  hasWaitingMessages
+  setup
+
+osc.Sender
+  disableBroadcast
+  enableBroadcast
+  sendBundle
+  sendMessage
+  sendParameter
+  setup
+
+osc.Message
+  addBlobArg
+  addBoolArg
+  addCharArg
+  addDoubleArg
+  addFloatArg
+  addImpulseArg
+  addInfinitumArg
+  addInt32Arg
+  addInt64Arg
+  addIntArg
+  addMidiMessageArg
+  addRgbaColorArg
+  addStringArg
+  addSymbolArg
+  addTimetagArg
+  addTriggerArg
+  clear
+  copy
+  getAddress
+  getArgAsBlob
+  getArgAsBool
+  getArgAsChar
+  getArgAsDouble
+  getArgAsFloat
+  getArgAsImpulse
+  getArgAsInfinitum
+  getArgAsInt
+  getArgAsInt32
+  getArgAsInt64
+  getArgAsMidiMessage
+  getArgAsRgbaColor
+  getArgAsString
+  getArgAsSymbol
+  getArgAsTimetag
+  getArgAsTrigger
+  getArgType
+  getArgTypeName
+  getNumArgs
+  getRemoteIp
+  getRemotePort
+  setAddress
+  setRemoteEndpoint
+
+osc.Bundle
+  addBundle
+  addMessage
+  clear
+  copy
+  getBundleAt
+  getBundleCount
+  getMessageAt
+  getMessageCount

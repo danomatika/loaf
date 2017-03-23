@@ -9,7 +9,7 @@ DEST=../doc/modules
 
 # path to lua_syntax script
 LUA=../../../../addons/ofxLua
-LUA_SYNTAX=$LUA/swig/scripts/lua_syntax.py
+LUA_SYNTAX=$LUA/scripts/lua_syntax.py
 
 ###
 
@@ -25,6 +25,8 @@ make symbols TARGET=loaf ATTRIBUTES=false
 $LUA_SYNTAX of of_lua_symbols.txt
 $LUA_SYNTAX osc osc_symbols.txt
 $LUA_SYNTAX loaf loaf_symbols.txt
+
+# added by loaf.i
 echo "loaf.send" >> loaf_syntax.txt
 
 mkdir -p $DEST
