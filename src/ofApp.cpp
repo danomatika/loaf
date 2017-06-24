@@ -90,6 +90,9 @@ void ofApp::setup() {
 		watcher.start();
 	}
 	
+	// print current opengl version
+	ofLogVerbose(PACKAGE) << "open gl version: " << glGetString(GL_VERSION);
+	
 	// print the current osc communication settings
 	ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
 	ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();

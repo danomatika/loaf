@@ -21,6 +21,7 @@
 
 ==============================================================================*/
 #include "ofApp.h"
+#include "ofAppRunner.h"
 
 int main(int argc, char *argv[]) {
 
@@ -40,7 +41,28 @@ int main(int argc, char *argv[]) {
 	}
 
 	// setup graphics
-	ofSetupOpenGL(640, 480, OF_WINDOW); // 1024, 576 for widescreen
+	ofGLWindowSettings settings;  // 1024, 576 for widescreen
+	settings.width = 640;
+	settings.height = 480;
+	settings.windowMode = OF_WINDOW;
+	if(app->options->opengl != "") {
+		int major = 0, minor = 0;
+		vector<string> ver = ofSplitString(app->options->opengl, ".");
+		if(ver.size() > 1) {
+			major = ofToInt(ver[0]);
+			minor = ofToInt(ver[1]);
+		}
+		// OpenGL versions run 1.1 - 4.5
+		if(major > 0 && major < 5 &&  // 1.x - 4.x
+		   minor > -1 && minor < 6) { // x.0 - x.5
+			settings.setGLVersion(major, minor);
+		}
+		else {
+			ofLogWarning(PACKAGE) << "ignoring invalid open gl version string: "
+			                      << app->options->opengl;
+		}
+	}
+	ofCreateWindow(settings);
 
 	// main app loop
 	ofRunApp(app);

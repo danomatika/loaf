@@ -105,6 +105,7 @@ Options:
   -s, --start      start listening for OSC messages
   -f, --fullscreen start in fullscreen
   -i, --ignore     ignore script changes
+  --gl             open gl version ie. "4.1"
   -v, --verbose    verbose printing
 
 Arguments:
