@@ -156,21 +156,25 @@ void ofApp::keyReleased(int key) {
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y) {
+	script.setMouseGlobals(x, y);
 	script.lua.scriptMouseMoved(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button) {
+	script.setMouseGlobals(x, y);
 	script.lua.scriptMouseDragged(x, y, button);
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button) {
+	script.setMouseGlobals(x, y);
 	script.lua.scriptMousePressed(x, y, button);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button) {
+	script.setMouseGlobals(x, y);
 	script.lua.scriptMouseReleased(x, y, button);
 }
 

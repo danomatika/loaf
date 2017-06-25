@@ -27,6 +27,7 @@ print("filepath joining /Users/foo with bar.txt: "..of.FilePath.join("/Users/foo
 -- of.File
 file = of.File("fileutils.lua")
 
+print("file path: "..file:path())
 print("file extension: "..file:getExtension())
 print("file name: "..file:getFileName())
 print("file basename: "..file:getBaseName())
@@ -47,4 +48,5 @@ print("file size: "..file:getSize())
 
 -- of.Directory
 dir = of.Directory("./")
+print("dir path: "..dir:path())
 print("dir absolute path: "..dir:getAbsolutePath())

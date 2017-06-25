@@ -47,6 +47,9 @@ class Script : protected ofxLuaListener {
 	
 		/// run a given string
 		bool eval(const string &text, bool reload=false);
+
+		/// set the mouseX & mouseY global values
+		void setMouseGlobals(int x, int y);
 		
 		/// send an osc message to the lua script
 		/// calls the oscReceived lua function

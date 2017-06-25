@@ -1,6 +1,9 @@
 1.1.0:
 
 * added --gl commandline option to set OpenGL version
+* added mouseX & mouseY global variables
+
+* updated with ofGLUtils.h constants and function bindings
 
 1.0.0: 2017 Mar 17
 

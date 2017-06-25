@@ -189,6 +189,19 @@ bool Script::eval(const string &text, bool reload) {
 }
 
 //--------------------------------------------------------------
+void Script::setMouseGlobals(int x, int y) {
+	if(!lua.isValid()) {
+		return;
+	}
+	lua_pushglobaltable(lua);
+	lua_pushinteger(lua, x);
+	lua_setfield(lua, -2, "mouseX");
+	lua_pushinteger(lua, y);
+	lua_setfield(lua, -2, "mouseY");
+	lua_pop(lua, 1);
+}
+
+//--------------------------------------------------------------
 void Script::oscReceived(const ofxOscMessage& message) {
 	if(!lua.isValid() || !lua.isFunction("oscReceived")) {
 		return;
@@ -228,6 +241,9 @@ bool Script::initState() {
 	}
 	lua.popTable();
 	
+	// for processing heads
+	setMouseGlobals(0, 0);
+
 	return true;
 }
 

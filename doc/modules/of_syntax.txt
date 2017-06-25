@@ -120,6 +120,10 @@ of.FloatImage
 of.FloatPixels
 of.FpsCounter
 of.GAME_MODE
+of.GLCheckExtension
+of.GLSLVersionFromGL
+of.GLSupportedExtensions
+of.GLSupportsNPOTTextures
 of.GRADIENT_BAR
 of.GRADIENT_CIRCULAR
 of.GRADIENT_LINEAR
@@ -244,6 +248,9 @@ of.MATRIX_TEXTURE
 of.MAX_CIRCLE_PTS
 of.MAX_STYLE_HISTORY
 of.MAX_VIEWPORT_HISTORY
+of.MESH_FILL
+of.MESH_POINTS
+of.MESH_WIREFRAME
 of.MIRRORED_REPEAT
 of.MOUSE_BUTTON_1
 of.MOUSE_BUTTON_2
@@ -302,6 +309,18 @@ of.POLY_WINDING_NEGATIVE
 of.POLY_WINDING_NONZERO
 of.POLY_WINDING_ODD
 of.POLY_WINDING_POSITIVE
+of.PRIMITIVE_LINES
+of.PRIMITIVE_LINES_ADJACENCY
+of.PRIMITIVE_LINE_LOOP
+of.PRIMITIVE_LINE_STRIP
+of.PRIMITIVE_LINE_STRIP_ADJACENCY
+of.PRIMITIVE_PATCHES
+of.PRIMITIVE_POINTS
+of.PRIMITIVE_TRIANGLES
+of.PRIMITIVE_TRIANGLES_ADJACENCY
+of.PRIMITIVE_TRIANGLE_FAN
+of.PRIMITIVE_TRIANGLE_STRIP
+of.PRIMITIVE_TRIANGLE_STRIP_ADJACENCY
 of.Path
 of.Path_COMMANDS
 of.Path_POLYLINES
@@ -473,6 +492,7 @@ of.getAppPtr
 of.getBackgroundAuto
 of.getBackgroundColor
 of.getBoxResolution
+of.getBytesPerChannelFromGLType
 of.getConeResolution
 of.getCoordHandedness
 of.getCurrentMatrix
@@ -489,10 +509,20 @@ of.getEnv
 of.getFill
 of.getFrameNum
 of.getFrameRate
+of.getGLFormatFromInternal
+of.getGLFormatFromPixelFormat
+of.getGLInternalFormatFromPixelFormat
+of.getGLPolyMode
+of.getGLPrimitiveMode
+of.getGlInternalFormat
+of.getGlInternalFormatName
+of.getGlType
+of.getGlTypeFromInternal
 of.getGlobalAmbientColor
 of.getHeight
 of.getHours
 of.getIcoSphereResolution
+of.getImageTypeFromGLType
 of.getKeyPressed
 of.getLastFrameTime
 of.getLightingEnabled
@@ -504,6 +534,9 @@ of.getMousePressed
 of.getMouseX
 of.getMouseY
 of.getNativeViewport
+of.getNumChannelsFromGLFormat
+of.getOFPolyMode
+of.getOFPrimitiveMode
 of.getOrientation
 of.getPlaneResolution
 of.getPreviousMouseX
@@ -546,6 +579,7 @@ of.hexToString
 of.hideCursor
 of.inRange
 of.insidePoly
+of.isGLProgrammableRenderer
 of.isStringInString
 of.isTextureEdgeHackEnabled
 of.isVFlipped
@@ -573,6 +607,7 @@ of.noFill
 of.noise
 of.normalize
 of.orientationToDegrees
+of.path
 of.popMatrix
 of.popStyle
 of.popView
@@ -624,6 +659,7 @@ of.setLineWidth
 of.setLogLevel
 of.setMatrixMode
 of.setOrientation
+of.setPixelStoreiAlignment
 of.setPlaneResolution
 of.setPolyMode
 of.setRectMode
@@ -736,24 +772,6 @@ of.Color
   setR
   setSaturation
 
-of.VboMesh
-  disableColors
-  disableIndices
-  disableNormals
-  disableTextures
-  draw
-  drawInstanced
-  enableColors
-  enableIndices
-  enableNormals
-  enableTextures
-  getVbo
-  setUsage
-  usingColors
-  usingIndices
-  usingNormals
-  usingTextures
-
 of.FloatImage
   FloatImage
   allocate
@@ -786,6 +804,24 @@ of.FloatImage
   setUseTexture
   unbind
   update
+
+of.VboMesh
+  disableColors
+  disableIndices
+  disableNormals
+  disableTextures
+  draw
+  drawInstanced
+  enableColors
+  enableIndices
+  enableNormals
+  enableTextures
+  getVbo
+  setUsage
+  usingColors
+  usingIndices
+  usingNormals
+  usingTextures
 
 of.Camera
   beginCamera
@@ -1425,6 +1461,9 @@ of.Mesh
   usingNormals
   usingTextures
 
+of.path
+  path
+
 of.SoundPlayer
   getPan
   getPlayer
@@ -1452,14 +1491,12 @@ of.Material
   beginMaterial
   endMaterial
   getAmbientColor
-  getData
   getDiffuseColor
   getEmissiveColor
   getShininess
   getSpecularColor
   setAmbientColor
   setColors
-  setData
   setDiffuseColor
   setEmissiveColor
   setShininess
@@ -1591,14 +1628,37 @@ of.ShortColor
   setR
   setSaturation
 
-of.Path.COMMANDS
-of.Path.POLYLINES
+of.TouchEventArgs.cancel
+of.TouchEventArgs.doubleTap
+of.TouchEventArgs.down
+of.TouchEventArgs.move
+of.TouchEventArgs.up
 
-of.Shader.COLOR_ATTRIBUTE
-of.Shader.INDEX_ATTRIBUTE
-of.Shader.NORMAL_ATTRIBUTE
-of.Shader.POSITION_ATTRIBUTE
-of.Shader.TEXCOORD_ATTRIBUTE
+of.Vec4f.DIM
+of.Vec4f.one
+of.Vec4f.zero
+
+of.Vec3f.DIM
+of.Vec3f.one
+of.Vec3f.zero
+
+of.Vec2f.DIM
+of.Vec2f.one
+of.Vec2f.zero
+
+of.Matrix4x4.getInverseOf
+of.Matrix4x4.getOrthoNormalOf
+of.Matrix4x4.getTransposedOf
+of.Matrix4x4.newFrustumMatrix
+of.Matrix4x4.newIdentityMatrix
+of.Matrix4x4.newLookAtMatrix
+of.Matrix4x4.newOrtho2DMatrix
+of.Matrix4x4.newOrthoMatrix
+of.Matrix4x4.newPerspectiveMatrix
+of.Matrix4x4.newRotationMatrix
+of.Matrix4x4.newScaleMatrix
+of.Matrix4x4.newTranslationMatrix
+of.Matrix4x4.transform3x3
 
 of.BoxPrimitive.SIDES_TOTAL
 of.BoxPrimitive.SIDE_BACK
@@ -1622,41 +1682,18 @@ of.Fbo.maxColorAttachments
 of.Fbo.maxDrawBuffers
 of.Fbo.maxSamples
 
+of.Shader.COLOR_ATTRIBUTE
+of.Shader.INDEX_ATTRIBUTE
+of.Shader.NORMAL_ATTRIBUTE
+of.Shader.POSITION_ATTRIBUTE
+of.Shader.TEXCOORD_ATTRIBUTE
+
+of.Path.COMMANDS
+of.Path.POLYLINES
+
 of.Polyline.fromRectangle
 
 of.TrueTypeFont.setGlobalDpi
-
-of.Matrix4x4.getInverseOf
-of.Matrix4x4.getOrthoNormalOf
-of.Matrix4x4.getTransposedOf
-of.Matrix4x4.newFrustumMatrix
-of.Matrix4x4.newIdentityMatrix
-of.Matrix4x4.newLookAtMatrix
-of.Matrix4x4.newOrtho2DMatrix
-of.Matrix4x4.newOrthoMatrix
-of.Matrix4x4.newPerspectiveMatrix
-of.Matrix4x4.newRotationMatrix
-of.Matrix4x4.newScaleMatrix
-of.Matrix4x4.newTranslationMatrix
-of.Matrix4x4.transform3x3
-
-of.Vec2f.DIM
-of.Vec2f.one
-of.Vec2f.zero
-
-of.Vec3f.DIM
-of.Vec3f.one
-of.Vec3f.zero
-
-of.Vec4f.DIM
-of.Vec4f.one
-of.Vec4f.zero
-
-of.TouchEventArgs.cancel
-of.TouchEventArgs.doubleTap
-of.TouchEventArgs.down
-of.TouchEventArgs.move
-of.TouchEventArgs.up
 
 of.Color.aliceBlue
 of.Color.antiqueWhite
@@ -2621,6 +2658,26 @@ of.HttpResponse
   request
   status
 
+of.EasyCam
+  beginCamera
+  disableMouseInput
+  disableMouseMiddleButton
+  enableMouseInput
+  enableMouseMiddleButton
+  getDistance
+  getDrag
+  getMouseInputEnabled
+  getMouseMiddleButtonEnabled
+  getTarget
+  getTranslationKey
+  reset
+  setAutoDistance
+  setDistance
+  setDrag
+  setEvents
+  setTarget
+  setTranslationKey
+
 of.Vbo
   bind
   clear
@@ -2687,8 +2744,8 @@ of.Vbo
   updateTexCoordData
   updateVertexData
 
-of.ShortPixels
-  ShortPixels
+of.Pixels
+  Pixels
   allocate
   allocateImageType
   allocatePixelFormat
@@ -2781,8 +2838,8 @@ of.FloatPixels
   swap
   swapRgb
 
-of.Pixels
-  Pixels
+of.ShortPixels
+  ShortPixels
   allocate
   allocateImageType
   allocatePixelFormat
@@ -2827,26 +2884,6 @@ of.Pixels
   size
   swap
   swapRgb
-
-of.EasyCam
-  beginCamera
-  disableMouseInput
-  disableMouseMiddleButton
-  enableMouseInput
-  enableMouseMiddleButton
-  getDistance
-  getDrag
-  getMouseInputEnabled
-  getMouseMiddleButtonEnabled
-  getTarget
-  getTranslationKey
-  reset
-  setAutoDistance
-  setDistance
-  setDrag
-  setEvents
-  setTarget
-  setTranslationKey
 
 of.Vec2f
   align

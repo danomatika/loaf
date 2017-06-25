@@ -7,6 +7,7 @@ drawOnce = false
 function setup() 
 	of.setWindowTitle("callbacks test")
 	print("setup")
+	print("mouseX "..mouseX.." mouseY "..mouseY)
 	of.sendMessage("hello world")
 end
 
@@ -36,8 +37,9 @@ function keyReleased(key)
 	print("keyReleased "..key)
 end
 
-function mouseMoved(x, y) 
-	print("mouseMoved "..x.." "..y)
+function mouseMoved(x, y)
+	-- check mouseX & mouseY globals
+	print("mouseMoved "..x.." "..y.." (mouseX & mouseY "..mouseX.." "..mouseY..")")
 end
 
 function mouseDragged(x, y, button) 
