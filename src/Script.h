@@ -79,5 +79,5 @@ class Script : protected ofxLuaListener {
 		string currentScript = ""; //< absolute path to current script
 		vector<string> arg; //< global "arg" table passed from commandline
 		bool error = false; //< is there an error?
-		vector<string> errorMsg; //< error message, seaprated by lines
+		vector<string> errorMsg; //< error message, separated by lines
 };
