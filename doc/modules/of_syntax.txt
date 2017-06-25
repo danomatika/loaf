@@ -1,4 +1,5 @@
 of
+of.3dPrimitive
 of.ALIGN_HORZ_CENTER
 of.ALIGN_HORZ_IGNORE
 of.ALIGN_HORZ_LEFT
@@ -806,22 +807,10 @@ of.FloatImage
   update
 
 of.VboMesh
-  disableColors
-  disableIndices
-  disableNormals
-  disableTextures
   draw
   drawInstanced
-  enableColors
-  enableIndices
-  enableNormals
-  enableTextures
   getVbo
   setUsage
-  usingColors
-  usingIndices
-  usingNormals
-  usingTextures
 
 of.Camera
   beginCamera
@@ -1370,6 +1359,30 @@ of.PlanePrimitive
   setResolution
   setRows
   setWidth
+
+of.3dPrimitive
+  disableColors
+  disableNormals
+  disableTextures
+  draw
+  drawAxes
+  drawFaces
+  drawNormals
+  drawVertices
+  drawWireframe
+  enableColors
+  enableNormals
+  enableTextures
+  getMesh
+  getMeshPtr
+  getTexCoords
+  getTexCoordsPtr
+  hasNormalsEnabled
+  hasScaling
+  isUsingVbo
+  mapTexCoords
+  mapTexCoordsFromTexture
+  setUseVbo
 
 of.Mesh
   addColor
@@ -2325,36 +2338,6 @@ of.URLFileLoader
   saveTo
   stop
 
-of.Light
-  disable
-  enable
-  getAmbientColor
-  getAttenuationConstant
-  getAttenuationLinear
-  getAttenuationQuadratic
-  getDiffuseColor
-  getIsAreaLight
-  getIsDirectional
-  getIsEnabled
-  getIsPointLight
-  getIsSpotlight
-  getLightID
-  getSpecularColor
-  getSpotConcentration
-  getSpotlightCutOff
-  getType
-  setAmbientColor
-  setAreaLight
-  setAttenuation
-  setDiffuseColor
-  setDirectional
-  setPointLight
-  setSpecularColor
-  setSpotConcentration
-  setSpotlight
-  setSpotlightCutOff
-  setup
-
 of.MeshFace
   getColor
   getFaceNormal
@@ -2404,6 +2387,36 @@ of.ShortImage
   setUseTexture
   unbind
   update
+
+of.Light
+  disable
+  enable
+  getAmbientColor
+  getAttenuationConstant
+  getAttenuationLinear
+  getAttenuationQuadratic
+  getDiffuseColor
+  getIsAreaLight
+  getIsDirectional
+  getIsEnabled
+  getIsPointLight
+  getIsSpotlight
+  getLightID
+  getSpecularColor
+  getSpotConcentration
+  getSpotlightCutOff
+  getType
+  setAmbientColor
+  setAreaLight
+  setAttenuation
+  setDiffuseColor
+  setDirectional
+  setPointLight
+  setSpecularColor
+  setSpotConcentration
+  setSpotlight
+  setSpotlightCutOff
+  setup
 
 of.MatrixStack
   clearStacks

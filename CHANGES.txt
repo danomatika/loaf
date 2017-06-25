@@ -5,6 +5,8 @@
 
 * updated with ofGLUtils.h constants and function bindings
 
+* fixed of3dPrimitive child class bindings missing inherited functions
+
 1.0.0: 2017 Mar 17
 
 first release
