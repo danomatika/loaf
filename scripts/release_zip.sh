@@ -3,6 +3,9 @@
 # builds loaf macOS release as a ZIP
 #
 
+# stop on errors
+set -e
+
 if [ $# -lt 1 ] ; then
 	echo "release_zip: missing version string as argument"
 	exit 1

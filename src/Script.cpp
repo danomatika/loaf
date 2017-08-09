@@ -95,7 +95,7 @@ bool Script::load(const string &path, const vector<string> *args) {
 	clear();
 	if(!ofDirectory::doesDirectoryExist(directory)) {
 		ofLogError(PACKAGE) << "script dir " << path << " does not exist";
-		return;
+		return false;
 	}
 	
 	// change the current directory to the scene directory,
@@ -109,7 +109,7 @@ bool Script::load(const string &path, const vector<string> *args) {
 				ofLogError(PACKAGE) << "couldn't change dir to " << directory << ", error " << errno;
 				break;
 		}
-		return;
+		return false;
 	}
 	
 	// set data path to script dir
