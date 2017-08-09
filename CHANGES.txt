@@ -1,11 +1,11 @@
-1.1.0:
+1.1.0: 2017 Aug 9
 
 * added --gl commandline option to set OpenGL version
 * added mouseX & mouseY global variables
 
 * updated with ofGLUtils.h constants and function bindings
 
-* fixed crash due to ofShader not being unbound on deletion 
+* fixed crash due to ofShader not being unbound on deletion
 * fixed of3dPrimitive child class bindings missing inherited functions
 
 1.0.0: 2017 Mar 17
