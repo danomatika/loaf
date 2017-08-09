@@ -38,6 +38,7 @@ int main(int argc, char *argv[]) {
 	}
 	else {
 		delete options;
+		options = nullptr;
 	}
 
 	// setup graphics
@@ -45,7 +46,7 @@ int main(int argc, char *argv[]) {
 	settings.width = 640;
 	settings.height = 480;
 	settings.windowMode = OF_WINDOW;
-	if(app->options->opengl != "") {
+	if(options && app->options->opengl != "") {
 		int major = 0, minor = 0;
 		vector<string> ver = ofSplitString(app->options->opengl, ".");
 		if(ver.size() > 1) {
