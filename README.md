@@ -133,6 +133,12 @@ which allows you to call loaf with just the short alias instead:
 
     loaf -h
 
+### Libraries
+
+As loaf contains the Lua embedded scripting language, pure Lua libraries will work fine with it. Pre-compiled loadable Lua moduels will also work as long as they are found within the `require` search path.
+
+Also, a set of loaf-oriented Lua libraries is available in the [loaf-ingredients](https://github.com/danomatika/loaf-ingredients) repository.
+
 BUILDING LOAF
 -------------
 
