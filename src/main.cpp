@@ -41,6 +41,8 @@ int main(int argc, char *argv[]) {
 		options = nullptr;
 	}
 
+	
+
 	// setup graphics
 	ofGLWindowSettings settings;  // 1024, 576 for widescreen
 	settings.width = 640;

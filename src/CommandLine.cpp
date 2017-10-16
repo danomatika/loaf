@@ -45,7 +45,9 @@ bool CommandLine::parse(int argc, char **argv) {
 		FULLSCREEN,
 		IGNORECHANGES,
 		VERBOSE,
-		OPENGL
+		OPENGL,
+		ERROREXIT,
+		ERRORRELOAD
 	};
 
 	// option and usage print descriptors
@@ -59,6 +61,8 @@ bool CommandLine::parse(int argc, char **argv) {
 		{STARTLISTENING, 0, "s", "start", Options::Arg::None, "  -s, --start \tstart listening for OSC messages"},
 		{FULLSCREEN, 0, "f", "fullscreen", Options::Arg::None, "  -f, --fullscreen \tstart in fullscreen"},
 		{IGNORECHANGES, 0, "i", "ignore", Options::Arg::None, "  -i, --ignore \tignore script changes"},
+		{ERROREXIT, 0, "e", "exit", Options::Arg::None, "  -e, --exit \texit after script error"},
+		{ERRORRELOAD, 0, "r", "reload", Options::Arg::Integer, "  -r, --reload \treload timeout in secs after a script error"},
 		{OPENGL, 0, "", "gl", Options::Arg::NonEmpty, "  --gl \topen gl version ie. \"4.1\""},
 		{VERBOSE, 0, "v", "verbose", Options::Arg::None, "  -v, --verbose \tverbose printing"},
 		{UNKNOWN, 0, "", "", Options::Arg::Unknown, "\nArguments:"},
@@ -99,6 +103,8 @@ bool CommandLine::parse(int argc, char **argv) {
 	if(options.isSet(STARTLISTENING)) {startListening = true; changed = true;}
 	if(options.isSet(FULLSCREEN))     {fullscreen = true; changed = true;}
 	if(options.isSet(IGNORECHANGES))  {ignore = true; changed = true;}
+	if(options.isSet(ERROREXIT))      {errorExit = true; changed = true;}
+	if(options.isSet(ERRORRELOAD))    {errorReload = options.getInt(ERRORRELOAD); changed = true;}
 	if(options.isSet(OPENGL))         {opengl = options.getString(OPENGL); changed = true;}
 	if(options.isSet(VERBOSE))        {verbose = true; changed = true;}
 	return true;

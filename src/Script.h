@@ -29,9 +29,18 @@ class ofxOscMessage;
 class Script : protected ofxLuaListener {
 
 	public:
-	
+
 		Script();
-		
+
+		ofxLua lua; //< lua instance
+
+		/// num ms after script error before reloading automatically,
+		/// ignored if set to -1
+		int errorReload = -1;
+
+		/// exit the app on a script error? overrides errorReload if set
+		bool errorExit = false;
+
 		/// load a new script or folder with a main.lua file
 		/// clears the current lua state && sets script args if non-null
 		bool load(const string &path, const vector<string> *args=nullptr);
@@ -59,8 +68,6 @@ class Script : protected ofxLuaListener {
 		void setCurrentScript(string script) {currentScript = script;}
 		string getCurrentScript() {return currentScript;}
 	
-		ofxLua lua; //< lua instance
-	
 		/// returns true if a given path is a loadable script file
 		/// or directory with a main.lua script
 		static bool isLoadablePath(const string &path);
@@ -80,4 +87,5 @@ class Script : protected ofxLuaListener {
 		vector<string> arg; //< global "arg" table passed from commandline
 		bool error = false; //< is there an error?
 		vector<string> errorMsg; //< error message, separated by lines
+		long reloadTimestamp = 0; //< auto reload timestamp
 };

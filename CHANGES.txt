@@ -1,3 +1,8 @@
+1.2.0: 2017 Oct 16
+
+* added -e/--exit commandline option to exit loaf after a script error
+* added -r/--reload commandline option to reload loaf after a script error
+
 1.1.0: 2017 Aug 9
 
 * added --gl commandline option to set OpenGL version

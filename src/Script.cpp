@@ -154,6 +154,10 @@ void Script::clear() {
 //--------------------------------------------------------------
 void Script::draw() {
 	if(error) {
+		if(errorReload > -1 && ofGetElapsedTimeMillis() - reloadTimestamp > errorReload) {
+			reload();
+			return;
+		}
 		ofPushView();
 		ofPushStyle();
 		ofSetRectMode(OF_RECTMODE_CORNER);
@@ -262,4 +266,10 @@ void Script::errorReceived(string& msg) {
 	error = true;
 	errorMsg.clear();
 	errorMsg = ofSplitString(msg, "\n");
+	if(errorExit) {
+		OF_EXIT_APP(1);
+	}
+	if(errorReload > -1) {
+		reloadTimestamp = ofGetElapsedTimeMillis();
+	}
 }

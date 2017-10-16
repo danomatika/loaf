@@ -43,6 +43,8 @@ class CommandLine {
 		bool startListening = false;
 		bool fullscreen = false;
 		bool ignoreChanges = false;
+		bool errorExit = false;
+		int errorReload = -1;
 		std::string opengl = "";
 		bool verbose = false;
 	

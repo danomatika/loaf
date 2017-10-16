@@ -56,6 +56,15 @@ void ofApp::setup() {
 			watch = false;
 			ofLogVerbose(PACKAGE) << "ignoring script changes";
 		}
+		if(options->errorExit) {
+			script.errorExit = options->errorExit;
+			ofLogVerbose(PACKAGE) << "exit after a script error";
+		}
+		else if(options->errorReload > -1) {
+			script.errorReload = options->errorReload * 1000; // s to ms
+			ofLogVerbose(PACKAGE) << "reload " << options->errorReload
+			                      << "s after a script error";
+		}
 		
 		// load script set via commandline
 		if(options->path != "") {
@@ -89,7 +98,7 @@ void ofApp::setup() {
 	if(watch) {
 		watcher.start();
 	}
-	
+
 	// print current opengl version
 	ofLogVerbose(PACKAGE) << "open gl version: " << glGetString(GL_VERSION);
 	
