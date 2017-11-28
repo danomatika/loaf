@@ -2836,6 +2836,9 @@ static int _wrap_setListenPort(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG
 static int _wrap_getListenPort(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("loaf::getListenPort",0,0)
   result = (int)loaf::getListenPort(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
   fail: lua_error(L); return SWIG_arg; }
+static int _wrap_getHostname(lua_State* L) { int SWIG_arg = 0; std::string result; SWIG_check_num_args("loaf::getHostname",0,0)
+  result = loaf::getHostname(); lua_pushlstring(L,(&result)->data(),(&result)->size()); SWIG_arg++; return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_setSendHost(lua_State* L) { int SWIG_arg = 0; std::string arg1 ; SWIG_check_num_args("loaf::setSendHost",1,1)
   if(!lua_isstring(L,1)) SWIG_fail_arg("loaf::setSendHost",1,"std::string"); (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1));
   loaf::setSendHost(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
@@ -2890,6 +2893,7 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "isListening", _wrap_isListening},
     { "setListenPort", _wrap_setListenPort},
     { "getListenPort", _wrap_getListenPort},
+    { "getHostname", _wrap_getHostname},
     { "setSendHost", _wrap_setSendHost},
     { "getSendHost", _wrap_getSendHost},
     { "setSendPort", _wrap_setSendPort},

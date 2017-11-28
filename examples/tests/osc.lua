@@ -1,6 +1,9 @@
 -- some osc functionality tests
 -- the ofxOsc bindings are found in the "osc" Lua module
 
+-- print out hostname
+print("hostname: "..loaf.getHostname())
+
 -- construct a message with all argument types
 message = osc.Message()
 message:setAddress("/hello")

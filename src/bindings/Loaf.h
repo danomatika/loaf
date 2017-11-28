@@ -25,6 +25,12 @@
 #include "ofApp.h"
 #include "config.h"
 
+#ifdef TARGET_WIN32
+	#include <Winsock2.h>
+#else
+	#include <unistd.h>
+#endif
+
 // global loaf lua bindings
 namespace loaf {
 
@@ -72,6 +78,15 @@ static void setListenPort(int port) {
 static int getListenPort() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->listener.getPort();
+}
+
+/// get this machine's hostname
+static string getHostname() {
+	static char hostname[256];
+	if(gethostname(hostname, 256) == 0) {
+		return string(hostname);
+	}
+	return "";
 }
 
 /// \section Osc Sender
