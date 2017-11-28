@@ -165,7 +165,7 @@ void Script::draw() {
 		int x = 8, y = (ofGetHeight()/2) - errorMsg.size()*10; // 20/2 = 10
 		for(int i = 0; i < errorMsg.size(); ++i) {
 			for(int c = 0; c < errorMsg[i].length(); c += lineWidth) {
-				ofDrawBitmapStringHighlight(errorMsg[i].substr(c, lineWidth), x, y, ofColor::white, ofColor::crimson);
+				ofDrawBitmapStringHighlight(errorMsg[i].substr(c, lineWidth), x, y, ofColor(255), ofColor(220, 20, 60));
 				y += 20;
 			}
 		}
