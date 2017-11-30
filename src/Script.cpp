@@ -119,8 +119,7 @@ bool Script::load(const string &path, const vector<string> *args) {
 	// this allows the lua state to find local files
 	bool ret = lua.doScript(currentScript, true);
 	if(ret) {
-		ofSetupGraphicDefaults();
-		lua.scriptSetup();
+		setupNeeded = true;
 		char currentDir[1024];
 		GETCWD(currentDir, 1024);
 		ofLogVerbose(PACKAGE) << "current dir now " << currentDir;
@@ -137,7 +136,7 @@ bool Script::reload() {
 	clear();
 	bool ret = lua.doScript(currentScript);
 	if(ret) {
-		lua.scriptSetup();
+		setupNeeded = true;
 	}
 	return ret;
 }
@@ -146,18 +145,30 @@ bool Script::reload() {
 void Script::clear() {
 	lua.scriptExit();
 	lua.clear();
+	setupNeeded = false;
 	error = false;
 	errorMsg.clear();
 	initState(); // stay inited
 }
 
 //--------------------------------------------------------------
-void Script::draw() {
+void Script::update() {
+	// handle auto reload
+	if(error && errorReload > -1 &&
+	   ofGetElapsedTimeMillis() - reloadTimestamp > errorReload) {
+		reload();
+	}
+	// make sure setup is called within a GL context
+	if(setupNeeded) {
+		ofSetupGraphicDefaults();
+		lua.scriptSetup();
+		setupNeeded = false;
+	}
+}
+
+//--------------------------------------------------------------
+void Script::drawError() {
 	if(error) {
-		if(errorReload > -1 && ofGetElapsedTimeMillis() - reloadTimestamp > errorReload) {
-			reload();
-			return;
-		}
 		ofPushView();
 		ofPushStyle();
 		ofSetRectMode(OF_RECTMODE_CORNER);
@@ -187,7 +198,7 @@ bool Script::eval(const string &text, bool reload) {
 		return false;
 	}
 	if(reload) {
-		lua.scriptSetup();
+		setupNeeded = true;
 	}
 	return true;
 }

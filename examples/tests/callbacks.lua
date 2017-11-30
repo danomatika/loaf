@@ -4,6 +4,8 @@
 updateOnce = false
 drawOnce = false
 
+print("load")
+
 function setup() 
 	of.setWindowTitle("callbacks test")
 	print("setup")

@@ -26,6 +26,7 @@
 
 class ofxOscMessage;
 
+/// lua script state wrapper, handles calling scriptSetup and scriptExit
 class Script : protected ofxLuaListener {
 
 	public:
@@ -48,11 +49,15 @@ class Script : protected ofxLuaListener {
 		/// exit, reinit the lua state, and reload the current script
 		bool reload();
 	
-		/// clears the current lua state, calls scriptExit
+		/// calls scriptExit and clears the current lua state
 		void clear();
-	
-		/// draw any error messages
-		void draw();
+
+		/// handles auto reload and calls scriptSetup if needed
+		void update();
+
+		/// draw any error messages, does nothing if there is no error or the
+		/// lua state is invalid
+		void drawError();
 	
 		/// run a given string
 		bool eval(const string &text, bool reload=false);
@@ -85,6 +90,7 @@ class Script : protected ofxLuaListener {
 
 		string currentScript = ""; //< absolute path to current script
 		vector<string> arg; //< global "arg" table passed from commandline
+		bool setupNeeded = false; //< should scriptSetup be called?
 		bool error = false; //< is there an error?
 		vector<string> errorMsg; //< error message, separated by lines
 		long reloadTimestamp = 0; //< auto reload timestamp

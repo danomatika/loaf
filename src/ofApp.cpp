@@ -113,21 +113,24 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
-	
+
+	// process received OSC events
 	listener.update();
 	
 	// process any change events
 	while(watcher.waitingEvents()) {
 		pathChanged(watcher.nextEvent());
 	}
-	
+
+	/// update the script
+	script.update();
 	script.lua.scriptUpdate();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw() {
 	script.lua.scriptDraw();
-	script.draw();
+	script.drawError();
 }
 
 //--------------------------------------------------------------
