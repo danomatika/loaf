@@ -99,7 +99,11 @@ void ofApp::setup() {
 		watcher.start();
 	}
 
-	// print current opengl version
+	// print OF binding and current opengl versions
+	ofLogVerbose(PACKAGE) << "openframeworks version: "
+	                      << OF_VERSION_MAJOR << "."
+	                      << OF_VERSION_MINOR << "."
+	                      << OF_VERSION_PATCH;
 	ofLogVerbose(PACKAGE) << "open gl version: " << glGetString(GL_VERSION);
 	
 	// print the current osc communication settings
