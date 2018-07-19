@@ -39,12 +39,12 @@ void ofApp::setup() {
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	
-	// osc
-	sender.set(SEND_HOST, SEND_PORT);
-	listener.setPort(LISTEN_PORT);
-	listener.setCallback([this](const ofxOscMessage &message) {
-		oscReceived(message);
-	});
+	// osc defaults
+	sender.setup(SEND_HOST, SEND_PORT);
+	ofxOscReceiverSettings settings;
+	settings.port = LISTEN_PORT;
+	settings.start = false; // manual start
+	listener.setup(settings);
 	
 	// apply any commandline options
 	bool watch = true;
@@ -107,8 +107,8 @@ void ofApp::setup() {
 	ofLogVerbose(PACKAGE) << "open gl version: " << glGetString(GL_VERSION);
 	
 	// print the current osc communication settings
-	ofLogVerbose(PACKAGE) << "send host: " << sender.getHost();
-	ofLogVerbose(PACKAGE) << "send port: " << sender.getPort();
+	ofLogVerbose(PACKAGE) << "send host: " << sender.getSettings().host;
+	ofLogVerbose(PACKAGE) << "send port: " << sender.getSettings().port;
 	ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
 	if(listener.isListening()) {
 		ofLogVerbose(PACKAGE) << "started listening";
@@ -119,7 +119,12 @@ void ofApp::setup() {
 void ofApp::update() {
 
 	// process received OSC events
-	listener.update();
+	while(listener.hasWaitingMessages()) {
+		ofxOscMessage message;
+		if(listener.getNextMessage(message)) {
+			oscReceived(message);
+		}
+	}
 	
 	// process any change events
 	while(watcher.waitingEvents()) {
@@ -276,7 +281,9 @@ void ofApp::setListenPort(int port) {
 	if(listener.getPort() == port) {
 		return; // silently ignore
 	}
-	listener.setPort(port);
+	ofxOscReceiverSettings settings = listener.getSettings();
+	settings.port = port;
+	listener.setup(settings);
 	if(!options) {
 		ofLogVerbose(PACKAGE) << "listen port: " << port;
 	}
@@ -287,7 +294,9 @@ void ofApp::setSendHost(const string &host) {
 	if(sender.getHost() == host) {
 		return; // silently ignore
 	}
-	sender.setHost(host);
+	ofxOscSenderSettings settings = sender.getSettings();
+	settings.host = host;
+	sender.setup(settings);
 	if(!options) {
 		ofLogVerbose(PACKAGE) << "send host: " << host;
 	}
@@ -302,7 +311,9 @@ void ofApp::setSendPort(int port) {
 	if(sender.getPort() == port) {
 		return; // silently ignore
 	}
-	sender.setPort(port);
+	ofxOscSenderSettings settings = sender.getSettings();
+	settings.port = port;
+	sender.setup(settings);
 	if(!options) {
 		ofLogVerbose(PACKAGE) << "send port: " << port;
 	}

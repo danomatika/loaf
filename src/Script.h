@@ -44,7 +44,7 @@ class Script : protected ofxLuaListener {
 
 		/// load a new script or folder with a main.lua file
 		/// clears the current lua state && sets script args if non-null
-		bool load(const string &path, const vector<string> *args=nullptr);
+		bool load(const std::string &path, const std::vector<std::string> *args=nullptr);
 		
 		/// exit, reinit the lua state, and reload the current script
 		bool reload();
@@ -60,7 +60,7 @@ class Script : protected ofxLuaListener {
 		void drawError();
 	
 		/// run a given string
-		bool eval(const string &text, bool reload=false);
+		bool eval(const std::string &text, bool reload=false);
 
 		/// set the mouseX & mouseY global values
 		void setMouseGlobals(int x, int y);
@@ -70,12 +70,12 @@ class Script : protected ofxLuaListener {
 		void oscReceived(const ofxOscMessage& message);
 	
 		/// access to the current script absolute path
-		void setCurrentScript(string script) {currentScript = script;}
-		string getCurrentScript() {return currentScript;}
+		void setCurrentScript(std::string script) {currentScript = script;}
+		std::string getCurrentScript() {return currentScript;}
 	
 		/// returns true if a given path is a loadable script file
 		/// or directory with a main.lua script
-		static bool isLoadablePath(const string &path);
+		static bool isLoadablePath(const std::string &path);
 	
 	protected:
 	
@@ -86,12 +86,12 @@ class Script : protected ofxLuaListener {
 		void clearState();
 	
 		/// lua error callback
-		void errorReceived(string& msg);
+		void errorReceived(std::string& msg);
 
-		string currentScript = ""; //< absolute path to current script
-		vector<string> arg; //< global "arg" table passed from commandline
+		std::string currentScript = ""; //< absolute path to current script
+		std::vector<std::string> arg; //< global "arg" table passed from commandline
 		bool setupNeeded = false; //< should scriptSetup be called?
 		bool error = false; //< is there an error?
-		vector<string> errorMsg; //< error message, separated by lines
+		std::vector<std::string> errorMsg; //< error message, separated by lines
 		long reloadTimestamp = 0; //< auto reload timestamp
 };

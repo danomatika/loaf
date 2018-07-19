@@ -24,10 +24,11 @@
 
 #include "ofMain.h"
 
+#include "config.h"
 #include "Script.h"
 #include "PathWatcher.h"
-#include "osc/OscSender.h"
-#include "osc/OscReceiver.h"
+#include "ofxOscSender.h"
+#include "ofxOscReceiver.h"
 #include "CommandLine.h"
 
 class ofApp : public ofBaseApp {
@@ -92,8 +93,8 @@ class ofApp : public ofBaseApp {
 		PathWatcher watcher; //< path change watcher
 		Script script; //< script manager
 		
-		OscSender sender; //< OSC message sender
-		OscReceiver listener; //< OSC message listener
+		ofxOscSender sender; //< OSC message sender
+		ofxOscReceiver listener; //< OSC message listener
 		string baseAddress = BASE_ADDRESS; //< base OSC address for loaf control messages
 	
 	private:

@@ -16,10 +16,13 @@ LANG = lua
 TARGET = osc
 
 # generated bindings filename
-NAME = OscBindings
+NAME = oscBindings
 
 # where to copy the generated bindings
 DEST_DIR = ../src/bindings
+
+# any extra SWIG flags per-language, etc
+SWIG_FLAGS = -O -small
 
 # path to OF headers
 OF_HEADERS = ../../../../libs/openFrameworks
@@ -27,58 +30,44 @@ OF_HEADERS = ../../../../libs/openFrameworks
 # path to addons
 ADDON_DIR = ../../../../addons
 
+# C & C++ flags
+CFLAGS = -I$(OF_HEADERS) -I$(ADDON_DIR) -I$(DEST_DIR) -DSWIG_NOINCLUDE
+
 # no attribute by default, build with make ATTRIBUTES=true
 ifeq ($(ATTRIBUTES), true)
-	ATTRIBUTES_CFLAGS = -DATTRIBUTES
-else
-	ATTRIBUTES_CFLAGS =
+	CFLAGS += -DATTRIBUTES
 endif
 
-# C & C++ flags
-CFLAGS = -I$(OF_HEADERS) -I$(ADDON_DIR) -I$(DEST_DIR) -DSWIG_NOINCLUDE $(ATTRIBUTES_CFLAGS)
-CXXFLAGS = $(CFLAGS)
-
-.PHONY: all bindings debug clean
+.PHONY: all bindings symbols clean osc-prepare osc load-prepare loaf
 
 all: osc loaf
 
 # generates bindings
 bindings:
-
-	@echo Generating target: $(TARGET)
-	@echo LANG = $(LANG)
-	@echo CXXFLAGS = $(CXXFLAGS)
-	@echo NAME = $(NAME)
-	@echo DEST_DIR = $(DEST_DIR)
-	
-	$(SWIG) -c++ -$(LANG) -fcompact -fvirtual $(CXXFLAGS) $(TARGET).i
-	mv $(TARGET)_wrap.cxx $(NAME).cpp
-
-# move generated files to DEST_DIR
-move:
-	mkdir -p $(DEST_DIR)
-	mv *.cpp $(DEST_DIR)
+	@echo "### Generating $(TARGET)"
+	@mkdir -p $(DEST_DIR)
+	$(SWIG) -c++ -$(LANG) $(SWIG_FLAGS) $(CFLAGS) -o $(DEST_DIR)/$(NAME).cpp $(TARGET).i
 
 # outputs debug symbols
 symbols:
-	$(SWIG) -c++ -$(LANG) -debug-lsymbols $(CXXFLAGS) $(TARGET).i > $(TARGET)_symbols.txt
+	$(SWIG) -c++ -$(LANG) -debug-lsymbols $(CFLAGS) $(TARGET).i > $(TARGET)_symbols.txt
 	rm -f *.cxx
 
 # clean up
 clean:
 	rm -f $(DEST_DIR)/*Bindings.cpp
-	rm -f debug.txt
+	rm -f *_symbols.txt
 
 # osc bindings
 osc-prepare:
 	$(eval TARGET := osc)
-	$(eval NAME := OscBindings)
+	$(eval NAME := oscBindings)
 
-osc: osc-prepare bindings move
+osc: osc-prepare bindings
 
 # loaf bindings
 loaf-prepare:
 	$(eval TARGET := loaf)
-	$(eval NAME := LoafBindings)
+	$(eval NAME := loafBindings)
 
-loaf: loaf-prepare bindings move
+loaf: loaf-prepare bindings

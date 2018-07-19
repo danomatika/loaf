@@ -15,14 +15,15 @@ LUA_SYNTAX=$LUA/scripts/lua_syntax.py
 
 cd $WD
 
-cd $LUA/swig && make symbols LANG=lua ATTRIBUTES=false && cd -
-mv $LUA/swig/of_lua_symbols.txt ../swig
+cd $LUA/swig && make openFrameworks-symbols && make glm-symbols && cd -
+mv $LUA/swig/*_lua_symbols.txt ../swig
 
 cd ../swig
-make symbols TARGET=osc ATTRIBUTES=false
-make symbols TARGET=loaf ATTRIBUTES=false
+make symbols TARGET=osc
+make symbols TARGET=loaf
 
 $LUA_SYNTAX of of_lua_symbols.txt
+$LUA_SYNTAX glm glm_lua_symbols.txt
 $LUA_SYNTAX osc osc_symbols.txt
 $LUA_SYNTAX loaf loaf_symbols.txt
 

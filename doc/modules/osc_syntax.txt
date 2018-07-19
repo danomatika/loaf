@@ -3,9 +3,10 @@ osc.Bundle
 osc.Message
 osc.ParameterSync
 osc.Receiver
+osc.ReceiverSettings
 osc.Sender
+osc.SenderSettings
 osc.TYPE_BLOB
-osc.TYPE_BUNDLE
 osc.TYPE_CHAR
 osc.TYPE_DOUBLE
 osc.TYPE_FALSE
@@ -22,25 +23,15 @@ osc.TYPE_TIMETAG
 osc.TYPE_TRIGGER
 osc.TYPE_TRUE
 
-osc.ParameterSync
-  setup
-  update
-
-osc.Receiver
-  disableReuse
-  enableReuse
-  getNextMessage
-  getParameter
-  hasWaitingMessages
-  setup
-
-osc.Sender
-  disableBroadcast
-  enableBroadcast
-  sendBundle
-  sendMessage
-  sendParameter
-  setup
+osc.Bundle
+  addBundle
+  addMessage
+  clear
+  copy
+  getBundleAt
+  getBundleCount
+  getMessageAt
+  getMessageCount
 
 osc.Message
   addBlobArg
@@ -54,6 +45,7 @@ osc.Message
   addInt64Arg
   addIntArg
   addMidiMessageArg
+  addNoneArg
   addRgbaColorArg
   addStringArg
   addSymbolArg
@@ -73,6 +65,7 @@ osc.Message
   getArgAsInt32
   getArgAsInt64
   getArgAsMidiMessage
+  getArgAsNone
   getArgAsRgbaColor
   getArgAsString
   getArgAsSymbol
@@ -81,17 +74,47 @@ osc.Message
   getArgType
   getArgTypeName
   getNumArgs
-  getRemoteIp
+  getRemoteHost
   getRemotePort
+  getTypeString
   setAddress
   setRemoteEndpoint
 
-osc.Bundle
-  addBundle
-  addMessage
+osc.Receiver
+  copy
+  getNextMessage
+  getParameter
+  getPort
+  getSettings
+  hasWaitingMessages
+  isListening
+  setup
+  start
+  stop
+
+osc.SenderSettings
+  SenderSettings
+  broadcast
+  host
+  port
+
+osc.ReceiverSettings
+  ReceiverSettings
+  port
+  reuse
+  start
+
+osc.Sender
   clear
   copy
-  getBundleAt
-  getBundleCount
-  getMessageAt
-  getMessageCount
+  getHost
+  getPort
+  getSettings
+  sendBundle
+  sendMessage
+  sendParameter
+  setup
+
+osc.ParameterSync
+  setup
+  update

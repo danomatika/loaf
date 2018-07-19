@@ -43,8 +43,7 @@ int main(int argc, char *argv[]) {
 
 	// setup graphics
 	ofGLWindowSettings settings;  // 1024, 576 for widescreen
-	settings.width = 640;
-	settings.height = 480;
+	settings.setSize(640, 480);
 	settings.windowMode = OF_WINDOW;
 	if(options && app->options->opengl != "") {
 		int major = 0, minor = 0;

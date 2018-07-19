@@ -1,0 +1,175 @@
+glm
+glm.abs
+glm.acos
+glm.acosh
+glm.acot
+glm.acoth
+glm.acsc
+glm.acsch
+glm.add
+glm.affineInverse
+glm.angle
+glm.angleAxis
+glm.asec
+glm.asech
+glm.asin
+glm.asinh
+glm.atan
+glm.atanh
+glm.axis
+glm.ceil
+glm.clamp
+glm.column
+glm.conjugate
+glm.cos
+glm.cosh
+glm.cot
+glm.coth
+glm.cross
+glm.csc
+glm.csch
+glm.degrees
+glm.determinant
+glm.distance
+glm.div
+glm.dot
+glm.e
+glm.epsilon
+glm.eq
+glm.euler
+glm.eulerAngles
+glm.exp
+glm.exp2
+glm.faceforward
+glm.floor
+glm.fma
+glm.fract
+glm.frustum
+glm.golden_ratio
+glm.half_pi
+glm.infinitePerspective
+glm.inverse
+glm.inverseTranspose
+glm.inversesqrt
+glm.isinf
+glm.isnan
+glm.length
+glm.lerp
+glm.ln_ln_two
+glm.ln_ten
+glm.ln_two
+glm.log
+glm.log2
+glm.lookAt
+glm.mat3
+glm.mat3_cast
+glm.mat4
+glm.mat4_cast
+glm.matrixCompMult
+glm.max
+glm.min
+glm.mix
+glm.mod
+glm.modf
+glm.mul
+glm.normalize
+glm.one
+glm.one_over_pi
+glm.one_over_root_two
+glm.ortho
+glm.outerProduct
+glm.perspective
+glm.perspectiveFov
+glm.pi
+glm.pickMatrix
+glm.pitch
+glm.pow
+glm.project
+glm.quarter_pi
+glm.quat
+glm.quat_cast
+glm.radians
+glm.reflect
+glm.refract
+glm.roll
+glm.root_five
+glm.root_half_pi
+glm.root_ln_four
+glm.root_pi
+glm.root_three
+glm.root_two
+glm.root_two_pi
+glm.rotate
+glm.round
+glm.roundEven
+glm.row
+glm.scale
+glm.sec
+glm.sech
+glm.sign
+glm.sin
+glm.sinh
+glm.slerp
+glm.smoothstep
+glm.sqrt
+glm.step
+glm.sub
+glm.tan
+glm.tanh
+glm.third
+glm.translate
+glm.transpose
+glm.trunc
+glm.tweakedInfinitePerspective
+glm.two_over_pi
+glm.two_over_root_pi
+glm.two_thirds
+glm.unProject
+glm.vec2
+glm.vec3
+glm.vec4
+glm.yaw
+glm.zero
+
+glm.mat4.length
+
+glm.mat3.length
+
+glm.vec4.length
+
+glm.vec3.length
+
+glm.vec2.length
+
+glm.quat.length
+
+glm.vec2
+  vec2
+  x
+  y
+
+glm.vec3
+  vec3
+  x
+  y
+  z
+
+glm.vec4
+  vec4
+  w
+  x
+  y
+  z
+
+glm.quat
+  quat
+  w
+  x
+  y
+  z
+
+glm.mat3
+  mat3
+
+glm.mat4
+  mat4

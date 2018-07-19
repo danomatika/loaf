@@ -25,6 +25,7 @@
 #include "config.h"
 #include "ofAppRunner.h"
 #include "ofGraphics.h"
+#include "ofLight.h"
 #include "ofFileUtils.h"
 #include "ofxOsc.h"
 
@@ -50,10 +51,10 @@ Script::Script() {
 }
 
 //--------------------------------------------------------------
-bool Script::load(const string &path, const vector<string> *args) {
+bool Script::load(const std::string &path, const std::vector<std::string> *args) {
 	
 	ofFile scriptOrFolder(path);
-	string script, directory, name;
+	std::string script, directory, name;
 	
 	// directory?
 	if(scriptOrFolder.isDirectory()) {
@@ -161,6 +162,7 @@ void Script::update() {
 	// make sure setup is called within a GL context
 	if(setupNeeded) {
 		ofSetupGraphicDefaults();
+		ofDisableLighting();
 		lua.scriptSetup();
 		setupNeeded = false;
 	}
@@ -171,6 +173,8 @@ void Script::drawError() {
 	if(error) {
 		ofPushView();
 		ofPushStyle();
+		bool lighting = ofGetLightingEnabled();
+		if(lighting) {ofDisableLighting();}
 		ofSetRectMode(OF_RECTMODE_CORNER);
 		int lineWidth = (ofGetWidth()/8) - 2;
 		int x = 8, y = (ofGetHeight()/2) - errorMsg.size()*10; // 20/2 = 10
@@ -183,13 +187,14 @@ void Script::drawError() {
 				y += 20;
 			}
 		}
+		if(lighting) {ofEnableLighting();}
 		ofPopStyle();
 		ofPopView();
 	}
 }
 
 //--------------------------------------------------------------
-bool Script::eval(const string &text, bool reload) {
+bool Script::eval(const std::string &text, bool reload) {
 	if(reload) {
 		lua.scriptExit();
 		if(!initState()) {
@@ -227,13 +232,13 @@ void Script::oscReceived(const ofxOscMessage& message) {
 	lua_getglobal(lua, "oscReceived");
 	lua.pushobject("ofxOscMessage", new ofxOscMessage(message));
 	if(lua_pcall(lua, 1, 0, 0) != 0) {
-		string line = "Error running oscReceived(): " + (string) lua_tostring(lua, -1);
+		std::string line = "Error running oscReceived(): " + (std::string) lua_tostring(lua, -1);
 		lua.errorOccurred(line);
 	}
 }
 
 //--------------------------------------------------------------
-bool Script::isLoadablePath(const string &path) {
+bool Script::isLoadablePath(const std::string &path) {
 	return ofFilePath::getFileExt(path) == "lua" ||
 	       ofFile::doesFileExist(ofFilePath::join(path, "main.lua"));
 }
@@ -275,7 +280,7 @@ void Script::clearState() {
 }
 
 //--------------------------------------------------------------
-void Script::errorReceived(string& msg) {
+void Script::errorReceived(std::string& msg) {
 	ofLogError(PACKAGE) << msg;
 	error = true;
 	errorMsg.clear();

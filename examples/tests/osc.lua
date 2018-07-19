@@ -19,12 +19,10 @@ message:addBoolArg(false)
 message:addTriggerArg() -- also known as impluse and infinitum
 message:addTimetagArg(0) -- currently converted to a bool due to bug in ofxOSC
 message:addBlobArg(of.Buffer("hello\0world")) -- binary data as string
-
--- the following will be available in the next version of OF, probably 0.10.0
---message:addMidiMessageArg(tonumber("90404000", 16)) -- convert hex string
---message:addSymbolArg("foobar")
---message:addNoneArg()
---message:addRgbaColorArg(tonumber("FF00FFFF", 16)) -- convert hex string
+message:addMidiMessageArg(tonumber("90404000", 16)) -- convert hex string
+message:addSymbolArg("foobar")
+message:addNoneArg()
+message:addRgbaColorArg(tonumber("FF00FFFF", 16)) -- convert hex string
 
 -- print the message
 local types = ""
@@ -39,12 +37,19 @@ print("types: "..types)
 str = tostring(message)
 print("message: "..tostring(message))
 
--- send message
-sender = osc.Sender()
-sender:setup("127.0.0.1", 8880)
-sender:sendMessage(message)
+-- start loaf's internal listener
+loaf.setSendPort(8880)
+loaf.setListenPort(8880)
+loaf.startListening()
 
--- check senders
+-- loaf osc listener callback
+-- use with loaf.setListenPort(#) and loaf.startListening()
+function oscReceived(message)
+	-- print received message
+	print("loaf receiver: "..tostring(message))
+end
+
+-- check loaf convenience senders
 loaf.send("/multi", 1, 2, 3, "hello")
 loaf.sendBang("/bang")
 loaf.sendFloat("/float", 1.23)
@@ -61,9 +66,31 @@ loaf.sendMessage(message)
 bundle = osc.Bundle()
 bundle:addMessage(message)
 loaf.sendBundle(bundle)
+print("bundle: "..tostring(bundle))
 
-function oscReceived(message)
-	
-	-- print received message
-	print(tostring(message))
+-- receive messages manually
+receiver = osc.Receiver()
+settings = osc.ReceiverSettings()
+settings.port = 9999
+settings.start = false -- don't start yet
+receiver:setup(settings)
+receiver:start() -- start manually
+print("receiver: "..tostring(receiver))
+
+function update()
+	-- process messages from the receiver manually
+	while receiver:hasWaitingMessages() do
+		local message = osc.Message()
+		receiver:getNextMessage(message)
+		if message then
+			-- print received message
+			print("receiver: "..tostring(message))
+		end
+	end
 end
+
+-- send message manually
+sender = osc.Sender()
+sender:setup("127.0.0.1", 9999)
+sender:sendMessage(message)
+print("sender: "..tostring(sender))

@@ -9,5 +9,5 @@ WD=$(dirname $0)
 
 cd $WD/../swig
 
-make osc ATTRIBUTES=false
-make loaf ATTRIBUTES=false
+make osc
+make loaf

@@ -24,6 +24,10 @@
 
 #include "config.h"
 #include "ofFileUtils.h"
+#ifdef TARGET_OS_LINUX
+	#undef None
+	#undef Bool
+#endif
 #include "ofLog.h"
 #include "Options.h"
 
@@ -102,7 +106,7 @@ bool CommandLine::parse(int argc, char **argv) {
 	if(options.isSet(LISTENPORT))     {listenPort = options.getUInt(LISTENPORT); changed = true;}
 	if(options.isSet(STARTLISTENING)) {startListening = true; changed = true;}
 	if(options.isSet(FULLSCREEN))     {fullscreen = true; changed = true;}
-	if(options.isSet(IGNORECHANGES))  {ignore = true; changed = true;}
+	if(options.isSet(IGNORECHANGES))  {ignoreChanges = true; changed = true;}
 	if(options.isSet(ERROREXIT))      {errorExit = true; changed = true;}
 	if(options.isSet(ERRORRELOAD))    {errorReload = options.getInt(ERRORRELOAD); changed = true;}
 	if(options.isSet(OPENGL))         {opengl = options.getString(OPENGL); changed = true;}

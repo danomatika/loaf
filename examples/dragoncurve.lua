@@ -27,7 +27,7 @@ constants["F"] = function()
 	-- forward
 	local oldpos = pos
 	pos = pos + vel
-	of.drawLine(oldpos, pos)
+	of.drawLine(oldpos.x, oldpos.y, pos.x, pos.y)
 end
 constants["+"] = function()
 	-- turn right
