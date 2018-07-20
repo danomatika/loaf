@@ -25,6 +25,7 @@
 #include "config.h"
 #include "ofFileUtils.h"
 #ifdef TARGET_OS_LINUX
+	// these are set by X.h and clash with optionsparser types
 	#undef None
 	#undef Bool
 #endif
