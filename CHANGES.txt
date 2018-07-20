@@ -2,7 +2,7 @@
 
 * updated to OF 0.10.0
 
-* fixed X.h type clashe build errors on Linux (reported by Keith O'Hara)
+* fixed X.h type clash build errors on Linux (reported by Keith O'Hara)
 * fixed CTL key commands for Windows & Linux (CTL+f, CTL+r, CTL+c)
 
 1.3.0: 2017 Dec 1
