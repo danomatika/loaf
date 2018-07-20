@@ -1,10 +1,14 @@
+1.4.0: 2018 Jul 20
+
+* updated to OF 0.10.0
+
+* fixed CTL key commands for Windows & Linux (CTL+f, CTL+r, CTL+c)
+
 1.3.0: 2017 Dec 1
 
 * make sure script setup() is called within a GL context
 * added loaf.getHostname() which returns network hostname string
 * added openframeworks version to verbose print
-
-* fixed CTL key commands for Windows & Linux (CTL+f, CTL+r, CTL+c)
 
 1.2.0: 2017 Oct 16
 
