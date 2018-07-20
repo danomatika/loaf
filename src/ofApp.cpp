@@ -154,13 +154,13 @@ void ofApp::keyPressed(int key) {
 	// handle special key events
 	if(ofGetKeyPressed(MOD_KEY)) {
 		switch(key) {
-			case 'f':
+			case 'f': case 6:
 				ofToggleFullscreen();
 				return;
-			case 'r':
+			case 'r': case 18:
 				script.reload();
 				return;
-			case 'c':
+			case 'c': case 3:
 				script.clear();
 				return;
 		}

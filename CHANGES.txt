@@ -4,6 +4,8 @@
 * added loaf.getHostname() which returns network hostname string
 * added openframeworks version to verbose print
 
+* fixed CTL key commands for Windows & Linux (CTL+f, CTL+r, CTL+c)
+
 1.2.0: 2017 Oct 16
 
 * added -e/--exit commandline option to exit loaf after a script error
