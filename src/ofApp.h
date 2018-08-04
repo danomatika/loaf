@@ -95,7 +95,7 @@ class ofApp : public ofBaseApp {
 		
 		ofxOscSender sender; //< OSC message sender
 		ofxOscReceiver listener; //< OSC message listener
-		string baseAddress = BASE_ADDRESS; //< base OSC address for loaf control messages
+		std::string baseAddress = BASE_ADDRESS; //< base OSC address for loaf control messages
 	
 	private:
 	

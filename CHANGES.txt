@@ -1,3 +1,7 @@
+1.4.1: 2018 Aug 4
+
+* fixed issue where strings were unrecognized by the loaf and osc bindings
+
 1.4.0: 2018 Jul 20
 
 * updated to OF 0.10.0

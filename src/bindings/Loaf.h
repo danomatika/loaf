@@ -81,10 +81,10 @@ static int getListenPort() {
 }
 
 /// get this machine's hostname
-static string getHostname() {
+static std::string getHostname() {
 	static char hostname[256];
 	if(gethostname(hostname, 256) == 0) {
-		return string(hostname);
+		return std::string(hostname);
 	}
 	return "";
 }
@@ -92,13 +92,13 @@ static string getHostname() {
 /// \section Osc Sender
 
 /// set the OSC send host ip/name
-static void setSendHost(string host) {
+static void setSendHost(std::string host) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->setSendHost(host);
 }
 
 /// get the OSC send host ip/name
-static string getSendHost() {
+static std::string getSendHost() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->sender.getHost();
 }
@@ -130,14 +130,14 @@ static void sendBundle(ofxOscBundle& bundle) {
 }
 
 /// send an OSC "bang" address-only message using the built-in OSC sender
-static void sendBang(string address) {
+static void sendBang(std::string address) {
 	ofxOscMessage message;
 	message.setAddress(address);
 	sendMessage(message);
 }
 
 /// send an OSC float message using the built-in OSC sender
-static void sendFloat(string address, float f) {
+static void sendFloat(std::string address, float f) {
 	ofxOscMessage message;
 	message.setAddress(address);
 	message.addFloatArg(f);
@@ -145,7 +145,7 @@ static void sendFloat(string address, float f) {
 }
 
 /// send an OSC int message using the built-in OSC sender
-static void sendInt(string address, int i) {
+static void sendInt(std::string address, int i) {
 	ofxOscMessage message;
 	message.setAddress(address);
 	message.addIntArg(i);
@@ -153,7 +153,7 @@ static void sendInt(string address, int i) {
 }
 
 /// send an OSC string message using the built-in OSC sender
-static void sendString(string address, string s) {
+static void sendString(std::string address, std::string s) {
 	ofxOscMessage message;
 	message.setAddress(address);
 	message.addStringArg(s);

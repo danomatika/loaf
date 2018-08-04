@@ -216,7 +216,7 @@ void ofApp::windowResized(int w, int h) {
 
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo) {
-	string path = dragInfo.files[0];
+	std::string path = dragInfo.files[0];
 	if(Script::isLoadablePath(path)) {
 		script.load(path);
 		watcher.removeAllPaths();
@@ -290,7 +290,7 @@ void ofApp::setListenPort(int port) {
 }
 
 //--------------------------------------------------------------
-void ofApp::setSendHost(const string &host) {
+void ofApp::setSendHost(const std::string &host) {
 	if(sender.getHost() == host) {
 		return; // silently ignore
 	}
@@ -323,7 +323,7 @@ void ofApp::setSendPort(int port) {
 void ofApp::oscReceived(const ofxOscMessage & message) {
 	if(message.getAddress() == baseAddress + "/load") {
 		if(message.getNumArgs() > 0 && message.getArgType(0) == OFXOSC_TYPE_STRING) {
-			vector<string> args;
+			std::vector<std::string> args;
 			for(int i = 1; i < message.getNumArgs(); ++i) {
 				switch(message.getArgType(i)) {
 					case OFXOSC_TYPE_INT32:

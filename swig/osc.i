@@ -108,9 +108,9 @@ namespace osc {
 #ifdef ATTRIBUTES
 
 // convenience attributes
-%attributestring(ofxOscMessage, string, address, getAddress, setAddress)
-%attributestring(ofxOscMessage, string, remoteHost, getRemoteHost)
-%attributestring(ofxOscMessage, string, typeString, getTypeString)
+%attributestring(ofxOscMessage, std::string, address, getAddress, setAddress)
+%attributestring(ofxOscMessage, std::string, remoteHost, getRemoteHost)
+%attributestring(ofxOscMessage, std::string, typeString, getTypeString)
 %attribute(ofxOscMessage, int, remotePort, getRemotePort)
 %attribute(ofxOscMessage, int, numArgs, getNumArgs);
 
@@ -121,7 +121,7 @@ namespace osc {
 %attribute(ofxOscReceiver, bool, listening, isListening);
 %attribute(ofxOscReceiver, ofxOscReceiverSettings&, settings, getSettings)
 
-%attributestring(ofxOscSender, string, host, getHost);
+%attributestring(ofxOscSender, std::string, host, getHost);
 %attribute(ofxOscSender, int, port, getPort);
 %attribute(ofxOscSender, ofxOscSenderSettings&, settings, getSettings)
 
