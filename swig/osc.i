@@ -21,10 +21,11 @@
 %ignore operator <<;
 
 // other types we need to know about
-typedef int int32_t;
-typedef long long int64_t;
-typedef unsigned int uint32_t;
-typedef unsigned long long uint64_t;
+%typedef unsigned int size_t;
+%typedef int int32_t;
+%typedef long long int64_t;
+%typedef unsigned int uint32_t;
+%typedef unsigned long long uint64_t;
 
 // SWIG needs to know about the deprecation macro
 #define OF_DEPRECATED_MSG(m, f)
