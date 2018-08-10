@@ -41,6 +41,11 @@ glm.eulerAngles
 glm.exp
 glm.exp2
 glm.faceforward
+glm.fastDistance
+glm.fastInverseSqrt
+glm.fastLength
+glm.fastNormalize
+glm.fastSqrt
 glm.floor
 glm.fma
 glm.fract
