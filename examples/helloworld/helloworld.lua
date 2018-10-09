@@ -6,9 +6,9 @@
 --
 -- try test Pure Data patch: helloworld.pd
 
-angle = 0
-xOffset = 0
-yOffset = 0
+local angle = 0
+local xOffset = 0
+local yOffset = 0
 
 function setup()
 	of.setCircleResolution(50);
@@ -40,9 +40,9 @@ function oscReceived(message)
 	print(tostring(message))
 
 	-- parse messages based on address
-	if message.address == "/circle/x" then
+	if message:getAddress() == "/circle/x" then
 		xOffset = message:getArgAsFloat(0)
-	elseif message.address == "/circle/y" then
+	elseif message:getAddress() == "/circle/y" then
 		yOffset = message:getArgAsFloat(0)
 	end
 end

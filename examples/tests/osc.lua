@@ -30,11 +30,9 @@ for i = 0,message:getNumArgs()-1 do
 	types = types..message:getArgType(i)
 end
 if message:getArgType(0) == osc.TYPE_INT32 then
-	print("arg 0 is an int32")
+	print("arg 0 is an int32: "..message:getArgAsInt32(0))
 end
 print("types: "..types)
-
-str = tostring(message)
 print("message: "..tostring(message))
 
 -- start loaf's internal listener
@@ -71,7 +69,7 @@ print("bundle: "..tostring(bundle))
 -- receive messages manually
 receiver = osc.Receiver()
 settings = osc.ReceiverSettings()
-settings.port = 9999
+settings.port = 9990
 settings.start = false -- don't start yet
 receiver:setup(settings)
 receiver:start() -- start manually
@@ -91,6 +89,6 @@ end
 
 -- send message manually
 sender = osc.Sender()
-sender:setup("127.0.0.1", 9999)
+sender:setup("127.0.0.1", 9990)
 sender:sendMessage(message)
 print("sender: "..tostring(sender))

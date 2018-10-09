@@ -1,22 +1,23 @@
-#N canvas 0 23 339 269 10;
+#N canvas 0 23 339 304 10;
 #X obj 27 235 netsend -u -b;
-#X msg 45 179 connect localhost 9999;
 #X msg 66 204 disconnect;
 #X obj 27 63 oscformat /circle/x;
 #X obj 171 64 oscformat /circle/y;
 #X obj 30 36 hsl 128 15 -200 200 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 0 1;
+-1 -1 100 1;
 #X obj 174 36 hsl 128 15 -200 200 0 0 empty empty empty -2 -8 0 10
--262144 -1 -1 0 1;
+-262144 -1 -1 3600 1;
 #X obj 27 123 list prepend send;
 #X obj 27 148 list trim;
 #X text 193 179 <- start here;
 #X text 104 9 change center position;
+#X msg 45 179 connect localhost 9999;
+#X text 52 268 this patch requires Pure Data 0.47+;
 #X connect 1 0 0 0;
-#X connect 2 0 0 0;
-#X connect 3 0 7 0;
-#X connect 4 0 7 0;
+#X connect 2 0 6 0;
+#X connect 3 0 6 0;
+#X connect 4 0 2 0;
 #X connect 5 0 3 0;
-#X connect 6 0 4 0;
-#X connect 7 0 8 0;
-#X connect 8 0 0 0;
+#X connect 6 0 7 0;
+#X connect 7 0 0 0;
+#X connect 10 0 0 0;
