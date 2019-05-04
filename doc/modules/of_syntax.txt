@@ -47,6 +47,15 @@ of.ARD_TOTAL_PORTS
 of.ASPECT_RATIO_IGNORE
 of.ASPECT_RATIO_KEEP
 of.ASPECT_RATIO_KEEP_BY_EXPANDING
+of.Alphabet_Arabic
+of.Alphabet_Chinese
+of.Alphabet_Cyrillic
+of.Alphabet_Devanagari
+of.Alphabet_Emoji
+of.Alphabet_Greek
+of.Alphabet_Japanese
+of.Alphabet_Korean
+of.Alphabet_Latin
 of.Arduino
 of.B14400
 of.B28800
@@ -490,9 +499,11 @@ of.TouchEventArgs_down
 of.TouchEventArgs_move
 of.TouchEventArgs_up
 of.TrueTypeFont
+of.TrueTypeFontSettings
 of.URLFileLoader
 of.USE_LEGACY_VECTOR_MATH
 of.USING_STD_FS
+of.Unicode
 of.VERSION_MAJOR
 of.VERSION_MINOR
 of.VERSION_PATCH
@@ -1460,6 +1471,18 @@ of.Camera
   worldToCamera
   worldToScreen
 
+of.TrueTypeFontSettings
+  addRange
+  addRanges
+  antialiased
+  contours
+  direction
+  dpi
+  fontName
+  fontSize
+  ranges
+  simplifyAmt
+
 of.ImageLoadSettings
   ImageLoadSettings
   accurate
@@ -1870,6 +1893,9 @@ of.VideoPlayer
   unbind
   update
 
+of.Unicode
+  Unicode
+
 of.FloatImage
   FloatImage
   allocate
@@ -1957,6 +1983,7 @@ of.TrueTypeFont
   isLoaded
   isValidGlyph
   load
+  setDirection
   setLetterSpacing
   setLineHeight
   setSpaceSize
@@ -2547,11 +2574,6 @@ of.Pixels
   swap
   swapRgb
 
-of.Directory.createDirectory
-of.Directory.doesDirectoryExist
-of.Directory.isDirectoryEmpty
-of.Directory.removeDirectory
-
 of.File.Append
 of.File.ReadOnly
 of.File.ReadWrite
@@ -3039,6 +3061,59 @@ of.Color.yellowGreen
 
 of.TrueTypeFont.setGlobalDpi
 
+of.Unicode.AdditionalEmoticons
+of.Unicode.AdditionalTransportAndMap
+of.Unicode.AlphabeticPresentationForms
+of.Unicode.Arabic
+of.Unicode.ArabicExtendedA
+of.Unicode.ArabicMath
+of.Unicode.ArabicPresFormsA
+of.Unicode.ArabicPresFormsB
+of.Unicode.ArabicSupplement
+of.Unicode.Arrows
+of.Unicode.BlockElement
+of.Unicode.BoxDrawing
+of.Unicode.CJKLettersAndMonths
+of.Unicode.CJKUnified
+of.Unicode.CurrencySymbols
+of.Unicode.Cyrillic
+of.Unicode.Devanagari
+of.Unicode.DevanagariExtended
+of.Unicode.Dingbats
+of.Unicode.Emoticons
+of.Unicode.EnclosedCharacters
+of.Unicode.GeneralPunctuation
+of.Unicode.GeometricShapes
+of.Unicode.Greek
+of.Unicode.GreekExtended
+of.Unicode.HangulCompatJamo
+of.Unicode.HangulExtendedA
+of.Unicode.HangulExtendedB
+of.Unicode.HangulJamo
+of.Unicode.HangulSyllables
+of.Unicode.Hiragana
+of.Unicode.IdeographicSpace
+of.Unicode.KanaSupplement
+of.Unicode.Katakana
+of.Unicode.KatakanaHalfAndFullwidthForms
+of.Unicode.KatakanaPhoneticExtensions
+of.Unicode.Latin
+of.Unicode.Latin1Supplement
+of.Unicode.LatinExtendedAdditional
+of.Unicode.LetterLikeSymbols
+of.Unicode.MathOperators
+of.Unicode.MiscSymbols
+of.Unicode.MiscSymbolsAndPictographs
+of.Unicode.MiscTechnical
+of.Unicode.NumberForms
+of.Unicode.OtherAdditionalSymbols
+of.Unicode.RumiNumericalSymbols
+of.Unicode.Space
+of.Unicode.SuperAndSubScripts
+of.Unicode.TransportAndMap
+of.Unicode.Uncategorized
+of.Unicode.VedicExtensions
+
 of.Polyline.fromRectangle
 
 of.Path.COMMANDS
@@ -3118,6 +3193,11 @@ of.BoxPrimitive.SIDE_FRONT
 of.BoxPrimitive.SIDE_LEFT
 of.BoxPrimitive.SIDE_RIGHT
 of.BoxPrimitive.SIDE_TOP
+
+of.Directory.createDirectory
+of.Directory.doesDirectoryExist
+of.Directory.isDirectoryEmpty
+of.Directory.removeDirectory
 
 of.HttpRequest.GET
 of.HttpRequest.POST

@@ -1,9 +1,17 @@
+1.4.3: 2019 May 04
+
+* updated to ofxLua 1.3.4
+
+* fixed ofIndexType not being wrapped which kept ofMesh index functions from
+  accepting numbers
+* now wrapping ofUnicode, ofAlphabet, & ofTrueTypeSettings
+
 1.4.2: 2018 Aug 10
 
 * fixed broken osc.Message size_t handling 
 * added glm/gtx/fast_square_root.hpp functions
 
-1.4.1: 2018 Aug 4
+1.4.1: 2018 Aug 04
 
 * fixed issue where strings were unrecognized by the loaf and osc bindings
 
@@ -14,7 +22,7 @@
 * fixed X.h type clash build errors on Linux (reported by Keith O'Hara)
 * fixed CTL key commands for Windows & Linux (CTL+f, CTL+r, CTL+c)
 
-1.3.0: 2017 Dec 1
+1.3.0: 2017 Dec 01
 
 * make sure script setup() is called within a GL context
 * added loaf.getHostname() which returns network hostname string
@@ -25,7 +33,7 @@
 * added -e/--exit commandline option to exit loaf after a script error
 * added -r/--reload commandline option to reload loaf after a script error
 
-1.1.0: 2017 Aug 9
+1.1.0: 2017 Aug 09
 
 * added --gl commandline option to set OpenGL version
 * added mouseX & mouseY global variables

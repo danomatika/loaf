@@ -23,7 +23,7 @@
 #pragma mark once
 
 #define PACKAGE	"loaf"
-#define	VERSION	"1.4.2"
+#define	VERSION	"1.4.3"
 #define DESCRIPTION "lua, osc, and openFrameworks"
 
 // defaults
