@@ -163,6 +163,7 @@ void Script::update() {
 	if(setupNeeded) {
 		ofSetupGraphicDefaults();
 		ofDisableLighting();
+		ofSetBackgroundAuto(true);
 		lua.scriptSetup();
 		setupNeeded = false;
 	}
