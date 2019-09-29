@@ -522,6 +522,7 @@ of.VideoFormat
 of.VideoGrabber
 of.VideoPlayer
 of.Xml
+of.XmlAttributeIterator
 of.angleDifferenceDegrees
 of.angleDifferenceRadians
 of.background
@@ -710,6 +711,7 @@ of.lerp
 of.lerpDegrees
 of.lerpRadians
 of.loadIdentityMatrix
+of.loadImage
 of.loadMatrix
 of.loadURL
 of.loadURLAsync
@@ -752,6 +754,7 @@ of.rotateYRad
 of.rotateZDeg
 of.rotateZRad
 of.saveFrame
+of.saveImage
 of.saveScreen
 of.saveURLAsync
 of.saveURLTo
@@ -2574,35 +2577,6 @@ of.Pixels
   swap
   swapRgb
 
-of.File.Append
-of.File.ReadOnly
-of.File.ReadWrite
-of.File.Reference
-of.File.WriteOnly
-of.File.copyFromTo
-of.File.doesFileExist
-of.File.moveFromTo
-of.File.removeFile
-
-of.FilePath.addLeadingSlash
-of.FilePath.addTrailingSlash
-of.FilePath.createEnclosingDirectory
-of.FilePath.getAbsolutePath
-of.FilePath.getBaseName
-of.FilePath.getCurrentExeDir
-of.FilePath.getCurrentExePath
-of.FilePath.getCurrentWorkingDirectory
-of.FilePath.getEnclosingDirectory
-of.FilePath.getFileExt
-of.FilePath.getFileName
-of.FilePath.getPathForDirectory
-of.FilePath.getUserHomeDir
-of.FilePath.isAbsolute
-of.FilePath.join
-of.FilePath.makeRelative
-of.FilePath.removeExt
-of.FilePath.removeTrailingSlash
-
 of.ShortColor.aliceBlue
 of.ShortColor.antiqueWhite
 of.ShortColor.aqua
@@ -3099,6 +3073,7 @@ of.Unicode.KatakanaHalfAndFullwidthForms
 of.Unicode.KatakanaPhoneticExtensions
 of.Unicode.Latin
 of.Unicode.Latin1Supplement
+of.Unicode.LatinA
 of.Unicode.LatinExtendedAdditional
 of.Unicode.LetterLikeSymbols
 of.Unicode.MathOperators
@@ -3193,6 +3168,35 @@ of.BoxPrimitive.SIDE_FRONT
 of.BoxPrimitive.SIDE_LEFT
 of.BoxPrimitive.SIDE_RIGHT
 of.BoxPrimitive.SIDE_TOP
+
+of.FilePath.addLeadingSlash
+of.FilePath.addTrailingSlash
+of.FilePath.createEnclosingDirectory
+of.FilePath.getAbsolutePath
+of.FilePath.getBaseName
+of.FilePath.getCurrentExeDir
+of.FilePath.getCurrentExePath
+of.FilePath.getCurrentWorkingDirectory
+of.FilePath.getEnclosingDirectory
+of.FilePath.getFileExt
+of.FilePath.getFileName
+of.FilePath.getPathForDirectory
+of.FilePath.getUserHomeDir
+of.FilePath.isAbsolute
+of.FilePath.join
+of.FilePath.makeRelative
+of.FilePath.removeExt
+of.FilePath.removeTrailingSlash
+
+of.File.Append
+of.File.ReadOnly
+of.File.ReadWrite
+of.File.Reference
+of.File.WriteOnly
+of.File.copyFromTo
+of.File.doesFileExist
+of.File.moveFromTo
+of.File.removeFile
 
 of.Directory.createDirectory
 of.Directory.doesDirectoryExist
@@ -3401,6 +3405,7 @@ of.Vec2f
 of.Xml
   appendAttribute
   appendChild
+  clear
   findFirst
   getAttribute
   getAttributes
@@ -3425,6 +3430,7 @@ of.Xml
   parse
   prependAttribute
   prependChild
+  removeAttribute
   removeChild
   save
   set
