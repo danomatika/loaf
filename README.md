@@ -5,7 +5,7 @@ loaf: lua, osc, and openFrameworks
 	<img src="http://danomatika.com/code/loaf/loaf_workflow.png"/>
 </p>
 
-Copyright (c) [Dan Wilcox](danomatika.com) 2016-19
+Copyright (c) [Dan Wilcox](danomatika.com) 2016-2019
 
 GPL v3
 
