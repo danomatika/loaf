@@ -1,3 +1,8 @@
+1.5.0: 2019 Dec 10
+
+* updated to OF 0.11.0
+* updated to ofxLua 1.4.0
+
 1.4.4: 2019 Sep 30
 
 * updated to ofxLua 1.3.6

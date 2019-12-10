@@ -330,6 +330,7 @@ of.MOUSE_BUTTON_MIDDLE
 of.MOUSE_BUTTON_RIGHT
 of.M_TWO_PI
 of.Material
+of.MaterialSettings
 of.Matrix3x3
 of.Matrix4x4
 of.MatrixStack
@@ -1486,6 +1487,16 @@ of.TrueTypeFontSettings
   ranges
   simplifyAmt
 
+of.MaterialSettings
+  MaterialSettings
+  ambient
+  customUniforms
+  diffuse
+  emissive
+  postFragment
+  shininess
+  specular
+
 of.ImageLoadSettings
   ImageLoadSettings
   accurate
@@ -1535,14 +1546,14 @@ of.Vec4f
   y
   z
 
-of.FilePath
-  FilePath
-
 of.Firmata_I2C_Data
   Firmata_I2C_Data
   address
   data
   reg
+
+of.FilePath
+  FilePath
 
 of.FloatColor
   FloatColor
@@ -3355,6 +3366,7 @@ of.Polyline
   isClosed
   lineTo
   quadBezierTo
+  removeVertex
   resize
   rotateDeg
   rotateRad
@@ -3421,6 +3433,7 @@ of.Xml
   getLastChild
   getName
   getNextSibling
+  getParent
   getPreviousSibling
   getUintValue
   getValue
