@@ -20,7 +20,7 @@
 	See https://github.com/danomatika/loaf for documentation
 
 ==============================================================================*/
-#pragma mark once
+#pragma once
 
 #define PACKAGE	"loaf"
 #define	VERSION	"1.5.0"

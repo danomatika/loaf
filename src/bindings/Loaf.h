@@ -20,7 +20,7 @@
 	See https://github.com/danomatika/loaf for documentation
 
 ==============================================================================*/
-#pragma mark once
+#pragma once
 
 #include "ofApp.h"
 #include "config.h"
