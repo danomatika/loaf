@@ -52,6 +52,10 @@ void ofApp::setup() {
 		if(options->verbose) {
 			setVerbose(options->verbose);
 		}
+		if(options->fullscreen) {
+			ofSetFullscreen(options->fullscreen);
+			ofLogVerbose(PACKAGE) << "starting fullscreen";
+		}
 		if(options->ignoreChanges) {
 			watch = false;
 			ofLogVerbose(PACKAGE) << "ignoring script changes";
@@ -85,10 +89,7 @@ void ofApp::setup() {
 		if(options->startListening) {
 			startListening();
 		}
-		if(options->fullscreen) {
-			ofSetFullscreen(options->fullscreen);
-			ofLogVerbose(PACKAGE) << "starting fullscreen";
-		}
+
 		// cleanup
 		delete options;
 		options = nullptr;
