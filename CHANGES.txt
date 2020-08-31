@@ -2,6 +2,7 @@
 
 * fixed -f fullscreen option being applied after script setup()
 * now wrapping ofWindowSetting.h for window mode constants
+* now ignore empty script file string
 
 1.5.0: 2019 Dec 10
 

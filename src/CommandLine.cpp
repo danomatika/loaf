@@ -89,7 +89,8 @@ bool CommandLine::parse(int argc, char **argv) {
 		std::cout << VERSION << std::endl;
 		return false;
 	}
-	if(options.numArguments() > 0) { // load the config file (if one exists)
+	if(options.numArguments() > 0 && options.getArgumentString(0) != "") {
+		// load the config file (if one exists)
 		path = ofFilePath::getAbsolutePath(options.getArgumentString(0), false);
 		if(!ofFile::doesFileExist(path)) {
 			ofLogError(PACKAGE) << "path " << path << " does not exist";
