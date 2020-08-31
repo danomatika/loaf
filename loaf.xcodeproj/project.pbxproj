@@ -1186,7 +1186,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				OTHER_CFLAGS = "-DLUA_USE_MACOSX";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -1343,7 +1343,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				OTHER_CFLAGS = "-DLUA_USE_MACOSX";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -1392,7 +1392,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.5.0;
+				MARKETING_VERSION = 1.5.1;
 				OTHER_CFLAGS = "-DLUA_USE_MACOSX";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",

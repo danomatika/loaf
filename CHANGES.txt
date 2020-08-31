@@ -1,3 +1,7 @@
+1.5.1: 2020 Aug 31
+
+* now wrapping ofWindowSetting.h for window mode constants
+
 1.5.0: 2019 Dec 10
 
 * updated to OF 0.11.0

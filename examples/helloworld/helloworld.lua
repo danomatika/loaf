@@ -11,7 +11,7 @@ local xOffset = 0
 local yOffset = 0
 
 function setup()
-	of.setCircleResolution(50);
+	of.setCircleResolution(50)
 	of.background(50)
 	
 	of.setWindowTitle("hello world")

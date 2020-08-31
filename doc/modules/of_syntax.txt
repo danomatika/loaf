@@ -146,6 +146,7 @@ of.FIRMATA_STEPPER_FOUR_WIRE
 of.FIRMATA_STEPPER_TWO_WIRE
 of.FOUR_PI
 of.FRAGMENT_SHADER
+of.FULLSCREEN
 of.Fbo
 of.FboModeAnd
 of.FboModeOr
@@ -165,6 +166,7 @@ of.FloatColor
 of.FloatImage
 of.FloatPixels
 of.FpsCounter
+of.GAME_MODE
 of.GRADIENT_BAR
 of.GRADIENT_CIRCULAR
 of.GRADIENT_LINEAR
@@ -354,6 +356,11 @@ of.ONEWIRE_SKIP_REQUEST_BIT
 of.ONEWIRE_WITHDATA_REQUEST_BITS
 of.ONEWIRE_WRITE_REQUEST_BIT
 of.OPEN
+of.ORIENTATION_180
+of.ORIENTATION_90_LEFT
+of.ORIENTATION_90_RIGHT
+of.ORIENTATION_DEFAULT
+of.ORIENTATION_UNKNOWN
 of.OUTLINE
 of.PI
 of.PIN_STATE_QUERY
@@ -522,6 +529,8 @@ of.VideoDevice
 of.VideoFormat
 of.VideoGrabber
 of.VideoPlayer
+of.WINDOW
+of.WindowSettings
 of.Xml
 of.XmlAttributeIterator
 of.angleDifferenceDegrees
@@ -1520,6 +1529,17 @@ of.SoundStreamSettings
   setInDevice
   setOutDevice
 
+of.WindowSettings
+  getHeight
+  getPosition
+  getWidth
+  isPositionSet
+  isSizeSet
+  setPosition
+  setSize
+  title
+  windowMode
+
 of.Vec4f
   average
   distance
@@ -1592,6 +1612,11 @@ of.FloatColor
   setR
   setSaturation
 
+of.SerialDeviceInfo
+  getDeviceID
+  getDeviceName
+  getDevicePath
+
 of.MatrixStack
   clearStacks
   customMatrixNeedsFlip
@@ -1632,11 +1657,6 @@ of.MatrixStack
   setRenderSurfaceNoMatrixFlip
   translate
   viewport
-
-of.SerialDeviceInfo
-  getDeviceID
-  getDeviceName
-  getDevicePath
 
 of.TextureData
   bAllocated
@@ -2427,16 +2447,12 @@ of.Rectangle
 
 of.TouchEventArgs
   angle
-  getX
-  getY
   height
   id
   majoraxis
   minoraxis
   numTouches
   pressure
-  setX
-  setY
   time
   type
   width
