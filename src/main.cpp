@@ -22,11 +22,21 @@
 ==============================================================================*/
 #include "ofApp.h"
 #include "ofAppRunner.h"
+#include "Util.h"
 
 int main(int argc, char *argv[]) {
 
 	// create app before parsing
 	ofPtr<ofApp> app = ofPtr<ofApp>(new ofApp);
+
+	// try to determine dir app was started from
+	app->startDir = Util::getCurrentDir();
+	#ifdef __APPLE__
+		// "/" is set if opened by Finder
+		if(app->startDir == "/") {
+			app->startDir = ofFilePath::getUserHomeDir();
+		}
+	#endif
 
 	// parse the commandline
 	CommandLine *options = new CommandLine;
@@ -41,7 +51,7 @@ int main(int argc, char *argv[]) {
 		options = nullptr;
 	}
 
-	// setup graphics
+	// set up graphics
 	ofGLWindowSettings settings;  // 1024, 576 for widescreen
 	settings.setSize(640, 480);
 	settings.windowMode = OF_WINDOW;

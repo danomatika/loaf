@@ -53,7 +53,20 @@ class ofApp : public ofBaseApp {
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-	
+
+	/// \section Bundled Script
+
+		/// returns platform bundled script path:
+		/// * macOS: .app/Contents/Resources/data
+		/// * Windows & Linux: default data directory
+		static std::string bundledScriptPath();
+
+		/// returns true if there is a bundled script
+		static bool isBundledScript();
+
+		/// try loading a bundled script
+		bool loadBundledScript(const std::vector<std::string> *args=nullptr);
+
 	/// \section Utils
 	
 		/// set loaf verbosity
@@ -88,7 +101,7 @@ class ofApp : public ofBaseApp {
 		void pathChanged(const PathWatcher::Event &event);
 	
 	/// \section Data
-		
+
 		CommandLine *options = nullptr; //< commandline options, only valid in setup()
 		PathWatcher watcher; //< path change watcher
 		Script script; //< script manager
@@ -96,8 +109,11 @@ class ofApp : public ofBaseApp {
 		ofxOscSender sender; //< OSC message sender
 		ofxOscReceiver listener; //< OSC message listener
 		std::string baseAddress = BASE_ADDRESS; //< base OSC address for loaf control messages
+
+		std::string startDir; //< working directory on app start
 	
 	private:
 	
 		bool verbose = false; //< current verbosity
+		bool bundled = false; //< is this a bundled project?
 };

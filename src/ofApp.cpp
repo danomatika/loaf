@@ -22,15 +22,7 @@
 ==============================================================================*/
 #include "ofApp.h"
 
-#include "config.h"
 #include "Loaf.h"
-
-// choose modifier key based on platform
-#ifdef __APPLE__
-	#define MOD_KEY OF_KEY_SUPER
-#else
-	#define MOD_KEY OF_KEY_CONTROL
-#endif
 
 // OF APP
 
@@ -70,10 +62,12 @@ void ofApp::setup() {
 			                      << "s after a script error";
 		}
 		
-		// load script set via commandline
-		if(options->path != "") {
-			script.load(options->path, &options->args);
-			watcher.addPath(options->path);
+		// try loading bundled script, otherwise a script set via commandline
+		if(!loadBundledScript()) {
+			if(options->path != "") {
+				script.load(options->path, &options->args);
+				watcher.addPath(options->path);
+			}
 		}
 		
 		// the following should override script
@@ -93,6 +87,10 @@ void ofApp::setup() {
 		// cleanup
 		delete options;
 		options = nullptr;
+	}
+	else {
+		// try loading bundled script
+		loadBundledScript();
 	}
 	
 	// path watching
@@ -153,7 +151,7 @@ void ofApp::exit() {
 void ofApp::keyPressed(int key) {
 
 	// handle special key events
-	if(ofGetKeyPressed(MOD_KEY)) {
+	if(ofGetKeyPressed(loaf::modKey) && !bundled) {
 		switch(key) {
 			case 'f': case 6:
 				ofToggleFullscreen();
@@ -218,7 +216,7 @@ void ofApp::windowResized(int w, int h) {
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo) {
 	std::string path = dragInfo.files[0];
-	if(Script::isLoadablePath(path)) {
+	if(!bundled && Script::isLoadablePath(path)) {
 		script.load(path);
 		watcher.removeAllPaths();
 		watcher.addPath(path);
@@ -231,6 +229,35 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg) {
 	script.lua.scriptGotMessage(msg);
+}
+
+// BUNDLED SCRIPT
+
+//--------------------------------------------------------------
+std::string ofApp::bundledScriptPath() {
+	#ifdef __APPLE__
+		// .app bundle Contents/Resources/data
+		return ofFilePath::getCurrentExeDir() + "../Resources/data/";
+	#else
+		// default data path
+		return ofToDataPath("");
+	#endif
+}
+
+//--------------------------------------------------------------
+bool ofApp::isBundledScript() {
+	return Script::isLoadablePath(ofApp::bundledScriptPath());
+}
+
+//--------------------------------------------------------------
+bool ofApp::loadBundledScript(const std::vector<std::string> *args) {
+	std::string path = ofApp::bundledScriptPath();
+	if (Script::isLoadablePath(path) && script.load(path, args)) {
+		ofLogVerbose(PACKAGE) << "found bundled project";
+		bundled = true;
+		return true;
+	}
+	return false;
 }
 
 // UTILS

@@ -19,6 +19,7 @@
 		2A1E8DDFAC0050E914B898E0 /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = A7CE3D8FEA79E0D9B03143D0 /* llex.c */; };
 		2B43CA2C2B2102B98853E585 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 296C407E228207FA81337437 /* lbaselib.c */; };
 		2CEA5A91F769BB162C8D046A /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = 17E553E00F5C6AFAC6D09C7C /* lopcodes.c */; };
+		30291AA124191FFB00CFA550 /* Util.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30291A9F24191FFB00CFA550 /* Util.cpp */; };
 		35FC7D61E8DCE5721FF3F371 /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = B2D9A0D8CCFAFFFCF4F378ED /* lundump.c */; };
 		39BD2D99826301E9CE4711A3 /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = 327879B347519E1E5636BC19 /* ltable.c */; };
 		423287EF6FD95F3BBD89082F /* CommandLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF30FDE3D05E0A804A733B80 /* CommandLine.cpp */; };
@@ -93,6 +94,8 @@
 		2EFEE8036B389C3F0A501982 /* ltm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ltm.h; path = ../../../addons/ofxLua/libs/lua/ltm.h; sourceTree = SOURCE_ROOT; };
 		2F4C4D2EBF36C1728B54C40D /* lopcodes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = lopcodes.h; path = ../../../addons/ofxLua/libs/lua/lopcodes.h; sourceTree = SOURCE_ROOT; };
 		2FD4B0329909D3527F003494 /* UdpSocket.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = UdpSocket.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h; sourceTree = SOURCE_ROOT; };
+		30291A9F24191FFB00CFA550 /* Util.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Util.cpp; sourceTree = "<group>"; };
+		30291AA024191FFB00CFA550 /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		31603EE2E9AB06CCA2C675AD /* lstate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = lstate.h; path = ../../../addons/ofxLua/libs/lua/lstate.h; sourceTree = SOURCE_ROOT; };
 		327879B347519E1E5636BC19 /* ltable.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ltable.c; path = ../../../addons/ofxLua/libs/lua/ltable.c; sourceTree = SOURCE_ROOT; };
 		3B361208CD4107E479F04E7B /* NetworkingUtils.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 4; name = NetworkingUtils.cpp; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/posix/NetworkingUtils.cpp; sourceTree = SOURCE_ROOT; };
@@ -880,6 +883,8 @@
 				168F64C7BA85EE762BFD7E34 /* bindings */,
 				0275A968BB2CB11F3064BA3C /* CommandLine.h */,
 				FF30FDE3D05E0A804A733B80 /* CommandLine.cpp */,
+				30291AA024191FFB00CFA550 /* Util.h */,
+				30291A9F24191FFB00CFA550 /* Util.cpp */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1089,6 +1094,7 @@
 				4ADB88E2FB52E76A471065DE /* ofxOscParameterSync.cpp in Sources */,
 				640279EE111671BD026CB013 /* ofxOscReceiver.cpp in Sources */,
 				8F5205AEF8861EF234F0651A /* ofxOscSender.cpp in Sources */,
+				30291AA124191FFB00CFA550 /* Util.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1186,7 +1192,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.6.0;
 				OTHER_CFLAGS = "-DLUA_USE_MACOSX";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -1343,7 +1349,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.6.0;
 				OTHER_CFLAGS = "-DLUA_USE_MACOSX";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -1392,7 +1398,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MARKETING_VERSION = 1.5.1;
+				MARKETING_VERSION = 1.6.0;
 				OTHER_CFLAGS = "-DLUA_USE_MACOSX";
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",

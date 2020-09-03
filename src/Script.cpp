@@ -28,16 +28,7 @@
 #include "ofLight.h"
 #include "ofFileUtils.h"
 #include "ofxOsc.h"
-
-// macro for chdir() and getcwd() as Windows uses protected variants
-#ifdef TARGET_WIN32
-	#include <direct.h>
-	#define CHDIR _chdir
-	#define GETCWD _getcwd
-#else
-	#define CHDIR chdir
-	#define GETCWD getcwd
-#endif
+#include "Util.h"
 
 // declare the wrapped modules
 extern "C" {
@@ -101,13 +92,14 @@ bool Script::load(const std::string &path, const std::vector<std::string> *args)
 	
 	// change the current directory to the scene directory,
 	// this allows the lua state to find local files
-	if(CHDIR(directory.c_str()) != 0) {
+	if(!Util::setCurrentDir(directory.c_str())) {
 		switch(errno) {
 			case EACCES:
 				ofLogError(PACKAGE) << "couldn't access dir " << directory;
 				break;
 			default:
-				ofLogError(PACKAGE) << "couldn't change dir to " << directory << ", error " << errno;
+				ofLogError(PACKAGE) << "couldn't change dir to " << directory
+					<< ", error " << errno << " " << strerror(errno);
 				break;
 		}
 		return false;
@@ -121,9 +113,7 @@ bool Script::load(const std::string &path, const std::vector<std::string> *args)
 	bool ret = lua.doScript(currentScript, true);
 	if(ret) {
 		setupNeeded = true;
-		char currentDir[1024];
-		GETCWD(currentDir, 1024);
-		ofLogVerbose(PACKAGE) << "current dir now " << currentDir;
+		ofLogVerbose(PACKAGE) << "current dir now " << Util::getCurrentDir();
 	}
 	return ret;
 }

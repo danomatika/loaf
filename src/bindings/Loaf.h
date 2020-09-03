@@ -23,6 +23,7 @@
 #pragma once
 
 #include "ofApp.h"
+#include "Util.h"
 #include "config.h"
 
 #ifdef TARGET_WIN32
@@ -47,6 +48,29 @@ static bool isVerbose() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->isVerbose();
 }
+
+/// get the directory the application was started from
+static std::string getStartDirectory() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	return app->startDir;
+}
+
+/// get the current working directory, may be different from OF data path
+static std::string getCurrentDirectory() {
+	return Util::getCurrentDir();
+}
+
+/// set the current working directory, does not change OF data path
+static bool setCurrentDirectory(std::string dir) {
+	return Util::setCurrentDir(dir);
+}
+
+/// get the platform modifier key
+#ifdef __APPLE__
+static const int modKey = OF_KEY_SUPER;
+#else
+static const int modKey = OF_KEY_CONTROL;
+#endif
 
 /// \section OSC Server
 
