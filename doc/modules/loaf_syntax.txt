@@ -1,13 +1,16 @@
 loaf
+loaf.clearScript
 loaf.getCurrentDirectory
 loaf.getHostname
 loaf.getListenPort
 loaf.getSendHost
 loaf.getSendPort
 loaf.getStartDirectory
+loaf.isBundled
 loaf.isListening
 loaf.isVerbose
 loaf.modKey
+loaf.reloadScript
 loaf.sendBang
 loaf.sendBundle
 loaf.sendFloat
@@ -18,7 +21,9 @@ loaf.setCurrentDirectory
 loaf.setListenPort
 loaf.setSendHost
 loaf.setSendPort
+loaf.setUseDefaultKeys
 loaf.setVerbose
 loaf.startListening
 loaf.stopListening
+loaf.useDefaultKeys
 loaf.send

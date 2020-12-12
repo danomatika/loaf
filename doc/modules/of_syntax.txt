@@ -150,6 +150,7 @@ of.FULLSCREEN
 of.Fbo
 of.FboModeAnd
 of.FboModeOr
+of.FboSettings
 of.File
 of.FileDialogResult
 of.FilePath
@@ -1506,12 +1507,40 @@ of.MaterialSettings
   shininess
   specular
 
+of.WindowSettings
+  getHeight
+  getPosition
+  getWidth
+  isPositionSet
+  isSizeSet
+  setPosition
+  setSize
+  title
+  windowMode
+
 of.ImageLoadSettings
   ImageLoadSettings
   accurate
   exifRotate
   grayscale
   separateCMYK
+
+of.FboSettings
+  colorFormats
+  depthStencilAsTexture
+  depthStencilInternalFormat
+  height
+  internalformat
+  maxFilter
+  minFilter
+  numColorbuffers
+  numSamples
+  textureTarget
+  useDepth
+  useStencil
+  width
+  wrapModeHorizontal
+  wrapModeVertical
 
 of.SoundStreamSettings
   SoundStreamSettings
@@ -1528,17 +1557,6 @@ of.SoundStreamSettings
   setApi
   setInDevice
   setOutDevice
-
-of.WindowSettings
-  getHeight
-  getPosition
-  getWidth
-  isPositionSet
-  isSizeSet
-  setPosition
-  setSize
-  title
-  windowMode
 
 of.Vec4f
   average
@@ -1574,6 +1592,11 @@ of.Firmata_I2C_Data
 
 of.FilePath
   FilePath
+
+of.SerialDeviceInfo
+  getDeviceID
+  getDeviceName
+  getDevicePath
 
 of.FloatColor
   FloatColor
@@ -1611,11 +1634,6 @@ of.FloatColor
   setHueAngle
   setR
   setSaturation
-
-of.SerialDeviceInfo
-  getDeviceID
-  getDeviceName
-  getDevicePath
 
 of.MatrixStack
   clearStacks
@@ -1712,6 +1730,94 @@ of.BaseSoundStream
   start
   stop
 
+of.BoxPrimitive
+  getDepth
+  getHeight
+  getResolution
+  getResolutionDepth
+  getResolutionHeight
+  getResolutionWidth
+  getSideIndices
+  getSideMesh
+  getSize
+  getWidth
+  resizeToTexture
+  set
+  setDepth
+  setHeight
+  setMode
+  setResolution
+  setResolutionDepth
+  setResolutionHeight
+  setResolutionWidth
+  setSideColor
+  setWidth
+
+of.ConePrimitive
+  getCapIndices
+  getCapMesh
+  getConeIndices
+  getConeMesh
+  getHeight
+  getRadius
+  getResolution
+  getResolutionCap
+  getResolutionHeight
+  getResolutionRadius
+  set
+  setCapColor
+  setHeight
+  setMode
+  setRadius
+  setResolution
+  setResolutionCap
+  setResolutionHeight
+  setResolutionRadius
+  setTopColor
+
+of.CylinderPrimitive
+  getBottomCapIndices
+  getBottomCapMesh
+  getCapped
+  getCylinderIndices
+  getCylinderMesh
+  getHeight
+  getRadius
+  getResolution
+  getResolutionCap
+  getResolutionHeight
+  getResolutionRadius
+  getTopCapIndices
+  getTopCapMesh
+  set
+  setBottomCapColor
+  setCapped
+  setCylinderColor
+  setHeight
+  setMode
+  setRadius
+  setResolution
+  setResolutionCap
+  setResolutionHeight
+  setResolutionRadius
+  setTopCapColor
+
+of.IcoSpherePrimitive
+  getRadius
+  getResolution
+  set
+  setMode
+  setRadius
+  setResolution
+
+of.SpherePrimitive
+  getRadius
+  getResolution
+  set
+  setMode
+  setRadius
+  setResolution
+
 of.3dPrimitive
   disableColors
   disableNormals
@@ -1749,94 +1855,6 @@ of.PlanePrimitive
   setMode
   setResolution
   setRows
-  setWidth
-
-of.SpherePrimitive
-  getRadius
-  getResolution
-  set
-  setMode
-  setRadius
-  setResolution
-
-of.IcoSpherePrimitive
-  getRadius
-  getResolution
-  set
-  setMode
-  setRadius
-  setResolution
-
-of.CylinderPrimitive
-  getBottomCapIndices
-  getBottomCapMesh
-  getCapped
-  getCylinderIndices
-  getCylinderMesh
-  getHeight
-  getRadius
-  getResolution
-  getResolutionCap
-  getResolutionHeight
-  getResolutionRadius
-  getTopCapIndices
-  getTopCapMesh
-  set
-  setBottomCapColor
-  setCapped
-  setCylinderColor
-  setHeight
-  setMode
-  setRadius
-  setResolution
-  setResolutionCap
-  setResolutionHeight
-  setResolutionRadius
-  setTopCapColor
-
-of.ConePrimitive
-  getCapIndices
-  getCapMesh
-  getConeIndices
-  getConeMesh
-  getHeight
-  getRadius
-  getResolution
-  getResolutionCap
-  getResolutionHeight
-  getResolutionRadius
-  set
-  setCapColor
-  setHeight
-  setMode
-  setRadius
-  setResolution
-  setResolutionCap
-  setResolutionHeight
-  setResolutionRadius
-  setTopColor
-
-of.BoxPrimitive
-  getDepth
-  getHeight
-  getResolution
-  getResolutionDepth
-  getResolutionHeight
-  getResolutionWidth
-  getSideIndices
-  getSideMesh
-  getSize
-  getWidth
-  resizeToTexture
-  set
-  setDepth
-  setHeight
-  setMode
-  setResolution
-  setResolutionDepth
-  setResolutionHeight
-  setResolutionWidth
-  setSideColor
   setWidth
 
 of.Directory
@@ -2246,39 +2264,27 @@ of.Shader
   printActiveUniforms
   setAttribute1d
   setAttribute1f
-  setAttribute1fv
   setAttribute1s
   setAttribute2d
   setAttribute2f
-  setAttribute2fv
   setAttribute2s
   setAttribute3d
   setAttribute3f
-  setAttribute3fv
   setAttribute3s
   setAttribute4d
   setAttribute4f
-  setAttribute4fv
   setAttribute4s
   setGeometryInputType
   setGeometryOutputCount
   setGeometryOutputType
   setUniform1f
-  setUniform1fv
   setUniform1i
-  setUniform1iv
   setUniform2f
-  setUniform2fv
   setUniform2i
-  setUniform2iv
   setUniform3f
-  setUniform3fv
   setUniform3i
-  setUniform3iv
   setUniform4f
-  setUniform4fv
   setUniform4i
-  setUniform4iv
   setUniformMatrix3f
   setUniformMatrix4f
   setUniformTexture
@@ -2604,309 +2610,141 @@ of.Pixels
   swap
   swapRgb
 
-of.ShortColor.aliceBlue
-of.ShortColor.antiqueWhite
-of.ShortColor.aqua
-of.ShortColor.aquamarine
-of.ShortColor.azure
-of.ShortColor.beige
-of.ShortColor.bisque
-of.ShortColor.black
-of.ShortColor.blanchedAlmond
-of.ShortColor.blue
-of.ShortColor.blueSteel
-of.ShortColor.blueViolet
-of.ShortColor.brown
-of.ShortColor.burlyWood
-of.ShortColor.cadetBlue
-of.ShortColor.chartreuse
-of.ShortColor.chocolate
-of.ShortColor.coral
-of.ShortColor.cornflowerBlue
-of.ShortColor.cornsilk
-of.ShortColor.crimson
-of.ShortColor.cyan
-of.ShortColor.darkBlue
-of.ShortColor.darkCyan
-of.ShortColor.darkGoldenRod
-of.ShortColor.darkGray
-of.ShortColor.darkGreen
-of.ShortColor.darkGrey
-of.ShortColor.darkKhaki
-of.ShortColor.darkMagenta
-of.ShortColor.darkOliveGreen
-of.ShortColor.darkOrchid
-of.ShortColor.darkRed
-of.ShortColor.darkSalmon
-of.ShortColor.darkSeaGreen
-of.ShortColor.darkSlateBlue
-of.ShortColor.darkSlateGray
-of.ShortColor.darkSlateGrey
-of.ShortColor.darkTurquoise
-of.ShortColor.darkViolet
-of.ShortColor.darkorange
-of.ShortColor.deepPink
-of.ShortColor.deepSkyBlue
-of.ShortColor.dimGray
-of.ShortColor.dimGrey
-of.ShortColor.dodgerBlue
-of.ShortColor.fireBrick
-of.ShortColor.floralWhite
-of.ShortColor.forestGreen
-of.ShortColor.fromHex
-of.ShortColor.fromHsb
-of.ShortColor.fuchsia
-of.ShortColor.gainsboro
-of.ShortColor.ghostWhite
-of.ShortColor.gold
-of.ShortColor.goldenRod
-of.ShortColor.gray
-of.ShortColor.green
-of.ShortColor.greenYellow
-of.ShortColor.grey
-of.ShortColor.honeyDew
-of.ShortColor.hotPink
-of.ShortColor.indianRed
-of.ShortColor.indigo
-of.ShortColor.ivory
-of.ShortColor.khaki
-of.ShortColor.lavender
-of.ShortColor.lavenderBlush
-of.ShortColor.lawnGreen
-of.ShortColor.lemonChiffon
-of.ShortColor.lightBlue
-of.ShortColor.lightCoral
-of.ShortColor.lightCyan
-of.ShortColor.lightGoldenRodYellow
-of.ShortColor.lightGray
-of.ShortColor.lightGreen
-of.ShortColor.lightGrey
-of.ShortColor.lightPink
-of.ShortColor.lightSalmon
-of.ShortColor.lightSeaGreen
-of.ShortColor.lightSkyBlue
-of.ShortColor.lightSlateGray
-of.ShortColor.lightSlateGrey
-of.ShortColor.lightSteelBlue
-of.ShortColor.lightYellow
-of.ShortColor.lime
-of.ShortColor.limeGreen
-of.ShortColor.limit
-of.ShortColor.linen
-of.ShortColor.magenta
-of.ShortColor.maroon
-of.ShortColor.mediumAquaMarine
-of.ShortColor.mediumBlue
-of.ShortColor.mediumOrchid
-of.ShortColor.mediumPurple
-of.ShortColor.mediumSeaGreen
-of.ShortColor.mediumSlateBlue
-of.ShortColor.mediumSpringGreen
-of.ShortColor.mediumTurquoise
-of.ShortColor.mediumVioletRed
-of.ShortColor.midnightBlue
-of.ShortColor.mintCream
-of.ShortColor.mistyRose
-of.ShortColor.moccasin
-of.ShortColor.navajoWhite
-of.ShortColor.navy
-of.ShortColor.oldLace
-of.ShortColor.olive
-of.ShortColor.oliveDrab
-of.ShortColor.orange
-of.ShortColor.orangeRed
-of.ShortColor.orchid
-of.ShortColor.paleGoldenRod
-of.ShortColor.paleGreen
-of.ShortColor.paleTurquoise
-of.ShortColor.paleVioletRed
-of.ShortColor.papayaWhip
-of.ShortColor.peachPuff
-of.ShortColor.peru
-of.ShortColor.pink
-of.ShortColor.plum
-of.ShortColor.powderBlue
-of.ShortColor.purple
-of.ShortColor.red
-of.ShortColor.rosyBrown
-of.ShortColor.royalBlue
-of.ShortColor.saddleBrown
-of.ShortColor.salmon
-of.ShortColor.sandyBrown
-of.ShortColor.seaGreen
-of.ShortColor.seaShell
-of.ShortColor.sienna
-of.ShortColor.silver
-of.ShortColor.skyBlue
-of.ShortColor.slateBlue
-of.ShortColor.slateGray
-of.ShortColor.slateGrey
-of.ShortColor.snow
-of.ShortColor.springGreen
-of.ShortColor.steelBlue
-of.ShortColor.tan
-of.ShortColor.teal
-of.ShortColor.thistle
-of.ShortColor.tomato
-of.ShortColor.turquoise
-of.ShortColor.violet
-of.ShortColor.wheat
-of.ShortColor.white
-of.ShortColor.whiteSmoke
-of.ShortColor.yellow
-of.ShortColor.yellowGreen
+of.TrueTypeFont.setGlobalDpi
 
-of.FloatColor.aliceBlue
-of.FloatColor.antiqueWhite
-of.FloatColor.aqua
-of.FloatColor.aquamarine
-of.FloatColor.azure
-of.FloatColor.beige
-of.FloatColor.bisque
-of.FloatColor.black
-of.FloatColor.blanchedAlmond
-of.FloatColor.blue
-of.FloatColor.blueSteel
-of.FloatColor.blueViolet
-of.FloatColor.brown
-of.FloatColor.burlyWood
-of.FloatColor.cadetBlue
-of.FloatColor.chartreuse
-of.FloatColor.chocolate
-of.FloatColor.coral
-of.FloatColor.cornflowerBlue
-of.FloatColor.cornsilk
-of.FloatColor.crimson
-of.FloatColor.cyan
-of.FloatColor.darkBlue
-of.FloatColor.darkCyan
-of.FloatColor.darkGoldenRod
-of.FloatColor.darkGray
-of.FloatColor.darkGreen
-of.FloatColor.darkGrey
-of.FloatColor.darkKhaki
-of.FloatColor.darkMagenta
-of.FloatColor.darkOliveGreen
-of.FloatColor.darkOrchid
-of.FloatColor.darkRed
-of.FloatColor.darkSalmon
-of.FloatColor.darkSeaGreen
-of.FloatColor.darkSlateBlue
-of.FloatColor.darkSlateGray
-of.FloatColor.darkSlateGrey
-of.FloatColor.darkTurquoise
-of.FloatColor.darkViolet
-of.FloatColor.darkorange
-of.FloatColor.deepPink
-of.FloatColor.deepSkyBlue
-of.FloatColor.dimGray
-of.FloatColor.dimGrey
-of.FloatColor.dodgerBlue
-of.FloatColor.fireBrick
-of.FloatColor.floralWhite
-of.FloatColor.forestGreen
-of.FloatColor.fromHex
-of.FloatColor.fromHsb
-of.FloatColor.fuchsia
-of.FloatColor.gainsboro
-of.FloatColor.ghostWhite
-of.FloatColor.gold
-of.FloatColor.goldenRod
-of.FloatColor.gray
-of.FloatColor.green
-of.FloatColor.greenYellow
-of.FloatColor.grey
-of.FloatColor.honeyDew
-of.FloatColor.hotPink
-of.FloatColor.indianRed
-of.FloatColor.indigo
-of.FloatColor.ivory
-of.FloatColor.khaki
-of.FloatColor.lavender
-of.FloatColor.lavenderBlush
-of.FloatColor.lawnGreen
-of.FloatColor.lemonChiffon
-of.FloatColor.lightBlue
-of.FloatColor.lightCoral
-of.FloatColor.lightCyan
-of.FloatColor.lightGoldenRodYellow
-of.FloatColor.lightGray
-of.FloatColor.lightGreen
-of.FloatColor.lightGrey
-of.FloatColor.lightPink
-of.FloatColor.lightSalmon
-of.FloatColor.lightSeaGreen
-of.FloatColor.lightSkyBlue
-of.FloatColor.lightSlateGray
-of.FloatColor.lightSlateGrey
-of.FloatColor.lightSteelBlue
-of.FloatColor.lightYellow
-of.FloatColor.lime
-of.FloatColor.limeGreen
-of.FloatColor.limit
-of.FloatColor.linen
-of.FloatColor.magenta
-of.FloatColor.maroon
-of.FloatColor.mediumAquaMarine
-of.FloatColor.mediumBlue
-of.FloatColor.mediumOrchid
-of.FloatColor.mediumPurple
-of.FloatColor.mediumSeaGreen
-of.FloatColor.mediumSlateBlue
-of.FloatColor.mediumSpringGreen
-of.FloatColor.mediumTurquoise
-of.FloatColor.mediumVioletRed
-of.FloatColor.midnightBlue
-of.FloatColor.mintCream
-of.FloatColor.mistyRose
-of.FloatColor.moccasin
-of.FloatColor.navajoWhite
-of.FloatColor.navy
-of.FloatColor.oldLace
-of.FloatColor.olive
-of.FloatColor.oliveDrab
-of.FloatColor.orange
-of.FloatColor.orangeRed
-of.FloatColor.orchid
-of.FloatColor.paleGoldenRod
-of.FloatColor.paleGreen
-of.FloatColor.paleTurquoise
-of.FloatColor.paleVioletRed
-of.FloatColor.papayaWhip
-of.FloatColor.peachPuff
-of.FloatColor.peru
-of.FloatColor.pink
-of.FloatColor.plum
-of.FloatColor.powderBlue
-of.FloatColor.purple
-of.FloatColor.red
-of.FloatColor.rosyBrown
-of.FloatColor.royalBlue
-of.FloatColor.saddleBrown
-of.FloatColor.salmon
-of.FloatColor.sandyBrown
-of.FloatColor.seaGreen
-of.FloatColor.seaShell
-of.FloatColor.sienna
-of.FloatColor.silver
-of.FloatColor.skyBlue
-of.FloatColor.slateBlue
-of.FloatColor.slateGray
-of.FloatColor.slateGrey
-of.FloatColor.snow
-of.FloatColor.springGreen
-of.FloatColor.steelBlue
-of.FloatColor.tan
-of.FloatColor.teal
-of.FloatColor.thistle
-of.FloatColor.tomato
-of.FloatColor.turquoise
-of.FloatColor.violet
-of.FloatColor.wheat
-of.FloatColor.white
-of.FloatColor.whiteSmoke
-of.FloatColor.yellow
-of.FloatColor.yellowGreen
+of.Unicode.AdditionalEmoticons
+of.Unicode.AdditionalTransportAndMap
+of.Unicode.AlphabeticPresentationForms
+of.Unicode.Arabic
+of.Unicode.ArabicExtendedA
+of.Unicode.ArabicMath
+of.Unicode.ArabicPresFormsA
+of.Unicode.ArabicPresFormsB
+of.Unicode.ArabicSupplement
+of.Unicode.Arrows
+of.Unicode.BlockElement
+of.Unicode.BoxDrawing
+of.Unicode.CJKLettersAndMonths
+of.Unicode.CJKUnified
+of.Unicode.CurrencySymbols
+of.Unicode.Cyrillic
+of.Unicode.Devanagari
+of.Unicode.DevanagariExtended
+of.Unicode.Dingbats
+of.Unicode.Emoticons
+of.Unicode.EnclosedCharacters
+of.Unicode.GeneralPunctuation
+of.Unicode.GeometricShapes
+of.Unicode.Greek
+of.Unicode.GreekExtended
+of.Unicode.HangulCompatJamo
+of.Unicode.HangulExtendedA
+of.Unicode.HangulExtendedB
+of.Unicode.HangulJamo
+of.Unicode.HangulSyllables
+of.Unicode.Hiragana
+of.Unicode.IdeographicSpace
+of.Unicode.KanaSupplement
+of.Unicode.Katakana
+of.Unicode.KatakanaHalfAndFullwidthForms
+of.Unicode.KatakanaPhoneticExtensions
+of.Unicode.Latin
+of.Unicode.Latin1Supplement
+of.Unicode.LatinA
+of.Unicode.LatinExtendedAdditional
+of.Unicode.LetterLikeSymbols
+of.Unicode.MathOperators
+of.Unicode.MiscSymbols
+of.Unicode.MiscSymbolsAndPictographs
+of.Unicode.MiscTechnical
+of.Unicode.NumberForms
+of.Unicode.OtherAdditionalSymbols
+of.Unicode.RumiNumericalSymbols
+of.Unicode.Space
+of.Unicode.SuperAndSubScripts
+of.Unicode.TransportAndMap
+of.Unicode.Uncategorized
+of.Unicode.VedicExtensions
+
+of.Polyline.fromRectangle
+
+of.Path.COMMANDS
+of.Path.POLYLINES
+
+of.TouchEventArgs.cancel
+of.TouchEventArgs.doubleTap
+of.TouchEventArgs.down
+of.TouchEventArgs.move
+of.TouchEventArgs.up
+
+of.Vec4f.DIM
+of.Vec4f.one
+of.Vec4f.zero
+
+of.Vec3f.DIM
+of.Vec3f.one
+of.Vec3f.zero
+
+of.Vec2f.DIM
+of.Vec2f.one
+of.Vec2f.zero
+
+of.Matrix4x4.getInverseOf
+of.Matrix4x4.getOrthoNormalOf
+of.Matrix4x4.getTransposedOf
+of.Matrix4x4.newFrustumMatrix
+of.Matrix4x4.newIdentityMatrix
+of.Matrix4x4.newLookAtMatrix
+of.Matrix4x4.newOrtho2DMatrix
+of.Matrix4x4.newOrthoMatrix
+of.Matrix4x4.newPerspectiveMatrix
+of.Matrix4x4.newRotationMatrix
+of.Matrix4x4.newScaleMatrix
+of.Matrix4x4.newTranslationMatrix
+of.Matrix4x4.transform3x3
+
+of.BoxPrimitive.SIDES_TOTAL
+of.BoxPrimitive.SIDE_BACK
+of.BoxPrimitive.SIDE_BOTTOM
+of.BoxPrimitive.SIDE_FRONT
+of.BoxPrimitive.SIDE_LEFT
+of.BoxPrimitive.SIDE_RIGHT
+of.BoxPrimitive.SIDE_TOP
+
+of.Fbo.checkGLSupport
+of.Fbo.maxColorAttachments
+of.Fbo.maxDrawBuffers
+of.Fbo.maxSamples
+
+of.Time.FixedRate
+of.Time.System
+
+of.SoundDevice.ALSA
+of.SoundDevice.DEFAULT
+of.SoundDevice.JACK
+of.SoundDevice.MS_ASIO
+of.SoundDevice.MS_DS
+of.SoundDevice.MS_WASAPI
+of.SoundDevice.NUM_APIS
+of.SoundDevice.OSS
+of.SoundDevice.OSX_CORE
+of.SoundDevice.PULSE
+of.SoundDevice.UNSPECIFIED
+
+of.EasyCam.TRANSFORM_NONE
+of.EasyCam.TRANSFORM_ROTATE
+of.EasyCam.TRANSFORM_SCALE
+of.EasyCam.TRANSFORM_TRANSLATE_XY
+of.EasyCam.TRANSFORM_TRANSLATE_Z
+
+of.Mesh.axis
+of.Mesh.box
+of.Mesh.cone
+of.Mesh.cylinder
+of.Mesh.icosahedron
+of.Mesh.icosphere
+of.Mesh.plane
+of.Mesh.sphere
 
 of.Color.aliceBlue
 of.Color.antiqueWhite
@@ -3060,141 +2898,309 @@ of.Color.whiteSmoke
 of.Color.yellow
 of.Color.yellowGreen
 
-of.TrueTypeFont.setGlobalDpi
+of.FloatColor.aliceBlue
+of.FloatColor.antiqueWhite
+of.FloatColor.aqua
+of.FloatColor.aquamarine
+of.FloatColor.azure
+of.FloatColor.beige
+of.FloatColor.bisque
+of.FloatColor.black
+of.FloatColor.blanchedAlmond
+of.FloatColor.blue
+of.FloatColor.blueSteel
+of.FloatColor.blueViolet
+of.FloatColor.brown
+of.FloatColor.burlyWood
+of.FloatColor.cadetBlue
+of.FloatColor.chartreuse
+of.FloatColor.chocolate
+of.FloatColor.coral
+of.FloatColor.cornflowerBlue
+of.FloatColor.cornsilk
+of.FloatColor.crimson
+of.FloatColor.cyan
+of.FloatColor.darkBlue
+of.FloatColor.darkCyan
+of.FloatColor.darkGoldenRod
+of.FloatColor.darkGray
+of.FloatColor.darkGreen
+of.FloatColor.darkGrey
+of.FloatColor.darkKhaki
+of.FloatColor.darkMagenta
+of.FloatColor.darkOliveGreen
+of.FloatColor.darkOrchid
+of.FloatColor.darkRed
+of.FloatColor.darkSalmon
+of.FloatColor.darkSeaGreen
+of.FloatColor.darkSlateBlue
+of.FloatColor.darkSlateGray
+of.FloatColor.darkSlateGrey
+of.FloatColor.darkTurquoise
+of.FloatColor.darkViolet
+of.FloatColor.darkorange
+of.FloatColor.deepPink
+of.FloatColor.deepSkyBlue
+of.FloatColor.dimGray
+of.FloatColor.dimGrey
+of.FloatColor.dodgerBlue
+of.FloatColor.fireBrick
+of.FloatColor.floralWhite
+of.FloatColor.forestGreen
+of.FloatColor.fromHex
+of.FloatColor.fromHsb
+of.FloatColor.fuchsia
+of.FloatColor.gainsboro
+of.FloatColor.ghostWhite
+of.FloatColor.gold
+of.FloatColor.goldenRod
+of.FloatColor.gray
+of.FloatColor.green
+of.FloatColor.greenYellow
+of.FloatColor.grey
+of.FloatColor.honeyDew
+of.FloatColor.hotPink
+of.FloatColor.indianRed
+of.FloatColor.indigo
+of.FloatColor.ivory
+of.FloatColor.khaki
+of.FloatColor.lavender
+of.FloatColor.lavenderBlush
+of.FloatColor.lawnGreen
+of.FloatColor.lemonChiffon
+of.FloatColor.lightBlue
+of.FloatColor.lightCoral
+of.FloatColor.lightCyan
+of.FloatColor.lightGoldenRodYellow
+of.FloatColor.lightGray
+of.FloatColor.lightGreen
+of.FloatColor.lightGrey
+of.FloatColor.lightPink
+of.FloatColor.lightSalmon
+of.FloatColor.lightSeaGreen
+of.FloatColor.lightSkyBlue
+of.FloatColor.lightSlateGray
+of.FloatColor.lightSlateGrey
+of.FloatColor.lightSteelBlue
+of.FloatColor.lightYellow
+of.FloatColor.lime
+of.FloatColor.limeGreen
+of.FloatColor.limit
+of.FloatColor.linen
+of.FloatColor.magenta
+of.FloatColor.maroon
+of.FloatColor.mediumAquaMarine
+of.FloatColor.mediumBlue
+of.FloatColor.mediumOrchid
+of.FloatColor.mediumPurple
+of.FloatColor.mediumSeaGreen
+of.FloatColor.mediumSlateBlue
+of.FloatColor.mediumSpringGreen
+of.FloatColor.mediumTurquoise
+of.FloatColor.mediumVioletRed
+of.FloatColor.midnightBlue
+of.FloatColor.mintCream
+of.FloatColor.mistyRose
+of.FloatColor.moccasin
+of.FloatColor.navajoWhite
+of.FloatColor.navy
+of.FloatColor.oldLace
+of.FloatColor.olive
+of.FloatColor.oliveDrab
+of.FloatColor.orange
+of.FloatColor.orangeRed
+of.FloatColor.orchid
+of.FloatColor.paleGoldenRod
+of.FloatColor.paleGreen
+of.FloatColor.paleTurquoise
+of.FloatColor.paleVioletRed
+of.FloatColor.papayaWhip
+of.FloatColor.peachPuff
+of.FloatColor.peru
+of.FloatColor.pink
+of.FloatColor.plum
+of.FloatColor.powderBlue
+of.FloatColor.purple
+of.FloatColor.red
+of.FloatColor.rosyBrown
+of.FloatColor.royalBlue
+of.FloatColor.saddleBrown
+of.FloatColor.salmon
+of.FloatColor.sandyBrown
+of.FloatColor.seaGreen
+of.FloatColor.seaShell
+of.FloatColor.sienna
+of.FloatColor.silver
+of.FloatColor.skyBlue
+of.FloatColor.slateBlue
+of.FloatColor.slateGray
+of.FloatColor.slateGrey
+of.FloatColor.snow
+of.FloatColor.springGreen
+of.FloatColor.steelBlue
+of.FloatColor.tan
+of.FloatColor.teal
+of.FloatColor.thistle
+of.FloatColor.tomato
+of.FloatColor.turquoise
+of.FloatColor.violet
+of.FloatColor.wheat
+of.FloatColor.white
+of.FloatColor.whiteSmoke
+of.FloatColor.yellow
+of.FloatColor.yellowGreen
 
-of.Unicode.AdditionalEmoticons
-of.Unicode.AdditionalTransportAndMap
-of.Unicode.AlphabeticPresentationForms
-of.Unicode.Arabic
-of.Unicode.ArabicExtendedA
-of.Unicode.ArabicMath
-of.Unicode.ArabicPresFormsA
-of.Unicode.ArabicPresFormsB
-of.Unicode.ArabicSupplement
-of.Unicode.Arrows
-of.Unicode.BlockElement
-of.Unicode.BoxDrawing
-of.Unicode.CJKLettersAndMonths
-of.Unicode.CJKUnified
-of.Unicode.CurrencySymbols
-of.Unicode.Cyrillic
-of.Unicode.Devanagari
-of.Unicode.DevanagariExtended
-of.Unicode.Dingbats
-of.Unicode.Emoticons
-of.Unicode.EnclosedCharacters
-of.Unicode.GeneralPunctuation
-of.Unicode.GeometricShapes
-of.Unicode.Greek
-of.Unicode.GreekExtended
-of.Unicode.HangulCompatJamo
-of.Unicode.HangulExtendedA
-of.Unicode.HangulExtendedB
-of.Unicode.HangulJamo
-of.Unicode.HangulSyllables
-of.Unicode.Hiragana
-of.Unicode.IdeographicSpace
-of.Unicode.KanaSupplement
-of.Unicode.Katakana
-of.Unicode.KatakanaHalfAndFullwidthForms
-of.Unicode.KatakanaPhoneticExtensions
-of.Unicode.Latin
-of.Unicode.Latin1Supplement
-of.Unicode.LatinA
-of.Unicode.LatinExtendedAdditional
-of.Unicode.LetterLikeSymbols
-of.Unicode.MathOperators
-of.Unicode.MiscSymbols
-of.Unicode.MiscSymbolsAndPictographs
-of.Unicode.MiscTechnical
-of.Unicode.NumberForms
-of.Unicode.OtherAdditionalSymbols
-of.Unicode.RumiNumericalSymbols
-of.Unicode.Space
-of.Unicode.SuperAndSubScripts
-of.Unicode.TransportAndMap
-of.Unicode.Uncategorized
-of.Unicode.VedicExtensions
-
-of.Polyline.fromRectangle
-
-of.Path.COMMANDS
-of.Path.POLYLINES
-
-of.TouchEventArgs.cancel
-of.TouchEventArgs.doubleTap
-of.TouchEventArgs.down
-of.TouchEventArgs.move
-of.TouchEventArgs.up
-
-of.Vec4f.DIM
-of.Vec4f.one
-of.Vec4f.zero
-
-of.Vec3f.DIM
-of.Vec3f.one
-of.Vec3f.zero
-
-of.Vec2f.DIM
-of.Vec2f.one
-of.Vec2f.zero
-
-of.Matrix4x4.getInverseOf
-of.Matrix4x4.getOrthoNormalOf
-of.Matrix4x4.getTransposedOf
-of.Matrix4x4.newFrustumMatrix
-of.Matrix4x4.newIdentityMatrix
-of.Matrix4x4.newLookAtMatrix
-of.Matrix4x4.newOrtho2DMatrix
-of.Matrix4x4.newOrthoMatrix
-of.Matrix4x4.newPerspectiveMatrix
-of.Matrix4x4.newRotationMatrix
-of.Matrix4x4.newScaleMatrix
-of.Matrix4x4.newTranslationMatrix
-of.Matrix4x4.transform3x3
-
-of.Fbo.checkGLSupport
-of.Fbo.maxColorAttachments
-of.Fbo.maxDrawBuffers
-of.Fbo.maxSamples
-
-of.Time.FixedRate
-of.Time.System
-
-of.SoundDevice.ALSA
-of.SoundDevice.DEFAULT
-of.SoundDevice.JACK
-of.SoundDevice.MS_ASIO
-of.SoundDevice.MS_DS
-of.SoundDevice.MS_WASAPI
-of.SoundDevice.NUM_APIS
-of.SoundDevice.OSS
-of.SoundDevice.OSX_CORE
-of.SoundDevice.PULSE
-of.SoundDevice.UNSPECIFIED
-
-of.EasyCam.TRANSFORM_NONE
-of.EasyCam.TRANSFORM_ROTATE
-of.EasyCam.TRANSFORM_SCALE
-of.EasyCam.TRANSFORM_TRANSLATE_XY
-of.EasyCam.TRANSFORM_TRANSLATE_Z
-
-of.Mesh.axis
-of.Mesh.box
-of.Mesh.cone
-of.Mesh.cylinder
-of.Mesh.icosahedron
-of.Mesh.icosphere
-of.Mesh.plane
-of.Mesh.sphere
-
-of.BoxPrimitive.SIDES_TOTAL
-of.BoxPrimitive.SIDE_BACK
-of.BoxPrimitive.SIDE_BOTTOM
-of.BoxPrimitive.SIDE_FRONT
-of.BoxPrimitive.SIDE_LEFT
-of.BoxPrimitive.SIDE_RIGHT
-of.BoxPrimitive.SIDE_TOP
+of.ShortColor.aliceBlue
+of.ShortColor.antiqueWhite
+of.ShortColor.aqua
+of.ShortColor.aquamarine
+of.ShortColor.azure
+of.ShortColor.beige
+of.ShortColor.bisque
+of.ShortColor.black
+of.ShortColor.blanchedAlmond
+of.ShortColor.blue
+of.ShortColor.blueSteel
+of.ShortColor.blueViolet
+of.ShortColor.brown
+of.ShortColor.burlyWood
+of.ShortColor.cadetBlue
+of.ShortColor.chartreuse
+of.ShortColor.chocolate
+of.ShortColor.coral
+of.ShortColor.cornflowerBlue
+of.ShortColor.cornsilk
+of.ShortColor.crimson
+of.ShortColor.cyan
+of.ShortColor.darkBlue
+of.ShortColor.darkCyan
+of.ShortColor.darkGoldenRod
+of.ShortColor.darkGray
+of.ShortColor.darkGreen
+of.ShortColor.darkGrey
+of.ShortColor.darkKhaki
+of.ShortColor.darkMagenta
+of.ShortColor.darkOliveGreen
+of.ShortColor.darkOrchid
+of.ShortColor.darkRed
+of.ShortColor.darkSalmon
+of.ShortColor.darkSeaGreen
+of.ShortColor.darkSlateBlue
+of.ShortColor.darkSlateGray
+of.ShortColor.darkSlateGrey
+of.ShortColor.darkTurquoise
+of.ShortColor.darkViolet
+of.ShortColor.darkorange
+of.ShortColor.deepPink
+of.ShortColor.deepSkyBlue
+of.ShortColor.dimGray
+of.ShortColor.dimGrey
+of.ShortColor.dodgerBlue
+of.ShortColor.fireBrick
+of.ShortColor.floralWhite
+of.ShortColor.forestGreen
+of.ShortColor.fromHex
+of.ShortColor.fromHsb
+of.ShortColor.fuchsia
+of.ShortColor.gainsboro
+of.ShortColor.ghostWhite
+of.ShortColor.gold
+of.ShortColor.goldenRod
+of.ShortColor.gray
+of.ShortColor.green
+of.ShortColor.greenYellow
+of.ShortColor.grey
+of.ShortColor.honeyDew
+of.ShortColor.hotPink
+of.ShortColor.indianRed
+of.ShortColor.indigo
+of.ShortColor.ivory
+of.ShortColor.khaki
+of.ShortColor.lavender
+of.ShortColor.lavenderBlush
+of.ShortColor.lawnGreen
+of.ShortColor.lemonChiffon
+of.ShortColor.lightBlue
+of.ShortColor.lightCoral
+of.ShortColor.lightCyan
+of.ShortColor.lightGoldenRodYellow
+of.ShortColor.lightGray
+of.ShortColor.lightGreen
+of.ShortColor.lightGrey
+of.ShortColor.lightPink
+of.ShortColor.lightSalmon
+of.ShortColor.lightSeaGreen
+of.ShortColor.lightSkyBlue
+of.ShortColor.lightSlateGray
+of.ShortColor.lightSlateGrey
+of.ShortColor.lightSteelBlue
+of.ShortColor.lightYellow
+of.ShortColor.lime
+of.ShortColor.limeGreen
+of.ShortColor.limit
+of.ShortColor.linen
+of.ShortColor.magenta
+of.ShortColor.maroon
+of.ShortColor.mediumAquaMarine
+of.ShortColor.mediumBlue
+of.ShortColor.mediumOrchid
+of.ShortColor.mediumPurple
+of.ShortColor.mediumSeaGreen
+of.ShortColor.mediumSlateBlue
+of.ShortColor.mediumSpringGreen
+of.ShortColor.mediumTurquoise
+of.ShortColor.mediumVioletRed
+of.ShortColor.midnightBlue
+of.ShortColor.mintCream
+of.ShortColor.mistyRose
+of.ShortColor.moccasin
+of.ShortColor.navajoWhite
+of.ShortColor.navy
+of.ShortColor.oldLace
+of.ShortColor.olive
+of.ShortColor.oliveDrab
+of.ShortColor.orange
+of.ShortColor.orangeRed
+of.ShortColor.orchid
+of.ShortColor.paleGoldenRod
+of.ShortColor.paleGreen
+of.ShortColor.paleTurquoise
+of.ShortColor.paleVioletRed
+of.ShortColor.papayaWhip
+of.ShortColor.peachPuff
+of.ShortColor.peru
+of.ShortColor.pink
+of.ShortColor.plum
+of.ShortColor.powderBlue
+of.ShortColor.purple
+of.ShortColor.red
+of.ShortColor.rosyBrown
+of.ShortColor.royalBlue
+of.ShortColor.saddleBrown
+of.ShortColor.salmon
+of.ShortColor.sandyBrown
+of.ShortColor.seaGreen
+of.ShortColor.seaShell
+of.ShortColor.sienna
+of.ShortColor.silver
+of.ShortColor.skyBlue
+of.ShortColor.slateBlue
+of.ShortColor.slateGray
+of.ShortColor.slateGrey
+of.ShortColor.snow
+of.ShortColor.springGreen
+of.ShortColor.steelBlue
+of.ShortColor.tan
+of.ShortColor.teal
+of.ShortColor.thistle
+of.ShortColor.tomato
+of.ShortColor.turquoise
+of.ShortColor.violet
+of.ShortColor.wheat
+of.ShortColor.white
+of.ShortColor.whiteSmoke
+of.ShortColor.yellow
+of.ShortColor.yellowGreen
 
 of.FilePath.addLeadingSlash
 of.FilePath.addTrailingSlash
