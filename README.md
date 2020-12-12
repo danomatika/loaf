@@ -5,7 +5,7 @@ loaf: lua, osc, and openFrameworks
 	<img src="http://danomatika.com/code/loaf/loaf_workflow.png"/>
 </p>
 
-Copyright (c) [Dan Wilcox](danomatika.com) 2016-2019
+Copyright (c) [Dan Wilcox](danomatika.com) 2016-2020
 
 GPL v3
 
@@ -47,10 +47,12 @@ _Note: A more comprehensive User Guide will be added in the future._
 ### Basic usage
 
 * drag a Lua script or folder with a main.lua onto loaf to run it
-* either save the script somehow (in a text editor) and/or use Super+R in loaf to reload it automatically
-* toggle fullscreen with Super+F
+* either save the script somehow (in a text editor) and/or use MOD+R in loaf to reload it automatically
+* toggle fullscreen with MOD+F
 * script errors are shown on the app window and on the console if you run it in a terminal application
 * prints are shown in the console (useful for debugging)
+
+_The MOD key depends on the platform: macOS COMMAND, Windows/Linux CONTROL._
 
 ### Scripts, Folders, and Data Path
 
@@ -72,7 +74,7 @@ A quick overview of using Lua and the Lua bindings for openFrameworks can be fou
 
 The best place to start is to look at the examples included with loaf zip and on the [loaf Github repo](https://github.com/danomatika/loaf/tree/master/examples).
 
-There are also simple syntax lists for each of the three Lua bindings modules: of, osc, and loaf. These can be found in `doc/modules` and are a good place to start for creating autocompletion files for you favorite text editor.
+There are also simple syntax lists for each of the three Lua bindings modules: of, osc, and loaf. These can be found in `doc/modules` and are a good place to start for creating auto-completion files for you favorite text editor.
 
 ### Setting Window Size
 
@@ -137,9 +139,35 @@ which allows you to call loaf with just the short alias instead:
 
 ### Libraries
 
-As loaf contains the Lua embedded scripting language, pure Lua libraries will work fine with it. Pre-compiled loadable Lua moduels will also work as long as they are found within the `require` search path.
+As loaf contains the Lua embedded scripting language, pure Lua libraries will work fine with it. Pre-compiled loadable Lua modules will also work as long as they are found within the `require` search path.
 
 Also, a set of loaf-oriented Lua libraries is available in the [loaf-ingredients](https://github.com/danomatika/loaf-ingredients) repository.
+
+BUNDLING INTO STAND-ALONE APPS
+------------------------------
+
+As of loaf 1.6.0, loaf projects can be "bundled" into stand-alone applications. If a "main.lua" script is found on startup, it will be used by default:
+
+* Windows / Linux: "data" folder next to loaf executable, `./data/`
+* macOS: "data" folder within a macOS .app bundle, `../Resources/data/`
+
+The loaf executable can also be renamed.
+
+### macOS
+
+A macOS .app bundle is basically a folder structure presented by Finder as an "application." It contains the application executable, dependent libraries, and resource files. This structure can be created & modified to make your own application which can then be distributed to run on other macOS systems.
+
+To facilitate creating a stand-alone .app form a loaf project, the `scripts/make_osxapp.sh` shell script can make a copy of an existing loaf.app and use it to create a new application by copying the loaf project Lua scripts and data files inside the bundle. Additionally, it can modify metadata such as the application name, version string, and icon.
+
+For example.
+
+    ./scripts/make_osxapp.sh -l bin/loaf.app ~/Desktop/loaf-project LoafProject
+
+will create a `LoafProject.app` using the files in `~/Desktop/loaf-project`.
+
+See the `make_osxapp.sh` help output for more info:
+
+    ./scripts/make_osxapp.sh --help
 
 BUILDING LOAF
 -------------
