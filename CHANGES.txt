@@ -1,6 +1,24 @@
+1.6.0: 2020 Dec 12
+
+* updated for ofxLua 1.4.2 (Lua 5.4.2)
+
+* added support for creating a bundled app using loaf + Lua scripts & resources
+* added script to create stand-alone bundled macOS .app from projects
+
+* added loaf.isBundled(): returns true if script is within a bundled project
+* added loaf.useDefaultKeys(): returns true if default key bindings are used
+* added load.setUseDefaultKeys(): enable/disable default key bindings
+* added loaf.getCurrentDirectory(): returns the loaf working directory
+* added loaf.setCurrentDirectory(): set the loaf working directory
+* added loaf.getStartDirectory(): returns the directory loaf was started from
+* added loaf.getModKey(): returns the platform's modifier key, CMD or CTL
+
 1.5.1: 2020 Aug 31
 
+* updated for ofxLua 1.4.1
+
 * fixed -f fullscreen option being applied after script setup()
+
 * now wrapping ofWindowSetting.h for window mode constants
 * now ignore empty script file string
 
@@ -11,7 +29,7 @@
 
 1.4.4: 2019 Sep 30
 
-* updated to ofxLua 1.3.6
+* updated to ofxLua 1.3.6 (Lua 5.3.5)
 
 * reset background auto on script (re)load
 * now wrapping ofSaveImage/ofLoadImage and ofPolyline vertex vector
@@ -43,7 +61,7 @@
 1.3.0: 2017 Dec 01
 
 * make sure script setup() is called within a GL context
-* added loaf.getHostname() which returns network hostname string
+* added loaf.getHostname(): returns network hostname string
 * added openframeworks version to verbose print
 
 1.2.0: 2017 Oct 16
@@ -63,8 +81,8 @@
 
 1.0.0: 2017 Mar 17
 
-first release
+first release, uses ofxLua 1.2.0 (Lua 5.3.4)
 
 0.1.0: Nov 2016
 
-initial work & testing
+initial work & testing, uses ofxLua 1.0.3 (Lua 5.3.2)
