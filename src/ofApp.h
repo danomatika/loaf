@@ -69,11 +69,20 @@ class ofApp : public ofBaseApp {
 
 	/// \section Utils
 	
-		/// set loaf verbosity
+		/// enable/disable loaf verbosity
 		void setVerbose(bool verbose);
 	
 		/// get loaf verbosity level
 		bool isVerbose();
+
+		/// enable/disable loaf default key bindings
+		void setUseDefaultKeys(bool defaultKeys);
+
+		/// get loaf default key bindings
+		bool useDefaultKeys();
+
+		/// get loaf bundled status
+		bool isBundled();
 	
 	/// \section Osc
 	
@@ -116,4 +125,5 @@ class ofApp : public ofBaseApp {
 	
 		bool verbose = false; //< current verbosity
 		bool bundled = false; //< is this a bundled project?
+		bool defaultKeys = true; //< use default key bindings?
 };

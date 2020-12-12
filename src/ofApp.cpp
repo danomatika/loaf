@@ -151,16 +151,16 @@ void ofApp::exit() {
 void ofApp::keyPressed(int key) {
 
 	// handle special key events
-	if(ofGetKeyPressed(loaf::modKey) && !bundled) {
+	if(defaultKeys && ofGetKeyPressed(loaf::modKey)) {
 		switch(key) {
 			case 'f': case 6:
 				ofToggleFullscreen();
 				return;
 			case 'r': case 18:
-				script.reload();
+				if(!bundled) script.reload();
 				return;
 			case 'c': case 3:
-				script.clear();
+				if(!bundled) script.clear();
 				return;
 		}
 	}
@@ -278,6 +278,22 @@ void ofApp::setVerbose(bool verbose) {
 //--------------------------------------------------------------
 bool ofApp::isVerbose() {
 	return verbose;
+}
+
+//--------------------------------------------------------------
+void ofApp::setUseDefaultKeys(bool defaultKeys) {
+	ofLogVerbose(PACKAGE) << "use default keys " << (defaultKeys ? "on" : "off");
+	this->defaultKeys = defaultKeys;
+}
+
+//--------------------------------------------------------------
+bool ofApp::useDefaultKeys() {
+	return defaultKeys;
+}
+
+//--------------------------------------------------------------
+bool ofApp::isBundled() {
+	return bundled;
 }
 
 // OSC

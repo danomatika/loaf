@@ -2844,6 +2844,16 @@ static int _wrap_setVerbose(lua_State* L) { int SWIG_arg = 0; bool arg1 ; SWIG_c
 static int _wrap_isVerbose(lua_State* L) { int SWIG_arg = 0; bool result; SWIG_check_num_args("loaf::isVerbose",0,0)
   result = (bool)loaf::isVerbose(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
+static int _wrap_setUseDefaultKeys(lua_State* L) { int SWIG_arg = 0; bool arg1 ;
+  SWIG_check_num_args("loaf::setUseDefaultKeys",1,1) if(!lua_isboolean(L,1)) SWIG_fail_arg("loaf::setUseDefaultKeys",1,"bool");
+  arg1 = (lua_toboolean(L, 1)!=0); loaf::setUseDefaultKeys(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
+static int _wrap_useDefaultKeys(lua_State* L) { int SWIG_arg = 0; bool result; SWIG_check_num_args("loaf::useDefaultKeys",0,0)
+  result = (bool)loaf::useDefaultKeys(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
+  fail: lua_error(L); return SWIG_arg; }
+static int _wrap_isBundled(lua_State* L) { int SWIG_arg = 0; bool result; SWIG_check_num_args("loaf::isBundled",0,0)
+  result = (bool)loaf::isBundled(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
 static int _wrap_getStartDirectory(lua_State* L) { int SWIG_arg = 0; std::string result;
   SWIG_check_num_args("loaf::getStartDirectory",0,0) result = loaf::getStartDirectory();
   lua_pushlstring(L,(&result)->data(),(&result)->size()); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
@@ -2860,6 +2870,10 @@ static int _wrap_setCurrentDirectory(lua_State* L) { int SWIG_arg = 0; std::stri
 static int _wrap_modKey_get(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("loaf::modKey",0,0)
   result = (int)(int)loaf::modKey; lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
+static int _wrap_reloadScript(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::reloadScript",0,0)
+  loaf::reloadScript(); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_clearScript(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::clearScript",0,0) loaf::clearScript();
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_startListening(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::startListening",0,0)
   loaf::startListening(); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
 static int _wrap_stopListening(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::stopListening",0,0)
@@ -2926,9 +2940,14 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
 static swig_lua_method swig_SwigModule_methods[]= {
     { "setVerbose", _wrap_setVerbose},
     { "isVerbose", _wrap_isVerbose},
+    { "setUseDefaultKeys", _wrap_setUseDefaultKeys},
+    { "useDefaultKeys", _wrap_useDefaultKeys},
+    { "isBundled", _wrap_isBundled},
     { "getStartDirectory", _wrap_getStartDirectory},
     { "getCurrentDirectory", _wrap_getCurrentDirectory},
     { "setCurrentDirectory", _wrap_setCurrentDirectory},
+    { "reloadScript", _wrap_reloadScript},
+    { "clearScript", _wrap_clearScript},
     { "startListening", _wrap_startListening},
     { "stopListening", _wrap_stopListening},
     { "isListening", _wrap_isListening},

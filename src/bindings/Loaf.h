@@ -49,6 +49,24 @@ static bool isVerbose() {
 	return app->isVerbose();
 }
 
+/// enable/disable loaf default key bindings
+static void setUseDefaultKeys(bool defaultKeys) {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	app->setUseDefaultKeys(defaultKeys);
+}
+
+/// get loaf default key bindings
+static bool useDefaultKeys() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	return app->useDefaultKeys();
+}
+
+/// get loaf bundled status
+static bool isBundled() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	return app->isBundled();
+}
+
 /// get the directory the application was started from
 static std::string getStartDirectory() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
@@ -71,6 +89,20 @@ static const int modKey = OF_KEY_SUPER;
 #else
 static const int modKey = OF_KEY_CONTROL;
 #endif
+
+/// \section Script control
+
+/// reload the current script
+static void reloadScript() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	app->script.reload();
+}
+
+/// clear the current script
+static void clearScript() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	app->script.clear();
+}
 
 /// \section OSC Server
 
