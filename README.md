@@ -107,7 +107,7 @@ Options:
   -i, --ignore     ignore script changes
   -e, --exit       exit after script error
   -r, --reload     reload timeout in secs after a script error
-  --gl             open gl version ie. "4.1"
+  --gl             try to set gl version to use ie. "4.1"
   -v, --verbose    verbose printing
 
 Arguments:

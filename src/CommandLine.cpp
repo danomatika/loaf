@@ -68,7 +68,7 @@ bool CommandLine::parse(int argc, char **argv) {
 		{IGNORECHANGES, 0, "i", "ignore", Options::Arg::None, "  -i, --ignore \tignore script changes"},
 		{ERROREXIT, 0, "e", "exit", Options::Arg::None, "  -e, --exit \texit after script error"},
 		{ERRORRELOAD, 0, "r", "reload", Options::Arg::Integer, "  -r, --reload \treload timeout in secs after a script error"},
-		{OPENGL, 0, "", "gl", Options::Arg::NonEmpty, "  --gl \topen gl version ie. \"4.1\""},
+		{OPENGL, 0, "", "gl", Options::Arg::NonEmpty, "  --gl \ttry to set gl version to use ie. \"4.1\""},
 		{VERBOSE, 0, "v", "verbose", Options::Arg::None, "  -v, --verbose \tverbose printing"},
 		{UNKNOWN, 0, "", "", Options::Arg::Unknown, "\nArguments:"},
 		{UNKNOWN, 0, "", "", Options::Arg::None, "  PATH \toptional lua script or folder to run"},
