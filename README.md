@@ -143,6 +143,18 @@ As loaf contains the Lua embedded scripting language, pure Lua libraries will wo
 
 Also, a set of loaf-oriented Lua libraries is available in the [loaf-ingredients](https://github.com/danomatika/loaf-ingredients) repository.
 
+Additionally, you can build your own code into loadable dynamic library. See <https://github.com/danomatika/ofxLua/tree/master/modules> for more info.
+
+### Syphon
+
+As requested on GitHub:
+
+>I figure with OSC and Syphon, that's all you really need to intercommunicate.
+
+A `syphon` Lua module can be built using the ofxLua example project in `ofxLua/modules/syphon`. See the instructions in <https://github.com/danomatika/ofxLua/blob/master/modules>.
+
+_Note: The version of Lua used by loaf should match that used in ofxLua when building the syphon module. Compare the Lua version output in `loaf -v` and `loaf/CHANGES.txt` or `ofxLua/CHANGES>txt` to see which version of ofxLua you need._
+
 BUNDLING INTO STAND-ALONE APPS
 ------------------------------
 
