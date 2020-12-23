@@ -143,8 +143,6 @@ As loaf contains the Lua embedded scripting language, pure Lua libraries will wo
 
 Also, a set of loaf-oriented Lua libraries is available in the [loaf-ingredients](https://github.com/danomatika/loaf-ingredients) repository.
 
-Additionally, you can build your own code into loadable dynamic library. See <https://github.com/danomatika/ofxLua/tree/master/modules> for more info.
-
 ### Syphon
 
 As requested on GitHub:
@@ -201,9 +199,13 @@ To (re)generate project files for an existing project:
 
 If everything went Ok, you should now be able to open the generated project and build/run the example.
 
-### OSX
+### macOS
 
-Open the Xcode project, select the "loaf Release" scheme, and hit "Run". Once build, the loaf.app is found in the `bin` directory.
+If the project was regenerated using the OF ProjectGenerator, the openFrameworks-Info.plist file was overwritten and these changes can be reversed with:
+
+    git checkout openFrameworks-Info.plist
+
+Next, open the Xcode project, select the "loaf Release" scheme, and hit "Run". Once built, the loaf.app is found in the `bin` directory.
 
 ### Linux
 
