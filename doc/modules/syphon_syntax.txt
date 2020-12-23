@@ -1,0 +1,54 @@
+syphon
+syphon.Client
+syphon.Server
+syphon.ServerDescription
+syphon.ServerDirectory
+syphon.ServerDirectoryEventArgs
+syphon.ServerDirectoryEvents
+
+syphon.Client
+  bind
+  draw
+  drawSubsection
+  getApplicationName
+  getHeight
+  getServerName
+  getTexture
+  getWidth
+  isSetup
+  set
+  setApplicationName
+  setServerName
+  setup
+  unbind
+
+syphon.Server
+  getName
+  publishScreen
+  publishTexture
+  setName
+
+syphon.ServerDirectoryEventArgs
+  ServerDirectoryEventArgs
+  servers
+
+syphon.ServerDescription
+  appName
+  serverName
+
+syphon.ServerDirectory
+  events
+  getDescription
+  getServerList
+  handleNotification
+  isSetup
+  isValidIndex
+  serverExists
+  setup
+  size
+
+syphon.ServerDirectoryEvents
+  ServerDirectoryEvents
+  serverAnnounced
+  serverRetired
+  serverUpdated

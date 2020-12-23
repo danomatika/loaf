@@ -1,2 +1,3 @@
 ofxLua
 ofxOsc
+ofxSyphon

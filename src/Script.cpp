@@ -34,6 +34,9 @@
 extern "C" {
 	int luaopen_osc(lua_State* L);
 	int luaopen_loaf(lua_State* L);
+#ifdef LOAF_USE_SYPHON
+	int luaopen_syphon(lua_State* L);
+#endif
 }
 
 //--------------------------------------------------------------
@@ -245,7 +248,10 @@ bool Script::initState() {
 	
 	luaopen_osc(lua);  // osc bindings
 	luaopen_loaf(lua); // loaf bindings
-	
+#ifdef LOAF_USE_SYPHON
+	luaopen_syphon(lua); // syphon bindings
+#endif
+
 	// script arguments
 	lua.newTable("arg");
 	lua.pushTable("arg");

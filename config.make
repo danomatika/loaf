@@ -140,3 +140,16 @@
 ################################################################################
 # PROJECT_CXX = 
 # PROJECT_CC = 
+
+################################################################################
+# LOAF
+################################################################################
+
+UNAME = $(shell uname)
+
+# only build syphon module on macOS
+ifeq ($(UNAME), Darwin)
+	PROJECT_CFLAGS += -DLOAF_USE_SYPHON
+else
+	PROJECT_EXCLUSIONS = $(PROJECT_ROOT)/src/bindings/syphonBindings.cpp
+endif
