@@ -9,20 +9,26 @@
 	<key>CFBundleIconFile</key>
 	<string>${ICON}</string>
 	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<string>com.danomatika.loaf</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>loaf</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.6.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleDisplayName</key>
+	<string>loaf</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.developer-tools</string>
 	<key>NSCameraUsageDescription</key>
-	<string>This app needs to access the camera</string>
+	<string>loaf would like to access the camera</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>This app needs to access the microphone</string>
+	<string>loaf would like to access the microphone</string>
 </dict>
 </plist>
