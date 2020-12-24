@@ -174,13 +174,13 @@ static int getSendPort() {
 /// \section OSC Send Helpers
 
 /// send an OSC message using the built-in OSC sender
-static void sendMessage(ofxOscMessage& message) {
+static void sendMessage(ofxOscMessage &message) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->sender.sendMessage(message, false);
 }
 
 /// send an OSC bundle using the built-in OSC sender
-static void sendBundle(ofxOscBundle& bundle) {
+static void sendBundle(ofxOscBundle &bundle) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->sender.sendBundle(bundle);
 }
@@ -214,6 +214,44 @@ static void sendString(std::string address, std::string s) {
 	message.setAddress(address);
 	message.addStringArg(s);
 	sendMessage(message);
+}
+
+/// \section Syphon
+
+/// start the Syphon server
+static void startSyphon() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	app->startSyphon();
+}
+
+/// stop the Syphon server
+static void stopSyphon() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	app->stopSyphon();
+}
+
+/// is the Syphon server publishing the screen?
+static bool isSyphonPublishing() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	return app->syphon.isPublishing();
+}
+
+/// set the Syphon server name
+static void setSyphonName(std::string name) {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	app->setSyphonName(name);
+}
+
+/// get the Syphon server name
+static std::string getSyphonName() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	return app->syphon.getName();
+}
+
+/// get the underlying Syphon server instance
+static ofxSyphonServer *getSyphonServer() {
+	ofApp *app = (ofApp *)ofGetAppPtr();
+	return app->syphon.getServer();
 }
 
 } // namespace

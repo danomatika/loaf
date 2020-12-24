@@ -6,8 +6,11 @@ loaf.getListenPort
 loaf.getSendHost
 loaf.getSendPort
 loaf.getStartDirectory
+loaf.getSyphonName
+loaf.getSyphonServer
 loaf.isBundled
 loaf.isListening
+loaf.isSyphonPublishing
 loaf.isVerbose
 loaf.modKey
 loaf.reloadScript
@@ -21,9 +24,12 @@ loaf.setCurrentDirectory
 loaf.setListenPort
 loaf.setSendHost
 loaf.setSendPort
+loaf.setSyphonName
 loaf.setUseDefaultKeys
 loaf.setVerbose
 loaf.startListening
+loaf.startSyphon
 loaf.stopListening
+loaf.stopSyphon
 loaf.useDefaultKeys
 loaf.send

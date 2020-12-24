@@ -46,6 +46,8 @@ class CommandLine {
 		bool errorExit = false;
 		int errorReload = -1;
 		std::string opengl = "";
+		std::string syphonName = "";
+		bool syphon = false;
 		bool verbose = false;
 	
 		/// arguments

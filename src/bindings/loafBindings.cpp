@@ -2699,9 +2699,10 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 
 #define SWIGTYPE_p_ofxOscBundle swig_types[0]
 #define SWIGTYPE_p_ofxOscMessage swig_types[1]
-#define SWIGTYPE_p_std__string swig_types[2]
-static swig_type_info *swig_types[4];
-static swig_module_info swig_module = {swig_types, 3, 0, 0, 0, 0};
+#define SWIGTYPE_p_ofxSyphonServer swig_types[2]
+#define SWIGTYPE_p_std__string swig_types[3]
+static swig_type_info *swig_types[5];
+static swig_module_info swig_module = {swig_types, 4, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2930,6 +2931,25 @@ static int _wrap_sendString(lua_State* L) { int SWIG_arg = 0; std::string arg1 ;
   if(!lua_isstring(L,2)) SWIG_fail_arg("loaf::sendString",2,"std::string"); (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1));
   (&arg2)->assign(lua_tostring(L,2),lua_rawlen(L,2)); loaf::sendString(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
+static int _wrap_startSyphon(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::startSyphon",0,0) loaf::startSyphon();
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_stopSyphon(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::stopSyphon",0,0) loaf::stopSyphon();
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_isSyphonPublishing(lua_State* L) { int SWIG_arg = 0; bool result;
+  SWIG_check_num_args("loaf::isSyphonPublishing",0,0) result = (bool)loaf::isSyphonPublishing();
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_setSyphonName(lua_State* L) { int SWIG_arg = 0; std::string arg1 ;
+  SWIG_check_num_args("loaf::setSyphonName",1,1) if(!lua_isstring(L,1)) SWIG_fail_arg("loaf::setSyphonName",1,"std::string");
+  (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1)); loaf::setSyphonName(arg1); return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_getSyphonName(lua_State* L) { int SWIG_arg = 0; std::string result;
+  SWIG_check_num_args("loaf::getSyphonName",0,0) result = loaf::getSyphonName();
+  lua_pushlstring(L,(&result)->data(),(&result)->size()); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
+static int _wrap_getSyphonServer(lua_State* L) { int SWIG_arg = 0; ofxSyphonServer *result = 0 ;
+  SWIG_check_num_args("loaf::getSyphonServer",0,0) result = (ofxSyphonServer *)loaf::getSyphonServer();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonServer,0); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
 static swig_lua_attribute swig_SwigModule_attributes[] = {
     { "modKey", _wrap_modKey_get, SWIG_Lua_set_immutable },
     {0,0,0}
@@ -2964,6 +2984,12 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "sendFloat", _wrap_sendFloat},
     { "sendInt", _wrap_sendInt},
     { "sendString", _wrap_sendString},
+    { "startSyphon", _wrap_startSyphon},
+    { "stopSyphon", _wrap_stopSyphon},
+    { "isSyphonPublishing", _wrap_isSyphonPublishing},
+    { "setSyphonName", _wrap_setSyphonName},
+    { "getSyphonName", _wrap_getSyphonName},
+    { "getSyphonServer", _wrap_getSyphonServer},
     {0,0}
 };
 static swig_lua_class* swig_SwigModule_classes[]= {
@@ -2990,21 +3016,25 @@ static swig_lua_namespace swig_SwigModule = {
 
 static swig_type_info _swigt__p_ofxOscBundle = {"_p_ofxOscBundle", "ofxOscBundle *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_ofxOscMessage = {"_p_ofxOscMessage", "ofxOscMessage *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ofxSyphonServer = {"_p_ofxSyphonServer", "ofxSyphonServer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)&_wrap_class_string, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_ofxOscBundle,
   &_swigt__p_ofxOscMessage,
+  &_swigt__p_ofxSyphonServer,
   &_swigt__p_std__string,
 };
 
 static swig_cast_info _swigc__p_ofxOscBundle[] = {  {&_swigt__p_ofxOscBundle, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ofxOscMessage[] = {  {&_swigt__p_ofxOscMessage, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofxSyphonServer[] = {  {&_swigt__p_ofxSyphonServer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_ofxOscBundle,
   _swigc__p_ofxOscMessage,
+  _swigc__p_ofxSyphonServer,
   _swigc__p_std__string,
 };
 

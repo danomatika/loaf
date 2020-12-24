@@ -67,7 +67,7 @@ class Script : protected ofxLuaListener {
 		
 		/// send an osc message to the lua script
 		/// calls the oscReceived lua function
-		void oscReceived(const ofxOscMessage& message);
+		void oscReceived(const ofxOscMessage &message);
 	
 		/// access to the current script absolute path
 		void setCurrentScript(std::string script) {currentScript = script;}
@@ -86,7 +86,7 @@ class Script : protected ofxLuaListener {
 		void clearState();
 	
 		/// lua error callback
-		void errorReceived(std::string& msg);
+		void errorReceived(std::string &message);
 
 		std::string currentScript = ""; //< absolute path to current script
 		std::vector<std::string> arg; //< global "arg" table passed from commandline

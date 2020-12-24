@@ -21,6 +21,7 @@
 		2A1E8DDFAC0050E914B898E0 /* llex.c in Sources */ = {isa = PBXBuildFile; fileRef = A7CE3D8FEA79E0D9B03143D0 /* llex.c */; };
 		2B43CA2C2B2102B98853E585 /* lbaselib.c in Sources */ = {isa = PBXBuildFile; fileRef = 296C407E228207FA81337437 /* lbaselib.c */; };
 		2CEA5A91F769BB162C8D046A /* lopcodes.c in Sources */ = {isa = PBXBuildFile; fileRef = 17E553E00F5C6AFAC6D09C7C /* lopcodes.c */; };
+		303D942B2593E7090081F1DE /* Syphon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 303D94292593E7090081F1DE /* Syphon.cpp */; };
 		35FC7D61E8DCE5721FF3F371 /* lundump.c in Sources */ = {isa = PBXBuildFile; fileRef = B2D9A0D8CCFAFFFCF4F378ED /* lundump.c */; };
 		39BD2D99826301E9CE4711A3 /* ltable.c in Sources */ = {isa = PBXBuildFile; fileRef = 327879B347519E1E5636BC19 /* ltable.c */; };
 		423287EF6FD95F3BBD89082F /* CommandLine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FF30FDE3D05E0A804A733B80 /* CommandLine.cpp */; };
@@ -105,6 +106,8 @@
 		2EFEE8036B389C3F0A501982 /* ltm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ltm.h; path = ../../../addons/ofxLua/libs/lua/ltm.h; sourceTree = SOURCE_ROOT; };
 		2F4C4D2EBF36C1728B54C40D /* lopcodes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = lopcodes.h; path = ../../../addons/ofxLua/libs/lua/lopcodes.h; sourceTree = SOURCE_ROOT; };
 		2FD4B0329909D3527F003494 /* UdpSocket.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = UdpSocket.h; path = ../../../addons/ofxOsc/libs/oscpack/src/ip/UdpSocket.h; sourceTree = SOURCE_ROOT; };
+		303D94292593E7090081F1DE /* Syphon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Syphon.cpp; sourceTree = "<group>"; };
+		303D942A2593E7090081F1DE /* Syphon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Syphon.h; sourceTree = "<group>"; };
 		31603EE2E9AB06CCA2C675AD /* lstate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = lstate.h; path = ../../../addons/ofxLua/libs/lua/lstate.h; sourceTree = SOURCE_ROOT; };
 		327879B347519E1E5636BC19 /* ltable.c */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.c; fileEncoding = 4; name = ltable.c; path = ../../../addons/ofxLua/libs/lua/ltable.c; sourceTree = SOURCE_ROOT; };
 		32D6F27DC6308427F9A278C1 /* ofxSyphonServer.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = ofxSyphonServer.mm; path = ../../../addons/ofxSyphon/src/ofxSyphonServer.mm; sourceTree = SOURCE_ROOT; };
@@ -959,16 +962,18 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				BA25E69D2CC299E808F4CEDE /* config.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
 				E4B69E1E0A3A1BDC003C02F2 /* ofApp.cpp */,
 				E4B69E1F0A3A1BDC003C02F2 /* ofApp.h */,
 				F4F1FEBC4A7B17994DB81D02 /* options */,
-				3552B997BBE6876739E954F8 /* Util.cpp */,
 				FC6A641C6A76A378FED96514 /* Script.h */,
-				BA25E69D2CC299E808F4CEDE /* config.h */,
 				F16D24420C7F53960ABCF4FA /* Script.cpp */,
 				AE70AC91BD0796D84FE0E8A8 /* PathWatcher.h */,
 				8B1B0EF6734BAA54449ABA0E /* Util.h */,
+				3552B997BBE6876739E954F8 /* Util.cpp */,
+				303D942A2593E7090081F1DE /* Syphon.h */,
+				303D94292593E7090081F1DE /* Syphon.cpp */,
 				168F64C7BA85EE762BFD7E34 /* bindings */,
 				0275A968BB2CB11F3064BA3C /* CommandLine.h */,
 				FF30FDE3D05E0A804A733B80 /* CommandLine.cpp */,
@@ -1164,6 +1169,7 @@
 				CBAA7E526D0702B85FE6C904 /* ltablib.c in Sources */,
 				831B7F0AB029001B586D0B93 /* ltm.c in Sources */,
 				35FC7D61E8DCE5721FF3F371 /* lundump.c in Sources */,
+				303D942B2593E7090081F1DE /* Syphon.cpp in Sources */,
 				9008DBA5C88FEF0B162B7230 /* lutf8lib.c in Sources */,
 				A9F56084DF3D0538D788C159 /* lvm.c in Sources */,
 				64512EE0A57FFC207D21B968 /* lzio.c in Sources */,
@@ -1248,6 +1254,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
+					"-DLOAF_USE_SYPHON",
 				);
 				SDKROOT = macosx;
 			};
@@ -1365,6 +1372,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
+					"-DLOAF_USE_SYPHON",
 				);
 				SDKROOT = macosx;
 			};
@@ -1424,6 +1432,7 @@
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-mtune=native",
+					"-DLOAF_USE_SYPHON",
 				);
 				SDKROOT = macosx;
 			};

@@ -31,6 +31,9 @@ typedef std::string string;
 // dummy typedef for ofxSyphonServerDirectoryEventArgs
 class ofEventArgs {};
 
+// ignore notification function which should not be called by users
+ofxSyphonServerDirectory::handleNotification(CFStringRef, CFDictionaryRef);
+
 // includes
 %include "ofxSyphon/src/ofxSyphonClient.h"
 %include "ofxSyphon/src/ofxSyphonServer.h"

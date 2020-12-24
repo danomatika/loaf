@@ -29,6 +29,7 @@
 #include "PathWatcher.h"
 #include "ofxOscSender.h"
 #include "ofxOscReceiver.h"
+#include "Syphon.h"
 #include "CommandLine.h"
 
 class ofApp : public ofBaseApp {
@@ -84,25 +85,36 @@ class ofApp : public ofBaseApp {
 		/// get loaf bundled status
 		bool isBundled();
 	
-	/// \section Osc
+	/// \section OSC
 	
-		/// start listening for osc messages
+		/// start listening for OSC messages
 		void startListening();
 	
-		/// stop listenig for osc messages
+		/// stop listenig for OSC messages
 		void stopListening();
 	
 		/// set the listen port, checks for valid range
 		void setListenPort(int port);
 	
 		/// set the sender host
-		void setSendHost(const string &host);
+		void setSendHost(const std::string &host);
 	
 		/// set the sender port, checks for valid range
 		void setSendPort(int port);
 	
-		/// osc received callback
+		/// OSC received callback
 		void oscReceived(const ofxOscMessage &message);
+
+	/// \section Syphon
+
+		/// start the Syphon server
+		void startSyphon();
+
+		/// stop the Syphon server
+		void stopSyphon();
+
+		/// set the Syphon server name
+		void setSyphonName(const std::string &name);
 	
 	/// \section PathWatcher
 	
@@ -118,6 +130,8 @@ class ofApp : public ofBaseApp {
 		ofxOscSender sender; //< OSC message sender
 		ofxOscReceiver listener; //< OSC message listener
 		std::string baseAddress = BASE_ADDRESS; //< base OSC address for loaf control messages
+
+		Syphon syphon; //< Syphon server
 
 		std::string startDir; //< working directory on app start
 	
