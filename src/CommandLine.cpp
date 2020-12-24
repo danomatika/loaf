@@ -49,10 +49,12 @@ bool CommandLine::parse(int argc, char **argv) {
 		STARTLISTENING,
 		FULLSCREEN,
 		IGNORECHANGES,
-		VERBOSE,
-		OPENGL,
 		ERROREXIT,
-		ERRORRELOAD
+		ERRORRELOAD,
+		OPENGL,
+		SYPHONNAME,
+		SYPHON,
+		VERBOSE
 	};
 
 	// option and usage print descriptors
@@ -69,6 +71,8 @@ bool CommandLine::parse(int argc, char **argv) {
 		{ERROREXIT, 0, "e", "exit", Options::Arg::None, "  -e, --exit \texit after script error"},
 		{ERRORRELOAD, 0, "r", "reload", Options::Arg::Integer, "  -r, --reload \treload timeout in secs after a script error"},
 		{OPENGL, 0, "", "gl", Options::Arg::NonEmpty, "  --gl \ttry to set gl version to use ie. \"4.1\""},
+		{SYPHONNAME, 0, "", "syphon-name", Options::Arg::NonEmpty, "  --syphon-name \tSyphon server name (default: screen)"},
+		{SYPHON, 0, "", "syphon", Options::Arg::None, "  --syphon \tstart streaming screen with Syphon (macOS only)"},
 		{VERBOSE, 0, "v", "verbose", Options::Arg::None, "  -v, --verbose \tverbose printing"},
 		{UNKNOWN, 0, "", "", Options::Arg::Unknown, "\nArguments:"},
 		{UNKNOWN, 0, "", "", Options::Arg::None, "  PATH \toptional lua script or folder to run"},
@@ -112,6 +116,8 @@ bool CommandLine::parse(int argc, char **argv) {
 	if(options.isSet(ERROREXIT))      {errorExit = true; changed = true;}
 	if(options.isSet(ERRORRELOAD))    {errorReload = options.getInt(ERRORRELOAD); changed = true;}
 	if(options.isSet(OPENGL))         {opengl = options.getString(OPENGL); changed = true;}
+	if(options.isSet(SYPHONNAME))     {syphonName = options.getString(SYPHONNAME); changed = true;}
+	if(options.isSet(SYPHON))         {syphon = true; changed = true;}
 	if(options.isSet(VERBOSE))        {verbose = true; changed = true;}
 	return true;
 }

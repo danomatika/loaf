@@ -31,7 +31,7 @@ void ofApp::setup() {
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	
-	// osc defaults
+	// OSC defaults
 	sender.setup(SEND_HOST, SEND_PORT);
 	ofxOscReceiverSettings settings;
 	settings.port = LISTEN_PORT;
@@ -83,6 +83,12 @@ void ofApp::setup() {
 		if(options->startListening) {
 			startListening();
 		}
+		if(options->syphonName != "") {
+			syphon.setName(options->syphonName);
+		}
+		if(options->syphon) {
+			syphon.start();
+		}
 
 		// cleanup
 		delete options;
@@ -105,12 +111,18 @@ void ofApp::setup() {
 	                      << OF_VERSION_PATCH;
 	ofLogVerbose(PACKAGE) << "open gl version: " << glGetString(GL_VERSION);
 	
-	// print the current osc communication settings
+	// print the current OSC communication settings
 	ofLogVerbose(PACKAGE) << "send host: " << sender.getSettings().host;
 	ofLogVerbose(PACKAGE) << "send port: " << sender.getSettings().port;
 	ofLogVerbose(PACKAGE) << "listen port: " << listener.getPort();
 	if(listener.isListening()) {
 		ofLogVerbose(PACKAGE) << "started listening";
+	}
+	if(Syphon::supported()) {
+		ofLogVerbose(PACKAGE) << "syphon name: " << syphon.getName();
+		if(syphon.isPublishing()) {
+			ofLogVerbose(PACKAGE) << "started syphon";
+		}
 	}
 }
 
@@ -138,6 +150,7 @@ void ofApp::update() {
 //--------------------------------------------------------------
 void ofApp::draw() {
 	script.lua.scriptDraw();
+	syphon.publish();
 	script.drawError();
 }
 
@@ -364,7 +377,7 @@ void ofApp::setSendPort(int port) {
 }
 
 //--------------------------------------------------------------
-void ofApp::oscReceived(const ofxOscMessage & message) {
+void ofApp::oscReceived(const ofxOscMessage &message) {
 	if(message.getAddress() == baseAddress + "/load") {
 		if(message.getNumArgs() > 0 && message.getArgType(0) == OFXOSC_TYPE_STRING) {
 			std::vector<std::string> args;
@@ -408,6 +421,37 @@ void ofApp::oscReceived(const ofxOscMessage & message) {
 	else {
 		// forward message to lua
 		script.oscReceived(message);
+	}
+}
+
+// SYPHON
+
+//--------------------------------------------------------------
+void ofApp::startSyphon() {
+	bool wasPublishing = syphon.isPublishing();
+	syphon.start();
+	if(!wasPublishing && !options) {
+		ofLogVerbose(PACKAGE) << "started syphon";
+	}
+}
+
+//--------------------------------------------------------------
+void ofApp::stopSyphon() {
+	bool wasPublishing = syphon.isPublishing();
+	syphon.stop();
+	if(wasPublishing && !options) {
+		ofLogVerbose(PACKAGE) << "stopped syphon";
+	}
+}
+
+//--------------------------------------------------------------
+void ofApp::setSyphonName(const std::string &name) {
+	if(syphon.getName() == name) {
+		return; // silently ignore
+	}
+	syphon.setName(name);
+	if(!options) {
+		ofLogVerbose(PACKAGE) << "syphon name: " << name;
 	}
 }
 

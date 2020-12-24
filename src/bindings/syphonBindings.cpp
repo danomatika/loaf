@@ -2697,29 +2697,41 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_ofxOscBundle swig_types[0]
-#define SWIGTYPE_p_ofxOscMessage swig_types[1]
-#define SWIGTYPE_p_ofxSyphonServer swig_types[2]
-#define SWIGTYPE_p_std__string swig_types[3]
-static swig_type_info *swig_types[5];
-static swig_module_info swig_module = {swig_types, 4, 0, 0, 0, 0};
+#define SWIGTYPE_p_CFDictionaryRef swig_types[0]
+#define SWIGTYPE_p_CFStringRef swig_types[1]
+#define SWIGTYPE_p_GLenum swig_types[2]
+#define SWIGTYPE_p_GLsizei swig_types[3]
+#define SWIGTYPE_p_GLuint swig_types[4]
+#define SWIGTYPE_p_ofEventArgs swig_types[5]
+#define SWIGTYPE_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t swig_types[6]
+#define SWIGTYPE_p_ofTexture swig_types[7]
+#define SWIGTYPE_p_ofxSyphonClient swig_types[8]
+#define SWIGTYPE_p_ofxSyphonServer swig_types[9]
+#define SWIGTYPE_p_ofxSyphonServerDescription swig_types[10]
+#define SWIGTYPE_p_ofxSyphonServerDirectory swig_types[11]
+#define SWIGTYPE_p_ofxSyphonServerDirectoryEventArgs swig_types[12]
+#define SWIGTYPE_p_ofxSyphonServerDirectoryEvents swig_types[13]
+#define SWIGTYPE_p_std__string swig_types[14]
+#define SWIGTYPE_p_vectorT_ofxSyphonServerDescription_t swig_types[15]
+static swig_type_info *swig_types[17];
+static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
 /* -------- TYPES TABLE (END) -------- */
 
-#define SWIG_name      "loaf"
-#define SWIG_init      luaopen_loaf
-#define SWIG_init_user luaopen_loaf_user
+#define SWIG_name      "syphon"
+#define SWIG_init      luaopen_syphon
+#define SWIG_init_user luaopen_syphon_user
 
-#define SWIG_LUACODE   luaopen_loaf_luacode
+#define SWIG_LUACODE   luaopen_syphon_luacode
 
 namespace swig {
 typedef struct{} LANGUAGE_OBJ;
 }
 
 
-#include "Loaf.h"
+#include "ofxSyphon.h"
 
 
 #include <string>
@@ -2839,161 +2851,883 @@ static swig_lua_class *swig_string_bases[] = {0};
 static const char *swig_string_base_names[] = {0};
 static swig_lua_class _wrap_class_string = { "string", "string", &SWIGTYPE_p_std__string,_proxy__wrap_new_string, swig_delete_string, swig_string_methods, swig_string_attributes, &swig_string_Sf_SwigStatic, swig_string_meta, swig_string_bases, swig_string_base_names };
 
-static int _wrap_setVerbose(lua_State* L) { int SWIG_arg = 0; bool arg1 ; SWIG_check_num_args("loaf::setVerbose",1,1)
-  if(!lua_isboolean(L,1)) SWIG_fail_arg("loaf::setVerbose",1,"bool"); arg1 = (lua_toboolean(L, 1)!=0); loaf::setVerbose(arg1);
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_isVerbose(lua_State* L) { int SWIG_arg = 0; bool result; SWIG_check_num_args("loaf::isVerbose",0,0)
-  result = (bool)loaf::isVerbose(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
+static int _wrap_new_ofEventArgs(lua_State* L) { int SWIG_arg = 0; ofEventArgs *result = 0 ;
+  SWIG_check_num_args("ofEventArgs::ofEventArgs",0,0) result = (ofEventArgs *)new ofEventArgs();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofEventArgs,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
+static void swig_delete_ofEventArgs(void *obj) {
+ofEventArgs *arg1 = (ofEventArgs *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_ofEventArgs(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_ofEventArgs);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_ofEventArgs_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_method swig_ofEventArgs_methods[]= {
+    {0,0}
+};
+static swig_lua_method swig_ofEventArgs_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_ofEventArgs_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_ofEventArgs_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_ofEventArgs_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_ofEventArgs_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_ofEventArgs_Sf_SwigStatic = {
+    "ofEventArgs",
+    swig_ofEventArgs_Sf_SwigStatic_methods,
+    swig_ofEventArgs_Sf_SwigStatic_attributes,
+    swig_ofEventArgs_Sf_SwigStatic_constants,
+    swig_ofEventArgs_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_ofEventArgs_bases[] = {0};
+static const char *swig_ofEventArgs_base_names[] = {0};
+static swig_lua_class _wrap_class_ofEventArgs = { "ofEventArgs", "ofEventArgs", &SWIGTYPE_p_ofEventArgs,_proxy__wrap_new_ofEventArgs, swig_delete_ofEventArgs, swig_ofEventArgs_methods, swig_ofEventArgs_attributes, &swig_ofEventArgs_Sf_SwigStatic, swig_ofEventArgs_meta, swig_ofEventArgs_bases, swig_ofEventArgs_base_names };
+
+static int _wrap_new_Client__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *result = 0 ;
+  SWIG_check_num_args("ofxSyphonClient::ofxSyphonClient",0,0) result = (ofxSyphonClient *)new ofxSyphonClient();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonClient,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
+static int _wrap_new_Client__SWIG_1(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = 0 ; ofxSyphonClient *result = 0 ;
+  SWIG_check_num_args("ofxSyphonClient::ofxSyphonClient",1,1)
+  if(!lua_isuserdata(L,1)) SWIG_fail_arg("ofxSyphonClient::ofxSyphonClient",1,"ofxSyphonClient const &");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("new_Client",1,SWIGTYPE_p_ofxSyphonClient); } 
+  result = (ofxSyphonClient *)new ofxSyphonClient((ofxSyphonClient const &)*arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonClient,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
+static int _wrap_new_Client(lua_State* L) { int argc; int argv[2]={ 1,2} ; argc = lua_gettop(L); if (argc == 0) {
+    return _wrap_new_Client__SWIG_0(L);}  if (argc == 1) { return _wrap_new_Client__SWIG_1(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'new_Client'\n" "  Possible C/C++ prototypes are:\n"
+  "    ofxSyphonClient::ofxSyphonClient()\n" "    ofxSyphonClient::ofxSyphonClient(ofxSyphonClient const &)\n");
+  lua_error(L);return 0; }
+static int _wrap_Client_setup(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  SWIG_check_num_args("ofxSyphonClient::setup",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::setup",1,"ofxSyphonClient *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_setup",1,SWIGTYPE_p_ofxSyphonClient); }  (arg1)->setup(); return SWIG_arg; if(0) SWIG_fail; fail:
   lua_error(L); return SWIG_arg; }
-static int _wrap_setUseDefaultKeys(lua_State* L) { int SWIG_arg = 0; bool arg1 ;
-  SWIG_check_num_args("loaf::setUseDefaultKeys",1,1) if(!lua_isboolean(L,1)) SWIG_fail_arg("loaf::setUseDefaultKeys",1,"bool");
-  arg1 = (lua_toboolean(L, 1)!=0); loaf::setUseDefaultKeys(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
-  return SWIG_arg; }
-static int _wrap_useDefaultKeys(lua_State* L) { int SWIG_arg = 0; bool result; SWIG_check_num_args("loaf::useDefaultKeys",0,0)
-  result = (bool)loaf::useDefaultKeys(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
-  fail: lua_error(L); return SWIG_arg; }
-static int _wrap_isBundled(lua_State* L) { int SWIG_arg = 0; bool result; SWIG_check_num_args("loaf::isBundled",0,0)
-  result = (bool)loaf::isBundled(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_getStartDirectory(lua_State* L) { int SWIG_arg = 0; std::string result;
-  SWIG_check_num_args("loaf::getStartDirectory",0,0) result = loaf::getStartDirectory();
-  lua_pushlstring(L,(&result)->data(),(&result)->size()); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
-  return SWIG_arg; }
-static int _wrap_getCurrentDirectory(lua_State* L) { int SWIG_arg = 0; std::string result;
-  SWIG_check_num_args("loaf::getCurrentDirectory",0,0) result = loaf::getCurrentDirectory();
-  lua_pushlstring(L,(&result)->data(),(&result)->size()); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
-  return SWIG_arg; }
-static int _wrap_setCurrentDirectory(lua_State* L) { int SWIG_arg = 0; std::string arg1 ; bool result;
-  SWIG_check_num_args("loaf::setCurrentDirectory",1,1)
-  if(!lua_isstring(L,1)) SWIG_fail_arg("loaf::setCurrentDirectory",1,"std::string");
-  (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1)); result = (bool)loaf::setCurrentDirectory(arg1);
+static int _wrap_Client_isSetup(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ; bool result;
+  SWIG_check_num_args("ofxSyphonClient::isSetup",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::isSetup",1,"ofxSyphonClient *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_isSetup",1,SWIGTYPE_p_ofxSyphonClient); }  result = (bool)(arg1)->isSetup();
   lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_modKey_get(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("loaf::modKey",0,0)
-  result = (int)(int)loaf::modKey; lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_reloadScript(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::reloadScript",0,0)
-  loaf::reloadScript(); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_clearScript(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::clearScript",0,0) loaf::clearScript();
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_startListening(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::startListening",0,0)
-  loaf::startListening(); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_stopListening(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::stopListening",0,0)
-  loaf::stopListening(); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_isListening(lua_State* L) { int SWIG_arg = 0; bool result; SWIG_check_num_args("loaf::isListening",0,0)
-  result = (bool)loaf::isListening(); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_setListenPort(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("loaf::setListenPort",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("loaf::setListenPort",1,"int"); arg1 = (int)lua_tonumber(L, 1);
-  loaf::setListenPort(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_getListenPort(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("loaf::getListenPort",0,0)
-  result = (int)loaf::getListenPort(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
-  fail: lua_error(L); return SWIG_arg; }
-static int _wrap_getHostname(lua_State* L) { int SWIG_arg = 0; std::string result; SWIG_check_num_args("loaf::getHostname",0,0)
-  result = loaf::getHostname(); lua_pushlstring(L,(&result)->data(),(&result)->size()); SWIG_arg++; return SWIG_arg;
+static int _wrap_Client_set__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  ofxSyphonServerDescription arg2 ; ofxSyphonServerDescription *argp2 ; SWIG_check_num_args("ofxSyphonClient::set",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::set",1,"ofxSyphonClient *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("ofxSyphonClient::set",2,"ofxSyphonServerDescription");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_set",1,SWIGTYPE_p_ofxSyphonClient); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_ofxSyphonServerDescription,0))){
+    SWIG_fail_ptr("Client_set",2,SWIGTYPE_p_ofxSyphonServerDescription); }  arg2 = *argp2; (arg1)->set(arg2); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_setSendHost(lua_State* L) { int SWIG_arg = 0; std::string arg1 ; SWIG_check_num_args("loaf::setSendHost",1,1)
-  if(!lua_isstring(L,1)) SWIG_fail_arg("loaf::setSendHost",1,"std::string"); (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1));
-  loaf::setSendHost(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_getSendHost(lua_State* L) { int SWIG_arg = 0; std::string result; SWIG_check_num_args("loaf::getSendHost",0,0)
-  result = loaf::getSendHost(); lua_pushlstring(L,(&result)->data(),(&result)->size()); SWIG_arg++; return SWIG_arg;
+static int _wrap_Client_set__SWIG_1(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  std::string arg2 ; std::string arg3 ; SWIG_check_num_args("ofxSyphonClient::set",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::set",1,"ofxSyphonClient *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("ofxSyphonClient::set",2,"std::string");
+  if(!lua_isstring(L,3)) SWIG_fail_arg("ofxSyphonClient::set",3,"std::string");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_set",1,SWIGTYPE_p_ofxSyphonClient); }  (&arg2)->assign(lua_tostring(L,2),lua_rawlen(L,2));
+  (&arg3)->assign(lua_tostring(L,3),lua_rawlen(L,3)); (arg1)->set(arg2,arg3); return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_Client_set(lua_State* L) { int argc; int argv[4]={ 1,2,3,4} ; argc = lua_gettop(L); if (argc == 2) {
+    return _wrap_Client_set__SWIG_0(L);}  if (argc == 3) { return _wrap_Client_set__SWIG_1(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'Client_set'\n" "  Possible C/C++ prototypes are:\n"
+  "    ofxSyphonClient::set(ofxSyphonServerDescription)\n" "    ofxSyphonClient::set(std::string,std::string)\n");
+  lua_error(L);return 0; }
+static int _wrap_Client_setApplicationName(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  std::string arg2 ; SWIG_check_num_args("ofxSyphonClient::setApplicationName",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::setApplicationName",1,"ofxSyphonClient *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("ofxSyphonClient::setApplicationName",2,"std::string");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_setApplicationName",1,SWIGTYPE_p_ofxSyphonClient); } 
+  (&arg2)->assign(lua_tostring(L,2),lua_rawlen(L,2)); (arg1)->setApplicationName(arg2); return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_Client_setServerName(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  std::string arg2 ; SWIG_check_num_args("ofxSyphonClient::setServerName",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::setServerName",1,"ofxSyphonClient *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("ofxSyphonClient::setServerName",2,"std::string");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_setServerName",1,SWIGTYPE_p_ofxSyphonClient); }  (&arg2)->assign(lua_tostring(L,2),lua_rawlen(L,2));
+  (arg1)->setServerName(arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Client_getApplicationName(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  std::string *result = 0 ; SWIG_check_num_args("ofxSyphonClient::getApplicationName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::getApplicationName",1,"ofxSyphonClient *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_getApplicationName",1,SWIGTYPE_p_ofxSyphonClient); } 
+  result = (std::string *) &(arg1)->getApplicationName(); SWIG_NewPointerObj(L,result,SWIGTYPE_p_std__string,0); SWIG_arg++; 
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Client_getServerName(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  std::string *result = 0 ; SWIG_check_num_args("ofxSyphonClient::getServerName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::getServerName",1,"ofxSyphonClient *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_getServerName",1,SWIGTYPE_p_ofxSyphonClient); }  result = (std::string *) &(arg1)->getServerName();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_std__string,0); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
+static int _wrap_Client_bind(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  SWIG_check_num_args("ofxSyphonClient::bind",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::bind",1,"ofxSyphonClient *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_bind",1,SWIGTYPE_p_ofxSyphonClient); }  (arg1)->bind(); return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_Client_unbind(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  SWIG_check_num_args("ofxSyphonClient::unbind",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::unbind",1,"ofxSyphonClient *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_unbind",1,SWIGTYPE_p_ofxSyphonClient); }  (arg1)->unbind(); return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_Client_getTexture(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  ofTexture *result = 0 ; SWIG_check_num_args("ofxSyphonClient::getTexture",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::getTexture",1,"ofxSyphonClient *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_getTexture",1,SWIGTYPE_p_ofxSyphonClient); }  result = (ofTexture *) &(arg1)->getTexture();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofTexture,0); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
+static int _wrap_Client_draw__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  float arg2 ; float arg3 ; float arg4 ; float arg5 ; SWIG_check_num_args("ofxSyphonClient::draw",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::draw",1,"ofxSyphonClient *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxSyphonClient::draw",2,"float");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("ofxSyphonClient::draw",3,"float");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("ofxSyphonClient::draw",4,"float");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("ofxSyphonClient::draw",5,"float");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_draw",1,SWIGTYPE_p_ofxSyphonClient); }  arg2 = (float)lua_tonumber(L, 2);
+  arg3 = (float)lua_tonumber(L, 3); arg4 = (float)lua_tonumber(L, 4); arg5 = (float)lua_tonumber(L, 5);
+  (arg1)->draw(arg2,arg3,arg4,arg5); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Client_draw__SWIG_1(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  float arg2 ; float arg3 ; SWIG_check_num_args("ofxSyphonClient::draw",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::draw",1,"ofxSyphonClient *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxSyphonClient::draw",2,"float");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("ofxSyphonClient::draw",3,"float");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_draw",1,SWIGTYPE_p_ofxSyphonClient); }  arg2 = (float)lua_tonumber(L, 2);
+  arg3 = (float)lua_tonumber(L, 3); (arg1)->draw(arg2,arg3); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+  return SWIG_arg; }
+static int _wrap_Client_draw(lua_State* L) { int argc; int argv[6]={ 1,2,3,4,5,6} ; argc = lua_gettop(L); if (argc == 3) {
+    return _wrap_Client_draw__SWIG_1(L);}  if (argc == 5) { return _wrap_Client_draw__SWIG_0(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'Client_draw'\n" "  Possible C/C++ prototypes are:\n"
+  "    ofxSyphonClient::draw(float,float,float,float)\n" "    ofxSyphonClient::draw(float,float)\n"); lua_error(L);return 0; }
+static int _wrap_Client_drawSubsection__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  float arg2 ; float arg3 ; float arg4 ; float arg5 ; float arg6 ; float arg7 ; float arg8 ; float arg9 ;
+  SWIG_check_num_args("ofxSyphonClient::drawSubsection",9,9)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",1,"ofxSyphonClient *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",2,"float");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",3,"float");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",4,"float");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",5,"float");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",6,"float");
+  if(!lua_isnumber(L,7)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",7,"float");
+  if(!lua_isnumber(L,8)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",8,"float");
+  if(!lua_isnumber(L,9)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",9,"float");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_drawSubsection",1,SWIGTYPE_p_ofxSyphonClient); }  arg2 = (float)lua_tonumber(L, 2);
+  arg3 = (float)lua_tonumber(L, 3); arg4 = (float)lua_tonumber(L, 4); arg5 = (float)lua_tonumber(L, 5);
+  arg6 = (float)lua_tonumber(L, 6); arg7 = (float)lua_tonumber(L, 7); arg8 = (float)lua_tonumber(L, 8);
+  arg9 = (float)lua_tonumber(L, 9); (arg1)->drawSubsection(arg2,arg3,arg4,arg5,arg6,arg7,arg8,arg9); return SWIG_arg;
   if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_setSendPort(lua_State* L) { int SWIG_arg = 0; int arg1 ; SWIG_check_num_args("loaf::setSendPort",1,1)
-  if(!lua_isnumber(L,1)) SWIG_fail_arg("loaf::setSendPort",1,"int"); arg1 = (int)lua_tonumber(L, 1); loaf::setSendPort(arg1);
+static int _wrap_Client_drawSubsection__SWIG_1(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  float arg2 ; float arg3 ; float arg4 ; float arg5 ; float arg6 ; float arg7 ;
+  SWIG_check_num_args("ofxSyphonClient::drawSubsection",7,7)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",1,"ofxSyphonClient *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",2,"float");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",3,"float");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",4,"float");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",5,"float");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",6,"float");
+  if(!lua_isnumber(L,7)) SWIG_fail_arg("ofxSyphonClient::drawSubsection",7,"float");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_drawSubsection",1,SWIGTYPE_p_ofxSyphonClient); }  arg2 = (float)lua_tonumber(L, 2);
+  arg3 = (float)lua_tonumber(L, 3); arg4 = (float)lua_tonumber(L, 4); arg5 = (float)lua_tonumber(L, 5);
+  arg6 = (float)lua_tonumber(L, 6); arg7 = (float)lua_tonumber(L, 7); (arg1)->drawSubsection(arg2,arg3,arg4,arg5,arg6,arg7);
   return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_getSendPort(lua_State* L) { int SWIG_arg = 0; int result; SWIG_check_num_args("loaf::getSendPort",0,0)
-  result = (int)loaf::getSendPort(); lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_sendMessage(lua_State* L) { int SWIG_arg = 0; ofxOscMessage *arg1 = 0 ;
-  SWIG_check_num_args("loaf::sendMessage",1,1) if(!lua_isuserdata(L,1)) SWIG_fail_arg("loaf::sendMessage",1,"ofxOscMessage &");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscMessage,0))){
-    SWIG_fail_ptr("sendMessage",1,SWIGTYPE_p_ofxOscMessage); }  loaf::sendMessage(*arg1); return SWIG_arg; if(0) SWIG_fail;
-  fail: lua_error(L); return SWIG_arg; }
-static int _wrap_sendBundle(lua_State* L) { int SWIG_arg = 0; ofxOscBundle *arg1 = 0 ;
-  SWIG_check_num_args("loaf::sendBundle",1,1) if(!lua_isuserdata(L,1)) SWIG_fail_arg("loaf::sendBundle",1,"ofxOscBundle &");
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxOscBundle,0))){
-    SWIG_fail_ptr("sendBundle",1,SWIGTYPE_p_ofxOscBundle); }  loaf::sendBundle(*arg1); return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_sendBang(lua_State* L) { int SWIG_arg = 0; std::string arg1 ; SWIG_check_num_args("loaf::sendBang",1,1)
-  if(!lua_isstring(L,1)) SWIG_fail_arg("loaf::sendBang",1,"std::string"); (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1));
-  loaf::sendBang(arg1); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_sendFloat(lua_State* L) { int SWIG_arg = 0; std::string arg1 ; float arg2 ;
-  SWIG_check_num_args("loaf::sendFloat",2,2) if(!lua_isstring(L,1)) SWIG_fail_arg("loaf::sendFloat",1,"std::string");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("loaf::sendFloat",2,"float"); (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1));
-  arg2 = (float)lua_tonumber(L, 2); loaf::sendFloat(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
+static int _wrap_Client_drawSubsection(lua_State* L) { int argc; int argv[10]={ 1,2,3,4,5,6,7,8,9,10} ; argc = lua_gettop(L);
+  if (argc == 7) { return _wrap_Client_drawSubsection__SWIG_1(L);}  if (argc == 9) {
+    return _wrap_Client_drawSubsection__SWIG_0(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'Client_drawSubsection'\n"
+  "  Possible C/C++ prototypes are:\n" "    ofxSyphonClient::drawSubsection(float,float,float,float,float,float,float,float)\n"
+  "    ofxSyphonClient::drawSubsection(float,float,float,float,float,float)\n"); lua_error(L);return 0; }
+static int _wrap_Client_getWidth(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ; float result;
+  SWIG_check_num_args("ofxSyphonClient::getWidth",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::getWidth",1,"ofxSyphonClient *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_getWidth",1,SWIGTYPE_p_ofxSyphonClient); }  result = (float)(arg1)->getWidth();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Client_getHeight(lua_State* L) { int SWIG_arg = 0; ofxSyphonClient *arg1 = (ofxSyphonClient *) 0 ;
+  float result; SWIG_check_num_args("ofxSyphonClient::getHeight",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonClient::getHeight",1,"ofxSyphonClient *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonClient,0))){
+    SWIG_fail_ptr("Client_getHeight",1,SWIGTYPE_p_ofxSyphonClient); }  result = (float)(arg1)->getHeight();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static void swig_delete_Client(void *obj) {
+ofxSyphonClient *arg1 = (ofxSyphonClient *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_Client(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_Client);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_Client_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_method swig_Client_methods[]= {
+    { "setup", _wrap_Client_setup},
+    { "isSetup", _wrap_Client_isSetup},
+    { "set", _wrap_Client_set},
+    { "setApplicationName", _wrap_Client_setApplicationName},
+    { "setServerName", _wrap_Client_setServerName},
+    { "getApplicationName", _wrap_Client_getApplicationName},
+    { "getServerName", _wrap_Client_getServerName},
+    { "bind", _wrap_Client_bind},
+    { "unbind", _wrap_Client_unbind},
+    { "getTexture", _wrap_Client_getTexture},
+    { "draw", _wrap_Client_draw},
+    { "drawSubsection", _wrap_Client_drawSubsection},
+    { "getWidth", _wrap_Client_getWidth},
+    { "getHeight", _wrap_Client_getHeight},
+    {0,0}
+};
+static swig_lua_method swig_Client_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_Client_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_Client_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_Client_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_Client_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_Client_Sf_SwigStatic = {
+    "Client",
+    swig_Client_Sf_SwigStatic_methods,
+    swig_Client_Sf_SwigStatic_attributes,
+    swig_Client_Sf_SwigStatic_constants,
+    swig_Client_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_Client_bases[] = {0};
+static const char *swig_Client_base_names[] = {0};
+static swig_lua_class _wrap_class_Client = { "Client", "Client", &SWIGTYPE_p_ofxSyphonClient,_proxy__wrap_new_Client, swig_delete_Client, swig_Client_methods, swig_Client_attributes, &swig_Client_Sf_SwigStatic, swig_Client_meta, swig_Client_bases, swig_Client_base_names };
+
+static int _wrap_new_Server(lua_State* L) { int SWIG_arg = 0; ofxSyphonServer *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServer::ofxSyphonServer",0,0) result = (ofxSyphonServer *)new ofxSyphonServer();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonServer,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
   return SWIG_arg; }
-static int _wrap_sendInt(lua_State* L) { int SWIG_arg = 0; std::string arg1 ; int arg2 ;
-  SWIG_check_num_args("loaf::sendInt",2,2) if(!lua_isstring(L,1)) SWIG_fail_arg("loaf::sendInt",1,"std::string");
-  if(!lua_isnumber(L,2)) SWIG_fail_arg("loaf::sendInt",2,"int"); (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1));
-  arg2 = (int)lua_tonumber(L, 2); loaf::sendInt(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
-  return SWIG_arg; }
-static int _wrap_sendString(lua_State* L) { int SWIG_arg = 0; std::string arg1 ; std::string arg2 ;
-  SWIG_check_num_args("loaf::sendString",2,2) if(!lua_isstring(L,1)) SWIG_fail_arg("loaf::sendString",1,"std::string");
-  if(!lua_isstring(L,2)) SWIG_fail_arg("loaf::sendString",2,"std::string"); (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1));
-  (&arg2)->assign(lua_tostring(L,2),lua_rawlen(L,2)); loaf::sendString(arg1,arg2); return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_startSyphon(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::startSyphon",0,0) loaf::startSyphon();
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_stopSyphon(lua_State* L) { int SWIG_arg = 0; SWIG_check_num_args("loaf::stopSyphon",0,0) loaf::stopSyphon();
-  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_isSyphonPublishing(lua_State* L) { int SWIG_arg = 0; bool result;
-  SWIG_check_num_args("loaf::isSyphonPublishing",0,0) result = (bool)loaf::isSyphonPublishing();
-  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
-static int _wrap_setSyphonName(lua_State* L) { int SWIG_arg = 0; std::string arg1 ;
-  SWIG_check_num_args("loaf::setSyphonName",1,1) if(!lua_isstring(L,1)) SWIG_fail_arg("loaf::setSyphonName",1,"std::string");
-  (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1)); loaf::setSyphonName(arg1); return SWIG_arg; if(0) SWIG_fail; fail:
-  lua_error(L); return SWIG_arg; }
-static int _wrap_getSyphonName(lua_State* L) { int SWIG_arg = 0; std::string result;
-  SWIG_check_num_args("loaf::getSyphonName",0,0) result = loaf::getSyphonName();
+static int _wrap_Server_setName(lua_State* L) { int SWIG_arg = 0; ofxSyphonServer *arg1 = (ofxSyphonServer *) 0 ;
+  std::string arg2 ; SWIG_check_num_args("ofxSyphonServer::setName",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServer::setName",1,"ofxSyphonServer *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("ofxSyphonServer::setName",2,"std::string");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServer,0))){
+    SWIG_fail_ptr("Server_setName",1,SWIGTYPE_p_ofxSyphonServer); }  (&arg2)->assign(lua_tostring(L,2),lua_rawlen(L,2));
+  (arg1)->setName(arg2); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Server_getName(lua_State* L) { int SWIG_arg = 0; ofxSyphonServer *arg1 = (ofxSyphonServer *) 0 ;
+  std::string result; SWIG_check_num_args("ofxSyphonServer::getName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServer::getName",1,"ofxSyphonServer *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServer,0))){
+    SWIG_fail_ptr("Server_getName",1,SWIGTYPE_p_ofxSyphonServer); }  result = (arg1)->getName();
   lua_pushlstring(L,(&result)->data(),(&result)->size()); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
   return SWIG_arg; }
-static int _wrap_getSyphonServer(lua_State* L) { int SWIG_arg = 0; ofxSyphonServer *result = 0 ;
-  SWIG_check_num_args("loaf::getSyphonServer",0,0) result = (ofxSyphonServer *)loaf::getSyphonServer();
-  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonServer,0); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L);
-  return SWIG_arg; }
+static int _wrap_Server_publishScreen(lua_State* L) { int SWIG_arg = 0; ofxSyphonServer *arg1 = (ofxSyphonServer *) 0 ;
+  SWIG_check_num_args("ofxSyphonServer::publishScreen",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServer::publishScreen",1,"ofxSyphonServer *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServer,0))){
+    SWIG_fail_ptr("Server_publishScreen",1,SWIGTYPE_p_ofxSyphonServer); }  (arg1)->publishScreen(); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Server_publishTexture__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxSyphonServer *arg1 = (ofxSyphonServer *) 0 ;
+  ofTexture *arg2 = (ofTexture *) 0 ; SWIG_check_num_args("ofxSyphonServer::publishTexture",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServer::publishTexture",1,"ofxSyphonServer *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("ofxSyphonServer::publishTexture",2,"ofTexture *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServer,0))){
+    SWIG_fail_ptr("Server_publishTexture",1,SWIGTYPE_p_ofxSyphonServer); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_ofTexture,0))){
+    SWIG_fail_ptr("Server_publishTexture",2,SWIGTYPE_p_ofTexture); }  (arg1)->publishTexture(arg2); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Server_publishTexture__SWIG_1(lua_State* L) { int SWIG_arg = 0; ofxSyphonServer *arg1 = (ofxSyphonServer *) 0 ;
+  GLuint arg2 ; GLenum arg3 ; GLsizei arg4 ; GLsizei arg5 ; bool arg6 ; GLuint *argp2 ; GLenum *argp3 ; GLsizei *argp4 ;
+  GLsizei *argp5 ; SWIG_check_num_args("ofxSyphonServer::publishTexture",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServer::publishTexture",1,"ofxSyphonServer *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("ofxSyphonServer::publishTexture",2,"GLuint");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("ofxSyphonServer::publishTexture",3,"GLenum");
+  if(!lua_isuserdata(L,4)) SWIG_fail_arg("ofxSyphonServer::publishTexture",4,"GLsizei");
+  if(!lua_isuserdata(L,5)) SWIG_fail_arg("ofxSyphonServer::publishTexture",5,"GLsizei");
+  if(!lua_isboolean(L,6)) SWIG_fail_arg("ofxSyphonServer::publishTexture",6,"bool");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServer,0))){
+    SWIG_fail_ptr("Server_publishTexture",1,SWIGTYPE_p_ofxSyphonServer); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_GLuint,0))){
+    SWIG_fail_ptr("Server_publishTexture",2,SWIGTYPE_p_GLuint); }  arg2 = *argp2;
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&argp3,SWIGTYPE_p_GLenum,0))){
+    SWIG_fail_ptr("Server_publishTexture",3,SWIGTYPE_p_GLenum); }  arg3 = *argp3;
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,4,(void**)&argp4,SWIGTYPE_p_GLsizei,0))){
+    SWIG_fail_ptr("Server_publishTexture",4,SWIGTYPE_p_GLsizei); }  arg4 = *argp4;
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&argp5,SWIGTYPE_p_GLsizei,0))){
+    SWIG_fail_ptr("Server_publishTexture",5,SWIGTYPE_p_GLsizei); }  arg5 = *argp5; arg6 = (lua_toboolean(L, 6)!=0);
+  (arg1)->publishTexture(arg2,arg3,arg4,arg5,arg6); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_Server_publishTexture(lua_State* L) { int argc; int argv[7]={ 1,2,3,4,5,6,7} ; argc = lua_gettop(L);
+  if (argc == 2) { return _wrap_Server_publishTexture__SWIG_0(L);}  if (argc == 6) {
+    return _wrap_Server_publishTexture__SWIG_1(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'Server_publishTexture'\n"
+  "  Possible C/C++ prototypes are:\n" "    ofxSyphonServer::publishTexture(ofTexture *)\n"
+  "    ofxSyphonServer::publishTexture(GLuint,GLenum,GLsizei,GLsizei,bool)\n"); lua_error(L);return 0; }
+static void swig_delete_Server(void *obj) {
+ofxSyphonServer *arg1 = (ofxSyphonServer *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_Server(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_Server);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_Server_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_method swig_Server_methods[]= {
+    { "setName", _wrap_Server_setName},
+    { "getName", _wrap_Server_getName},
+    { "publishScreen", _wrap_Server_publishScreen},
+    { "publishTexture", _wrap_Server_publishTexture},
+    {0,0}
+};
+static swig_lua_method swig_Server_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_Server_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_Server_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_Server_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_Server_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_Server_Sf_SwigStatic = {
+    "Server",
+    swig_Server_Sf_SwigStatic_methods,
+    swig_Server_Sf_SwigStatic_attributes,
+    swig_Server_Sf_SwigStatic_constants,
+    swig_Server_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_Server_bases[] = {0};
+static const char *swig_Server_base_names[] = {0};
+static swig_lua_class _wrap_class_Server = { "Server", "Server", &SWIGTYPE_p_ofxSyphonServer,_proxy__wrap_new_Server, swig_delete_Server, swig_Server_methods, swig_Server_attributes, &swig_Server_Sf_SwigStatic, swig_Server_meta, swig_Server_bases, swig_Server_base_names };
+
+static int _wrap_new_ServerDescription__SWIG_0(lua_State* L) { int SWIG_arg = 0; ofxSyphonServerDescription *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDescription::ofxSyphonServerDescription",0,0)
+  result = (ofxSyphonServerDescription *)new ofxSyphonServerDescription();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonServerDescription,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_new_ServerDescription__SWIG_1(lua_State* L) { int SWIG_arg = 0; std::string arg1 ; std::string arg2 ;
+  ofxSyphonServerDescription *result = 0 ; SWIG_check_num_args("ofxSyphonServerDescription::ofxSyphonServerDescription",2,2)
+  if(!lua_isstring(L,1)) SWIG_fail_arg("ofxSyphonServerDescription::ofxSyphonServerDescription",1,"std::string");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("ofxSyphonServerDescription::ofxSyphonServerDescription",2,"std::string");
+  (&arg1)->assign(lua_tostring(L,1),lua_rawlen(L,1)); (&arg2)->assign(lua_tostring(L,2),lua_rawlen(L,2));
+  result = (ofxSyphonServerDescription *)new ofxSyphonServerDescription(arg1,arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonServerDescription,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_new_ServerDescription(lua_State* L) { int argc; int argv[3]={ 1,2,3} ; argc = lua_gettop(L); if (argc == 0) {
+    return _wrap_new_ServerDescription__SWIG_0(L);}  if (argc == 2) { return _wrap_new_ServerDescription__SWIG_1(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'new_ServerDescription'\n"
+  "  Possible C/C++ prototypes are:\n" "    ofxSyphonServerDescription::ofxSyphonServerDescription()\n"
+  "    ofxSyphonServerDescription::ofxSyphonServerDescription(std::string,std::string)\n"); lua_error(L);return 0; }
+static int _wrap_ServerDescription_serverName_set(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDescription *arg1 = (ofxSyphonServerDescription *) 0 ; std::string *arg2 = 0 ; std::string temp2 ;
+  SWIG_check_num_args("ofxSyphonServerDescription::serverName",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDescription::serverName",1,"ofxSyphonServerDescription *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("ofxSyphonServerDescription::serverName",2,"std::string const &");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDescription,0))){
+    SWIG_fail_ptr("ServerDescription_serverName_set",1,SWIGTYPE_p_ofxSyphonServerDescription); } 
+  temp2.assign(lua_tostring(L,2),lua_rawlen(L,2)); arg2=&temp2; if (arg1) (arg1)->serverName = *arg2; return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDescription_serverName_get(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDescription *arg1 = (ofxSyphonServerDescription *) 0 ; std::string *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDescription::serverName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDescription::serverName",1,"ofxSyphonServerDescription *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDescription,0))){
+    SWIG_fail_ptr("ServerDescription_serverName_get",1,SWIGTYPE_p_ofxSyphonServerDescription); } 
+  result = (std::string *) & ((arg1)->serverName); lua_pushlstring(L,result->data(),result->size()); SWIG_arg++;
+  return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDescription_appName_set(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDescription *arg1 = (ofxSyphonServerDescription *) 0 ; std::string *arg2 = 0 ; std::string temp2 ;
+  SWIG_check_num_args("ofxSyphonServerDescription::appName",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDescription::appName",1,"ofxSyphonServerDescription *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("ofxSyphonServerDescription::appName",2,"std::string const &");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDescription,0))){
+    SWIG_fail_ptr("ServerDescription_appName_set",1,SWIGTYPE_p_ofxSyphonServerDescription); } 
+  temp2.assign(lua_tostring(L,2),lua_rawlen(L,2)); arg2=&temp2; if (arg1) (arg1)->appName = *arg2; return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDescription_appName_get(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDescription *arg1 = (ofxSyphonServerDescription *) 0 ; std::string *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDescription::appName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDescription::appName",1,"ofxSyphonServerDescription *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDescription,0))){
+    SWIG_fail_ptr("ServerDescription_appName_get",1,SWIGTYPE_p_ofxSyphonServerDescription); } 
+  result = (std::string *) & ((arg1)->appName); lua_pushlstring(L,result->data(),result->size()); SWIG_arg++; return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static void swig_delete_ServerDescription(void *obj) {
+ofxSyphonServerDescription *arg1 = (ofxSyphonServerDescription *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_ServerDescription(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_ServerDescription);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_ServerDescription_attributes[] = {
+    { "serverName", _wrap_ServerDescription_serverName_get, _wrap_ServerDescription_serverName_set },
+    { "appName", _wrap_ServerDescription_appName_get, _wrap_ServerDescription_appName_set },
+    {0,0,0}
+};
+static swig_lua_method swig_ServerDescription_methods[]= {
+    {0,0}
+};
+static swig_lua_method swig_ServerDescription_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_ServerDescription_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_ServerDescription_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_ServerDescription_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_ServerDescription_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_ServerDescription_Sf_SwigStatic = {
+    "ServerDescription",
+    swig_ServerDescription_Sf_SwigStatic_methods,
+    swig_ServerDescription_Sf_SwigStatic_attributes,
+    swig_ServerDescription_Sf_SwigStatic_constants,
+    swig_ServerDescription_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_ServerDescription_bases[] = {0};
+static const char *swig_ServerDescription_base_names[] = {0};
+static swig_lua_class _wrap_class_ServerDescription = { "ServerDescription", "ServerDescription", &SWIGTYPE_p_ofxSyphonServerDescription,_proxy__wrap_new_ServerDescription, swig_delete_ServerDescription, swig_ServerDescription_methods, swig_ServerDescription_attributes, &swig_ServerDescription_Sf_SwigStatic, swig_ServerDescription_meta, swig_ServerDescription_bases, swig_ServerDescription_base_names };
+
+static int _wrap_ServerDirectoryEventArgs_servers_set(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectoryEventArgs *arg1 = (ofxSyphonServerDirectoryEventArgs *) 0 ;
+  vector< ofxSyphonServerDescription > *arg2 = (vector< ofxSyphonServerDescription > *) 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectoryEventArgs::servers",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectoryEventArgs::servers",1,"ofxSyphonServerDirectoryEventArgs *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("ofxSyphonServerDirectoryEventArgs::servers",2,"vector< ofxSyphonServerDescription > *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectoryEventArgs,0))){
+    SWIG_fail_ptr("ServerDirectoryEventArgs_servers_set",1,SWIGTYPE_p_ofxSyphonServerDirectoryEventArgs); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_vectorT_ofxSyphonServerDescription_t,0))){
+    SWIG_fail_ptr("ServerDirectoryEventArgs_servers_set",2,SWIGTYPE_p_vectorT_ofxSyphonServerDescription_t); } 
+  if (arg1) (arg1)->servers = *arg2; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectoryEventArgs_servers_get(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectoryEventArgs *arg1 = (ofxSyphonServerDirectoryEventArgs *) 0 ;
+  vector< ofxSyphonServerDescription > *result = 0 ; SWIG_check_num_args("ofxSyphonServerDirectoryEventArgs::servers",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectoryEventArgs::servers",1,"ofxSyphonServerDirectoryEventArgs *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectoryEventArgs,0))){
+    SWIG_fail_ptr("ServerDirectoryEventArgs_servers_get",1,SWIGTYPE_p_ofxSyphonServerDirectoryEventArgs); } 
+  result = (vector< ofxSyphonServerDescription > *)& ((arg1)->servers);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_vectorT_ofxSyphonServerDescription_t,0); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail;
+  fail: lua_error(L); return SWIG_arg; }
+static int _wrap_new_ServerDirectoryEventArgs(lua_State* L) { int SWIG_arg = 0; ofxSyphonServerDirectoryEventArgs *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectoryEventArgs::ofxSyphonServerDirectoryEventArgs",0,0)
+  result = (ofxSyphonServerDirectoryEventArgs *)new ofxSyphonServerDirectoryEventArgs();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonServerDirectoryEventArgs,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail;
+  fail: lua_error(L); return SWIG_arg; }
+static void swig_delete_ServerDirectoryEventArgs(void *obj) {
+ofxSyphonServerDirectoryEventArgs *arg1 = (ofxSyphonServerDirectoryEventArgs *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_ServerDirectoryEventArgs(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_ServerDirectoryEventArgs);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_ServerDirectoryEventArgs_attributes[] = {
+    { "servers", _wrap_ServerDirectoryEventArgs_servers_get, _wrap_ServerDirectoryEventArgs_servers_set },
+    {0,0,0}
+};
+static swig_lua_method swig_ServerDirectoryEventArgs_methods[]= {
+    {0,0}
+};
+static swig_lua_method swig_ServerDirectoryEventArgs_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_ServerDirectoryEventArgs_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_ServerDirectoryEventArgs_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_ServerDirectoryEventArgs_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_ServerDirectoryEventArgs_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_ServerDirectoryEventArgs_Sf_SwigStatic = {
+    "ServerDirectoryEventArgs",
+    swig_ServerDirectoryEventArgs_Sf_SwigStatic_methods,
+    swig_ServerDirectoryEventArgs_Sf_SwigStatic_attributes,
+    swig_ServerDirectoryEventArgs_Sf_SwigStatic_constants,
+    swig_ServerDirectoryEventArgs_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_ServerDirectoryEventArgs_bases[] = {0,0};
+static const char *swig_ServerDirectoryEventArgs_base_names[] = {"ofEventArgs *",0};
+static swig_lua_class _wrap_class_ServerDirectoryEventArgs = { "ServerDirectoryEventArgs", "ServerDirectoryEventArgs", &SWIGTYPE_p_ofxSyphonServerDirectoryEventArgs,_proxy__wrap_new_ServerDirectoryEventArgs, swig_delete_ServerDirectoryEventArgs, swig_ServerDirectoryEventArgs_methods, swig_ServerDirectoryEventArgs_attributes, &swig_ServerDirectoryEventArgs_Sf_SwigStatic, swig_ServerDirectoryEventArgs_meta, swig_ServerDirectoryEventArgs_bases, swig_ServerDirectoryEventArgs_base_names };
+
+static int _wrap_ServerDirectoryEvents_serverUpdated_set(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectoryEvents *arg1 = (ofxSyphonServerDirectoryEvents *) 0 ;
+  ofEvent< ofxSyphonServerDirectoryEventArgs > *arg2 = (ofEvent< ofxSyphonServerDirectoryEventArgs > *) 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectoryEvents::serverUpdated",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectoryEvents::serverUpdated",1,"ofxSyphonServerDirectoryEvents *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("ofxSyphonServerDirectoryEvents::serverUpdated",2,"ofEvent< ofxSyphonServerDirectoryEventArgs > *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents,0))){
+    SWIG_fail_ptr("ServerDirectoryEvents_serverUpdated_set",1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t,0))){
+    SWIG_fail_ptr("ServerDirectoryEvents_serverUpdated_set",2,SWIGTYPE_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t); } 
+  if (arg1) (arg1)->serverUpdated = *arg2; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectoryEvents_serverUpdated_get(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectoryEvents *arg1 = (ofxSyphonServerDirectoryEvents *) 0 ;
+  ofEvent< ofxSyphonServerDirectoryEventArgs > *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectoryEvents::serverUpdated",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectoryEvents::serverUpdated",1,"ofxSyphonServerDirectoryEvents *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents,0))){
+    SWIG_fail_ptr("ServerDirectoryEvents_serverUpdated_get",1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents); } 
+  result = (ofEvent< ofxSyphonServerDirectoryEventArgs > *)& ((arg1)->serverUpdated);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t,0); SWIG_arg++;  return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectoryEvents_serverAnnounced_set(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectoryEvents *arg1 = (ofxSyphonServerDirectoryEvents *) 0 ;
+  ofEvent< ofxSyphonServerDirectoryEventArgs > *arg2 = (ofEvent< ofxSyphonServerDirectoryEventArgs > *) 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectoryEvents::serverAnnounced",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectoryEvents::serverAnnounced",1,"ofxSyphonServerDirectoryEvents *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("ofxSyphonServerDirectoryEvents::serverAnnounced",2,"ofEvent< ofxSyphonServerDirectoryEventArgs > *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents,0))){
+    SWIG_fail_ptr("ServerDirectoryEvents_serverAnnounced_set",1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t,0))){
+    SWIG_fail_ptr("ServerDirectoryEvents_serverAnnounced_set",2,SWIGTYPE_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t); } 
+  if (arg1) (arg1)->serverAnnounced = *arg2; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectoryEvents_serverAnnounced_get(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectoryEvents *arg1 = (ofxSyphonServerDirectoryEvents *) 0 ;
+  ofEvent< ofxSyphonServerDirectoryEventArgs > *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectoryEvents::serverAnnounced",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectoryEvents::serverAnnounced",1,"ofxSyphonServerDirectoryEvents *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents,0))){
+    SWIG_fail_ptr("ServerDirectoryEvents_serverAnnounced_get",1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents); } 
+  result = (ofEvent< ofxSyphonServerDirectoryEventArgs > *)& ((arg1)->serverAnnounced);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t,0); SWIG_arg++;  return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectoryEvents_serverRetired_set(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectoryEvents *arg1 = (ofxSyphonServerDirectoryEvents *) 0 ;
+  ofEvent< ofxSyphonServerDirectoryEventArgs > *arg2 = (ofEvent< ofxSyphonServerDirectoryEventArgs > *) 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectoryEvents::serverRetired",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectoryEvents::serverRetired",1,"ofxSyphonServerDirectoryEvents *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("ofxSyphonServerDirectoryEvents::serverRetired",2,"ofEvent< ofxSyphonServerDirectoryEventArgs > *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents,0))){
+    SWIG_fail_ptr("ServerDirectoryEvents_serverRetired_set",1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t,0))){
+    SWIG_fail_ptr("ServerDirectoryEvents_serverRetired_set",2,SWIGTYPE_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t); } 
+  if (arg1) (arg1)->serverRetired = *arg2; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectoryEvents_serverRetired_get(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectoryEvents *arg1 = (ofxSyphonServerDirectoryEvents *) 0 ;
+  ofEvent< ofxSyphonServerDirectoryEventArgs > *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectoryEvents::serverRetired",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectoryEvents::serverRetired",1,"ofxSyphonServerDirectoryEvents *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents,0))){
+    SWIG_fail_ptr("ServerDirectoryEvents_serverRetired_get",1,SWIGTYPE_p_ofxSyphonServerDirectoryEvents); } 
+  result = (ofEvent< ofxSyphonServerDirectoryEventArgs > *)& ((arg1)->serverRetired);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t,0); SWIG_arg++;  return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_new_ServerDirectoryEvents(lua_State* L) { int SWIG_arg = 0; ofxSyphonServerDirectoryEvents *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectoryEvents::ofxSyphonServerDirectoryEvents",0,0)
+  result = (ofxSyphonServerDirectoryEvents *)new ofxSyphonServerDirectoryEvents();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonServerDirectoryEvents,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static void swig_delete_ServerDirectoryEvents(void *obj) {
+ofxSyphonServerDirectoryEvents *arg1 = (ofxSyphonServerDirectoryEvents *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_ServerDirectoryEvents(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_ServerDirectoryEvents);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_ServerDirectoryEvents_attributes[] = {
+    { "serverUpdated", _wrap_ServerDirectoryEvents_serverUpdated_get, _wrap_ServerDirectoryEvents_serverUpdated_set },
+    { "serverAnnounced", _wrap_ServerDirectoryEvents_serverAnnounced_get, _wrap_ServerDirectoryEvents_serverAnnounced_set },
+    { "serverRetired", _wrap_ServerDirectoryEvents_serverRetired_get, _wrap_ServerDirectoryEvents_serverRetired_set },
+    {0,0,0}
+};
+static swig_lua_method swig_ServerDirectoryEvents_methods[]= {
+    {0,0}
+};
+static swig_lua_method swig_ServerDirectoryEvents_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_ServerDirectoryEvents_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_ServerDirectoryEvents_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_ServerDirectoryEvents_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_ServerDirectoryEvents_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_ServerDirectoryEvents_Sf_SwigStatic = {
+    "ServerDirectoryEvents",
+    swig_ServerDirectoryEvents_Sf_SwigStatic_methods,
+    swig_ServerDirectoryEvents_Sf_SwigStatic_attributes,
+    swig_ServerDirectoryEvents_Sf_SwigStatic_constants,
+    swig_ServerDirectoryEvents_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_ServerDirectoryEvents_bases[] = {0};
+static const char *swig_ServerDirectoryEvents_base_names[] = {0};
+static swig_lua_class _wrap_class_ServerDirectoryEvents = { "ServerDirectoryEvents", "ServerDirectoryEvents", &SWIGTYPE_p_ofxSyphonServerDirectoryEvents,_proxy__wrap_new_ServerDirectoryEvents, swig_delete_ServerDirectoryEvents, swig_ServerDirectoryEvents_methods, swig_ServerDirectoryEvents_attributes, &swig_ServerDirectoryEvents_Sf_SwigStatic, swig_ServerDirectoryEvents_meta, swig_ServerDirectoryEvents_bases, swig_ServerDirectoryEvents_base_names };
+
+static int _wrap_new_ServerDirectory(lua_State* L) { int SWIG_arg = 0; ofxSyphonServerDirectory *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectory::ofxSyphonServerDirectory",0,0)
+  result = (ofxSyphonServerDirectory *)new ofxSyphonServerDirectory();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonServerDirectory,1); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_setup(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ; SWIG_check_num_args("ofxSyphonServerDirectory::setup",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::setup",1,"ofxSyphonServerDirectory *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_setup",1,SWIGTYPE_p_ofxSyphonServerDirectory); }  (arg1)->setup(); return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_isSetup(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ; bool result;
+  SWIG_check_num_args("ofxSyphonServerDirectory::isSetup",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::isSetup",1,"ofxSyphonServerDirectory *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_isSetup",1,SWIGTYPE_p_ofxSyphonServerDirectory); }  result = (bool)(arg1)->isSetup();
+  lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_size(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ; int result;
+  SWIG_check_num_args("ofxSyphonServerDirectory::size",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::size",1,"ofxSyphonServerDirectory *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_size",1,SWIGTYPE_p_ofxSyphonServerDirectory); }  result = (int)(arg1)->size();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_isValidIndex(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ; int arg2 ; bool result;
+  SWIG_check_num_args("ofxSyphonServerDirectory::isValidIndex",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::isValidIndex",1,"ofxSyphonServerDirectory *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxSyphonServerDirectory::isValidIndex",2,"int");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_isValidIndex",1,SWIGTYPE_p_ofxSyphonServerDirectory); }  arg2 = (int)lua_tonumber(L, 2);
+  result = (bool)(arg1)->isValidIndex(arg2); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
+  fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_serverExists__SWIG_0(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ; std::string arg2 ; std::string arg3 ; bool result;
+  SWIG_check_num_args("ofxSyphonServerDirectory::serverExists",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::serverExists",1,"ofxSyphonServerDirectory *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("ofxSyphonServerDirectory::serverExists",2,"std::string");
+  if(!lua_isstring(L,3)) SWIG_fail_arg("ofxSyphonServerDirectory::serverExists",3,"std::string");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_serverExists",1,SWIGTYPE_p_ofxSyphonServerDirectory); } 
+  (&arg2)->assign(lua_tostring(L,2),lua_rawlen(L,2)); (&arg3)->assign(lua_tostring(L,3),lua_rawlen(L,3));
+  result = (bool)(arg1)->serverExists(arg2,arg3); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg;
+  if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_serverExists__SWIG_1(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ; ofxSyphonServerDescription arg2 ;
+  ofxSyphonServerDescription *argp2 ; bool result; SWIG_check_num_args("ofxSyphonServerDirectory::serverExists",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::serverExists",1,"ofxSyphonServerDirectory *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("ofxSyphonServerDirectory::serverExists",2,"ofxSyphonServerDescription");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_serverExists",1,SWIGTYPE_p_ofxSyphonServerDirectory); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_ofxSyphonServerDescription,0))){
+    SWIG_fail_ptr("ServerDirectory_serverExists",2,SWIGTYPE_p_ofxSyphonServerDescription); }  arg2 = *argp2;
+  result = (bool)(arg1)->serverExists(arg2); lua_pushboolean(L,(int)(result!=0)); SWIG_arg++; return SWIG_arg; if(0) SWIG_fail;
+  fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_serverExists(lua_State* L) { int argc; int argv[4]={ 1,2,3,4} ; argc = lua_gettop(L);
+  if (argc == 2) { return _wrap_ServerDirectory_serverExists__SWIG_1(L);}  if (argc == 3) {
+    return _wrap_ServerDirectory_serverExists__SWIG_0(L);} 
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'ServerDirectory_serverExists'\n"
+  "  Possible C/C++ prototypes are:\n" "    ofxSyphonServerDirectory::serverExists(std::string,std::string)\n"
+  "    ofxSyphonServerDirectory::serverExists(ofxSyphonServerDescription)\n"); lua_error(L);return 0; }
+static int _wrap_ServerDirectory_getDescription(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ; int arg2 ; ofxSyphonServerDescription *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectory::getDescription",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::getDescription",1,"ofxSyphonServerDirectory *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("ofxSyphonServerDirectory::getDescription",2,"int");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_getDescription",1,SWIGTYPE_p_ofxSyphonServerDirectory); }  arg2 = (int)lua_tonumber(L, 2);
+  result = (ofxSyphonServerDescription *) &(arg1)->getDescription(arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonServerDescription,0); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_getServerList(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ; vector< ofxSyphonServerDescription > *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectory::getServerList",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::getServerList",1,"ofxSyphonServerDirectory *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_getServerList",1,SWIGTYPE_p_ofxSyphonServerDirectory); } 
+  result = (vector< ofxSyphonServerDescription > *) &(arg1)->getServerList();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_vectorT_ofxSyphonServerDescription_t,0); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail;
+  fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_events_set(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ;
+  ofxSyphonServerDirectoryEvents *arg2 = (ofxSyphonServerDirectoryEvents *) 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectory::events",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::events",1,"ofxSyphonServerDirectory *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("ofxSyphonServerDirectory::events",2,"ofxSyphonServerDirectoryEvents *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_events_set",1,SWIGTYPE_p_ofxSyphonServerDirectory); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_ofxSyphonServerDirectoryEvents,0))){
+    SWIG_fail_ptr("ServerDirectory_events_set",2,SWIGTYPE_p_ofxSyphonServerDirectoryEvents); } 
+  if (arg1) (arg1)->events = *arg2; return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_events_get(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ; ofxSyphonServerDirectoryEvents *result = 0 ;
+  SWIG_check_num_args("ofxSyphonServerDirectory::events",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::events",1,"ofxSyphonServerDirectory *");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_events_get",1,SWIGTYPE_p_ofxSyphonServerDirectory); } 
+  result = (ofxSyphonServerDirectoryEvents *)& ((arg1)->events);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_ofxSyphonServerDirectoryEvents,0); SWIG_arg++;  return SWIG_arg; if(0) SWIG_fail; fail:
+  lua_error(L); return SWIG_arg; }
+static int _wrap_ServerDirectory_handleNotification(lua_State* L) { int SWIG_arg = 0;
+  ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) 0 ; CFStringRef arg2 ; CFDictionaryRef arg3 ;
+  CFStringRef *argp2 ; CFDictionaryRef *argp3 ; SWIG_check_num_args("ofxSyphonServerDirectory::handleNotification",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("ofxSyphonServerDirectory::handleNotification",1,"ofxSyphonServerDirectory *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("ofxSyphonServerDirectory::handleNotification",2,"CFStringRef");
+  if(!lua_isuserdata(L,3)) SWIG_fail_arg("ofxSyphonServerDirectory::handleNotification",3,"CFDictionaryRef");
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_ofxSyphonServerDirectory,0))){
+    SWIG_fail_ptr("ServerDirectory_handleNotification",1,SWIGTYPE_p_ofxSyphonServerDirectory); } 
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&argp2,SWIGTYPE_p_CFStringRef,0))){
+    SWIG_fail_ptr("ServerDirectory_handleNotification",2,SWIGTYPE_p_CFStringRef); }  arg2 = *argp2;
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&argp3,SWIGTYPE_p_CFDictionaryRef,0))){
+    SWIG_fail_ptr("ServerDirectory_handleNotification",3,SWIGTYPE_p_CFDictionaryRef); }  arg3 = *argp3;
+  (arg1)->handleNotification(arg2,arg3); return SWIG_arg; if(0) SWIG_fail; fail: lua_error(L); return SWIG_arg; }
+static void swig_delete_ServerDirectory(void *obj) {
+ofxSyphonServerDirectory *arg1 = (ofxSyphonServerDirectory *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_ServerDirectory(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_ServerDirectory);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_ServerDirectory_attributes[] = {
+    { "events", _wrap_ServerDirectory_events_get, _wrap_ServerDirectory_events_set },
+    {0,0,0}
+};
+static swig_lua_method swig_ServerDirectory_methods[]= {
+    { "setup", _wrap_ServerDirectory_setup},
+    { "isSetup", _wrap_ServerDirectory_isSetup},
+    { "size", _wrap_ServerDirectory_size},
+    { "isValidIndex", _wrap_ServerDirectory_isValidIndex},
+    { "serverExists", _wrap_ServerDirectory_serverExists},
+    { "getDescription", _wrap_ServerDirectory_getDescription},
+    { "getServerList", _wrap_ServerDirectory_getServerList},
+    { "handleNotification", _wrap_ServerDirectory_handleNotification},
+    {0,0}
+};
+static swig_lua_method swig_ServerDirectory_meta[] = {
+    {0,0}
+};
+
+static swig_lua_attribute swig_ServerDirectory_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_ServerDirectory_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_ServerDirectory_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_ServerDirectory_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_ServerDirectory_Sf_SwigStatic = {
+    "ServerDirectory",
+    swig_ServerDirectory_Sf_SwigStatic_methods,
+    swig_ServerDirectory_Sf_SwigStatic_attributes,
+    swig_ServerDirectory_Sf_SwigStatic_constants,
+    swig_ServerDirectory_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_ServerDirectory_bases[] = {0};
+static const char *swig_ServerDirectory_base_names[] = {0};
+static swig_lua_class _wrap_class_ServerDirectory = { "ServerDirectory", "ServerDirectory", &SWIGTYPE_p_ofxSyphonServerDirectory,_proxy__wrap_new_ServerDirectory, swig_delete_ServerDirectory, swig_ServerDirectory_methods, swig_ServerDirectory_attributes, &swig_ServerDirectory_Sf_SwigStatic, swig_ServerDirectory_meta, swig_ServerDirectory_bases, swig_ServerDirectory_base_names };
+
 static swig_lua_attribute swig_SwigModule_attributes[] = {
-    { "modKey", _wrap_modKey_get, SWIG_Lua_set_immutable },
     {0,0,0}
 };
 static swig_lua_const_info swig_SwigModule_constants[]= {
     {0,0,0,0,0,0}
 };
 static swig_lua_method swig_SwigModule_methods[]= {
-    { "setVerbose", _wrap_setVerbose},
-    { "isVerbose", _wrap_isVerbose},
-    { "setUseDefaultKeys", _wrap_setUseDefaultKeys},
-    { "useDefaultKeys", _wrap_useDefaultKeys},
-    { "isBundled", _wrap_isBundled},
-    { "getStartDirectory", _wrap_getStartDirectory},
-    { "getCurrentDirectory", _wrap_getCurrentDirectory},
-    { "setCurrentDirectory", _wrap_setCurrentDirectory},
-    { "reloadScript", _wrap_reloadScript},
-    { "clearScript", _wrap_clearScript},
-    { "startListening", _wrap_startListening},
-    { "stopListening", _wrap_stopListening},
-    { "isListening", _wrap_isListening},
-    { "setListenPort", _wrap_setListenPort},
-    { "getListenPort", _wrap_getListenPort},
-    { "getHostname", _wrap_getHostname},
-    { "setSendHost", _wrap_setSendHost},
-    { "getSendHost", _wrap_getSendHost},
-    { "setSendPort", _wrap_setSendPort},
-    { "getSendPort", _wrap_getSendPort},
-    { "sendMessage", _wrap_sendMessage},
-    { "sendBundle", _wrap_sendBundle},
-    { "sendBang", _wrap_sendBang},
-    { "sendFloat", _wrap_sendFloat},
-    { "sendInt", _wrap_sendInt},
-    { "sendString", _wrap_sendString},
-    { "startSyphon", _wrap_startSyphon},
-    { "stopSyphon", _wrap_stopSyphon},
-    { "isSyphonPublishing", _wrap_isSyphonPublishing},
-    { "setSyphonName", _wrap_setSyphonName},
-    { "getSyphonName", _wrap_getSyphonName},
-    { "getSyphonServer", _wrap_getSyphonServer},
     {0,0}
 };
 static swig_lua_class* swig_SwigModule_classes[]= {
 &_wrap_class_string,
+&_wrap_class_ofEventArgs,
+&_wrap_class_Client,
+&_wrap_class_Server,
+&_wrap_class_ServerDescription,
+&_wrap_class_ServerDirectoryEventArgs,
+&_wrap_class_ServerDirectoryEvents,
+&_wrap_class_ServerDirectory,
     0
 };
 static swig_lua_namespace* swig_SwigModule_namespaces[] = {
@@ -3001,7 +3735,7 @@ static swig_lua_namespace* swig_SwigModule_namespaces[] = {
 };
 
 static swig_lua_namespace swig_SwigModule = {
-    "loaf",
+    "syphon",
     swig_SwigModule_methods,
     swig_SwigModule_attributes,
     swig_SwigModule_constants,
@@ -3014,28 +3748,79 @@ static swig_lua_namespace swig_SwigModule = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_ofxOscBundle = {"_p_ofxOscBundle", "ofxOscBundle *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_ofxOscMessage = {"_p_ofxOscMessage", "ofxOscMessage *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_ofxSyphonServer = {"_p_ofxSyphonServer", "ofxSyphonServer *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *", 0, 0, (void*)&_wrap_class_string, 0};
+static void *_p_ofxSyphonServerDirectoryEventArgsTo_p_ofEventArgs(void *x, int *SWIGUNUSEDPARM(newmemory)) {
+    return (void *)((ofEventArgs *)  ((ofxSyphonServerDirectoryEventArgs *) x));
+}
+static swig_type_info _swigt__p_CFDictionaryRef = {"_p_CFDictionaryRef", "CFDictionaryRef *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_CFStringRef = {"_p_CFStringRef", "CFStringRef *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_GLenum = {"_p_GLenum", "GLenum *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_GLsizei = {"_p_GLsizei", "GLsizei *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_GLuint = {"_p_GLuint", "GLuint *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ofEventArgs = {"_p_ofEventArgs", "ofEventArgs *", 0, 0, (void*)&_wrap_class_ofEventArgs, 0};
+static swig_type_info _swigt__p_ofEventT_ofxSyphonServerDirectoryEventArgs_t = {"_p_ofEventT_ofxSyphonServerDirectoryEventArgs_t", "ofEvent< ofxSyphonServerDirectoryEventArgs > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ofTexture = {"_p_ofTexture", "ofTexture *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ofxSyphonClient = {"_p_ofxSyphonClient", "ofxSyphonClient *", 0, 0, (void*)&_wrap_class_Client, 0};
+static swig_type_info _swigt__p_ofxSyphonServer = {"_p_ofxSyphonServer", "ofxSyphonServer *", 0, 0, (void*)&_wrap_class_Server, 0};
+static swig_type_info _swigt__p_ofxSyphonServerDescription = {"_p_ofxSyphonServerDescription", "ofxSyphonServerDescription *", 0, 0, (void*)&_wrap_class_ServerDescription, 0};
+static swig_type_info _swigt__p_ofxSyphonServerDirectory = {"_p_ofxSyphonServerDirectory", "ofxSyphonServerDirectory *", 0, 0, (void*)&_wrap_class_ServerDirectory, 0};
+static swig_type_info _swigt__p_ofxSyphonServerDirectoryEventArgs = {"_p_ofxSyphonServerDirectoryEventArgs", "ofxSyphonServerDirectoryEventArgs *", 0, 0, (void*)&_wrap_class_ServerDirectoryEventArgs, 0};
+static swig_type_info _swigt__p_ofxSyphonServerDirectoryEvents = {"_p_ofxSyphonServerDirectoryEvents", "ofxSyphonServerDirectoryEvents *", 0, 0, (void*)&_wrap_class_ServerDirectoryEvents, 0};
+static swig_type_info _swigt__p_std__string = {"_p_std__string", "std::string *|string *", 0, 0, (void*)&_wrap_class_string, 0};
+static swig_type_info _swigt__p_vectorT_ofxSyphonServerDescription_t = {"_p_vectorT_ofxSyphonServerDescription_t", "vector< ofxSyphonServerDescription > *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_ofxOscBundle,
-  &_swigt__p_ofxOscMessage,
+  &_swigt__p_CFDictionaryRef,
+  &_swigt__p_CFStringRef,
+  &_swigt__p_GLenum,
+  &_swigt__p_GLsizei,
+  &_swigt__p_GLuint,
+  &_swigt__p_ofEventArgs,
+  &_swigt__p_ofEventT_ofxSyphonServerDirectoryEventArgs_t,
+  &_swigt__p_ofTexture,
+  &_swigt__p_ofxSyphonClient,
   &_swigt__p_ofxSyphonServer,
+  &_swigt__p_ofxSyphonServerDescription,
+  &_swigt__p_ofxSyphonServerDirectory,
+  &_swigt__p_ofxSyphonServerDirectoryEventArgs,
+  &_swigt__p_ofxSyphonServerDirectoryEvents,
   &_swigt__p_std__string,
+  &_swigt__p_vectorT_ofxSyphonServerDescription_t,
 };
 
-static swig_cast_info _swigc__p_ofxOscBundle[] = {  {&_swigt__p_ofxOscBundle, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ofxOscMessage[] = {  {&_swigt__p_ofxOscMessage, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_CFDictionaryRef[] = {  {&_swigt__p_CFDictionaryRef, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_CFStringRef[] = {  {&_swigt__p_CFStringRef, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_GLenum[] = {  {&_swigt__p_GLenum, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_GLsizei[] = {  {&_swigt__p_GLsizei, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_GLuint[] = {  {&_swigt__p_GLuint, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofEventArgs[] = {  {&_swigt__p_ofEventArgs, 0, 0, 0},  {&_swigt__p_ofxSyphonServerDirectoryEventArgs, _p_ofxSyphonServerDirectoryEventArgsTo_p_ofEventArgs, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofEventT_ofxSyphonServerDirectoryEventArgs_t[] = {  {&_swigt__p_ofEventT_ofxSyphonServerDirectoryEventArgs_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofTexture[] = {  {&_swigt__p_ofTexture, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofxSyphonClient[] = {  {&_swigt__p_ofxSyphonClient, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_ofxSyphonServer[] = {  {&_swigt__p_ofxSyphonServer, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofxSyphonServerDescription[] = {  {&_swigt__p_ofxSyphonServerDescription, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofxSyphonServerDirectory[] = {  {&_swigt__p_ofxSyphonServerDirectory, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofxSyphonServerDirectoryEventArgs[] = {  {&_swigt__p_ofxSyphonServerDirectoryEventArgs, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ofxSyphonServerDirectoryEvents[] = {  {&_swigt__p_ofxSyphonServerDirectoryEvents, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_std__string[] = {  {&_swigt__p_std__string, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_vectorT_ofxSyphonServerDescription_t[] = {  {&_swigt__p_vectorT_ofxSyphonServerDescription_t, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_ofxOscBundle,
-  _swigc__p_ofxOscMessage,
+  _swigc__p_CFDictionaryRef,
+  _swigc__p_CFStringRef,
+  _swigc__p_GLenum,
+  _swigc__p_GLsizei,
+  _swigc__p_GLuint,
+  _swigc__p_ofEventArgs,
+  _swigc__p_ofEventT_ofxSyphonServerDirectoryEventArgs_t,
+  _swigc__p_ofTexture,
+  _swigc__p_ofxSyphonClient,
   _swigc__p_ofxSyphonServer,
+  _swigc__p_ofxSyphonServerDescription,
+  _swigc__p_ofxSyphonServerDirectory,
+  _swigc__p_ofxSyphonServerDirectoryEventArgs,
+  _swigc__p_ofxSyphonServerDirectoryEvents,
   _swigc__p_std__string,
+  _swigc__p_vectorT_ofxSyphonServerDescription_t,
 };
 
 
@@ -3362,29 +4147,7 @@ SWIGEXPORT int SWIG_init(lua_State* L) /* default Lua action */
 
 
 const char* SWIG_LUACODE=
-  "\n"
-  "-- variable argument OSC sender\n"
-  "function loaf.send(address, ...)\n"
-  "    local msg = osc.Message()\n"
-  "    if type(address) == \"string\" and address:sub(1,1) == \"/\" then\n"
-  "        msg:setAddress(address)\n"
-  "    else\n"
-  "        print(\"send: error, first argument is not an address string\")\n"
-  "        return\n"
-  "    end\n"
-  "    for i,v in ipairs{...} do\n"
-  "        if type(v) == \"number\" then\n"
-  "            msg:addFloatArg(v)\n"
-  "        elseif type(v) == \"string\" then\n"
-  "            msg:addStringArg(v)\n"
-  "        elseif type(v) == \"boolean\" then\n"
-  "            msg:addBoolArg(v)\n"
-  "        else\n"
-  "            print(\"send: skipping \" .. type(v) .. \" argument\")\n"
-  "        end\n"
-  "    end\n"
-  "    loaf.sendMessage(msg)\n"
-  "end";
+  "";
 
 void SWIG_init_user(lua_State* L)
 {

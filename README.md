@@ -19,7 +19,7 @@ DESCRIPTION
 
 > cut off a slice of something nice
 
-loaf is an interpreter for [openFrameworks](http://openframeworks.cc) which allows you to write OF applications in the [Lua](http://www.lua.org) scripting language. This means you can quickly create using openFrameworks but without having to compile C++ or use a heavy IDE like Xcode or Visual Studio. A built-in OSC (Open Sound Control) server enables loaf to communicate natively with other creative coding and music applications over a network connection.
+loaf is an interpreter for [openFrameworks](http://openframeworks.cc) which allows you to write OF applications in the [Lua](http://www.lua.org) scripting language. This means you can quickly create using openFrameworks but without having to compile C++ or use a heavy IDE like Xcode or Visual Studio. A built-in OSC (Open Sound Control) server enables loaf to communicate natively with other creative coding and music applications over a network connection. Additionally, a built-in Syphon server allows for streaming loaf's screen output to visual applications on the same macoS system.
 
 > Is loaf a replacement for building a native C++ application?
 
@@ -74,7 +74,24 @@ A quick overview of using Lua and the Lua bindings for openFrameworks can be fou
 
 The best place to start is to look at the examples included with loaf zip and on the [loaf Github repo](https://github.com/danomatika/loaf/tree/master/examples).
 
-There are also simple syntax lists for each of the three Lua bindings modules: of, osc, and loaf. These can be found in `doc/modules` and are a good place to start for creating auto-completion files for you favorite text editor.
+There are also simple syntax lists for each of the built-in Lua bindings modules: of, osc, loaf, and syphon. These can be found in `doc/modules` and are a good place to start for creating auto-completion files for you favorite text editor.
+
+### Syphon Support
+
+On macOS, loaf includes support for Syphon via a built-in server and a Lua "syphon" module with bindings for the ofxSyphonClient, ofxSyphonServer, and ofxSyphonServerDirectory classes.
+
+Similar to the built-in OSC sender and receiver instances, the Syphon server can
+be accessed via loaf module Lua functions:
+
+* loaf.startSyphon(): start server to publish screen each frame
+* loaf.stopSyphon(): stop server
+* loaf.setSyphonName(): set server name
+* loaf.isSyphonPublishing(): is the server publishing right now?
+* loaf.getSyphonServer(): get the built-in server instance
+
+_Note: Make sure to call loaf.getSyphonServer() *only* after starting the server, otherwise the instance will not exist, i.e returns as "nil."_
+
+Additionally, the "syphon" module allows for using Syphon directly in Lua scripts. See `examples/tests/syphon.lua`.
 
 ### Setting Window Size
 
@@ -110,6 +127,8 @@ Options:
   -e, --exit       exit after script error
   -r, --reload     reload timeout in secs after a script error
   --gl             try to set gl version to use ie. "4.1"
+  --syphon-name    Syphon server name (default: screen)
+  --syphon         start streaming screen with Syphon (macOS only)
   -v, --verbose    verbose printing
 
 Arguments:
@@ -123,7 +142,7 @@ You can also pass arguments to the script itself by placing them after the scrip
 
 See the argument test script for more details: `examples/tests/arg.lua`
 
-#### macOS
+#### macOS Terminal alias
 
 On macOS, you can run a .app from Terminal by calling the binary hidden inside the application bundle:
 
@@ -143,16 +162,6 @@ As loaf contains the Lua embedded scripting language, pure Lua libraries will wo
 
 Also, a set of loaf-oriented Lua libraries is available in the [loaf-ingredients](https://github.com/danomatika/loaf-ingredients) repository.
 
-### Syphon
-
-As requested on GitHub:
-
->I figure with OSC and Syphon, that's all you really need to intercommunicate.
-
-A `syphon` Lua module can be built using the ofxLua example project in `ofxLua/modules/syphon`. See the instructions in <https://github.com/danomatika/ofxLua/blob/master/modules>.
-
-_Note: The version of Lua used by loaf should match that used in ofxLua when building the syphon module. Compare the Lua version output in `loaf -v` and `loaf/CHANGES.txt` or `ofxLua/CHANGES>txt` to see which version of ofxLua you need._
-
 BUNDLING INTO STAND-ALONE APPS
 ------------------------------
 
@@ -167,7 +176,7 @@ The loaf executable can also be renamed.
 
 A macOS .app bundle is basically a folder structure presented by Finder as an "application." It contains the application executable, dependent libraries, and resource files. This structure can be created & modified to make your own application which can then be distributed to run on other macOS systems.
 
-To facilitate creating a stand-alone .app form a loaf project, the `scripts/make_osxapp.sh` shell script can make a copy of an existing loaf.app and use it to create a new application by copying the loaf project Lua scripts and data files inside the bundle. Additionally, it can modify metadata such as the application name, version string, and icon.
+To facilitate creating a stand-alone .app from a loaf project, the `scripts/make_osxapp.sh` shell script can make a copy of an existing loaf.app and use it to create a new application by copying the loaf project Lua scripts and data files inside the bundle. Additionally, it can modify metadata such as the application name, version string, and icon.
 
 For example.
 
@@ -188,6 +197,7 @@ loaf requires the following addons:
 
 * [ofxLua](https://github.com/danomatika/ofxLua)
 * ofxOsc (included with openFrameworks)
+* [ofxSyphon](https://github.com/astellato/ofxSyphon) (optional, macOS-only)
 
 Project files for building loaf on Windows or Linux are not included so you will need to generate them for your operating system and development environment using the OF ProjectGenerator which is included with the openFrameworks distribution.
 
@@ -201,11 +211,29 @@ If everything went Ok, you should now be able to open the generated project and 
 
 ### macOS
 
-If the project was regenerated using the OF ProjectGenerator, the openFrameworks-Info.plist file was overwritten and these changes can be reversed with:
+Open the Xcode project, select the "loaf Release" scheme, and hit "Run". Once built, the loaf.app is found in the `bin` directory.
+
+#### Updating Xcode Project After Generation
+
+If the project is (re)generated using the OF ProjectGenerator, the openFrameworks-Info.plist file will be overwritten and these changes can be reversed with:
 
     git checkout openFrameworks-Info.plist
 
-Next, open the Xcode project, select the "loaf Release" scheme, and hit "Run". Once built, the loaf.app is found in the `bin` directory.
+#### Enabling Syphon Support
+
+Syphon support must be enabled as a compile-time option using the `LOAF_USE_SYPHON` C++ define.
+
+* Select loaf project in the Xcode file tree
+* Select loaf under PROJECT list and Build Settings tab
+* Find Other C++ flags and add: `-DLOAF_USE_SYPHON`
+
+#### Fixing Unknown option "NSDocumentRevisionsDebugMode"
+
+If running the project does nothing except for showing the following console output:
+
+    Unknown option "NSDocumentRevisionsDebugMode"
+
+Edit the Debug and Release schemes and uncheck "Document Versions" in Run->Options tab.
 
 ### Linux
 

@@ -28,12 +28,13 @@
 #include "ofLight.h"
 #include "ofFileUtils.h"
 #include "ofxOsc.h"
+#include "Syphon.h"
 #include "Util.h"
 
 // declare the wrapped modules
 extern "C" {
-	int luaopen_osc(lua_State* L);
-	int luaopen_loaf(lua_State* L);
+	int luaopen_osc(lua_State *L);
+	int luaopen_loaf(lua_State *L);
 }
 
 //--------------------------------------------------------------
@@ -216,7 +217,7 @@ void Script::setMouseGlobals(int x, int y) {
 }
 
 //--------------------------------------------------------------
-void Script::oscReceived(const ofxOscMessage& message) {
+void Script::oscReceived(const ofxOscMessage &message) {
 	if(!lua.isValid() || !lua.isFunction("oscReceived")) {
 		return;
 	}
@@ -243,9 +244,10 @@ bool Script::initState() {
 		return false;
 	}
 	
-	luaopen_osc(lua);  // osc bindings
-	luaopen_loaf(lua); // loaf bindings
-	
+	luaopen_osc(lua);     // osc bindings
+	luaopen_loaf(lua);    // loaf bindings
+	Syphon::luaopen(lua); // syphon bindings
+
 	// script arguments
 	lua.newTable("arg");
 	lua.pushTable("arg");
@@ -271,11 +273,11 @@ void Script::clearState() {
 }
 
 //--------------------------------------------------------------
-void Script::errorReceived(std::string& msg) {
-	ofLogError(PACKAGE) << msg;
+void Script::errorReceived(std::string &message) {
+	ofLogError(PACKAGE) << message;
 	error = true;
 	errorMsg.clear();
-	errorMsg = ofSplitString(msg, "\n");
+	errorMsg = ofSplitString(message, "\n");
 	if(errorExit) {
 		OF_EXIT_APP(1);
 	}

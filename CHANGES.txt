@@ -1,20 +1,28 @@
-1.6.0: 2020 Dec 23
+1.6.0: 2020 Dec 24
 
 * updated for ofxLua 1.4.3 (Lua 5.3.6)
 
 * added support for creating a bundled app using loaf + Lua scripts & resources
-* added script to create stand-alone bundled macOS .app from projects
+  - added script to create stand-alone bundled macOS .app from projects
+  - added loaf.isBundled(): returns true if script is within a bundled project
+  - added loaf.useDefaultKeys(): returns true if default key bindings are used
+  - added load.setUseDefaultKeys(): enable/disable default key bindings
+  - added loaf.getCurrentDirectory(): returns the loaf working directory
+  - added loaf.setCurrentDirectory(): set the loaf working directory
+  - added loaf.getStartDirectory(): returns the directory loaf was started from
+  - added loaf.getModKey(): returns the platform's modifier key, OF_KEY_SUPERs
+                            for macOS or OF_KEY_CONTROL for Windows & Linux
+  - added loaf.reloadScript(): reload the current script
+  - added loaf.clearScript(): clear the current script
 
-* added loaf.isBundled(): returns true if script is within a bundled project
-* added loaf.useDefaultKeys(): returns true if default key bindings are used
-* added load.setUseDefaultKeys(): enable/disable default key bindings
-* added loaf.getCurrentDirectory(): returns the loaf working directory
-* added loaf.setCurrentDirectory(): set the loaf working directory
-* added loaf.getStartDirectory(): returns the directory loaf was started from
-* added loaf.getModKey(): returns the platform's modifier key,
-  OF_KEY_SUPER for macOS or OF_KEY_CONTROL for Windows & Linux
-* added loaf.reloadScript(): reload the current script
-* added loaf.clearScript(): clear the current script
+* added Syphon support, macOS-only (requested by Nico Raftis)
+  - added built-in server and commandline control options
+  - loaf.startSyphon(): start server to publish screen each frame
+  - loaf.stopSyphon(): stop server
+  - loaf.setSyphonName(): set server name
+  - loaf.isSyphonPublishing(): is the server publishing right now?
+  - loaf.getSyphonServer(): get the built-in server instance
+  - added bindings for ofxSyphon via a "syphon" module
 
 1.5.1: 2020 Aug 31
 
