@@ -46,11 +46,11 @@ _Note: A more comprehensive User Guide will be added in the future._
 
 ### Basic usage
 
-* drag a Lua script or folder with a main.lua onto loaf to run it
-* either save the script somehow (in a text editor) and/or use MOD+R in loaf to reload it automatically
-* toggle fullscreen with MOD+F
-* script errors are shown on the app window and on the console if you run it in a terminal application
-* prints are shown in the console (useful for debugging)
+* Drag a Lua script or folder with a main.lua onto loaf to run it
+* Either save the script somehow (in a text editor) and/or use MOD+R in loaf to reload it automatically
+* Toggle fullscreen with MOD+F
+* Script errors are shown on the app window and on the console if you run it in a terminal application
+* Prints are shown in the console (useful for debugging)
 
 _The MOD key depends on the platform: macOS COMMAND, Windows/Linux CONTROL._
 
@@ -203,9 +203,9 @@ Project files for building loaf on Windows or Linux are not included so you will
 
 To (re)generate project files for an existing project:
 
-* click the "Import" button in the ProjectGenerator
-* navigate the to base folder for the project ie. "loaf"
-* click the "Update" button
+* Click the "Import" button in the ProjectGenerator
+* Navigate to the base folder for the project ie. "loaf"
+* Click the "Update" button
 
 If everything went Ok, you should now be able to open the generated project and build/run the example.
 
