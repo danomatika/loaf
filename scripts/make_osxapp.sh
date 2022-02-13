@@ -107,7 +107,7 @@ while [ "$1" != "" ] ; do
             fi
             copystring=$1
             ;;
-       	-b|--bundleid)
+        -b|--bundleid)
             shift 1
             if [ $# == 0 ] ; then
                 echo "-b,--bundleid option requires an ID argument"
@@ -156,22 +156,22 @@ done
 if [ "$1" != "" ] ; then
     SRC="$(makeabsolute $1)"
 else
-	echo "SRC argument required"
-	exit 1
+    echo "SRC argument required"
+    exit 1
 fi
 echo "$SRC"
 
 # check for name argument and set app path in the dir the script is run from
 if [ "$2" != "" ] ; then
-	NAME="$2"
+    NAME="$2"
     
 else
-	echo "NAME argument required"
-	exit 1
+    echo "NAME argument required"
+    exit 1
 fi
 APP="$(makeabsolute ${NAME}.app)"
 if [ "$bundleid" == "" ] ; then
-	bundleid="com.loaf.${NAME% /-}"
+    bundleid="com.loaf.${NAME% /-}"
 fi
 
 # Go
@@ -201,7 +201,7 @@ if [ ! -e "$LOAF" ] ; then
     exit 1
 fi
 if [ "$verbose" != "" ] ; then
-	echo "==== Using $LOAF"
+    echo "==== Using $LOAF"
 fi
 cp -R $verbose "$LOAF" .
 
@@ -220,24 +220,26 @@ fi
 mkdir -p $verbose "$DEST/data"
 cp -R $verbose "$SRC"/* "$DEST/data"
 if [ "$iconfile" != "" ] ; then
-	cp $verbose "$iconfile" "$DEST/icon.icns"
+    cp $verbose "$iconfile" "$DEST/icon.icns"
 fi
 
 # update info plist
 INFO_PLIST="$APP/Contents/Info.plist"
 if [ -f "$plistfile" ] ; then
-	# simply copy supplied plist in
-	cp -R $verbose "$plistfile" "$INFO_PLIST"
+    # simply copy supplied plist in
+    cp -R $verbose "$plistfile" "$INFO_PLIST"
 else
-	# set version identifiers & contextual strings in Info.plist
-	$PLIST_BUDDY -c "Set:CFBundleExecutable \"$NAME\"" "$INFO_PLIST"
-	$PLIST_BUDDY -c "Set:CFBundleIdentifier \"$bundleid\"" "$INFO_PLIST"
-	$PLIST_BUDDY -c "Set:CFBundleVersion \"$version\"" "$INFO_PLIST"
-	$PLIST_BUDDY -c "Add:CFBundleShortVersionString string \"$version\"" "$INFO_PLIST"
-	$PLIST_BUDDY -c "Set:LSApplicationCategoryType \"public.app-category.${category}\"" "$INFO_PLIST"
-	if [ "$copystring" != "" ] ; then
-	   $PLIST_BUDDY -c "Add:NSHumanReadableCopyright string \"$copystring\"" "$INFO_PLIST"
-	fi
+    # set version identifiers & contextual strings in Info.plist
+    $PLIST_BUDDY -c "Set:CFBundleExecutable \"$NAME\"" "$INFO_PLIST"
+    $PLIST_BUDDY -c "Set:CFBundleName \"$NAME\"" "$INFO_PLIST"
+    $PLIST_BUDDY -c "Set:CFBundleDisplayName \"$NAME\"" "$INFO_PLIST"
+    $PLIST_BUDDY -c "Set:CFBundleIdentifier \"$bundleid\"" "$INFO_PLIST"
+    $PLIST_BUDDY -c "Set:CFBundleVersion \"$version\"" "$INFO_PLIST"
+    $PLIST_BUDDY -c "Set:CFBundleShortVersionString \"$version\"" "$INFO_PLIST"
+    $PLIST_BUDDY -c "Set:LSApplicationCategoryType \"public.app-category.${category}\"" "$INFO_PLIST"
+    if [ "$copystring" != "" ] ; then
+       $PLIST_BUDDY -c "Add:NSHumanReadableCopyright string \"$copystring\"" "$INFO_PLIST"
+    fi
 fi
 
 # re-sign as ad-hoc
