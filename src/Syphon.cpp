@@ -89,6 +89,7 @@ std::string Syphon::getName() {
 ofxSyphonServer *Syphon::getServer() {
 	return server;
 }
+
 #else
 
 // dummy implementation
@@ -103,6 +104,5 @@ void Syphon::publish() {}
 void Syphon::setName(const std::string &name) {}
 std::string Syphon::getName() {return this->name;}
 ofxSyphonServer *Syphon::getServer() {}
-void Syphon::printVerbose() {}
 
 #endif
