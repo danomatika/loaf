@@ -1,3 +1,7 @@
+1.6.2: 2022 Sep 12
+
+* fixed crash due on script error in draw function after push
+
 1.6.1: 2022 Feb 14
 
 * fixed Syphon dummy implementation stub stopping non-Syphon macOS build

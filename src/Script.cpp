@@ -139,6 +139,7 @@ void Script::clear() {
 	lua.clear();
 	setupNeeded = false;
 	error = false;
+	errorDraw = false;
 	errorMsg.clear();
 	initState(); // stay inited
 }
@@ -149,6 +150,13 @@ void Script::update() {
 	if(error && errorReload > -1 &&
 	   ofGetElapsedTimeMillis() - reloadTimestamp > errorReload) {
 		reload();
+	}
+	// only draw error on frame *after* a script error,
+	// this fixes a crash in drawError which can happen if the view matrix has
+	// been pushed in the script and the script has an error in the draw
+	// function before calling pop in that frame
+	if(error && !errorDraw) {
+		errorDraw = true;
 	}
 	// make sure setup is called within a GL context
 	if(setupNeeded) {
@@ -162,7 +170,7 @@ void Script::update() {
 
 //--------------------------------------------------------------
 void Script::drawError() {
-	if(error) {
+	if(error && errorDraw) {
 		ofPushView();
 		ofPushStyle();
 		bool lighting = ofGetLightingEnabled();
@@ -269,6 +277,7 @@ void Script::clearState() {
 	arg.clear();
 	currentScript = "";
 	error = false;
+	errorDraw = false;
 	errorMsg.clear();
 }
 
@@ -276,6 +285,7 @@ void Script::clearState() {
 void Script::errorReceived(std::string &message) {
 	ofLogError(PACKAGE) << message;
 	error = true;
+	errorDraw = false;
 	errorMsg.clear();
 	errorMsg = ofSplitString(message, "\n");
 	if(errorExit) {

@@ -92,6 +92,7 @@ class Script : protected ofxLuaListener {
 		std::vector<std::string> arg; //< global "arg" table passed from commandline
 		bool setupNeeded = false; //< should scriptSetup be called?
 		bool error = false; //< is there an error?
+		bool errorDraw = false; //< draw the error? (start on the next frame)
 		std::vector<std::string> errorMsg; //< error message, separated by lines
 		long reloadTimestamp = 0; //< auto reload timestamp
 };
