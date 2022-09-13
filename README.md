@@ -1,7 +1,7 @@
 loaf: lua, osc, and openFrameworks
 ==================================
 
-![loaf icon](images/icon/loaf_rounded.png)
+![loaf icon](images/icon/loaf-rounded.png)
 
 Copyright (c) [Dan Wilcox](danomatika.com) 2016-2020
 
@@ -14,8 +14,6 @@ WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 
 DESCRIPTION
 -----------
-
-![loaf icon](images/icon/loaf-rounded.png)
 
 > cut off a slice of something nice
 
