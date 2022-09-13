@@ -1308,6 +1308,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 1.6.2;
 				OTHER_CFLAGS = (
 					"-DLUA_USE_MACOSX",
 					"-F../../..//addons/ofxSyphon/libs/Syphon/lib/osx/",
@@ -1496,6 +1497,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 1.6.2;
 				OTHER_CFLAGS = (
 					"-DLUA_USE_MACOSX",
 					"-F../../..//addons/ofxSyphon/libs/Syphon/lib/osx/",
@@ -1558,6 +1560,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				MARKETING_VERSION = 1.6.2;
 				OTHER_CFLAGS = (
 					"-DLUA_USE_MACOSX",
 					"-F../../..//addons/ofxSyphon/libs/Syphon/lib/osx/",
