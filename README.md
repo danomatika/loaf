@@ -1,9 +1,7 @@
 loaf: lua, osc, and openFrameworks
 ==================================
 
-<p align="center">
-	<img src="http://danomatika.com/code/loaf/loaf_workflow.png"/>
-</p>
+![loaf icon](images/icon/loaf_rounded.png)
 
 Copyright (c) [Dan Wilcox](danomatika.com) 2016-2020
 
@@ -30,6 +28,8 @@ No. If you need to be able to include openFrameworks addons, stay with C++ for n
 > So what is it for?
 
 loaf is intended as a simple sandbox for sketching using the openFrameworks core API with a live-coding feel: make changes and see the result quickly. No compiling, no low level errors, just the basics. Think of loaf kind of like [Processing](http://processing.org) without the run button.
+
+![loaf workflow](doc/loaf_workflow.png)
 
 ### Background
 
