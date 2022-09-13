@@ -1,6 +1,8 @@
-1.6.2: 2022 Sep 12
+1.6.2: 2022 Sep 13
 
 * fixed crash due on script error in draw function after push
+
+* added icon for macOS app
 
 1.6.1: 2022 Feb 14
 

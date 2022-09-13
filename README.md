@@ -17,6 +17,8 @@ WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 DESCRIPTION
 -----------
 
+![loaf icon](images/icon/loaf-rounded.png)
+
 > cut off a slice of something nice
 
 loaf is an interpreter for [openFrameworks](http://openframeworks.cc) which allows you to write OF applications in the [Lua](http://www.lua.org) scripting language. This means you can quickly create using openFrameworks but without having to compile C++ or use a heavy IDE like Xcode or Visual Studio. A built-in OSC (Open Sound Control) server enables loaf to communicate natively with other creative coding and music applications over a network connection. Additionally, a built-in Syphon server allows for streaming loaf's screen output to visual applications on the same macoS system.

@@ -1,3 +1,6 @@
+# images
+images/*.icns
+
 # macOS
 .DS_Store
 *.a
