@@ -242,6 +242,7 @@ else
     fi
 fi
 
+# FIXME: this should sign using a real identity
 # re-sign as ad-hoc
 if [ "$verbose" != "" ] ; then
     echo "==== Signing $APP"

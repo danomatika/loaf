@@ -1,3 +1,7 @@
+# Makefile-mac-dist.mk
+dist
+*.dmg
+
 # images
 images/icon/*.icns
 
