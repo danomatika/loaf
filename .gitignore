@@ -1,5 +1,5 @@
 # images
-images/*.icns
+images/icon/*.icns
 
 # macOS
 .DS_Store

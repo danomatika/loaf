@@ -150,6 +150,7 @@ UNAME = $(shell uname)
 # only build syphon module on macOS
 ifeq ($(UNAME), Darwin)
 	PROJECT_CFLAGS += -DLOAF_USE_SYPHON
+	PROJECT_LDFLAGS += -framework Syphon
 else
 	PROJECT_EXCLUSIONS = $(PROJECT_ROOT)/src/bindings/syphonBindings.cpp
 endif

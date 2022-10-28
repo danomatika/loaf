@@ -1,7 +1,7 @@
 loaf: lua, osc, and openFrameworks
 ==================================
 
-![loaf icon](images/icon/loaf-rounded.png)
+![loaf icon](images/icon/icon-rounded.png)
 
 Copyright (c) [Dan Wilcox](danomatika.com) 2016-2020
 
