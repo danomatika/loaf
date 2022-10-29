@@ -19,7 +19,7 @@ ifeq ($(shell uname -s),Darwin)
 # app name to build
 mac.app.name = loaf
 
-# ull version from define in config.h
+# pull version from define in config.h
 mac.dist.version := $(shell grep VERSION src/config.h | awk '{gsub("\"",""); print $$3}')
 
 # openFrameworks projects use the "APPNAME Release" and "APPNAME Debug" naming

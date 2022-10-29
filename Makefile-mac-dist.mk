@@ -20,7 +20,7 @@
 # * https://www.gnu.org/software/make/manual/html_node/Text-Functions.html
 
 # makefile version
-makefile.mac.dist.version = 0.3.0
+makefile.mac.dist.version = 0.3.1
 
 # require make 3.81 as a minimum for modern functions like $(info), etc
 ifneq ($(firstword $(sort 3.81 $(MAKE_VERSION))), 3.81)
@@ -53,7 +53,7 @@ mac.builddir ?= build
 $(mac.builddir):
 	mkdir -p $@
 
-.PHONY: dist dist-zip dist-dmg dist-clean dist-clobber
+.PHONY: dist-zip dist-dmg dist-clean dist-clobber
 
 # create a zip for distribution with notarized contents
 dist-zip: distdir codesign zip notarize-zip staple zip-clean zip verify
