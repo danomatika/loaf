@@ -46,7 +46,7 @@ mac.dist.progs ?=
 mac.dist.libs ?=
 
 # temp root build dir
-mac.builddir ?= dist
+mac.builddir ?= build
 
 ## combined targets ############################################################
 

@@ -1,5 +1,5 @@
 # Makefile-mac-dist.mk
-dist
+build
 *.dmg
 
 # images
