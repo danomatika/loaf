@@ -103,6 +103,6 @@ bool Syphon::isPublishing() {return false;}
 void Syphon::publish() {}
 void Syphon::setName(const std::string &name) {}
 std::string Syphon::getName() {return this->name;}
-ofxSyphonServer *Syphon::getServer() {}
+ofxSyphonServer *Syphon::getServer() {return nullptr;}
 
 #endif
