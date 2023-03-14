@@ -24,6 +24,9 @@ NAME = oscBindings
 # where to copy the generated bindings
 DEST_DIR = ../src/bindings
 
+# optional subdir within DEST_DIR
+DEST_SUBDIR = .
+
 # any extra SWIG flags per-language, etc
 SWIG_FLAGS = -O -small
 
@@ -47,7 +50,7 @@ all: osc loaf
 bindings:
 	@echo "### Generating $(TARGET)"
 	@mkdir -p $(DEST_DIR)
-	$(SWIG) -c++ -$(LANG) $(SWIG_FLAGS) $(CFLAGS) -o $(DEST_DIR)/$(NAME).cpp $(INTERFACE)
+	$(SWIG) -c++ -$(LANG) $(SWIG_FLAGS) $(CFLAGS) -o $(DEST_DIR)/$(DEST_SUBDIR)/$(NAME).cpp $(INTERFACE)
 
 # outputs debug symbols
 symbols:
@@ -56,8 +59,7 @@ symbols:
 
 # clean up
 clean:
-	rm -f $(DEST_DIR)/*Bindings.cpp
-	rm -f *_symbols.txt
+	rm -f $(DEST_DIR)/*Bindings.cpp $(DEST_DIR)/macos/*Bindings.cpp *_symbols.txt
 
 # osc bindings
 osc-prepare:
@@ -80,5 +82,7 @@ syphon-prepare:
 	$(eval TARGET := syphon)
 	$(eval INTERFACE := syphon.i)
 	$(eval NAME := syphonBindings)
+	$(eval DEST_SUBDIR := macos)
+	mkdir -p $(DEST_DIR)/macos
 
 syphon: syphon-prepare bindings
