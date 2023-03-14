@@ -213,6 +213,15 @@ If everything went Ok, you should now be able to open the generated project and 
 
 Open the Xcode project, select the "loaf Release" scheme, and hit "Run". Once built, the loaf.app is found in the `bin` directory.
 
+For a Makefile build with Syphon (default), build and run on the terminal:
+
+    make ReleaseLoaf
+    make RunRelease
+
+If not using Syphon, use the default make target:
+
+    make Release
+
 #### Updating Xcode Project After Generation
 
 If the project is (re)generated using the OF ProjectGenerator, the openFrameworks-Info.plist file will be overwritten and these changes can be reversed with:
@@ -227,6 +236,8 @@ Syphon support must be enabled as a compile-time option using the `LOAF_USE_SYPH
 * Select loaf under PROJECT list and Build Settings tab
 * Find Other C++ flags and add: `-DLOAF_USE_SYPHON`
 
+If doing a Makefile build, use the additional targets which will also install the Syphon framework into loaf.app: `DebugLoaf` & `ReleaseLoaf`.
+
 #### Fixing Unknown option "NSDocumentRevisionsDebugMode"
 
 If running the project does nothing except for showing the following console output:
@@ -237,16 +248,14 @@ Edit the Debug and Release schemes and uncheck "Document Versions" in Run->Optio
 
 ### Linux
 
-Open the Code::Blocks .cbp and hit F9 to build. Optionally, you can build the example with the Makefile.
-
-To build and run it on the terminal:
+To build and run on the terminal:
 
     make
     make run
 
 ### Windows
 
-_Instructions for Visual Studio to be added here._
+_Instructions for Visual Studio to be added here. Contributions are welcome._
 
 DEVELOPING
 ----------

@@ -12,9 +12,24 @@ endif
 # call the project makefile!
 include $(OF_ROOT)/libs/openFrameworksCompiled/project/makefileCommon/compile.project.mk
 
-##### Makefile-mac-dist.mk
+################################################################################
+##### macos
 
-ifeq ($(shell uname -s),Darwin)
+# ofxSyphon
+include syphon_targets.mk
+
+# additional build targets for macOS
+ifeq ($(PLATFORM_LIB_SUBPATH),osx)
+
+##### syphon
+
+# build Debug app and install the Syphon framework
+DebugLoaf: DebugSyphon
+
+# build Release app and install the Syphon framework
+ReleaseLoaf: ReleaseSyphon
+
+##### Makefile-mac-dist.mk
 
 # app name to build
 mac.app.name = loaf
