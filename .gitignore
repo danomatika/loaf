@@ -34,3 +34,4 @@ build
 # build/release
 *.zip
 *_symbols.txt
+obj
