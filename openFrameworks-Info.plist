@@ -16,19 +16,19 @@
 	<string>$(TARGET_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
 	<key>CFBundleVersion</key>
 	<string>$(VERSION)</string>
 	<key>LSApplicationCategoryType</key>
 	<string>public.app-category.graphics-design</string>
 	<key>NSCameraUsageDescription</key>
 	<string>loaf would like to access the camera</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>loaf would like to access the microphone</string>
 	<key>NSHighResolutionCapable</key>
 	<false/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>loaf would like to access the microphone</string>
 </dict>
 </plist>
