@@ -32,54 +32,61 @@
 	#include <unistd.h>
 #endif
 
+// silence unused function warnings in C++17+
+#if __cplusplus >= 201500
+	#define UNUSED [[maybe_unused]]
+#else
+	#define UNUSED
+#endif
+
 // global loaf lua bindings
 namespace loaf {
 
 /// \section Util
 
 /// enable/disable internal loaf verbose printing
-static void setVerbose(bool verbose) {
+UNUSED static void setVerbose(bool verbose) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->setVerbose(verbose);
 }
 
 /// get loaf verbosity
-static bool isVerbose() {
+UNUSED static bool isVerbose() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->isVerbose();
 }
 
 /// enable/disable loaf default key bindings
-static void setUseDefaultKeys(bool defaultKeys) {
+UNUSED static void setUseDefaultKeys(bool defaultKeys) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->setUseDefaultKeys(defaultKeys);
 }
 
 /// get loaf default key bindings
-static bool useDefaultKeys() {
+UNUSED static bool useDefaultKeys() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->useDefaultKeys();
 }
 
 /// get loaf bundled status
-static bool isBundled() {
+UNUSED static bool isBundled() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->isBundled();
 }
 
 /// get the directory the application was started from
-static std::string getStartDirectory() {
+UNUSED static std::string getStartDirectory() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->startDir;
 }
 
 /// get the current working directory, may be different from OF data path
-static std::string getCurrentDirectory() {
+UNUSED static std::string getCurrentDirectory() {
 	return Util::getCurrentDir();
 }
 
 /// set the current working directory, does not change OF data path
-static bool setCurrentDirectory(std::string dir) {
+UNUSED static bool setCurrentDirectory(std::string dir) {
 	return Util::setCurrentDir(dir);
 }
 
@@ -93,13 +100,13 @@ static const int modKey = OF_KEY_CONTROL;
 /// \section Script control
 
 /// reload the current script
-static void reloadScript() {
+UNUSED static void reloadScript() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->script.reload();
 }
 
 /// clear the current script
-static void clearScript() {
+UNUSED static void clearScript() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->script.clear();
 }
@@ -107,37 +114,37 @@ static void clearScript() {
 /// \section OSC Server
 
 /// start the OSC server thread
-static void startListening() {
+UNUSED static void startListening() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->startListening();
 }
 
 /// stop the OSC server thread
-static void stopListening() {
+UNUSED static void stopListening() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->stopListening();
 }
 
 /// is the OSC server thread listening?
-static bool isListening() {
+UNUSED static bool isListening() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->listener.isListening();
 }
 
 /// set the OSC server port, restart server if running
-static void setListenPort(int port) {
+UNUSED static void setListenPort(int port) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->setListenPort(port);
 }
 
 /// get the OSC server port
-static int getListenPort() {
+UNUSED static int getListenPort() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->listener.getPort();
 }
 
 /// get this machine's hostname
-static std::string getHostname() {
+UNUSED static std::string getHostname() {
 	static char hostname[256];
 	if(gethostname(hostname, 256) == 0) {
 		return std::string(hostname);
@@ -148,25 +155,25 @@ static std::string getHostname() {
 /// \section Osc Sender
 
 /// set the OSC send host ip/name
-static void setSendHost(std::string host) {
+UNUSED static void setSendHost(std::string host) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->setSendHost(host);
 }
 
 /// get the OSC send host ip/name
-static std::string getSendHost() {
+UNUSED static std::string getSendHost() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->sender.getHost();
 }
 
 /// set the OSC send port
-static void setSendPort(int port) {
+UNUSED static void setSendPort(int port) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->setSendPort(port);
 }
 
 /// get the OSC send port
-static int getSendPort() {
+UNUSED static int getSendPort() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->sender.getPort();
 }
@@ -174,26 +181,26 @@ static int getSendPort() {
 /// \section OSC Send Helpers
 
 /// send an OSC message using the built-in OSC sender
-static void sendMessage(ofxOscMessage &message) {
+UNUSED static void sendMessage(ofxOscMessage &message) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->sender.sendMessage(message, false);
 }
 
 /// send an OSC bundle using the built-in OSC sender
-static void sendBundle(ofxOscBundle &bundle) {
+UNUSED static void sendBundle(ofxOscBundle &bundle) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->sender.sendBundle(bundle);
 }
 
 /// send an OSC "bang" address-only message using the built-in OSC sender
-static void sendBang(std::string address) {
+UNUSED static void sendBang(std::string address) {
 	ofxOscMessage message;
 	message.setAddress(address);
 	sendMessage(message);
 }
 
 /// send an OSC float message using the built-in OSC sender
-static void sendFloat(std::string address, float f) {
+UNUSED static void sendFloat(std::string address, float f) {
 	ofxOscMessage message;
 	message.setAddress(address);
 	message.addFloatArg(f);
@@ -201,7 +208,7 @@ static void sendFloat(std::string address, float f) {
 }
 
 /// send an OSC int message using the built-in OSC sender
-static void sendInt(std::string address, int i) {
+UNUSED static void sendInt(std::string address, int i) {
 	ofxOscMessage message;
 	message.setAddress(address);
 	message.addIntArg(i);
@@ -209,7 +216,7 @@ static void sendInt(std::string address, int i) {
 }
 
 /// send an OSC string message using the built-in OSC sender
-static void sendString(std::string address, std::string s) {
+UNUSED static void sendString(std::string address, std::string s) {
 	ofxOscMessage message;
 	message.setAddress(address);
 	message.addStringArg(s);
@@ -219,37 +226,37 @@ static void sendString(std::string address, std::string s) {
 /// \section Syphon
 
 /// start the Syphon server
-static void startSyphon() {
+UNUSED static void startSyphon() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->startSyphon();
 }
 
 /// stop the Syphon server
-static void stopSyphon() {
+UNUSED static void stopSyphon() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->stopSyphon();
 }
 
 /// is the Syphon server publishing the screen?
-static bool isSyphonPublishing() {
+UNUSED static bool isSyphonPublishing() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->syphon.isPublishing();
 }
 
 /// set the Syphon server name
-static void setSyphonName(std::string name) {
+UNUSED static void setSyphonName(std::string name) {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	app->setSyphonName(name);
 }
 
 /// get the Syphon server name
-static std::string getSyphonName() {
+UNUSED static std::string getSyphonName() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->syphon.getName();
 }
 
 /// get the underlying Syphon server instance
-static ofxSyphonServer *getSyphonServer() {
+UNUSED static ofxSyphonServer *getSyphonServer() {
 	ofApp *app = (ofApp *)ofGetAppPtr();
 	return app->syphon.getServer();
 }
