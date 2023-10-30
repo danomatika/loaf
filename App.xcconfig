@@ -3,9 +3,6 @@
 // override cc.openframeworks
 PRODUCT_BUNDLE_IDENTIFIER = com.danomatika.${TARGET_NAME:rfc1034identifier}
 
-// clear CFBundleVersion, set via Xcode UI
-VERSION =
-
 // icon
 ICON_NAME = icon.icns
 ICON_NAME[config=Debug] = icon-debug.icns
