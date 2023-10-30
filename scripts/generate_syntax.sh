@@ -1,9 +1,7 @@
-#! /bin/bash
+#! /bin/sh
 #
 # generate Lua bindings
 #
-
-WD=$(dirname $0)
 
 DEST=../doc/modules
 
@@ -13,7 +11,7 @@ LUA_SYNTAX=$LUA/scripts/lua_syntax.py
 
 ###
 
-cd $WD
+cd $(dirname $0)
 
 cd $LUA/swig && make openFrameworks-symbols && make glm-symbols && cd -
 mv $LUA/swig/*_lua_symbols.txt ../swig

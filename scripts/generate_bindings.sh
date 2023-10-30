@@ -1,15 +1,13 @@
-#! /bin/bash
+#! /bin/sh
 #
 # generate Lua bindings
 #
 
 OF_DIR=../../../../
 
-WD=$(dirname $0)
-
 ###
 
-cd $WD/../swig
+cd $(dirname $0)/../swig
 
 make osc
 make loaf

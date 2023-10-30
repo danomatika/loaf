@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 #
 # builds loaf macOS release as a notarized DMG
 #
