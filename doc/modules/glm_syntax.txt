@@ -143,22 +143,14 @@ glm.vec4
 glm.yaw
 glm.zero
 
-glm.mat4.length
-
-glm.mat3.length
-
-glm.vec4.length
-
-glm.vec3.length
-
 glm.vec2.length
-
-glm.quat.length
 
 glm.vec2
   vec2
   x
   y
+
+glm.vec4.length
 
 glm.vec3
   vec3
@@ -180,8 +172,16 @@ glm.quat
   y
   z
 
+glm.mat3.length
+
 glm.mat3
   mat3
 
 glm.mat4
   mat4
+
+glm.mat4.length
+
+glm.vec3.length
+
+glm.quat.length

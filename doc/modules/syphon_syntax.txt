@@ -1,10 +1,6 @@
-syphon
-syphon.Client
-syphon.Server
-syphon.ServerDescription
-syphon.ServerDirectory
 syphon.ServerDirectoryEventArgs
-syphon.ServerDirectoryEvents
+  ServerDirectoryEventArgs
+  servers
 
 syphon.Client
   bind
@@ -22,15 +18,13 @@ syphon.Client
   setup
   unbind
 
+syphon
+syphon.Client
 syphon.Server
-  getName
-  publishScreen
-  publishTexture
-  setName
-
+syphon.ServerDescription
+syphon.ServerDirectory
 syphon.ServerDirectoryEventArgs
-  ServerDirectoryEventArgs
-  servers
+syphon.ServerDirectoryEvents
 
 syphon.ServerDescription
   appName
@@ -46,6 +40,12 @@ syphon.ServerDirectory
   serverExists
   setup
   size
+
+syphon.Server
+  getName
+  publishScreen
+  publishTexture
+  setName
 
 syphon.ServerDirectoryEvents
   ServerDirectoryEvents

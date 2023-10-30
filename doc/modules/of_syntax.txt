@@ -1,17 +1,3 @@
-of.Style
-  bFill
-  bgColor
-  blendingMode
-  circleResolution
-  color
-  curveResolution
-  drawBitmapMode
-  lineWidth
-  polyMode
-  rectMode
-  smoothing
-  sphereResolution
-
 of
 of.3dPrimitive
 of.ALIGN_HORZ_CENTER
@@ -107,6 +93,10 @@ of.CylinderPrimitive
 of.DEG_TO_RAD
 of.DIGITAL_MESSAGE
 of.Directory
+of.Directory_SORT_BY_DATE
+of.Directory_SORT_FAST
+of.Directory_SORT_NATURAL
+of.DoubleColor
 of.DragInfo
 of.ENCODER_ATTACH
 of.ENCODER_CHANNEL_MASK
@@ -172,6 +162,7 @@ of.GRADIENT_BAR
 of.GRADIENT_CIRCULAR
 of.GRADIENT_LINEAR
 of.HALF_PI
+of.HAS_CPP17
 of.HAS_TLS
 of.HW_SERIAL0
 of.HW_SERIAL1
@@ -296,6 +287,22 @@ of.LOOP_NONE
 of.LOOP_NORMAL
 of.LOOP_PALINDROME
 of.Light
+of.MATERIAL_TEXTURE_AMBIENT
+of.MATERIAL_TEXTURE_AO_ROUGHNESS_METALLIC
+of.MATERIAL_TEXTURE_CLEARCOAT
+of.MATERIAL_TEXTURE_CLEARCOAT_INTENSITY_ROUGHNESS
+of.MATERIAL_TEXTURE_CLEARCOAT_NORMAL
+of.MATERIAL_TEXTURE_CLEARCOAT_ROUGHNESS
+of.MATERIAL_TEXTURE_DIFFUSE
+of.MATERIAL_TEXTURE_DISPLACEMENT
+of.MATERIAL_TEXTURE_EMISSIVE
+of.MATERIAL_TEXTURE_METALLIC
+of.MATERIAL_TEXTURE_NONE
+of.MATERIAL_TEXTURE_NORMAL
+of.MATERIAL_TEXTURE_OCCLUSION
+of.MATERIAL_TEXTURE_ROUGHNESS
+of.MATERIAL_TEXTURE_ROUGHNESS_METALLIC
+of.MATERIAL_TEXTURE_SPECULAR
 of.MATRIX_MODELVIEW
 of.MATRIX_PROJECTION
 of.MATRIX_TEXTURE
@@ -456,7 +463,6 @@ of.SYSTEM_RESET
 of.Serial
 of.SerialDeviceInfo
 of.Shader
-of.ShortColor
 of.ShortImage
 of.ShortPixels
 of.SoundDevice
@@ -481,6 +487,7 @@ of.TARGET_EMSCRIPTEN
 of.TARGET_IOS
 of.TARGET_LINUX
 of.TARGET_LINUX64
+of.TARGET_LINUXAARCH64
 of.TARGET_LINUXARMV6L
 of.TARGET_LINUXARMV7L
 of.TARGET_MINGW
@@ -539,8 +546,6 @@ of.angleDifferenceRadians
 of.background
 of.backgroundGradient
 of.backgroundHex
-of.beginSaveScreenAsPDF
-of.beginSaveScreenAsSVG
 of.beginShape
 of.bezierVertex
 of.binaryToChar
@@ -608,13 +613,12 @@ of.enableSeparateSpecularLight
 of.enableSetupScreen
 of.enableSmoothing
 of.enableTextureEdgeHack
-of.endSaveScreenAsPDF
-of.endSaveScreenAsSVG
 of.endShape
 of.events
 of.exit
 of.fill
 of.gLCheckExtension
+of.gLSLGetDefaultHeader
 of.gLSLVersionFromGL
 of.gLSupportedExtensions
 of.gLSupportsNPOTTextures
@@ -661,6 +665,7 @@ of.getLightingEnabled
 of.getLogLevel
 of.getLogLevelName
 of.getLoggerChannel
+of.getMainThreadId
 of.getMinutes
 of.getMonth
 of.getMousePressed
@@ -686,6 +691,7 @@ of.getTargetFrameRate
 of.getTargetPlatform
 of.getTimestampString
 of.getUnixTime
+of.getUnixTimeMillis
 of.getUsingArbTex
 of.getUsingNormalizedTexCoords
 of.getVersionInfo
@@ -712,6 +718,7 @@ of.hexToString
 of.hideCursor
 of.imageFormatExtension
 of.inRange
+of.isCurrentThreadTheMainThread
 of.isGLProgrammableRenderer
 of.isStringInString
 of.isTextureEdgeHackEnabled
@@ -771,7 +778,6 @@ of.saveURLAsync
 of.saveURLTo
 of.saveViewport
 of.scale
-of.seedRandom
 of.sendMessage
 of.serialize
 of.setBackgroundAuto
@@ -801,6 +807,7 @@ of.setOrientation
 of.setPixelStoreiAlignment
 of.setPlaneResolution
 of.setPolyMode
+of.setRandomSeed
 of.setRectMode
 of.setSmoothLighting
 of.setSphereResolution
@@ -865,46 +872,63 @@ of.wrap
 of.wrapDegrees
 of.wrapRadians
 
-of.Firmata_Serial_Data
-  Firmata_Serial_Data
+of.Directory.SORT_BY_DATE
+of.Directory.SORT_FAST
+of.Directory.SORT_NATURAL
+of.Directory.createDirectory
+of.Directory.doesDirectoryExist
+of.Directory.isDirectoryEmpty
+of.Directory.removeDirectory
+
+of.File.Append
+of.File.ReadOnly
+of.File.ReadWrite
+of.File.Reference
+of.File.WriteOnly
+of.File.copyFromTo
+of.File.doesFileExist
+of.File.moveFromTo
+of.File.removeFile
+
+of.Firmata_I2C_Data
+  Firmata_I2C_Data
+  address
   data
-  portID
+  reg
 
-of.VboMesh
+of.Image
+  Image
+  allocate
+  bind
+  clear
+  crop
+  cropFrom
   draw
-  drawInstanced
-  getVbo
-  setUsage
-
-of.Light
-  disable
-  enable
-  getAmbientColor
-  getAttenuationConstant
-  getAttenuationLinear
-  getAttenuationQuadratic
-  getDiffuseColor
-  getIsAreaLight
-  getIsDirectional
-  getIsEnabled
-  getIsPointLight
-  getIsSpotlight
-  getLightID
-  getSpecularColor
-  getSpotConcentration
-  getSpotlightCutOff
-  getType
-  setAmbientColor
-  setAreaLight
-  setAttenuation
-  setDiffuseColor
-  setDirectional
-  setPointLight
-  setSpecularColor
-  setSpotConcentration
-  setSpotlight
-  setSpotlightCutOff
-  setup
+  drawSubsection
+  getColor
+  getHeight
+  getImageType
+  getPixels
+  getTexture
+  getWidth
+  grabScreen
+  isAllocated
+  isUsingTexture
+  load
+  mirror
+  resetAnchor
+  resize
+  rotate90
+  save
+  setAnchorPercent
+  setAnchorPoint
+  setColor
+  setCompression
+  setFromPixels
+  setImageType
+  setUseTexture
+  unbind
+  update
 
 of.Arduino
   EAnalogPinChanged
@@ -996,18 +1020,67 @@ of.Arduino
   setUseDelay
   update
 
-of.supportedPinTypes
-  analogSupported
-  encoderSupported
-  i2cSupported
-  inputSupported
-  onewireSupported
-  outputSupported
-  pwmSupported
-  serialSupported
-  servoSupported
-  stepperSupported
-  supportedPinTypes
+of.Material.getUniformName
+of.Material.isPBRSupported
+
+of.BaseSoundPlayer
+  getPan
+  getPosition
+  getPositionMS
+  getSpeed
+  getVolume
+  isLoaded
+  isPlaying
+  load
+  play
+  setLoop
+  setMultiPlay
+  setPan
+  setPaused
+  setPosition
+  setPositionMS
+  setSpeed
+  setVolume
+  stop
+  unload
+
+of.File
+  canExecute
+  canRead
+  canWrite
+  changeMode
+  close
+  copyTo
+  create
+  exists
+  getAbsolutePath
+  getBaseName
+  getEnclosingDirectory
+  getExtension
+  getFileName
+  getSize
+  isDevice
+  isDirectory
+  isFile
+  isHidden
+  isLink
+  moveTo
+  open
+  openFromCWD
+  path
+  readToBuffer
+  remove
+  renameTo
+  setExecutable
+  setReadable
+  setWriteable
+  writeFromBuffer
+
+of.VboMesh
+  draw
+  drawInstanced
+  getVbo
+  setUsage
 
 of.Mesh
   Mesh
@@ -1076,10 +1149,15 @@ of.Mesh
   load
   mergeDuplicateVertices
   removeColor
+  removeColors
   removeIndex
+  removeIndices
   removeNormal
+  removeNormals
   removeTexCoord
+  removeTexCoords
   removeVertex
+  removeVertices
   save
   setColor
   setColorForIndices
@@ -1096,113 +1174,11 @@ of.Mesh
   usingNormals
   usingTextures
 
-of.Vec3f
-  align
-  alignRad
-  angle
-  angleRad
-  average
-  cross
-  distance
-  dot
-  getCrossed
-  getInterpolated
-  getLimited
-  getMapped
-  getMiddle
-  getNormalized
-  getPerpendicular
-  getPtr
-  getRotated
-  getRotatedRad
-  getScaled
-  interpolate
-  isAligned
-  isAlignedRad
-  length
-  lengthSquared
-  limit
-  map
-  match
-  middle
-  normalize
-  perpendicular
-  rotate
-  rotateRad
-  scale
-  set
-  squareDistance
-  vec3
-  x
-  y
-  z
-
-of.SoundDevice
-  SoundDevice
-  api
-  deviceID
-  inputChannels
-  isDefaultInput
-  isDefaultOutput
-  name
-  outputChannels
-  sampleRates
-
-of.Buffer
-  allocate
-  append
-  clear
-  getData
-  getText
-  reserve
-  resize
-  set
-  setall
-  size
-
-of.Color
-  Color
-  a
-  b
-  clamp
-  g
-  getA
-  getB
-  getBrightness
-  getClamped
-  getG
-  getHex
-  getHsb
-  getHue
-  getHueAngle
-  getInverted
-  getLerped
-  getLightness
-  getNormalized
-  getR
-  getSaturation
-  invert
-  lerp
-  normalize
-  r
-  set
-  setA
-  setB
-  setBrightness
-  setG
-  setHex
-  setHsb
-  setHue
-  setHueAngle
-  setR
-  setSaturation
-
-of.FileDialogResult
-  bSuccess
-  fileName
-  filePath
-  getName
-  getPath
+of.VideoFormat
+  framerates
+  height
+  pixelFormat
+  width
 
 of.Vbo
   bind
@@ -1270,260 +1246,64 @@ of.Vbo
   updateTexCoordData
   updateVertexData
 
-of.Material
-  beginMaterial
-  endMaterial
-  getAmbientColor
-  getDiffuseColor
-  getEmissiveColor
-  getSettings
-  getShininess
-  getSpecularColor
-  setAmbientColor
-  setColors
-  setCustomUniform1f
-  setCustomUniform1i
-  setCustomUniform2f
-  setCustomUniform2i
-  setCustomUniform3f
-  setCustomUniform3i
-  setCustomUniform4f
-  setCustomUniform4i
-  setCustomUniformMatrix3f
-  setCustomUniformMatrix4f
-  setCustomUniformTexture
-  setDiffuseColor
-  setEmissiveColor
-  setShininess
-  setSpecularColor
-  setup
-
-of.Image
-  Image
-  allocate
-  bind
-  clear
-  crop
-  cropFrom
-  draw
-  drawSubsection
-  getColor
-  getHeight
-  getImageType
-  getPixels
-  getTexture
-  getWidth
-  grabScreen
-  isAllocated
-  isUsingTexture
-  load
-  mirror
-  resetAnchor
-  resize
-  rotate90
-  save
-  setAnchorPercent
-  setAnchorPoint
-  setColor
-  setCompression
-  setFromPixels
-  setImageType
-  setUseTexture
-  unbind
-  update
-
 of.path
   path
 
-of.Time
-  Time
-  getAsMicroseconds
-  getAsMilliseconds
-  getAsNanoseconds
-  getAsSeconds
-  getAsTimePoint
-  getAsTimespec
-  mode
-  nanoseconds
-  seconds
+of.Firmata_Serial_Data
+  Firmata_Serial_Data
+  data
+  portID
 
-of.SoundPlayer
-  getPlayer
-  load
-  setPlayer
-
-of.BaseSoundPlayer
-  getPan
-  getPosition
-  getPositionMS
-  getSpeed
-  getVolume
-  isLoaded
-  isPlaying
-  load
-  play
-  setLoop
-  setMultiPlay
-  setPan
-  setPaused
-  setPosition
-  setPositionMS
-  setSpeed
-  setVolume
-  stop
-  unload
-
-of.Path
-  append
-  arc
-  arcNegative
-  bezierTo
-  circle
-  clear
-  close
-  curveTo
-  draw
-  ellipse
-  getCircleResolution
-  getCommands
-  getCurveResolution
-  getFillColor
-  getMode
-  getOutline
-  getStrokeColor
-  getStrokeWidth
-  getTessellation
-  getUseShapeColor
-  getWindingMode
-  hasOutline
-  isFilled
-  lineTo
-  moveTo
-  newSubPath
-  quadBezierTo
-  rectRounded
-  rectangle
-  rotateDeg
-  rotateRad
-  scale
-  setCircleResolution
-  setColor
-  setCurveResolution
-  setFillColor
-  setFillHexColor
-  setFilled
-  setHexColor
-  setMode
-  setPolyWindingMode
-  setStrokeColor
-  setStrokeHexColor
-  setStrokeWidth
-  setUseShapeColor
-  simplify
-  tessellate
-  translate
-  triangle
-
-of.VideoDevice
-  bAvailable
-  deviceName
-  formats
-  hardwareName
-  id
-  serialID
-
-of.BufferObject
+of.ShortPixels
+  ShortPixels
   allocate
-  bind
-  bindBase
-  bindRange
-  copyTo
-  getId
-  invalidate
-  isAllocated
-  map
-  mapRange
-  setData
-  size
-  unbind
-  unbindBase
-  unbindRange
-  unmap
-  unmapRange
-  updateData
-
-of.Camera
-  beginCamera
-  cameraToWorld
-  disableOrtho
-  drawFrustum
-  enableOrtho
-  endCamera
-  getAspectRatio
-  getFarClip
-  getForceAspectRatio
-  getFov
-  getImagePlaneDistance
-  getLensOffset
-  getModelViewMatrix
-  getModelViewProjectionMatrix
-  getNearClip
-  getOrtho
-  getProjectionMatrix
-  isVFlipped
-  screenToWorld
-  setAspectRatio
-  setFarClip
-  setForceAspectRatio
-  setFov
-  setLensOffset
-  setNearClip
-  setRenderer
-  setVFlip
-  setupOffAxisViewPortal
-  setupPerspective
-  worldToCamera
-  worldToScreen
-
-of.TrueTypeFontSettings
-  addRange
-  addRanges
-  antialiased
-  contours
-  direction
-  dpi
-  fontName
-  fontSize
-  ranges
-  simplifyAmt
-
-of.MaterialSettings
-  MaterialSettings
-  ambient
-  customUniforms
-  diffuse
-  emissive
-  postFragment
-  shininess
-  specular
-
-of.WindowSettings
+  allocateImageType
+  allocatePixelFormat
+  blendInto
+  clear
+  crop
+  cropTo
+  getBitsPerChannel
+  getBitsPerPixel
+  getBytesPerChannel
+  getBytesPerPixel
+  getBytesStride
+  getChannel
+  getColor
+  getData
   getHeight
-  getPosition
+  getImageType
+  getNumChannels
+  getNumPlanes
+  getPixelFormat
+  getPixelIndex
+  getPlane
+  getTotalBytes
   getWidth
-  isPositionSet
-  isSizeSet
-  setPosition
-  setSize
-  title
-  windowMode
+  isAllocated
+  mirror
+  mirrorTo
+  pasteInto
+  resize
+  resizeTo
+  rotate90
+  rotate90To
+  set
+  setChannel
+  setColor
+  setFromAlignedPixels
+  setFromExternalPixels
+  setFromPixels
+  setFromPixelsImageType
+  setImageType
+  setNumChannels
+  size
+  swap
+  swapRgb
 
-of.ImageLoadSettings
-  ImageLoadSettings
-  accurate
-  exifRotate
-  grayscale
-  separateCMYK
+of.Vec2f.DIM
+of.Vec2f.one
+of.Vec2f.zero
 
 of.FboSettings
   colorFormats
@@ -1542,320 +1322,18 @@ of.FboSettings
   wrapModeHorizontal
   wrapModeVertical
 
-of.SoundStreamSettings
-  SoundStreamSettings
-  bufferSize
-  getApi
-  getInDevice
-  getOutDevice
-  inCallback
-  numBuffers
-  numInputChannels
-  numOutputChannels
-  outCallback
-  sampleRate
-  setApi
-  setInDevice
-  setOutDevice
-
-of.Vec4f
-  average
-  distance
-  dot
-  getInterpolated
-  getLimited
-  getMiddle
-  getNormalized
-  getPtr
-  getScaled
-  interpolate
-  length
-  lengthSquared
-  limit
-  match
-  middle
-  normalize
-  scale
-  set
-  squareDistance
-  vec4
-  w
-  x
-  y
-  z
-
-of.Firmata_I2C_Data
-  Firmata_I2C_Data
-  address
-  data
-  reg
-
-of.FilePath
-  FilePath
-
-of.SerialDeviceInfo
-  getDeviceID
-  getDeviceName
-  getDevicePath
-
-of.FloatColor
-  FloatColor
-  a
-  b
-  clamp
-  g
-  getA
-  getB
-  getBrightness
-  getClamped
-  getG
-  getHex
-  getHsb
-  getHue
-  getHueAngle
-  getInverted
-  getLerped
-  getLightness
-  getNormalized
-  getR
-  getSaturation
-  invert
-  lerp
-  normalize
-  r
-  set
-  setA
-  setB
-  setBrightness
-  setG
-  setHex
-  setHsb
-  setHue
-  setHueAngle
-  setR
-  setSaturation
-
-of.MatrixStack
-  clearStacks
-  customMatrixNeedsFlip
-  doesHardwareOrientation
-  getCurrentMatrix
-  getCurrentMatrixMode
-  getCurrentViewport
-  getFullSurfaceViewport
-  getHandedness
-  getModelMatrix
-  getModelViewMatrix
-  getModelViewProjectionMatrix
-  getNativeViewport
-  getOrientation
-  getOrientationMatrix
-  getOrientationMatrixInverse
-  getProjectionMatrix
-  getProjectionMatrixNoOrientation
-  getTextureMatrix
-  getViewInverse
-  getViewMatrix
-  isVFlipped
-  loadIdentityMatrix
-  loadMatrix
-  loadViewMatrix
-  matrixMode
-  multMatrix
-  multViewMatrix
-  nativeViewport
-  popMatrix
-  popView
-  pushMatrix
-  pushView
-  rotateRad
-  scale
-  setOrientation
-  setRenderSurface
-  setRenderSurfaceNoMatrixFlip
-  translate
-  viewport
-
-of.TextureData
-  bAllocated
-  bFlipTexture
-  bufferId
-  compressionType
-  glInternalFormat
-  height
-  magFilter
-  minFilter
-  tex_h
-  tex_t
-  tex_u
-  tex_w
-  textureID
-  textureTarget
-  width
-  wrapModeHorizontal
-  wrapModeVertical
-
-of.SoundStream
-  close
-  getBufferSize
-  getDeviceList
-  getMatchingDevices
-  getNumInputChannels
-  getNumOutputChannels
-  getSampleRate
-  getSoundStream
-  getTickCount
-  printDeviceList
-  setInput
-  setOutput
-  setSoundStream
-  setup
-  start
-  stop
-
-of.BaseSoundStream
-  close
-  getBufferSize
-  getDeviceList
-  getInDevice
-  getNumInputChannels
-  getNumOutputChannels
-  getOutDevice
-  getSampleRate
-  getTickCount
-  printDeviceList
-  setInput
-  setOutput
-  setup
-  start
-  stop
-
-of.BoxPrimitive
-  getDepth
-  getHeight
-  getResolution
-  getResolutionDepth
-  getResolutionHeight
-  getResolutionWidth
-  getSideIndices
-  getSideMesh
-  getSize
-  getWidth
-  resizeToTexture
-  set
-  setDepth
-  setHeight
-  setMode
-  setResolution
-  setResolutionDepth
-  setResolutionHeight
-  setResolutionWidth
-  setSideColor
-  setWidth
-
-of.ConePrimitive
-  getCapIndices
-  getCapMesh
-  getConeIndices
-  getConeMesh
-  getHeight
-  getRadius
-  getResolution
-  getResolutionCap
-  getResolutionHeight
-  getResolutionRadius
-  set
-  setCapColor
-  setHeight
-  setMode
-  setRadius
-  setResolution
-  setResolutionCap
-  setResolutionHeight
-  setResolutionRadius
-  setTopColor
-
-of.CylinderPrimitive
-  getBottomCapIndices
-  getBottomCapMesh
-  getCapped
-  getCylinderIndices
-  getCylinderMesh
-  getHeight
-  getRadius
-  getResolution
-  getResolutionCap
-  getResolutionHeight
-  getResolutionRadius
-  getTopCapIndices
-  getTopCapMesh
-  set
-  setBottomCapColor
-  setCapped
-  setCylinderColor
-  setHeight
-  setMode
-  setRadius
-  setResolution
-  setResolutionCap
-  setResolutionHeight
-  setResolutionRadius
-  setTopCapColor
-
-of.IcoSpherePrimitive
-  getRadius
-  getResolution
-  set
-  setMode
-  setRadius
-  setResolution
-
-of.SpherePrimitive
-  getRadius
-  getResolution
-  set
-  setMode
-  setRadius
-  setResolution
-
-of.3dPrimitive
-  disableColors
-  disableNormals
-  disableTextures
-  draw
-  drawAxes
-  drawFaces
-  drawNormals
-  drawVertices
-  drawWireframe
-  enableColors
-  enableNormals
-  enableTextures
-  getMesh
-  getMeshPtr
-  getTexCoords
-  getTexCoordsPtr
-  hasNormalsEnabled
-  hasScaling
-  isUsingVbo
-  mapTexCoords
-  mapTexCoordsFromTexture
-  setUseVbo
-
-of.PlanePrimitive
-  getHeight
-  getNumColumns
-  getNumRows
-  getResolution
-  getWidth
-  resizeToTexture
-  set
-  setColumns
-  setHeight
-  setMode
-  setResolution
-  setRows
-  setWidth
+of.TrueTypeFontSettings
+  addRange
+  addRanges
+  antialiased
+  contours
+  direction
+  dpi
+  fontName
+  fontSize
+  index
+  ranges
+  simplifyAmt
 
 of.Directory
   allowExt
@@ -1866,6 +1344,8 @@ of.Directory
   copyTo
   create
   exists
+  extensions
+  files
   getAbsolutePath
   getFile
   getFiles
@@ -1878,8 +1358,10 @@ of.Directory
   isHidden
   listDir
   moveTo
+  myDir
   open
   openFromCWD
+  originalDirectory
   path
   remove
   renameTo
@@ -1888,208 +1370,10 @@ of.Directory
   setReadable
   setShowHidden
   setWriteable
+  showHidden
   size
   sort
   sortByDate
-
-of.HttpResponse
-  data
-  error
-  request
-  status
-
-of.VideoPlayer
-  bind
-  close
-  closeMovie
-  draw
-  firstFrame
-  getCurrentFrame
-  getDuration
-  getHeight
-  getIsMovieDone
-  getLoopState
-  getMoviePath
-  getPixelFormat
-  getPixels
-  getPosition
-  getSpeed
-  getTexture
-  getTexturePlanes
-  getTotalNumFrames
-  getWidth
-  isFrameNew
-  isInitialized
-  isLoaded
-  isPaused
-  isPlaying
-  isUsingTexture
-  load
-  loadAsync
-  nextFrame
-  play
-  previousFrame
-  resetAnchor
-  setAnchorPercent
-  setAnchorPoint
-  setFrame
-  setLoopState
-  setPaused
-  setPixelFormat
-  setPlayer
-  setPosition
-  setSpeed
-  setUseTexture
-  setVolume
-  stop
-  unbind
-  update
-
-of.Unicode
-  Unicode
-
-of.FloatImage
-  FloatImage
-  allocate
-  bind
-  clear
-  crop
-  cropFrom
-  draw
-  drawSubsection
-  getColor
-  getHeight
-  getImageType
-  getPixels
-  getTexture
-  getWidth
-  grabScreen
-  isAllocated
-  isUsingTexture
-  load
-  mirror
-  resetAnchor
-  resize
-  rotate90
-  save
-  setAnchorPercent
-  setAnchorPoint
-  setColor
-  setCompression
-  setFromPixels
-  setImageType
-  setUseTexture
-  unbind
-  update
-
-of.MeshFace
-  MeshFace
-  getColor
-  getFaceNormal
-  getNormal
-  getTexCoord
-  getVertex
-  hasColors
-  hasNormals
-  hasTexcoords
-  setColor
-  setHasColors
-  setHasNormals
-  setHasTexcoords
-  setNormal
-  setTexCoord
-  setVertex
-
-of.Firmata_Stepper_Data
-  Firmata_Stepper_Data
-  data
-  id
-  type
-
-of.Firmata_Encoder_Data
-  Firmata_Encoder_Data
-  ID
-  direction
-  position
-
-of.TrueTypeFont
-  drawString
-  drawStringAsShapes
-  getAscenderHeight
-  getCharacterAsPoints
-  getDescenderHeight
-  getFirstGlyphPosForTexture
-  getFontTexture
-  getGlyphBBox
-  getLetterSpacing
-  getLineHeight
-  getNumCharacters
-  getSize
-  getSpaceSize
-  getStringAsPoints
-  getStringBoundingBox
-  getStringMesh
-  getStringTexture
-  hasFullCharacterSet
-  isAntiAliased
-  isLoaded
-  isValidGlyph
-  load
-  setDirection
-  setLetterSpacing
-  setLineHeight
-  setSpaceSize
-  stringHeight
-  stringWidth
-
-of.HttpRequest
-  body
-  contentType
-  done
-  getId
-  headers
-  method
-  name
-  saveTo
-  timeoutSeconds
-  url
-
-of.ShortColor
-  ShortColor
-  a
-  b
-  clamp
-  g
-  getA
-  getB
-  getBrightness
-  getClamped
-  getG
-  getHex
-  getHsb
-  getHue
-  getHueAngle
-  getInverted
-  getLerped
-  getLightness
-  getNormalized
-  getR
-  getSaturation
-  invert
-  lerp
-  normalize
-  r
-  set
-  setA
-  setB
-  setBrightness
-  setG
-  setHex
-  setHsb
-  setHue
-  setHueAngle
-  setR
-  setSaturation
 
 of.Matrix3x3
   a
@@ -2108,283 +1392,6 @@ of.Matrix3x3
   mat3
   set
   transpose
-
-of.Texture
-  allocate
-  allocateAsBufferTexture
-  bind
-  clear
-  copyTo
-  disableAlphaMask
-  disableMipmap
-  disableTextureMatrix
-  draw
-  drawSubsection
-  enableMipmap
-  generateMipmap
-  getAlphaMask
-  getCoordFromPercent
-  getCoordFromPoint
-  getHeight
-  getMeshForSubsection
-  getQuad
-  getTextureData
-  getTextureMatrix
-  getWidth
-  hasMipmap
-  isAllocated
-  isUsingTextureMatrix
-  loadData
-  loadScreenData
-  readToPixels
-  resetAnchor
-  setAlphaMask
-  setAnchorPercent
-  setAnchorPoint
-  setCompression
-  setRGToRGBASwizzles
-  setSwizzle
-  setTextureMatrix
-  setTextureMinMagFilter
-  setTextureWrap
-  setUseExternalTextureID
-  texData
-  unbind
-
-of.Quaternion
-  _v
-  asVec3
-  asVec4
-  conj
-  get
-  getEuler
-  getRotate
-  inverse
-  length
-  length2
-  makeRotate
-  makeRotate_original
-  normalize
-  quat
-  set
-  slerp
-  w
-  x
-  y
-  z
-  zeroRotation
-
-of.ShortImage
-  ShortImage
-  allocate
-  bind
-  clear
-  crop
-  cropFrom
-  draw
-  drawSubsection
-  getColor
-  getHeight
-  getImageType
-  getPixels
-  getTexture
-  getWidth
-  grabScreen
-  isAllocated
-  isUsingTexture
-  load
-  mirror
-  resetAnchor
-  resize
-  rotate90
-  save
-  setAnchorPercent
-  setAnchorPoint
-  setColor
-  setCompression
-  setFromPixels
-  setImageType
-  setUseTexture
-  unbind
-  update
-
-of.VideoFormat
-  framerates
-  height
-  pixelFormat
-  width
-
-of.File
-  canExecute
-  canRead
-  canWrite
-  changeMode
-  close
-  copyTo
-  create
-  exists
-  getAbsolutePath
-  getBaseName
-  getEnclosingDirectory
-  getExtension
-  getFileName
-  getSize
-  isDevice
-  isDirectory
-  isFile
-  isHidden
-  isLink
-  moveTo
-  open
-  openFromCWD
-  path
-  readToBuffer
-  remove
-  renameTo
-  setExecutable
-  setReadable
-  setWriteable
-  writeFromBuffer
-
-of.Shader
-  beginShader
-  bindAttribute
-  bindDefaults
-  endShader
-  getAttributeLocation
-  getGeometryMaxOutputCount
-  getProgram
-  getShader
-  getShaderSource
-  getUniformLocation
-  isLoaded
-  linkProgram
-  load
-  printActiveAttributes
-  printActiveUniforms
-  setAttribute1d
-  setAttribute1f
-  setAttribute1s
-  setAttribute2d
-  setAttribute2f
-  setAttribute2s
-  setAttribute3d
-  setAttribute3f
-  setAttribute3s
-  setAttribute4d
-  setAttribute4f
-  setAttribute4s
-  setGeometryInputType
-  setGeometryOutputCount
-  setGeometryOutputType
-  setUniform1f
-  setUniform1i
-  setUniform2f
-  setUniform2i
-  setUniform3f
-  setUniform3i
-  setUniform4f
-  setUniform4i
-  setUniformMatrix3f
-  setUniformMatrix4f
-  setUniformTexture
-  setUniforms
-  setup
-  setupShaderFromFile
-  setupShaderFromSource
-  unload
-
-of.EasyCam
-  addInteraction
-  beginCamera
-  clearControlArea
-  disableInertia
-  disableMouseInput
-  disableMouseMiddleButton
-  enableInertia
-  enableMouseInput
-  enableMouseMiddleButton
-  getControlArea
-  getDistance
-  getDrag
-  getInertiaEnabled
-  getMouseInputEnabled
-  getMouseMiddleButtonEnabled
-  getRelativeYAxis
-  getTarget
-  getTranslationKey
-  getUpAxis
-  hasInteraction
-  removeAllInteractions
-  removeInteraction
-  reset
-  setAutoDistance
-  setControlArea
-  setDistance
-  setDrag
-  setEvents
-  setRelativeYAxis
-  setRotationSensitivity
-  setTarget
-  setTranslationKey
-  setTranslationSensitivity
-  setUpAxis
-
-of.FpsCounter
-  getFps
-  getLastFrameFilteredNanos
-  getLastFrameFilteredSecs
-  getLastFrameNanos
-  getLastFrameSecs
-  getNumFrames
-  newFrame
-  setFilterAlpha
-  update
-
-of.DragInfo
-  DragInfo
-  files
-  position
-
-of.Fbo
-  activateAllDrawBuffers
-  allocate
-  attachTexture
-  beginFbo
-  bind
-  checkStatus
-  clear
-  clearColorBuffer
-  clearDepthBuffer
-  clearDepthStencilBuffer
-  clearStencilBuffer
-  copyTo
-  createAndAttachDepthStencilTexture
-  createAndAttachRenderbuffer
-  createAndAttachTexture
-  draw
-  endFbo
-  flagDirty
-  getDefaultTextureIndex
-  getDepthBuffer
-  getDepthTexture
-  getHeight
-  getId
-  getIdDrawBuffer
-  getNumTextures
-  getStencilBuffer
-  getTexture
-  getWidth
-  isAllocated
-  readToPixels
-  resetAnchor
-  setActiveDrawBuffer
-  setActiveDrawBuffers
-  setAnchorPercent
-  setAnchorPoint
-  setDefaultTextureIndex
-  unbind
-  updateTexture
 
 of.Rectangle
   alignTo
@@ -2451,70 +1458,718 @@ of.Rectangle
   x
   y
 
-of.TouchEventArgs
-  angle
-  height
-  id
-  majoraxis
-  minoraxis
-  numTouches
-  pressure
-  time
-  type
-  width
-  x
-  xaccel
-  xspeed
-  y
-  yaccel
-  yspeed
-
-of.ShortPixels
-  ShortPixels
+of.Buffer
   allocate
-  allocateImageType
-  allocatePixelFormat
-  blendInto
+  append
   clear
-  crop
-  cropTo
-  getBitsPerChannel
-  getBitsPerPixel
-  getBytesPerChannel
-  getBytesPerPixel
-  getBytesStride
-  getChannel
-  getColor
   getData
+  getText
+  reserve
+  resize
+  set
+  setall
+  size
+
+of.Matrix4x4.getInverseOf
+of.Matrix4x4.getOrthoNormalOf
+of.Matrix4x4.getTransposedOf
+of.Matrix4x4.newFrustumMatrix
+of.Matrix4x4.newIdentityMatrix
+of.Matrix4x4.newLookAtMatrix
+of.Matrix4x4.newOrtho2DMatrix
+of.Matrix4x4.newOrthoMatrix
+of.Matrix4x4.newPerspectiveMatrix
+of.Matrix4x4.newRotationMatrix
+of.Matrix4x4.newScaleMatrix
+of.Matrix4x4.newTranslationMatrix
+of.Matrix4x4.transform3x3
+
+of.DoubleColor
+  DoubleColor
+  a
+  b
+  clamp
+  g
+  getA
+  getB
+  getBrightness
+  getClamped
+  getG
+  getHex
+  getHsb
+  getHue
+  getHueAngle
+  getInverted
+  getLerped
+  getLightness
+  getNormalized
+  getR
+  getSaturation
+  invert
+  lerp
+  normalize
+  r
+  set
+  setA
+  setB
+  setBrightness
+  setG
+  setHex
+  setHsb
+  setHue
+  setHueAngle
+  setR
+  setSaturation
+
+of.ConePrimitive
+  getCapIndices
+  getCapMesh
+  getConeIndices
+  getConeMesh
   getHeight
-  getImageType
-  getNumChannels
-  getNumPlanes
-  getPixelFormat
-  getPixelIndex
-  getPlane
-  getTotalBytes
+  getRadius
+  getResolution
+  getResolutionCap
+  getResolutionHeight
+  getResolutionRadius
+  set
+  setCapColor
+  setHeight
+  setMode
+  setRadius
+  setResolution
+  setResolutionCap
+  setResolutionHeight
+  setResolutionRadius
+  setTopColor
+
+of.Shader
+  beginShader
+  bindAttribute
+  bindDefaults
+  endShader
+  getAttributeLocation
+  getGeometryMaxOutputCount
+  getProgram
+  getShader
+  getShaderSource
+  getUniformLocation
+  isLoaded
+  linkProgram
+  load
+  printActiveAttributes
+  printActiveUniforms
+  setAttribute1d
+  setAttribute1f
+  setAttribute1s
+  setAttribute2d
+  setAttribute2f
+  setAttribute2s
+  setAttribute3d
+  setAttribute3f
+  setAttribute3s
+  setAttribute4d
+  setAttribute4f
+  setAttribute4s
+  setGeometryInputType
+  setGeometryOutputCount
+  setGeometryOutputType
+  setPbrEnvironmentMapUniforms
+  setShadowUniforms
+  setUniform1f
+  setUniform1i
+  setUniform2f
+  setUniform2i
+  setUniform3f
+  setUniform3i
+  setUniform4f
+  setUniform4i
+  setUniformMatrix3f
+  setUniformMatrix4f
+  setUniformTexture
+  setUniforms
+  setup
+  setupShaderFromFile
+  setupShaderFromSource
+  unload
+
+of.Fbo
+  activateAllDrawBuffers
+  allocate
+  attachTexture
+  beginFbo
+  bind
+  checkStatus
+  clear
+  clearColorBuffer
+  clearDepthBuffer
+  clearDepthStencilBuffer
+  clearStencilBuffer
+  copyTo
+  createAndAttachDepthStencilTexture
+  createAndAttachRenderbuffer
+  createAndAttachTexture
+  draw
+  endFbo
+  flagDirty
+  getDefaultTextureIndex
+  getDepthBuffer
+  getDepthTexture
+  getHeight
+  getId
+  getIdDrawBuffer
+  getNumTextures
+  getStencilBuffer
+  getTexture
   getWidth
   isAllocated
-  mirror
-  mirrorTo
-  pasteInto
-  resize
-  resizeTo
-  rotate90
-  rotate90To
+  readToPixels
+  resetAnchor
+  setActiveDrawBuffer
+  setActiveDrawBuffers
+  setAnchorPercent
+  setAnchorPoint
+  setDefaultTextureIndex
+  unbind
+  updateTexture
+
+of.HttpRequest
+  body
+  contentType
+  done
+  getId
+  headers
+  method
+  name
+  saveTo
+  timeoutSeconds
+  url
+
+of.FloatColor
+  FloatColor
+  a
+  b
+  clamp
+  g
+  getA
+  getB
+  getBrightness
+  getClamped
+  getG
+  getHex
+  getHsb
+  getHue
+  getHueAngle
+  getInverted
+  getLerped
+  getLightness
+  getNormalized
+  getR
+  getSaturation
+  invert
+  lerp
+  normalize
+  r
   set
-  setChannel
-  setColor
-  setFromAlignedPixels
-  setFromExternalPixels
-  setFromPixels
-  setFromPixelsImageType
-  setImageType
-  setNumChannels
+  setA
+  setB
+  setBrightness
+  setG
+  setHex
+  setHsb
+  setHue
+  setHueAngle
+  setR
+  setSaturation
+
+of.TrueTypeFont
+  drawString
+  drawStringAsShapes
+  getAscenderHeight
+  getCharAdvance
+  getCharWidth
+  getCharacterAsPoints
+  getDescenderHeight
+  getFirstGlyphPosForTexture
+  getFontTexture
+  getGlyphBBox
+  getLetterSpacing
+  getLineHeight
+  getNumCharacters
+  getSize
+  getSpaceSize
+  getStringAsPoints
+  getStringBoundingBox
+  getStringMesh
+  getStringTexture
+  hasFullCharacterSet
+  isAntiAliased
+  isLoaded
+  isValidGlyph
+  load
+  setDirection
+  setLetterSpacing
+  setLineHeight
+  setSpaceSize
+  stringHeight
+  stringWidth
+
+of.DoubleColor.aliceBlue
+of.DoubleColor.antiqueWhite
+of.DoubleColor.aqua
+of.DoubleColor.aquamarine
+of.DoubleColor.azure
+of.DoubleColor.beige
+of.DoubleColor.bisque
+of.DoubleColor.black
+of.DoubleColor.blanchedAlmond
+of.DoubleColor.blue
+of.DoubleColor.blueSteel
+of.DoubleColor.blueViolet
+of.DoubleColor.brown
+of.DoubleColor.burlyWood
+of.DoubleColor.cadetBlue
+of.DoubleColor.chartreuse
+of.DoubleColor.chocolate
+of.DoubleColor.coral
+of.DoubleColor.cornflowerBlue
+of.DoubleColor.cornsilk
+of.DoubleColor.crimson
+of.DoubleColor.cyan
+of.DoubleColor.darkBlue
+of.DoubleColor.darkCyan
+of.DoubleColor.darkGoldenRod
+of.DoubleColor.darkGray
+of.DoubleColor.darkGreen
+of.DoubleColor.darkGrey
+of.DoubleColor.darkKhaki
+of.DoubleColor.darkMagenta
+of.DoubleColor.darkOliveGreen
+of.DoubleColor.darkOrange
+of.DoubleColor.darkOrchid
+of.DoubleColor.darkRed
+of.DoubleColor.darkSalmon
+of.DoubleColor.darkSeaGreen
+of.DoubleColor.darkSlateBlue
+of.DoubleColor.darkSlateGray
+of.DoubleColor.darkSlateGrey
+of.DoubleColor.darkTurquoise
+of.DoubleColor.darkViolet
+of.DoubleColor.deepPink
+of.DoubleColor.deepSkyBlue
+of.DoubleColor.dimGray
+of.DoubleColor.dimGrey
+of.DoubleColor.dodgerBlue
+of.DoubleColor.fireBrick
+of.DoubleColor.floralWhite
+of.DoubleColor.forestGreen
+of.DoubleColor.fromHex
+of.DoubleColor.fromHsb
+of.DoubleColor.fuchsia
+of.DoubleColor.gainsboro
+of.DoubleColor.ghostWhite
+of.DoubleColor.gold
+of.DoubleColor.goldenRod
+of.DoubleColor.gray
+of.DoubleColor.green
+of.DoubleColor.greenYellow
+of.DoubleColor.grey
+of.DoubleColor.honeyDew
+of.DoubleColor.hotPink
+of.DoubleColor.indianRed
+of.DoubleColor.indigo
+of.DoubleColor.ivory
+of.DoubleColor.khaki
+of.DoubleColor.lavender
+of.DoubleColor.lavenderBlush
+of.DoubleColor.lawnGreen
+of.DoubleColor.lemonChiffon
+of.DoubleColor.lightBlue
+of.DoubleColor.lightCoral
+of.DoubleColor.lightCyan
+of.DoubleColor.lightGoldenRodYellow
+of.DoubleColor.lightGray
+of.DoubleColor.lightGreen
+of.DoubleColor.lightGrey
+of.DoubleColor.lightPink
+of.DoubleColor.lightSalmon
+of.DoubleColor.lightSeaGreen
+of.DoubleColor.lightSkyBlue
+of.DoubleColor.lightSlateGray
+of.DoubleColor.lightSlateGrey
+of.DoubleColor.lightSteelBlue
+of.DoubleColor.lightYellow
+of.DoubleColor.lime
+of.DoubleColor.limeGreen
+of.DoubleColor.limit
+of.DoubleColor.linen
+of.DoubleColor.magenta
+of.DoubleColor.maroon
+of.DoubleColor.mediumAquaMarine
+of.DoubleColor.mediumBlue
+of.DoubleColor.mediumOrchid
+of.DoubleColor.mediumPurple
+of.DoubleColor.mediumSeaGreen
+of.DoubleColor.mediumSlateBlue
+of.DoubleColor.mediumSpringGreen
+of.DoubleColor.mediumTurquoise
+of.DoubleColor.mediumVioletRed
+of.DoubleColor.midnightBlue
+of.DoubleColor.mintCream
+of.DoubleColor.mistyRose
+of.DoubleColor.moccasin
+of.DoubleColor.navajoWhite
+of.DoubleColor.navy
+of.DoubleColor.oldLace
+of.DoubleColor.olive
+of.DoubleColor.oliveDrab
+of.DoubleColor.orange
+of.DoubleColor.orangeRed
+of.DoubleColor.orchid
+of.DoubleColor.paleGoldenRod
+of.DoubleColor.paleGreen
+of.DoubleColor.paleTurquoise
+of.DoubleColor.paleVioletRed
+of.DoubleColor.papayaWhip
+of.DoubleColor.peachPuff
+of.DoubleColor.peru
+of.DoubleColor.pink
+of.DoubleColor.plum
+of.DoubleColor.powderBlue
+of.DoubleColor.purple
+of.DoubleColor.red
+of.DoubleColor.rosyBrown
+of.DoubleColor.royalBlue
+of.DoubleColor.saddleBrown
+of.DoubleColor.salmon
+of.DoubleColor.sandyBrown
+of.DoubleColor.seaGreen
+of.DoubleColor.seaShell
+of.DoubleColor.sienna
+of.DoubleColor.silver
+of.DoubleColor.skyBlue
+of.DoubleColor.slateBlue
+of.DoubleColor.slateGray
+of.DoubleColor.slateGrey
+of.DoubleColor.snow
+of.DoubleColor.springGreen
+of.DoubleColor.steelBlue
+of.DoubleColor.tan
+of.DoubleColor.teal
+of.DoubleColor.thistle
+of.DoubleColor.tomato
+of.DoubleColor.turquoise
+of.DoubleColor.violet
+of.DoubleColor.wheat
+of.DoubleColor.white
+of.DoubleColor.whiteSmoke
+of.DoubleColor.yellow
+of.DoubleColor.yellowGreen
+
+of.MaterialSettings
+  MaterialSettings
+  ambient
+  clearCoatEnabled
+  clearCoatRoughness
+  clearCoatStrength
+  customUniforms
+  diffuse
+  displacementNormalsStrength
+  displacementStrength
+  emissive
+  isPbr
+  mainFragment
+  mainFragmentKey
+  mainVertex
+  mainVertexKey
+  metallic
+  normalGeomToNormalMapMix
+  postFragment
+  reflectance
+  roughness
+  shininess
+  specular
+  texCoordScale
+  uniqueIdString
+
+of.Polyline
+  Polyline
+  addVertex
+  addVertices
+  arc
+  arcNegative
+  bezierTo
+  clear
+  close
+  curveTo
+  draw
+  flagHasChanged
+  getArea
+  getBoundingBox
+  getCentroid2D
+  getClosestPoint
+  getDegreesAtIndex
+  getDegreesAtIndexInterpolated
+  getIndexAtLength
+  getIndexAtPercent
+  getLengthAtIndex
+  getLengthAtIndexInterpolated
+  getNormalAtIndex
+  getNormalAtIndexInterpolated
+  getPerimeter
+  getPointAtIndexInterpolated
+  getPointAtLength
+  getPointAtPercent
+  getRadiansAtIndex
+  getRadiansAtIndexInterpolated
+  getResampledByCount
+  getResampledBySpacing
+  getRotationAtIndex
+  getRotationAtIndexInterpolated
+  getSmoothed
+  getTangentAtIndex
+  getTangentAtIndexInterpolated
+  getVertices
+  getWrappedIndex
+  hasChanged
+  insertVertex
+  inside
+  isClosed
+  lineTo
+  quadBezierTo
+  removeVertex
+  resize
+  rotateDeg
+  rotateRad
+  scale
+  setClosed
+  simplify
   size
-  swap
-  swapRgb
+  translate
+
+of.FilePath
+  FilePath
+
+of.Fbo.checkGLSupport
+of.Fbo.maxColorAttachments
+of.Fbo.maxDrawBuffers
+of.Fbo.maxSamples
+
+of.Light
+  beginShadowDepthPass
+  disable
+  enable
+  endShadowDepthPass
+  getAmbientColor
+  getAttenuationConstant
+  getAttenuationLinear
+  getAttenuationQuadratic
+  getDiffuseColor
+  getIsAreaLight
+  getIsDirectional
+  getIsEnabled
+  getIsPointLight
+  getIsSpotlight
+  getLightID
+  getNumShadowDepthPasses
+  getShadow
+  getSpecularColor
+  getSpotConcentration
+  getSpotlightCutOff
+  getType
+  setAmbientColor
+  setAreaLight
+  setAttenuation
+  setDiffuseColor
+  setDirectional
+  setPointLight
+  setSpecularColor
+  setSpotConcentration
+  setSpotlight
+  setSpotlightCutOff
+  setup
+  shouldRenderShadowDepthPass
+
+of.CylinderPrimitive
+  getBottomCapIndices
+  getBottomCapMesh
+  getCapped
+  getCylinderIndices
+  getCylinderMesh
+  getHeight
+  getRadius
+  getResolution
+  getResolutionCap
+  getResolutionHeight
+  getResolutionRadius
+  getTopCapIndices
+  getTopCapMesh
+  set
+  setBottomCapColor
+  setCapped
+  setCylinderColor
+  setHeight
+  setMode
+  setRadius
+  setResolution
+  setResolutionCap
+  setResolutionHeight
+  setResolutionRadius
+  setTopCapColor
+
+of.Node
+  boom
+  clearParent
+  customDraw
+  dolly
+  draw
+  getGlobalOrientation
+  getGlobalPosition
+  getGlobalScale
+  getGlobalTransformMatrix
+  getHeadingDeg
+  getHeadingRad
+  getLocalTransformMatrix
+  getLookAtDir
+  getOrientationEulerDeg
+  getOrientationEulerRad
+  getOrientationQuat
+  getParent
+  getPitchDeg
+  getPitchRad
+  getPosition
+  getRollDeg
+  getRollRad
+  getScale
+  getSideDir
+  getUpDir
+  getX
+  getXAxis
+  getY
+  getYAxis
+  getZ
+  getZAxis
+  lookAt
+  move
+  orbitDeg
+  orbitRad
+  panDeg
+  panRad
+  resetTransform
+  restoreTransformGL
+  rollDeg
+  rollRad
+  rotateAround
+  rotateAroundDeg
+  rotateAroundRad
+  rotateDeg
+  rotateRad
+  setGlobalOrientation
+  setGlobalPosition
+  setOrientation
+  setParent
+  setPosition
+  setScale
+  tiltDeg
+  tiltRad
+  transformGL
+  truck
+
+of.Texture
+  allocate
+  allocateAsBufferTexture
+  bind
+  clear
+  copyTo
+  disableAlphaMask
+  disableMipmap
+  disableTextureMatrix
+  draw
+  drawSubsection
+  enableMipmap
+  generateMipmap
+  getAlphaMask
+  getCoordFromPercent
+  getCoordFromPoint
+  getHeight
+  getMeshForSubsection
+  getQuad
+  getTextureData
+  getTextureMatrix
+  getWidth
+  hasMipmap
+  isAllocated
+  isUsingTextureMatrix
+  loadData
+  loadScreenData
+  readToPixels
+  resetAnchor
+  setAlphaMask
+  setAnchorPercent
+  setAnchorPoint
+  setCompression
+  setRGToRGBASwizzles
+  setSwizzle
+  setTextureMatrix
+  setTextureMinMagFilter
+  setTextureWrap
+  setUseExternalTextureID
+  texData
+  unbind
+
+of.BoxPrimitive.SIDES_TOTAL
+of.BoxPrimitive.SIDE_BACK
+of.BoxPrimitive.SIDE_BOTTOM
+of.BoxPrimitive.SIDE_FRONT
+of.BoxPrimitive.SIDE_LEFT
+of.BoxPrimitive.SIDE_RIGHT
+of.BoxPrimitive.SIDE_TOP
+
+of.3dPrimitive
+  disableColors
+  disableNormals
+  disableTextures
+  draw
+  drawAxes
+  drawFaces
+  drawNormals
+  drawVertices
+  drawWireframe
+  enableColors
+  enableNormals
+  enableTextures
+  getMesh
+  getMeshPtr
+  getTexCoords
+  getTexCoordsPtr
+  hasNormalsEnabled
+  hasScaling
+  isUsingVbo
+  mapTexCoords
+  mapTexCoordsFromTexture
+  setUseVbo
+
+of.SoundStreamSettings
+  SoundStreamSettings
+  bufferSize
+  getApi
+  getInDevice
+  getOutDevice
+  inCallback
+  numBuffers
+  numInputChannels
+  numOutputChannels
+  outCallback
+  sampleRate
+  setApi
+  setInDevice
+  setOutDevice
+
+of.TouchEventArgs.cancel
+of.TouchEventArgs.doubleTap
+of.TouchEventArgs.down
+of.TouchEventArgs.move
+of.TouchEventArgs.up
 
 of.FloatPixels
   FloatPixels
@@ -2563,6 +2218,22 @@ of.FloatPixels
   swap
   swapRgb
 
+of.FpsCounter
+  getFps
+  getLastFrameFilteredNanos
+  getLastFrameFilteredSecs
+  getLastFrameNanos
+  getLastFrameSecs
+  getNumFrames
+  newFrame
+  setFilterAlpha
+  update
+
+of.SoundPlayer
+  getPlayer
+  load
+  setPlayer
+
 of.Pixels
   Pixels
   allocate
@@ -2610,141 +2281,189 @@ of.Pixels
   swap
   swapRgb
 
-of.TrueTypeFont.setGlobalDpi
-
-of.Unicode.AdditionalEmoticons
-of.Unicode.AdditionalTransportAndMap
-of.Unicode.AlphabeticPresentationForms
-of.Unicode.Arabic
-of.Unicode.ArabicExtendedA
-of.Unicode.ArabicMath
-of.Unicode.ArabicPresFormsA
-of.Unicode.ArabicPresFormsB
-of.Unicode.ArabicSupplement
-of.Unicode.Arrows
-of.Unicode.BlockElement
-of.Unicode.BoxDrawing
-of.Unicode.CJKLettersAndMonths
-of.Unicode.CJKUnified
-of.Unicode.CurrencySymbols
-of.Unicode.Cyrillic
-of.Unicode.Devanagari
-of.Unicode.DevanagariExtended
-of.Unicode.Dingbats
-of.Unicode.Emoticons
-of.Unicode.EnclosedCharacters
-of.Unicode.GeneralPunctuation
-of.Unicode.GeometricShapes
-of.Unicode.Greek
-of.Unicode.GreekExtended
-of.Unicode.HangulCompatJamo
-of.Unicode.HangulExtendedA
-of.Unicode.HangulExtendedB
-of.Unicode.HangulJamo
-of.Unicode.HangulSyllables
-of.Unicode.Hiragana
-of.Unicode.IdeographicSpace
-of.Unicode.KanaSupplement
-of.Unicode.Katakana
-of.Unicode.KatakanaHalfAndFullwidthForms
-of.Unicode.KatakanaPhoneticExtensions
-of.Unicode.Latin
-of.Unicode.Latin1Supplement
-of.Unicode.LatinA
-of.Unicode.LatinExtendedAdditional
-of.Unicode.LetterLikeSymbols
-of.Unicode.MathOperators
-of.Unicode.MiscSymbols
-of.Unicode.MiscSymbolsAndPictographs
-of.Unicode.MiscTechnical
-of.Unicode.NumberForms
-of.Unicode.OtherAdditionalSymbols
-of.Unicode.RumiNumericalSymbols
-of.Unicode.Space
-of.Unicode.SuperAndSubScripts
-of.Unicode.TransportAndMap
-of.Unicode.Uncategorized
-of.Unicode.VedicExtensions
-
-of.Polyline.fromRectangle
-
 of.Path.COMMANDS
 of.Path.POLYLINES
 
-of.TouchEventArgs.cancel
-of.TouchEventArgs.doubleTap
-of.TouchEventArgs.down
-of.TouchEventArgs.move
-of.TouchEventArgs.up
+of.Polyline.fromRectangle
 
-of.Vec4f.DIM
-of.Vec4f.one
-of.Vec4f.zero
+of.SerialDeviceInfo
+  getDeviceID
+  getDeviceName
+  getDevicePath
+
+of.Unicode
+  Unicode
+
+of.Vec2f
+  align
+  alignRad
+  angle
+  angleRad
+  average
+  distance
+  dot
+  getInterpolated
+  getLimited
+  getMapped
+  getMiddle
+  getNormalized
+  getPerpendicular
+  getPtr
+  getRotated
+  getRotatedRad
+  getScaled
+  interpolate
+  isAligned
+  isAlignedRad
+  length
+  lengthSquared
+  limit
+  map
+  match
+  middle
+  normalize
+  perpendicular
+  rotate
+  rotateRad
+  scale
+  set
+  squareDistance
+  vec2
+  x
+  y
+
+of.SpherePrimitive
+  getRadius
+  getResolution
+  set
+  setMode
+  setRadius
+  setResolution
+
+of.Style
+  bFill
+  bgColor
+  blendingMode
+  circleResolution
+  color
+  curveResolution
+  drawBitmapMode
+  lineWidth
+  polyMode
+  rectMode
+  smoothing
+  sphereResolution
+
+of.Quaternion
+  _v
+  asVec3
+  asVec4
+  conj
+  get
+  getEuler
+  getRotate
+  inverse
+  length
+  length2
+  makeRotate
+  makeRotate_original
+  normalize
+  quat
+  set
+  slerp
+  w
+  x
+  y
+  z
+  zeroRotation
+
+of.BoxPrimitive
+  getDepth
+  getHeight
+  getResolution
+  getResolutionDepth
+  getResolutionHeight
+  getResolutionWidth
+  getSideIndices
+  getSideMesh
+  getSize
+  getWidth
+  resizeToTexture
+  set
+  setDepth
+  setHeight
+  setMode
+  setResolution
+  setResolutionDepth
+  setResolutionHeight
+  setResolutionWidth
+  setSideColor
+  setWidth
+
+of.BufferObject
+  allocate
+  bind
+  bindBase
+  bindRange
+  copyTo
+  getId
+  invalidate
+  isAllocated
+  map
+  mapRange
+  setData
+  size
+  unbind
+  unbindBase
+  unbindRange
+  unmap
+  unmapRange
+  updateData
+
+of.MatrixStack
+  clearStacks
+  customMatrixNeedsFlip
+  doesHardwareOrientation
+  getCurrentMatrix
+  getCurrentMatrixMode
+  getCurrentViewport
+  getFullSurfaceViewport
+  getHandedness
+  getModelMatrix
+  getModelViewMatrix
+  getModelViewProjectionMatrix
+  getNativeViewport
+  getOrientation
+  getOrientationMatrix
+  getOrientationMatrixInverse
+  getProjectionMatrix
+  getProjectionMatrixNoOrientation
+  getTextureMatrix
+  getViewInverse
+  getViewMatrix
+  isVFlipped
+  loadIdentityMatrix
+  loadMatrix
+  loadViewMatrix
+  matrixMode
+  multMatrix
+  multViewMatrix
+  nativeViewport
+  popMatrix
+  popView
+  pushMatrix
+  pushView
+  rotateRad
+  scale
+  setOrientation
+  setRenderSurface
+  setRenderSurfaceNoMatrixFlip
+  translate
+  viewport
 
 of.Vec3f.DIM
 of.Vec3f.one
 of.Vec3f.zero
-
-of.Vec2f.DIM
-of.Vec2f.one
-of.Vec2f.zero
-
-of.Matrix4x4.getInverseOf
-of.Matrix4x4.getOrthoNormalOf
-of.Matrix4x4.getTransposedOf
-of.Matrix4x4.newFrustumMatrix
-of.Matrix4x4.newIdentityMatrix
-of.Matrix4x4.newLookAtMatrix
-of.Matrix4x4.newOrtho2DMatrix
-of.Matrix4x4.newOrthoMatrix
-of.Matrix4x4.newPerspectiveMatrix
-of.Matrix4x4.newRotationMatrix
-of.Matrix4x4.newScaleMatrix
-of.Matrix4x4.newTranslationMatrix
-of.Matrix4x4.transform3x3
-
-of.BoxPrimitive.SIDES_TOTAL
-of.BoxPrimitive.SIDE_BACK
-of.BoxPrimitive.SIDE_BOTTOM
-of.BoxPrimitive.SIDE_FRONT
-of.BoxPrimitive.SIDE_LEFT
-of.BoxPrimitive.SIDE_RIGHT
-of.BoxPrimitive.SIDE_TOP
-
-of.Fbo.checkGLSupport
-of.Fbo.maxColorAttachments
-of.Fbo.maxDrawBuffers
-of.Fbo.maxSamples
-
-of.Time.FixedRate
-of.Time.System
-
-of.SoundDevice.ALSA
-of.SoundDevice.DEFAULT
-of.SoundDevice.JACK
-of.SoundDevice.MS_ASIO
-of.SoundDevice.MS_DS
-of.SoundDevice.MS_WASAPI
-of.SoundDevice.NUM_APIS
-of.SoundDevice.OSS
-of.SoundDevice.OSX_CORE
-of.SoundDevice.PULSE
-of.SoundDevice.UNSPECIFIED
-
-of.EasyCam.TRANSFORM_NONE
-of.EasyCam.TRANSFORM_ROTATE
-of.EasyCam.TRANSFORM_SCALE
-of.EasyCam.TRANSFORM_TRANSLATE_XY
-of.EasyCam.TRANSFORM_TRANSLATE_Z
-
-of.Mesh.axis
-of.Mesh.box
-of.Mesh.cone
-of.Mesh.cylinder
-of.Mesh.icosahedron
-of.Mesh.icosphere
-of.Mesh.plane
-of.Mesh.sphere
 
 of.Color.aliceBlue
 of.Color.antiqueWhite
@@ -2777,6 +2496,7 @@ of.Color.darkGrey
 of.Color.darkKhaki
 of.Color.darkMagenta
 of.Color.darkOliveGreen
+of.Color.darkOrange
 of.Color.darkOrchid
 of.Color.darkRed
 of.Color.darkSalmon
@@ -2786,7 +2506,6 @@ of.Color.darkSlateGray
 of.Color.darkSlateGrey
 of.Color.darkTurquoise
 of.Color.darkViolet
-of.Color.darkorange
 of.Color.deepPink
 of.Color.deepSkyBlue
 of.Color.dimGray
@@ -2898,6 +2617,451 @@ of.Color.whiteSmoke
 of.Color.yellow
 of.Color.yellowGreen
 
+of.Mesh.axis
+of.Mesh.box
+of.Mesh.cone
+of.Mesh.cylinder
+of.Mesh.icosahedron
+of.Mesh.icosphere
+of.Mesh.plane
+of.Mesh.sphere
+
+of.VideoPlayer
+  bind
+  close
+  closeMovie
+  draw
+  firstFrame
+  getCurrentFrame
+  getDuration
+  getHeight
+  getIsMovieDone
+  getLoopState
+  getMoviePath
+  getPixelFormat
+  getPixels
+  getPosition
+  getSpeed
+  getTexture
+  getTexturePlanes
+  getTotalNumFrames
+  getWidth
+  isFrameNew
+  isInitialized
+  isLoaded
+  isPaused
+  isPlaying
+  isUsingTexture
+  load
+  loadAsync
+  nextFrame
+  play
+  previousFrame
+  resetAnchor
+  setAnchorPercent
+  setAnchorPoint
+  setFrame
+  setLoopState
+  setPaused
+  setPixelFormat
+  setPlayer
+  setPosition
+  setSpeed
+  setUseTexture
+  setVolume
+  stop
+  unbind
+  update
+
+of.Color
+  Color
+  a
+  b
+  clamp
+  g
+  getA
+  getB
+  getBrightness
+  getClamped
+  getG
+  getHex
+  getHsb
+  getHue
+  getHueAngle
+  getInverted
+  getLerped
+  getLightness
+  getNormalized
+  getR
+  getSaturation
+  invert
+  lerp
+  normalize
+  r
+  set
+  setA
+  setB
+  setBrightness
+  setG
+  setHex
+  setHsb
+  setHue
+  setHueAngle
+  setR
+  setSaturation
+
+of.supportedPinTypes
+  analogSupported
+  encoderSupported
+  i2cSupported
+  inputSupported
+  onewireSupported
+  outputSupported
+  pwmSupported
+  serialSupported
+  servoSupported
+  stepperSupported
+  supportedPinTypes
+
+of.FileDialogResult
+  bSuccess
+  fileName
+  filePath
+  getName
+  getPath
+
+of.EasyCam.TRANSFORM_NONE
+of.EasyCam.TRANSFORM_ROTATE
+of.EasyCam.TRANSFORM_SCALE
+of.EasyCam.TRANSFORM_TRANSLATE_XY
+of.EasyCam.TRANSFORM_TRANSLATE_Z
+
+of.FloatImage
+  FloatImage
+  allocate
+  bind
+  clear
+  crop
+  cropFrom
+  draw
+  drawSubsection
+  getColor
+  getHeight
+  getImageType
+  getPixels
+  getTexture
+  getWidth
+  grabScreen
+  isAllocated
+  isUsingTexture
+  load
+  mirror
+  resetAnchor
+  resize
+  rotate90
+  save
+  setAnchorPercent
+  setAnchorPoint
+  setColor
+  setCompression
+  setFromPixels
+  setImageType
+  setUseTexture
+  unbind
+  update
+
+of.BaseSoundStream
+  close
+  getBufferSize
+  getDeviceList
+  getInDevice
+  getNumInputChannels
+  getNumOutputChannels
+  getOutDevice
+  getSampleRate
+  getTickCount
+  printDeviceList
+  setInput
+  setOutput
+  setup
+  start
+  stop
+
+of.TouchEventArgs
+  angle
+  height
+  id
+  majoraxis
+  minoraxis
+  numTouches
+  pressure
+  time
+  type
+  width
+  x
+  xaccel
+  xspeed
+  y
+  yaccel
+  yspeed
+
+of.Xml
+  appendAttribute
+  appendChild
+  clear
+  findFirst
+  getAttribute
+  getAttributes
+  getBoolValue
+  getChild
+  getChildren
+  getDoubleValue
+  getFirstAttribute
+  getFirstChild
+  getFloatValue
+  getIntValue
+  getLastAttribute
+  getLastChild
+  getName
+  getNextSibling
+  getParent
+  getPreviousSibling
+  getUintValue
+  getValue
+  insertChildAfter
+  insertChildBefore
+  load
+  parse
+  prependAttribute
+  prependChild
+  removeAttribute
+  removeChild
+  save
+  set
+  setName
+  toString
+
+of.Firmata_Stepper_Data
+  Firmata_Stepper_Data
+  data
+  id
+  type
+
+of.FilePath.addLeadingSlash
+of.FilePath.addTrailingSlash
+of.FilePath.createEnclosingDirectory
+of.FilePath.getAbsolutePath
+of.FilePath.getBaseName
+of.FilePath.getCurrentExeDir
+of.FilePath.getCurrentExePath
+of.FilePath.getCurrentWorkingDirectory
+of.FilePath.getEnclosingDirectory
+of.FilePath.getFileExt
+of.FilePath.getFileName
+of.FilePath.getPathForDirectory
+of.FilePath.getUserHomeDir
+of.FilePath.isAbsolute
+of.FilePath.join
+of.FilePath.makeRelative
+of.FilePath.removeExt
+of.FilePath.removeTrailingSlash
+
+of.PlanePrimitive
+  getHeight
+  getNumColumns
+  getNumRows
+  getResolution
+  getWidth
+  resizeToTexture
+  set
+  setColumns
+  setHeight
+  setMode
+  setResolution
+  setRows
+  setWidth
+
+of.EasyCam
+  addInteraction
+  beginCamera
+  clearControlArea
+  disableInertia
+  disableMouseInput
+  disableMouseMiddleButton
+  enableInertia
+  enableMouseInput
+  enableMouseMiddleButton
+  getControlArea
+  getDistance
+  getDrag
+  getInertiaEnabled
+  getMouseInputEnabled
+  getMouseMiddleButtonEnabled
+  getRelativeYAxis
+  getTarget
+  getTranslationKey
+  getUpAxis
+  hasInteraction
+  removeAllInteractions
+  removeInteraction
+  reset
+  setAutoDistance
+  setControlArea
+  setDistance
+  setDrag
+  setEvents
+  setRelativeYAxis
+  setRotationSensitivity
+  setTarget
+  setTranslationKey
+  setTranslationSensitivity
+  setUpAxis
+
+of.Vec3f
+  align
+  alignRad
+  angle
+  angleRad
+  average
+  cross
+  distance
+  dot
+  getCrossed
+  getInterpolated
+  getLimited
+  getMapped
+  getMiddle
+  getNormalized
+  getPerpendicular
+  getPtr
+  getRotated
+  getRotatedRad
+  getScaled
+  interpolate
+  isAligned
+  isAlignedRad
+  length
+  lengthSquared
+  limit
+  map
+  match
+  middle
+  normalize
+  perpendicular
+  rotate
+  rotateRad
+  scale
+  set
+  squareDistance
+  vec3
+  x
+  y
+  z
+
+of.ImageLoadSettings
+  ImageLoadSettings
+  accurate
+  exifRotate
+  freeImageFlags
+  grayscale
+  separateCMYK
+
+of.WindowSettings
+  getHeight
+  getPosition
+  getWidth
+  isPositionSet
+  isSizeSet
+  setPosition
+  setSize
+  title
+  windowMode
+
+of.Vec4f.DIM
+of.Vec4f.one
+of.Vec4f.zero
+
+of.Material
+  addShaderDefine
+  beginMaterial
+  endMaterial
+  getAmbientColor
+  getClearCoatRoughness
+  getClearCoatStrength
+  getDefinesString
+  getDiffuseColor
+  getDisplacementNormalsStrength
+  getDisplacementStrength
+  getEmissiveColor
+  getHighestUniformTextureLocation
+  getMetallic
+  getNormalGeomToNormalMapMix
+  getReflectance
+  getRoughness
+  getSettings
+  getShininess
+  getSpecularColor
+  hasTexture
+  isClearCoatEnabled
+  isPBR
+  isPBRTexture
+  loadTexture
+  removeCustomUniformTexture
+  removeShaderDefine
+  setAmbientColor
+  setAmbientTexture
+  setAoRoughnessMetallicTexture
+  setClearCoatEnabled
+  setClearCoatRoughness
+  setClearCoatStrength
+  setClearCoatTexture
+  setColors
+  setCustomShader
+  setCustomUniform1f
+  setCustomUniform1i
+  setCustomUniform2f
+  setCustomUniform2i
+  setCustomUniform3f
+  setCustomUniform3i
+  setCustomUniform4f
+  setCustomUniform4i
+  setCustomUniformMatrix3f
+  setCustomUniformMatrix4f
+  setCustomUniformTexture
+  setDiffuseColor
+  setDiffuseTexture
+  setDisplacementNormalsStrength
+  setDisplacementStrength
+  setDisplacementTexture
+  setEmissiveColor
+  setEmissiveTexture
+  setMetallic
+  setMetallicTexture
+  setNormalGeomToNormalMapMix
+  setNormalTexture
+  setOcclusionTexture
+  setPBR
+  setReflectance
+  setRoughness
+  setRoughnessMetallicTexture
+  setRoughnessTexture
+  setShaderMain
+  setShininess
+  setSpecularColor
+  setSpecularTexture
+  setTexCoordScale
+  setTexture
+  setup
+  uploadMatrices
+
+of.VideoDevice
+  bAvailable
+  deviceName
+  formats
+  hardwareName
+  id
+  serialID
+
 of.FloatColor.aliceBlue
 of.FloatColor.antiqueWhite
 of.FloatColor.aqua
@@ -2929,6 +3093,7 @@ of.FloatColor.darkGrey
 of.FloatColor.darkKhaki
 of.FloatColor.darkMagenta
 of.FloatColor.darkOliveGreen
+of.FloatColor.darkOrange
 of.FloatColor.darkOrchid
 of.FloatColor.darkRed
 of.FloatColor.darkSalmon
@@ -2938,7 +3103,6 @@ of.FloatColor.darkSlateGray
 of.FloatColor.darkSlateGrey
 of.FloatColor.darkTurquoise
 of.FloatColor.darkViolet
-of.FloatColor.darkorange
 of.FloatColor.deepPink
 of.FloatColor.deepSkyBlue
 of.FloatColor.dimGray
@@ -3050,247 +3214,28 @@ of.FloatColor.whiteSmoke
 of.FloatColor.yellow
 of.FloatColor.yellowGreen
 
-of.ShortColor.aliceBlue
-of.ShortColor.antiqueWhite
-of.ShortColor.aqua
-of.ShortColor.aquamarine
-of.ShortColor.azure
-of.ShortColor.beige
-of.ShortColor.bisque
-of.ShortColor.black
-of.ShortColor.blanchedAlmond
-of.ShortColor.blue
-of.ShortColor.blueSteel
-of.ShortColor.blueViolet
-of.ShortColor.brown
-of.ShortColor.burlyWood
-of.ShortColor.cadetBlue
-of.ShortColor.chartreuse
-of.ShortColor.chocolate
-of.ShortColor.coral
-of.ShortColor.cornflowerBlue
-of.ShortColor.cornsilk
-of.ShortColor.crimson
-of.ShortColor.cyan
-of.ShortColor.darkBlue
-of.ShortColor.darkCyan
-of.ShortColor.darkGoldenRod
-of.ShortColor.darkGray
-of.ShortColor.darkGreen
-of.ShortColor.darkGrey
-of.ShortColor.darkKhaki
-of.ShortColor.darkMagenta
-of.ShortColor.darkOliveGreen
-of.ShortColor.darkOrchid
-of.ShortColor.darkRed
-of.ShortColor.darkSalmon
-of.ShortColor.darkSeaGreen
-of.ShortColor.darkSlateBlue
-of.ShortColor.darkSlateGray
-of.ShortColor.darkSlateGrey
-of.ShortColor.darkTurquoise
-of.ShortColor.darkViolet
-of.ShortColor.darkorange
-of.ShortColor.deepPink
-of.ShortColor.deepSkyBlue
-of.ShortColor.dimGray
-of.ShortColor.dimGrey
-of.ShortColor.dodgerBlue
-of.ShortColor.fireBrick
-of.ShortColor.floralWhite
-of.ShortColor.forestGreen
-of.ShortColor.fromHex
-of.ShortColor.fromHsb
-of.ShortColor.fuchsia
-of.ShortColor.gainsboro
-of.ShortColor.ghostWhite
-of.ShortColor.gold
-of.ShortColor.goldenRod
-of.ShortColor.gray
-of.ShortColor.green
-of.ShortColor.greenYellow
-of.ShortColor.grey
-of.ShortColor.honeyDew
-of.ShortColor.hotPink
-of.ShortColor.indianRed
-of.ShortColor.indigo
-of.ShortColor.ivory
-of.ShortColor.khaki
-of.ShortColor.lavender
-of.ShortColor.lavenderBlush
-of.ShortColor.lawnGreen
-of.ShortColor.lemonChiffon
-of.ShortColor.lightBlue
-of.ShortColor.lightCoral
-of.ShortColor.lightCyan
-of.ShortColor.lightGoldenRodYellow
-of.ShortColor.lightGray
-of.ShortColor.lightGreen
-of.ShortColor.lightGrey
-of.ShortColor.lightPink
-of.ShortColor.lightSalmon
-of.ShortColor.lightSeaGreen
-of.ShortColor.lightSkyBlue
-of.ShortColor.lightSlateGray
-of.ShortColor.lightSlateGrey
-of.ShortColor.lightSteelBlue
-of.ShortColor.lightYellow
-of.ShortColor.lime
-of.ShortColor.limeGreen
-of.ShortColor.limit
-of.ShortColor.linen
-of.ShortColor.magenta
-of.ShortColor.maroon
-of.ShortColor.mediumAquaMarine
-of.ShortColor.mediumBlue
-of.ShortColor.mediumOrchid
-of.ShortColor.mediumPurple
-of.ShortColor.mediumSeaGreen
-of.ShortColor.mediumSlateBlue
-of.ShortColor.mediumSpringGreen
-of.ShortColor.mediumTurquoise
-of.ShortColor.mediumVioletRed
-of.ShortColor.midnightBlue
-of.ShortColor.mintCream
-of.ShortColor.mistyRose
-of.ShortColor.moccasin
-of.ShortColor.navajoWhite
-of.ShortColor.navy
-of.ShortColor.oldLace
-of.ShortColor.olive
-of.ShortColor.oliveDrab
-of.ShortColor.orange
-of.ShortColor.orangeRed
-of.ShortColor.orchid
-of.ShortColor.paleGoldenRod
-of.ShortColor.paleGreen
-of.ShortColor.paleTurquoise
-of.ShortColor.paleVioletRed
-of.ShortColor.papayaWhip
-of.ShortColor.peachPuff
-of.ShortColor.peru
-of.ShortColor.pink
-of.ShortColor.plum
-of.ShortColor.powderBlue
-of.ShortColor.purple
-of.ShortColor.red
-of.ShortColor.rosyBrown
-of.ShortColor.royalBlue
-of.ShortColor.saddleBrown
-of.ShortColor.salmon
-of.ShortColor.sandyBrown
-of.ShortColor.seaGreen
-of.ShortColor.seaShell
-of.ShortColor.sienna
-of.ShortColor.silver
-of.ShortColor.skyBlue
-of.ShortColor.slateBlue
-of.ShortColor.slateGray
-of.ShortColor.slateGrey
-of.ShortColor.snow
-of.ShortColor.springGreen
-of.ShortColor.steelBlue
-of.ShortColor.tan
-of.ShortColor.teal
-of.ShortColor.thistle
-of.ShortColor.tomato
-of.ShortColor.turquoise
-of.ShortColor.violet
-of.ShortColor.wheat
-of.ShortColor.white
-of.ShortColor.whiteSmoke
-of.ShortColor.yellow
-of.ShortColor.yellowGreen
+of.DragInfo
+  DragInfo
+  files
+  position
 
-of.FilePath.addLeadingSlash
-of.FilePath.addTrailingSlash
-of.FilePath.createEnclosingDirectory
-of.FilePath.getAbsolutePath
-of.FilePath.getBaseName
-of.FilePath.getCurrentExeDir
-of.FilePath.getCurrentExePath
-of.FilePath.getCurrentWorkingDirectory
-of.FilePath.getEnclosingDirectory
-of.FilePath.getFileExt
-of.FilePath.getFileName
-of.FilePath.getPathForDirectory
-of.FilePath.getUserHomeDir
-of.FilePath.isAbsolute
-of.FilePath.join
-of.FilePath.makeRelative
-of.FilePath.removeExt
-of.FilePath.removeTrailingSlash
-
-of.File.Append
-of.File.ReadOnly
-of.File.ReadWrite
-of.File.Reference
-of.File.WriteOnly
-of.File.copyFromTo
-of.File.doesFileExist
-of.File.moveFromTo
-of.File.removeFile
-
-of.Directory.createDirectory
-of.Directory.doesDirectoryExist
-of.Directory.isDirectoryEmpty
-of.Directory.removeDirectory
-
-of.HttpRequest.GET
-of.HttpRequest.POST
-
-of.URLFileLoader
-  clear
-  get
-  getAsync
-  handleRequest
-  handleRequestAsync
-  remove
-  saveAsync
-  saveTo
-  stop
-
-of.Serial
-  available
-  close
-  drain
-  flush
-  getDeviceList
-  isInitialized
-  listDevices
-  readByte
-  readBytes
-  setup
-  writeByte
-  writeBytes
-
-of.VideoGrabber
-  bind
-  close
-  draw
-  getHeight
-  getPixelFormat
-  getPixels
-  getTexture
-  getTexturePlanes
-  getWidth
-  isFrameNew
-  isInitialized
-  isUsingTexture
-  listDevices
-  resetAnchor
-  setAnchorPercent
-  setAnchorPoint
-  setDesiredFrameRate
-  setDeviceID
-  setGrabber
-  setPixelFormat
-  setUseTexture
-  setVerbose
-  setup
-  unbind
-  update
-  videoSettings
+of.MeshFace
+  MeshFace
+  getColor
+  getFaceNormal
+  getNormal
+  getTexCoord
+  getVertex
+  hasColors
+  hasNormals
+  hasTexcoords
+  setColor
+  setHasColors
+  setHasNormals
+  setHasTexcoords
+  setNormal
+  setTexCoord
+  setVertex
 
 of.Matrix4x4
   _mat
@@ -3343,189 +3288,362 @@ of.Matrix4x4
   setTranslation
   translate
 
-of.Polyline
-  Polyline
-  addVertex
-  addVertices
-  arc
-  arcNegative
-  bezierTo
-  clear
-  close
-  curveTo
-  draw
-  flagHasChanged
-  getArea
-  getBoundingBox
-  getCentroid2D
-  getClosestPoint
-  getDegreesAtIndex
-  getDegreesAtIndexInterpolated
-  getIndexAtLength
-  getIndexAtPercent
-  getLengthAtIndex
-  getLengthAtIndexInterpolated
-  getNormalAtIndex
-  getNormalAtIndexInterpolated
-  getPerimeter
-  getPointAtIndexInterpolated
-  getPointAtLength
-  getPointAtPercent
-  getRadiansAtIndex
-  getRadiansAtIndexInterpolated
-  getResampledByCount
-  getResampledBySpacing
-  getRotationAtIndex
-  getRotationAtIndexInterpolated
-  getSmoothed
-  getTangentAtIndex
-  getTangentAtIndexInterpolated
-  getVertices
-  getWrappedIndex
-  hasChanged
-  insertVertex
-  inside
-  isClosed
-  lineTo
-  quadBezierTo
-  removeVertex
-  resize
-  rotateDeg
-  rotateRad
-  scale
-  setClosed
-  simplify
-  size
-  translate
+of.Unicode.AdditionalEmoticons
+of.Unicode.AdditionalTransportAndMap
+of.Unicode.AlphabeticPresentationForms
+of.Unicode.Arabic
+of.Unicode.ArabicExtendedA
+of.Unicode.ArabicMath
+of.Unicode.ArabicPresFormsA
+of.Unicode.ArabicPresFormsB
+of.Unicode.ArabicSupplement
+of.Unicode.Arrows
+of.Unicode.BlockElement
+of.Unicode.BoxDrawing
+of.Unicode.Braces
+of.Unicode.CJKLettersAndMonths
+of.Unicode.CJKSymbolAndPunctuation
+of.Unicode.CJKUnified
+of.Unicode.CurrencySymbols
+of.Unicode.Cyrillic
+of.Unicode.Devanagari
+of.Unicode.DevanagariExtended
+of.Unicode.Dingbats
+of.Unicode.Emoticons
+of.Unicode.EnclosedCharacters
+of.Unicode.GeneralPunctuation
+of.Unicode.GenericSymbols
+of.Unicode.GeometricShapes
+of.Unicode.Greek
+of.Unicode.GreekExtended
+of.Unicode.HangulCompatJamo
+of.Unicode.HangulExtendedA
+of.Unicode.HangulExtendedB
+of.Unicode.HangulJamo
+of.Unicode.HangulSyllables
+of.Unicode.Hiragana
+of.Unicode.IdeographicSpace
+of.Unicode.KanaSupplement
+of.Unicode.Katakana
+of.Unicode.KatakanaHalfAndFullwidthForms
+of.Unicode.KatakanaPhoneticExtensions
+of.Unicode.Latin
+of.Unicode.Latin1Supplement
+of.Unicode.LatinA
+of.Unicode.LatinExtendedAdditional
+of.Unicode.LetterLikeSymbols
+of.Unicode.LowercaseLatin
+of.Unicode.MathOperators
+of.Unicode.MiscSymbols
+of.Unicode.MiscSymbolsAndPictographs
+of.Unicode.MiscTechnical
+of.Unicode.NumberForms
+of.Unicode.Numbers
+of.Unicode.OtherAdditionalSymbols
+of.Unicode.RumiNumericalSymbols
+of.Unicode.Space
+of.Unicode.SuperAndSubScripts
+of.Unicode.Symbols
+of.Unicode.TransportAndMap
+of.Unicode.Uncategorized
+of.Unicode.UppercaseLatin
+of.Unicode.VedicExtensions
 
-of.Vec2f
-  align
-  alignRad
-  angle
-  angleRad
+of.URLFileLoader
+  clear
+  get
+  getAsync
+  handleRequest
+  handleRequestAsync
+  remove
+  saveAsync
+  saveTo
+  stop
+
+of.IcoSpherePrimitive
+  getRadius
+  getResolution
+  set
+  setMode
+  setRadius
+  setResolution
+
+of.VideoGrabber
+  bind
+  close
+  draw
+  getHeight
+  getPixelFormat
+  getPixels
+  getTexture
+  getTexturePlanes
+  getWidth
+  isFrameNew
+  isInitialized
+  isUsingTexture
+  listDevices
+  resetAnchor
+  setAnchorPercent
+  setAnchorPoint
+  setDesiredFrameRate
+  setDeviceID
+  setGrabber
+  setPixelFormat
+  setUseTexture
+  setVerbose
+  setup
+  unbind
+  update
+  videoSettings
+
+of.Time
+  Time
+  getAsMicroseconds
+  getAsMilliseconds
+  getAsNanoseconds
+  getAsSeconds
+  getAsTimePoint
+  getAsTimespec
+  mode
+  nanoseconds
+  seconds
+
+of.SoundDevice.ALSA
+of.SoundDevice.DEFAULT
+of.SoundDevice.JACK
+of.SoundDevice.MS_ASIO
+of.SoundDevice.MS_DS
+of.SoundDevice.MS_WASAPI
+of.SoundDevice.NUM_APIS
+of.SoundDevice.OSS
+of.SoundDevice.OSX_CORE
+of.SoundDevice.PULSE
+of.SoundDevice.UNSPECIFIED
+
+of.TrueTypeFont.dbl_to_int26p6
+of.TrueTypeFont.int26p6_to_dbl
+of.TrueTypeFont.setGlobalDpi
+
+of.Time.FixedRate
+of.Time.System
+
+of.TextureData
+  bAllocated
+  bFlipTexture
+  bufferId
+  compressionType
+  glInternalFormat
+  height
+  magFilter
+  minFilter
+  tex_h
+  tex_t
+  tex_u
+  tex_w
+  textureID
+  textureTarget
+  width
+  wrapModeHorizontal
+  wrapModeVertical
+
+of.SoundDevice
+  SoundDevice
+  api
+  deviceID
+  inputChannels
+  isDefaultInput
+  isDefaultOutput
+  name
+  outputChannels
+  sampleRates
+
+of.Firmata_Encoder_Data
+  Firmata_Encoder_Data
+  ID
+  direction
+  position
+
+of.HttpResponse
+  data
+  error
+  request
+  status
+
+of.ShortImage
+  ShortImage
+  allocate
+  bind
+  clear
+  crop
+  cropFrom
+  draw
+  drawSubsection
+  getColor
+  getHeight
+  getImageType
+  getPixels
+  getTexture
+  getWidth
+  grabScreen
+  isAllocated
+  isUsingTexture
+  load
+  mirror
+  resetAnchor
+  resize
+  rotate90
+  save
+  setAnchorPercent
+  setAnchorPoint
+  setColor
+  setCompression
+  setFromPixels
+  setImageType
+  setUseTexture
+  unbind
+  update
+
+of.Vec4f
   average
   distance
   dot
   getInterpolated
   getLimited
-  getMapped
   getMiddle
   getNormalized
-  getPerpendicular
   getPtr
-  getRotated
-  getRotatedRad
   getScaled
   interpolate
-  isAligned
-  isAlignedRad
   length
   lengthSquared
   limit
-  map
   match
   middle
   normalize
-  perpendicular
-  rotate
-  rotateRad
   scale
   set
   squareDistance
-  vec2
+  vec4
+  w
   x
   y
+  z
 
-of.Xml
-  appendAttribute
-  appendChild
+of.HttpRequest.GET
+of.HttpRequest.POST
+
+of.Camera
+  beginCamera
+  cameraToWorld
+  disableOrtho
+  drawFrustum
+  enableOrtho
+  endCamera
+  getAspectRatio
+  getFarClip
+  getForceAspectRatio
+  getFov
+  getImagePlaneDistance
+  getLensOffset
+  getModelViewMatrix
+  getModelViewProjectionMatrix
+  getNearClip
+  getOrtho
+  getProjectionMatrix
+  isVFlipped
+  screenToWorld
+  setAspectRatio
+  setFarClip
+  setForceAspectRatio
+  setFov
+  setLensOffset
+  setNearClip
+  setRenderer
+  setVFlip
+  setupOffAxisViewPortal
+  setupPerspective
+  worldToCamera
+  worldToScreen
+
+of.Path
+  append
+  arc
+  arcNegative
+  bezierTo
+  circle
   clear
-  findFirst
-  getAttribute
-  getAttributes
-  getBoolValue
-  getChild
-  getChildren
-  getDoubleValue
-  getFirstAttribute
-  getFirstChild
-  getFloatValue
-  getIntValue
-  getLastAttribute
-  getLastChild
-  getName
-  getNextSibling
-  getParent
-  getPreviousSibling
-  getUintValue
-  getValue
-  insertChildAfter
-  insertChildBefore
-  load
-  parse
-  prependAttribute
-  prependChild
-  removeAttribute
-  removeChild
-  save
-  set
-  setName
-  toString
-
-of.Node
-  boom
-  clearParent
-  customDraw
-  dolly
+  close
+  curveTo
   draw
-  getGlobalOrientation
-  getGlobalPosition
-  getGlobalScale
-  getGlobalTransformMatrix
-  getHeadingDeg
-  getHeadingRad
-  getLocalTransformMatrix
-  getLookAtDir
-  getOrientationEulerDeg
-  getOrientationEulerRad
-  getOrientationQuat
-  getParent
-  getPitchDeg
-  getPitchRad
-  getPosition
-  getRollDeg
-  getRollRad
-  getScale
-  getSideDir
-  getUpDir
-  getX
-  getXAxis
-  getY
-  getYAxis
-  getZ
-  getZAxis
-  lookAt
-  move
-  orbitDeg
-  orbitRad
-  panDeg
-  panRad
-  resetTransform
-  restoreTransformGL
-  rollDeg
-  rollRad
-  rotateAround
-  rotateAroundDeg
-  rotateAroundRad
+  ellipse
+  getCircleResolution
+  getCommands
+  getCurveResolution
+  getFillColor
+  getMode
+  getOutline
+  getStrokeColor
+  getStrokeWidth
+  getTessellation
+  getUseShapeColor
+  getWindingMode
+  hasOutline
+  isFilled
+  lineTo
+  moveTo
+  newSubPath
+  quadBezierTo
+  rectRounded
+  rectangle
   rotateDeg
   rotateRad
-  setGlobalOrientation
-  setGlobalPosition
-  setOrientation
-  setParent
-  setPosition
-  setScale
-  tiltDeg
-  tiltRad
-  transformGL
-  truck
+  scale
+  setCircleResolution
+  setColor
+  setCurveResolution
+  setFillColor
+  setFillHexColor
+  setFilled
+  setHexColor
+  setMode
+  setPolyWindingMode
+  setStrokeColor
+  setStrokeHexColor
+  setStrokeWidth
+  setUseShapeColor
+  simplify
+  tessellate
+  translate
+  triangle
+
+of.Serial
+  available
+  close
+  drain
+  flush
+  getDeviceList
+  isInitialized
+  listDevices
+  readByte
+  readBytes
+  setup
+  writeByte
+  writeBytes
+
+of.SoundStream
+  close
+  getBufferSize
+  getDeviceList
+  getMatchingDevices
+  getNumInputChannels
+  getNumOutputChannels
+  getSampleRate
+  getSoundStream
+  getTickCount
+  printDeviceList
+  setInput
+  setOutput
+  setSoundStream
+  setup
+  start
+  stop
