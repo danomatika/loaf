@@ -3,34 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>English</string>
-	<key>CFBundleDisplayName</key>
-	<string>loaf</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
-	<string>${EXECUTABLE_NAME}</string>
+	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIconFile</key>
-	<string>${ICON}</string>
+	<string>$(ICON_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.danomatika.loaf</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>loaf</string>
+	<string>$(TARGET_NAME)</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>$(VERSION)</string>
 	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.developer-tools</string>
+	<string>public.app-category.graphics-design</string>
 	<key>NSCameraUsageDescription</key>
 	<string>loaf would like to access the camera</string>
-	<key>NSHighResolutionCapable</key>
-	<false/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>loaf would like to access the microphone</string>
+	<key>NSHighResolutionCapable</key>
+	<false/>
 </dict>
 </plist>
