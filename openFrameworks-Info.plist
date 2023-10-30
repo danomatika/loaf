@@ -23,7 +23,7 @@
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.graphics-design</string>
+	<string>public.app-category.developer-tools</string>
 	<key>NSCameraUsageDescription</key>
 	<string>loaf would like to access the camera</string>
 	<key>NSHighResolutionCapable</key>
