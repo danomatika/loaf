@@ -135,8 +135,8 @@ namespace osc {
 		static char str[255]; // provide a valid return pointer
 		std::stringstream stream;
 		stream << (*$self);
-		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
-		return str;
+		std::strcpy(str, stream.str().c_str());
+		return &str[0];
 	}
 };
 
@@ -147,8 +147,8 @@ namespace osc {
 		static char str[255]; // provide a valid return pointer
 		std::stringstream stream;
 		stream << (*$self);
-		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
-		return str;
+		std::strcpy(str, stream.str().c_str());
+		return &str[0];
 	}
 }
 
@@ -159,8 +159,8 @@ namespace osc {
 		static char str[255]; // provide a valid return pointer
 		std::stringstream stream;
 		stream << (*$self);
-		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
-		return str;
+		std::strcpy(str, stream.str().c_str());
+		return &str[0];
 	}
 }
 
@@ -171,7 +171,7 @@ namespace osc {
 		static char str[255]; // provide a valid return pointer
 		std::stringstream stream;
 		stream << (*$self);
-		sprintf(str, "%.255s", stream.str().c_str()); // copy & restrict length
-		return str;
+		std::strcpy(str, stream.str().c_str());
+		return &str[0];
 	}
 }
