@@ -72,7 +72,10 @@ int main(int argc, char *argv[]) {
 			                      << app->options->opengl;
 		}
 	}
-	ofCreateWindow(settings);
+	auto window = ofCreateWindow(settings);
+	if(!window->getWindowContext()) {
+		return EXIT_FAILURE;
+	}
 
 	// main app loop
 	ofRunApp(app);
