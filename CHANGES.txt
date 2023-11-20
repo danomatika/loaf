@@ -1,3 +1,8 @@
+1.7.1: TBD
+
+* changed MOD+c key command to SHIFT+MOD+r to make it harder to accidentally
+  clear the current script
+
 1.7.0: 2023 Oct 30
 
 * updated to ofxLua 1.5.1 (OF 0.12 and Lua 5.4.6)
