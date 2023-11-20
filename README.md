@@ -51,6 +51,7 @@ _Note: A more comprehensive User Guide will be added in the future._
 * Toggle fullscreen with MOD+F
 * Script errors are shown on the app window and on the console if you run it in a terminal application
 * Prints are shown in the console (useful for debugging)
+* The current script can be cleared with SHIFT+MOD+R
 
 _The MOD key depends on the platform: macOS COMMAND, Windows/Linux CONTROL._
 

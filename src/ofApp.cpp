@@ -170,10 +170,14 @@ void ofApp::keyPressed(int key) {
 				ofToggleFullscreen();
 				return;
 			case 'r': case 18:
-				if(!bundled) script.reload();
-				return;
-			case 'c': case 3:
-				if(!bundled) script.clear();
+				if(!bundled) {
+					if(ofGetKeyPressed(OF_KEY_SHIFT)) {
+						script.clear();
+					}
+					else {
+						script.reload();
+					}
+				}
 				return;
 		}
 	}
