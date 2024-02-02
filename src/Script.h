@@ -72,11 +72,11 @@ class Script : protected ofxLuaListener {
 		/// access to the current script absolute path
 		void setCurrentScript(std::string script) {currentScript = script;}
 		std::string getCurrentScript() {return currentScript;}
-	
+
 		/// returns true if a given path is a loadable script file
 		/// or directory with a main.lua script
 		static bool isLoadablePath(const std::string &path);
-	
+
 	protected:
 	
 		/// setup the lua state

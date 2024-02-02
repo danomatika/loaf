@@ -134,7 +134,7 @@ class ofApp : public ofBaseApp {
 		Syphon syphon; //< Syphon server
 
 		std::string startDir; //< working directory on app start
-	
+
 	private:
 	
 		bool verbose = false; //< current verbosity

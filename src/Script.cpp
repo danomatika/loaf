@@ -109,9 +109,8 @@ bool Script::load(const std::string &path, const std::vector<std::string> *args)
 	// set data path to script dir
 	ofSetDataPathRoot(directory);
 	
-	// change the current dir to the scene directory,
-	// this allows the lua state to find local files
-	bool ret = lua.doScript(currentScript, true);
+	// go
+	bool ret = lua.doScript(currentScript);
 	if(ret) {
 		setupNeeded = true;
 		ofLogVerbose(PACKAGE) << "current dir now " << Util::getCurrentDir();
@@ -226,7 +225,7 @@ void Script::setMouseGlobals(int x, int y) {
 
 //--------------------------------------------------------------
 void Script::oscReceived(const ofxOscMessage &message) {
-	if(!lua.isValid() || !lua.isFunction("oscReceived")) {
+	if(!lua.isValid() || setupNeeded || !lua.isFunction("oscReceived")) {
 		return;
 	}
 	lua_getglobal(lua, "oscReceived");

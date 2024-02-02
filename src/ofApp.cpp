@@ -410,7 +410,6 @@ void ofApp::oscReceived(const ofxOscMessage &message) {
 						                      << (char)message.getArgType(1);
 						break;
 				}
-					
 			}
 			script.load(message.getArgAsString(0), &args);
 		}
