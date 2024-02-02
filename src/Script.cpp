@@ -157,11 +157,13 @@ void Script::update() {
 	if(error && !errorDraw) {
 		errorDraw = true;
 	}
-	// make sure setup is called within a GL context
+	// make sure setup is called within a GL context,
+	// try to reset defaults which might be changed by a prev script
 	if(setupNeeded) {
 		ofSetupGraphicDefaults();
 		ofDisableLighting();
 		ofSetBackgroundAuto(true);
+		ofSetEscapeQuitsApp(true);
 		lua.scriptSetup();
 		setupNeeded = false;
 	}
