@@ -1,7 +1,13 @@
-1.7.1: TBD
+1.7.1: 2024 Feb 03
+
+* fixed oscReceived() being called on newly loaded script before setup()
+* fixed cd being called twice on script load
+* fixed crash on invalid gl version by exiting if window creation failed
 
 * changed MOD+c key command to SHIFT+MOD+r to make it harder to accidentally
   clear the current script
+* now reset ofSetEscapeQuitsApp() to true on script load
+* reset app category to Developer Tools
 
 1.7.0: 2023 Oct 30
 
