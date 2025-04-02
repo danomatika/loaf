@@ -3,7 +3,7 @@ loaf: lua, osc, and openFrameworks
 
 ![loaf icon](images/icon/icon-rounded.png)
 
-Copyright (c) [Dan Wilcox](danomatika.com) 2016-2020
+Copyright (c) [Dan Wilcox](danomatika.com) 2016-2025
 
 GPL v3
 
