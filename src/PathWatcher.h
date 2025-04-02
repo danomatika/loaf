@@ -30,6 +30,7 @@
 #include <atomic>
 #include <functional>
 #include <sys/stat.h>
+#include <unistd.h>
 
 /// \class PathWatcher
 /// \brief watch file and directory paths for modifications
