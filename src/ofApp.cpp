@@ -110,7 +110,11 @@ void ofApp::setup() {
 	                      << OF_VERSION_MINOR << "."
 	                      << OF_VERSION_PATCH;
 	ofLogVerbose(PACKAGE) << "open gl version: " << glGetString(GL_VERSION);
-	
+	ofLogVerbose(PACKAGE) << "lua version: "
+	                      << LUA_VERSION_MAJOR << "."
+	                      << LUA_VERSION_MINOR << "."
+	                      << LUA_VERSION_RELEASE;
+
 	// print the current OSC communication settings
 	ofLogVerbose(PACKAGE) << "send host: " << sender.getSettings().host;
 	ofLogVerbose(PACKAGE) << "send port: " << sender.getSettings().port;
