@@ -802,7 +802,10 @@
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 3567T5L8KK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../../../addons/ofxSyphon/libs/Syphon/lib/osx,
@@ -868,6 +871,7 @@
 					"-framework",
 					Syphon,
 				);
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -876,7 +880,10 @@
 			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 3567T5L8KK;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../../../addons/ofxSyphon/libs/Syphon/lib/osx,
@@ -941,6 +948,7 @@
 					"-framework",
 					Syphon,
 				);
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
 			};
 			name = Release;
