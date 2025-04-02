@@ -3,7 +3,7 @@
 
 	ofxSyphon bindings
 
-	2020 Dan Wilcox <danomatika@gmail.com>
+	2020,2025 Dan Wilcox <danomatika@gmail.com>
 */
 
 %module syphon
@@ -25,14 +25,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 // ----- BINDINGS --------------------------------------------------------------
 
-// ofxSyphon is still using "string" instead of "std::string"
-typedef std::string string;
-
 // dummy typedef for ofxSyphonServerDirectoryEventArgs
 class ofEventArgs {};
 
+// deprecated
+#ifndef OF_SWIG_DEPRECATED
+%ignore ofxSyphonClient::bind;
+%ignore ofxSyphonClient::unbind;
+#endif
+
 // ignore notification function which should not be called by users
-ofxSyphonServerDirectory::handleNotification(CFStringRef, CFDictionaryRef);
+%ignore handleNotification(const void *, void *);
 
 // includes
 %include "ofxSyphon/src/ofxSyphonClient.h"

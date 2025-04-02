@@ -3,7 +3,7 @@
 
 	ofxOsc bindings
 
-	2016 Dan Wilcox <danomatika@gmail.com>
+	2016,2025 Dan Wilcox <danomatika@gmail.com>
 */
 
 %module osc
@@ -70,7 +70,9 @@ namespace osc {
 %ignore ofxOscArgRgbaColor;
 
 // deprecations
+#ifndef OF_SWIG_DEPRECATED
 %ignore ofxOscReceiver::getNextMessage(ofxOscMessage *);
+#endif
 
 // convert returned enum values to lua strings since
 // ofxOscArgType enums are stored as strings 
@@ -96,6 +98,23 @@ namespace osc {
 	}
 	SWIG_arg++;
 }
+#endif
+
+// ignore implicit message add() function, prefer explict addInt32Arg(), etc
+%ignore ofxOscMessage::add;
+
+// ignore implicit bundle add() function, prefer explicit addMessage(), etc
+%ignore ofxOscBundle::add;
+
+// ignore implicit sender send() function, prefer explicit sendMessage(), etc
+%ignore ofxOscSender::send;
+
+// ignore OF 0.12.1 prelim receiver storage object
+%ignore ofxOscReceiver::message_buffer;
+
+// OF 0.12.1 deprecations
+#ifndef OF_SWIG_DEPRECATED
+%ignore getRemoteIp;
 #endif
 
 // includes
