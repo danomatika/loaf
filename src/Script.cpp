@@ -146,7 +146,7 @@ void Script::clear() {
 //--------------------------------------------------------------
 void Script::update() {
 	// handle auto reload
-	if(error && errorReload > -1 &&
+	if(error && errorReload > 0 &&
 	   ofGetElapsedTimeMillis() - reloadTimestamp > errorReload) {
 		reload();
 	}
@@ -292,7 +292,7 @@ void Script::errorReceived(std::string &message) {
 	if(errorExit) {
 		OF_EXIT_APP(1);
 	}
-	if(errorReload > -1) {
+	if(errorReload > 0) {
 		reloadTimestamp = ofGetElapsedTimeMillis();
 	}
 }

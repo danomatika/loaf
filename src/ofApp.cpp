@@ -56,7 +56,7 @@ void ofApp::setup() {
 			script.errorExit = options->errorExit;
 			ofLogVerbose(PACKAGE) << "exit after a script error";
 		}
-		else if(options->errorReload > -1) {
+		else if(options->errorReload > 0) {
 			script.errorReload = options->errorReload * 1000; // s to ms
 			ofLogVerbose(PACKAGE) << "reload " << options->errorReload
 			                      << "s after a script error";
