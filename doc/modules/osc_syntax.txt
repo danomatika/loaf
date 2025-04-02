@@ -39,6 +39,7 @@ osc.SenderSettings
   broadcast
   host
   port
+  silent
 
 osc.Bundle
   addBundle
@@ -52,6 +53,7 @@ osc.Bundle
 
 osc.Receiver
   copy
+  getMessage
   getNextMessage
   getParameter
   getPort
@@ -68,6 +70,7 @@ osc.Sender
   getHost
   getPort
   getSettings
+  isReady
   sendBundle
   sendMessage
   sendParameter

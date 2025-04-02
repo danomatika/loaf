@@ -3,7 +3,6 @@ syphon.ServerDirectoryEventArgs
   servers
 
 syphon.Client
-  bind
   draw
   drawSubsection
   getApplicationName
@@ -12,11 +11,12 @@ syphon.Client
   getTexture
   getWidth
   isSetup
+  lockTexture
   set
   setApplicationName
   setServerName
   setup
-  unbind
+  unlockTexture
 
 syphon
 syphon.Client
@@ -34,7 +34,6 @@ syphon.ServerDirectory
   events
   getDescription
   getServerList
-  handleNotification
   isSetup
   isValidIndex
   serverExists

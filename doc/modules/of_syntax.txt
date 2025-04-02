@@ -53,11 +53,15 @@ of.BITMAPMODE_VIEWPORT
 of.BLENDMODE_ADD
 of.BLENDMODE_ALPHA
 of.BLENDMODE_DISABLED
+of.BLENDMODE_MAX
+of.BLENDMODE_MIN
 of.BLENDMODE_MULTIPLY
 of.BLENDMODE_SCREEN
 of.BLENDMODE_SUBTRACT
+of.BROWSER_DEFAULT_TARGET
 of.BaseSoundPlayer
 of.BaseSoundStream
+of.BoundingBox
 of.BoxPrimitive
 of.BoxPrimitive_SIDES_TOTAL
 of.BoxPrimitive_SIDE_BACK
@@ -89,6 +93,7 @@ of.CONSOLE_COLOR_YELLOW
 of.Camera
 of.Color
 of.ConePrimitive
+of.CubeMap
 of.CylinderPrimitive
 of.DEG_TO_RAD
 of.DIGITAL_MESSAGE
@@ -162,7 +167,6 @@ of.GRADIENT_BAR
 of.GRADIENT_CIRCULAR
 of.GRADIENT_LINEAR
 of.HALF_PI
-of.HAS_CPP17
 of.HAS_TLS
 of.HW_SERIAL0
 of.HW_SERIAL1
@@ -171,6 +175,7 @@ of.HW_SERIAL3
 of.HttpRequest
 of.HttpRequest_GET
 of.HttpRequest_POST
+of.HttpRequest_PUT
 of.HttpResponse
 of.I2C_CONFIG
 of.I2C_MAX_QUERIES
@@ -268,6 +273,7 @@ of.KEY_RIGHT_CONTROL
 of.KEY_RIGHT_SHIFT
 of.KEY_RIGHT_SUPER
 of.KEY_SHIFT
+of.KEY_SPACE
 of.KEY_SUPER
 of.KEY_TAB
 of.KEY_UP
@@ -303,6 +309,7 @@ of.MATERIAL_TEXTURE_OCCLUSION
 of.MATERIAL_TEXTURE_ROUGHNESS
 of.MATERIAL_TEXTURE_ROUGHNESS_METALLIC
 of.MATERIAL_TEXTURE_SPECULAR
+of.MATERIAL_TEXTURE_TYPE_TOTAL
 of.MATRIX_MODELVIEW
 of.MATRIX_PROJECTION
 of.MATRIX_TEXTURE
@@ -447,6 +454,11 @@ of.SERIAL_WRITE
 of.SERVO_CONFIG
 of.SET_DIGITAL_PIN_VALUE
 of.SET_PIN_MODE
+of.SHADOW_TYPE_HARD
+of.SHADOW_TYPE_PCF_HIGH
+of.SHADOW_TYPE_PCF_LOW
+of.SHADOW_TYPE_PCF_MED
+of.SHADOW_TYPE_TOTAL
 of.SHIFT_DATA
 of.START_SYSEX
 of.STEPPER_CONFIG
@@ -460,9 +472,13 @@ of.SW_SERIAL3
 of.SYSEX_NON_REALTIME
 of.SYSEX_REALTIME
 of.SYSTEM_RESET
+of.ScopedMatrix
+of.ScopedMatrixStyle
+of.ScopedStyle
 of.Serial
 of.SerialDeviceInfo
 of.Shader
+of.Shadow
 of.ShortImage
 of.ShortPixels
 of.SoundDevice
@@ -490,6 +506,7 @@ of.TARGET_LINUX64
 of.TARGET_LINUXAARCH64
 of.TARGET_LINUXARMV6L
 of.TARGET_LINUXARMV7L
+of.TARGET_MACOS
 of.TARGET_MINGW
 of.TARGET_OSX
 of.TARGET_WINVS
@@ -506,6 +523,9 @@ of.TWO_PI
 of.Texture
 of.TextureData
 of.Time
+of.TimeMode_Filtered
+of.TimeMode_FixedRate
+of.TimeMode_System
 of.Time_FixedRate
 of.Time_System
 of.TouchEventArgs
@@ -517,8 +537,6 @@ of.TouchEventArgs_up
 of.TrueTypeFont
 of.TrueTypeFontSettings
 of.URLFileLoader
-of.USE_LEGACY_VECTOR_MATH
-of.USING_STD_FS
 of.Unicode
 of.VERSION_MAJOR
 of.VERSION_MINOR
@@ -540,7 +558,6 @@ of.VideoPlayer
 of.WINDOW
 of.WindowSettings
 of.Xml
-of.XmlAttributeIterator
 of.angleDifferenceDegrees
 of.angleDifferenceRadians
 of.background
@@ -557,10 +574,10 @@ of.bufferToFile
 of.clamp
 of.clear
 of.clearAlpha
+of.clearFloat
 of.curveVertex
 of.curveVertices
 of.degToRad
-of.deserialize
 of.disableAlphaBlending
 of.disableAntiAliasing
 of.disableArbTex
@@ -688,7 +705,9 @@ of.getStyle
 of.getSystemTimeMicros
 of.getSystemTimeMillis
 of.getTargetFrameRate
+of.getTargetFrameRateEnabled
 of.getTargetPlatform
+of.getTimeMode
 of.getTimestampString
 of.getUnixTime
 of.getUnixTimeMillis
@@ -771,6 +790,7 @@ of.rotateYDeg
 of.rotateYRad
 of.rotateZDeg
 of.rotateZRad
+of.sanitizeURLString
 of.saveFrame
 of.saveImage
 of.saveScreen
@@ -779,7 +799,6 @@ of.saveURLTo
 of.saveViewport
 of.scale
 of.sendMessage
-of.serialize
 of.setBackgroundAuto
 of.setBackgroundColor
 of.setBackgroundColorHex
@@ -795,6 +814,7 @@ of.setDataPathRoot
 of.setDepthTest
 of.setDrawBitmapMode
 of.setEscapeQuitsApp
+of.setFloatColor
 of.setFrameRate
 of.setFullscreen
 of.setGlobalAmbientColor
@@ -806,6 +826,7 @@ of.setMatrixMode
 of.setOrientation
 of.setPixelStoreiAlignment
 of.setPlaneResolution
+of.setPointSize
 of.setPolyMode
 of.setRandomSeed
 of.setRectMode
@@ -816,6 +837,7 @@ of.setTimeModeFiltered
 of.setTimeModeFixedRate
 of.setTimeModeSystem
 of.setVerticalSync
+of.setWindowMousePassThrough
 of.setWindowPosition
 of.setWindowShape
 of.setWindowTitle
@@ -1020,10 +1042,13 @@ of.Arduino
   setUseDelay
   update
 
+of.Material.getTextureTypeAsString
 of.Material.getUniformName
 of.Material.isPBRSupported
 
 of.BaseSoundPlayer
+  getDuration
+  getDurationMS
   getPan
   getPosition
   getPositionMS
@@ -1080,7 +1105,10 @@ of.VboMesh
   draw
   drawInstanced
   getVbo
+  removeColor
+  removeVertex
   setUsage
+  updateVbo
 
 of.Mesh
   Mesh
@@ -1416,6 +1444,7 @@ of.Rectangle
   getPerimeter
   getPosition
   getRight
+  getSize
   getStandardized
   getTop
   getTopLeft
@@ -1503,6 +1532,7 @@ of.DoubleColor
   getLerped
   getLightness
   getNormalized
+  getNormalizedHsb
   getR
   getSaturation
   invert
@@ -1518,6 +1548,7 @@ of.DoubleColor
   setHsb
   setHue
   setHueAngle
+  setNormalizedHsb
   setR
   setSaturation
 
@@ -1635,15 +1666,61 @@ of.Fbo
 
 of.HttpRequest
   body
+  close
   contentType
   done
   getId
+  headerOnly
   headers
   method
   name
   saveTo
   timeoutSeconds
   url
+  verbose
+
+of.Shadow
+  beginDepth
+  clear
+  drawFrustum
+  endDepth
+  getBias
+  getData
+  getDepthMapFboId
+  getDepthMapHeight
+  getDepthMapTexId
+  getDepthMapWidth
+  getDepthShader
+  getFarClip
+  getFrontFaceWindingOrder
+  getFrustumCorners
+  getIsEnabled
+  getNearClip
+  getNormalBias
+  getNumShadowDepthPasses
+  getSampleRadius
+  getShadowTypeAsString
+  getStrength
+  isGlCullingEnabled
+  isMultiCubeFacePass
+  isSingleOmniPass
+  setAreaLightSize
+  setBias
+  setDirectionalBounds
+  setEnabled
+  setFarClip
+  setFrontFaceWindingOrder
+  setGlCullingEnabled
+  setLightType
+  setNearClip
+  setNormalBias
+  setSampleRadius
+  setShadowType
+  setSingleOmniPass
+  setStrength
+  setupShadowDepthShader
+  update
+  updateDepth
 
 of.FloatColor
   FloatColor
@@ -1664,6 +1741,7 @@ of.FloatColor
   getLerped
   getLightness
   getNormalized
+  getNormalizedHsb
   getR
   getSaturation
   invert
@@ -1679,6 +1757,7 @@ of.FloatColor
   setHsb
   setHue
   setHueAngle
+  setNormalizedHsb
   setR
   setSaturation
 
@@ -1878,6 +1957,8 @@ of.MaterialSettings
   displacementStrength
   emissive
   isPbr
+  mainDepthVertex
+  mainDepthVertexKey
   mainFragment
   mainFragmentKey
   mainVertex
@@ -2069,6 +2150,7 @@ of.Node
   setOrientation
   setParent
   setPosition
+  setPositionOrientationScale
   setScale
   tiltDeg
   tiltRad
@@ -2138,6 +2220,7 @@ of.3dPrimitive
   enableColors
   enableNormals
   enableTextures
+  getBoundingBox
   getMesh
   getMeshPtr
   getTexCoords
@@ -2148,6 +2231,30 @@ of.3dPrimitive
   mapTexCoords
   mapTexCoordsFromTexture
   setUseVbo
+
+of.CubeMap
+  clear
+  doesSupportHdr
+  draw
+  drawCubeMap
+  drawIrradiance
+  drawPrefilteredCube
+  getExposure
+  getFaceResolution
+  getIrradianceMapId
+  getPrefilterMapId
+  getTextureId
+  hasCubeMap
+  hasIrradianceMap
+  hasPrefilteredMap
+  isEnabled
+  isHdr
+  isMediumPrecision
+  isUsingLutBrdfTexture
+  load
+  setEnabled
+  setExposure
+  setUseBrdfLutTexture
 
 of.SoundStreamSettings
   SoundStreamSettings
@@ -2227,6 +2334,8 @@ of.FpsCounter
   getNumFrames
   newFrame
   setFilterAlpha
+  setTargetFPS
+  setTimeMode
   update
 
 of.SoundPlayer
@@ -2291,9 +2400,6 @@ of.SerialDeviceInfo
   getDeviceName
   getDevicePath
 
-of.Unicode
-  Unicode
-
 of.Vec2f
   align
   alignRad
@@ -2332,6 +2438,9 @@ of.Vec2f
   x
   y
 
+of.Unicode
+  Unicode
+
 of.SpherePrimitive
   getRadius
   getResolution
@@ -2349,6 +2458,7 @@ of.Style
   curveResolution
   drawBitmapMode
   lineWidth
+  pointSize
   polyMode
   rectMode
   smoothing
@@ -2673,6 +2783,19 @@ of.VideoPlayer
   unbind
   update
 
+of.supportedPinTypes
+  analogSupported
+  encoderSupported
+  i2cSupported
+  inputSupported
+  onewireSupported
+  outputSupported
+  pwmSupported
+  serialSupported
+  servoSupported
+  stepperSupported
+  supportedPinTypes
+
 of.Color
   Color
   a
@@ -2692,6 +2815,7 @@ of.Color
   getLerped
   getLightness
   getNormalized
+  getNormalizedHsb
   getR
   getSaturation
   invert
@@ -2707,21 +2831,9 @@ of.Color
   setHsb
   setHue
   setHueAngle
+  setNormalizedHsb
   setR
   setSaturation
-
-of.supportedPinTypes
-  analogSupported
-  encoderSupported
-  i2cSupported
-  inputSupported
-  onewireSupported
-  outputSupported
-  pwmSupported
-  serialSupported
-  servoSupported
-  stepperSupported
-  supportedPinTypes
 
 of.FileDialogResult
   bSuccess
@@ -2804,6 +2916,12 @@ of.TouchEventArgs
   y
   yaccel
   yspeed
+
+of.CubeMap.clearTextureData
+of.CubeMap.getActiveData
+of.CubeMap.getBrdfLutTexture
+of.CubeMap.getTextureTarget
+of.CubeMap.hasActiveCubeMap
 
 of.Xml
   appendAttribute
@@ -2994,6 +3112,7 @@ of.Material
   getDisplacementStrength
   getEmissiveColor
   getHighestUniformTextureLocation
+  getLoadedTexture
   getMetallic
   getNormalGeomToNormalMapMix
   getReflectance
@@ -3001,6 +3120,8 @@ of.Material
   getSettings
   getShininess
   getSpecularColor
+  hasDepthShader
+  hasLoadedTexture
   hasTexture
   isClearCoatEnabled
   isPBR
@@ -3008,6 +3129,7 @@ of.Material
   loadTexture
   removeCustomUniformTexture
   removeShaderDefine
+  removeTexture
   setAmbientColor
   setAmbientTexture
   setAoRoughnessMetallicTexture
@@ -3028,6 +3150,7 @@ of.Material
   setCustomUniformMatrix3f
   setCustomUniformMatrix4f
   setCustomUniformTexture
+  setDepthShaderMain
   setDiffuseColor
   setDiffuseTexture
   setDisplacementNormalsStrength
@@ -3219,6 +3342,9 @@ of.DragInfo
   files
   position
 
+of.ScopedMatrixStyle
+  ScopedMatrixStyle
+
 of.MeshFace
   MeshFace
   getColor
@@ -3403,7 +3529,6 @@ of.Time
   getAsNanoseconds
   getAsSeconds
   getAsTimePoint
-  getAsTimespec
   mode
   nanoseconds
   seconds
@@ -3503,6 +3628,29 @@ of.ShortImage
   unbind
   update
 
+of.Shadow.areShadowsSupported
+of.Shadow.disableAllShadows
+of.Shadow.enableAllShadows
+of.Shadow.getAreaTexId
+of.Shadow.getDirectionalTexId
+of.Shadow.getNumTotalPossibleShadows
+of.Shadow.getPointTexId
+of.Shadow.getShaderDefinesAsString
+of.Shadow.getSpotTexId
+of.Shadow.getTextureTarget
+of.Shadow.hasActiveShadows
+of.Shadow.setAllShadowBias
+of.Shadow.setAllShadowDepthResolutions
+of.Shadow.setAllShadowNormalBias
+of.Shadow.setAllShadowSampleRadius
+of.Shadow.setAllShadowTypes
+of.Shadow.setDepthMapResolution
+
+of.BoundingBox
+  BoundingBox
+  max
+  min
+
 of.Vec4f
   average
   distance
@@ -3531,6 +3679,7 @@ of.Vec4f
 
 of.HttpRequest.GET
 of.HttpRequest.POST
+of.HttpRequest.PUT
 
 of.Camera
   beginCamera
