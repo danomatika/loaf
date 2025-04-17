@@ -862,6 +862,11 @@
 				OTHER_CFLAGS = (
 					"-DLUA_USE_MACOSX",
 					"-F../../../addons/ofxSyphon/libs/Syphon/lib/osx/",
+					"-DLOAF_USE_SYPHON",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-DLOAF_USE_SYPHON",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
@@ -939,6 +944,11 @@
 				OTHER_CFLAGS = (
 					"-DLUA_USE_MACOSX",
 					"-F../../../addons/ofxSyphon/libs/Syphon/lib/osx/",
+					"-DLOAF_USE_SYPHON",
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-DLOAF_USE_SYPHON",
 				);
 				OTHER_LDFLAGS = (
 					"$(OF_CORE_LIBS)",
