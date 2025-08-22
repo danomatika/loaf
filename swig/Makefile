@@ -85,4 +85,10 @@ syphon-prepare:
 	$(eval DEST_SUBDIR := macos)
 	mkdir -p $(DEST_DIR)/macos
 
+# wrap to avoid compiling unless LOAF_USE_SYPHON is defined
 syphon: syphon-prepare bindings
+	export filepath=$(DEST_DIR)/$(DEST_SUBDIR)/$(NAME).cpp ;\
+	echo "#ifdef LOAF_USE_SYPHON" | \
+	cat - $$filepath > $${filepath}-temp && \
+	echo "#endif // LOAF_USE_SYPHON" >> $${filepath}-temp && \
+	mv $${filepath}-temp $$filepath
