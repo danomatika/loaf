@@ -30,7 +30,14 @@
 #include <atomic>
 #include <functional>
 #include <sys/stat.h>
-#include <unistd.h>
+
+// macro for access() as Windows uses a protected variant
+#ifdef _WIN32
+	#define ACCESS _access
+#else
+//	#include <unistd.h>
+	#define ACCESS access
+#endif
 
 /// \class PathWatcher
 /// \brief watch file and directory paths for modifications
@@ -196,7 +203,7 @@ class PathWatcher {
 	
 		/// does a path exist?
 		static bool pathExists(const std::string & path) {
-			return access(path.c_str(), F_OK) == 0;
+			return ACCESS(path.c_str(), F_OK) == 0;
 		}
 
 	/// \section Watching for Changes

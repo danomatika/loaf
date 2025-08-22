@@ -23,7 +23,7 @@
 #include "Util.h"
 
 // macro for chdir() and getcwd() as Windows uses protected variants
-#ifdef TARGET_WIN32
+#ifdef _WIN32
 	#include <direct.h>
 	#define CHDIR _chdir
 	#define GETCWD _getcwd
