@@ -1,4 +1,13 @@
-1.8.0: TBD
+1.9.0
+
+* updated to ofxLua 1.7.0 (OF 0.12.2 and Lua 5.5.1)
+
+* a few fixes for Windows (suggested by Fumiya Funatsu) 
+  - wrap syphon bindings to avoid compiling unless LOAF_USE_SYPHON is defined
+  - access() requires macro for Windows
+  - update Util win32 check and include unistd
+
+1.8.0: 2025 Apr 17
 
 * updated to ofxLua 1.6.0 (OF 0.12.1 and Lua 5.4.7)
 
