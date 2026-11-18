@@ -43,6 +43,7 @@ of.Alphabet_Japanese
 of.Alphabet_Korean
 of.Alphabet_Latin
 of.Arduino
+of.ArduinoSupportedPinTypesMap
 of.B14400
 of.B28800
 of.BITMAPMODE_MODEL
@@ -235,6 +236,7 @@ of.INTERPOLATE_NEAREST_NEIGHBOR
 of.IcoSpherePrimitive
 of.Image
 of.ImageLoadSettings
+of.IntMap
 of.KEY_ALT
 of.KEY_BACKSPACE
 of.KEY_COMMAND
@@ -497,6 +499,7 @@ of.SoundPlayer
 of.SoundStream
 of.SoundStreamSettings
 of.SpherePrimitive
+of.StringMap
 of.Style
 of.TARGET_ANDROID
 of.TARGET_EMSCRIPTEN
@@ -538,6 +541,7 @@ of.TrueTypeFont
 of.TrueTypeFontSettings
 of.URLFileLoader
 of.Unicode
+of.Unicode.range
 of.VERSION_MAJOR
 of.VERSION_MINOR
 of.VERSION_PATCH
@@ -563,6 +567,8 @@ of.angleDifferenceRadians
 of.background
 of.backgroundGradient
 of.backgroundHex
+of.beginSaveScreenAsPDF
+of.beginSaveScreenAsSVG
 of.beginShape
 of.bezierVertex
 of.binaryToChar
@@ -630,6 +636,8 @@ of.enableSeparateSpecularLight
 of.enableSetupScreen
 of.enableSmoothing
 of.enableTextureEdgeHack
+of.endSaveScreenAsPDF
+of.endSaveScreenAsSVG
 of.endShape
 of.events
 of.exit
@@ -683,6 +691,7 @@ of.getLogLevel
 of.getLogLevelName
 of.getLoggerChannel
 of.getMainThreadId
+of.getMaxTextureSize
 of.getMinutes
 of.getMonth
 of.getMousePressed
@@ -738,6 +747,7 @@ of.hideCursor
 of.imageFormatExtension
 of.inRange
 of.isCurrentThreadTheMainThread
+of.isGLES3Context
 of.isGLProgrammableRenderer
 of.isStringInString
 of.isTextureEdgeHackEnabled
@@ -812,6 +822,7 @@ of.setCurveResolution
 of.setCylinderResolution
 of.setDataPathRoot
 of.setDepthTest
+of.setDepthWrite
 of.setDrawBitmapMode
 of.setEscapeQuitsApp
 of.setFloatColor
@@ -957,7 +968,7 @@ of.Arduino
   EDigitalPinChanged
   EEncoderDataReceived
   EFirmwareVersionReceived
-  EI2CDataRecieved
+  EI2CDataReceived
   EInitialized
   EPinStateResponseReceived
   ESerialDataReceived
@@ -1421,6 +1432,16 @@ of.Matrix3x3
   set
   transpose
 
+of.StringMap
+  StringMap
+  clear
+  del
+  empty
+  get
+  has_key
+  set
+  size
+
 of.Rectangle
   alignTo
   alignToHorz
@@ -1551,6 +1572,7 @@ of.DoubleColor
   setNormalizedHsb
   setR
   setSaturation
+  v
 
 of.ConePrimitive
   getCapIndices
@@ -1578,6 +1600,7 @@ of.Shader
   beginShader
   bindAttribute
   bindDefaults
+  dispatchCompute
   endShader
   getAttributeLocation
   getGeometryMaxOutputCount
@@ -1588,6 +1611,7 @@ of.Shader
   isLoaded
   linkProgram
   load
+  loadCompute
   printActiveAttributes
   printActiveUniforms
   setAttribute1d
@@ -1674,26 +1698,22 @@ of.HttpRequest
   headers
   method
   name
+  progressCallback
   saveTo
   timeoutSeconds
   url
   verbose
 
 of.Shadow
-  beginDepth
   clear
   drawFrustum
-  endDepth
   getBias
-  getData
   getDepthMapFboId
   getDepthMapHeight
   getDepthMapTexId
   getDepthMapWidth
-  getDepthShader
   getFarClip
   getFrontFaceWindingOrder
-  getFrustumCorners
   getIsEnabled
   getNearClip
   getNormalBias
@@ -1701,17 +1721,15 @@ of.Shadow
   getSampleRadius
   getShadowTypeAsString
   getStrength
-  isGlCullingEnabled
+  isCullingEnabled
   isMultiCubeFacePass
   isSingleOmniPass
-  setAreaLightSize
   setBias
+  setCullingEnabled
   setDirectionalBounds
   setEnabled
   setFarClip
   setFrontFaceWindingOrder
-  setGlCullingEnabled
-  setLightType
   setNearClip
   setNormalBias
   setSampleRadius
@@ -1719,8 +1737,6 @@ of.Shadow
   setSingleOmniPass
   setStrength
   setupShadowDepthShader
-  update
-  updateDepth
 
 of.FloatColor
   FloatColor
@@ -1760,6 +1776,7 @@ of.FloatColor
   setNormalizedHsb
   setR
   setSaturation
+  v
 
 of.TrueTypeFont
   drawString
@@ -1770,6 +1787,7 @@ of.TrueTypeFont
   getCharacterAsPoints
   getDescenderHeight
   getFirstGlyphPosForTexture
+  getFontAtlasPixels
   getFontTexture
   getGlyphBBox
   getLetterSpacing
@@ -1784,12 +1802,14 @@ of.TrueTypeFont
   hasFullCharacterSet
   isAntiAliased
   isLoaded
+  isUsingTexture
   isValidGlyph
   load
   setDirection
   setLetterSpacing
   setLineHeight
   setSpaceSize
+  setUseTexture
   stringHeight
   stringWidth
 
@@ -2161,6 +2181,7 @@ of.Texture
   allocate
   allocateAsBufferTexture
   bind
+  bindAsImage
   clear
   copyTo
   disableAlphaMask
@@ -2440,6 +2461,7 @@ of.Vec2f
 
 of.Unicode
   Unicode
+  range
 
 of.SpherePrimitive
   getRadius
@@ -2474,7 +2496,7 @@ of.Quaternion
   getRotate
   inverse
   length
-  length2
+  lengthSquared
   makeRotate
   makeRotate_original
   normalize
@@ -2834,6 +2856,7 @@ of.Color
   setNormalizedHsb
   setR
   setSaturation
+  v
 
 of.FileDialogResult
   bSuccess
@@ -2917,11 +2940,7 @@ of.TouchEventArgs
   yaccel
   yspeed
 
-of.CubeMap.clearTextureData
-of.CubeMap.getActiveData
-of.CubeMap.getBrdfLutTexture
 of.CubeMap.getTextureTarget
-of.CubeMap.hasActiveCubeMap
 
 of.Xml
   appendAttribute
@@ -2969,6 +2988,7 @@ of.FilePath.addLeadingSlash
 of.FilePath.addTrailingSlash
 of.FilePath.createEnclosingDirectory
 of.FilePath.getAbsolutePath
+of.FilePath.getAppName
 of.FilePath.getBaseName
 of.FilePath.getCurrentExeDir
 of.FilePath.getCurrentExePath
@@ -3084,12 +3104,19 @@ of.ImageLoadSettings
   grayscale
   separateCMYK
 
+of.Unicode.range
+  begin
+  getNumGlyphs
+  range
+
 of.WindowSettings
   getHeight
   getPosition
   getWidth
+  isHiDPI
   isPositionSet
   isSizeSet
+  setHiDPI
   setPosition
   setSize
   title
@@ -3475,6 +3502,16 @@ of.Unicode.Uncategorized
 of.Unicode.UppercaseLatin
 of.Unicode.VedicExtensions
 
+of.ArduinoSupportedPinTypesMap
+  ArduinoSupportedPinTypesMap
+  clear
+  del
+  empty
+  get
+  has_key
+  set
+  size
+
 of.URLFileLoader
   clear
   get
@@ -3493,6 +3530,16 @@ of.IcoSpherePrimitive
   setMode
   setRadius
   setResolution
+
+of.IntMap
+  IntMap
+  clear
+  del
+  empty
+  get
+  has_key
+  set
+  size
 
 of.VideoGrabber
   bind
@@ -3635,7 +3682,6 @@ of.Shadow.getAreaTexId
 of.Shadow.getDirectionalTexId
 of.Shadow.getNumTotalPossibleShadows
 of.Shadow.getPointTexId
-of.Shadow.getShaderDefinesAsString
 of.Shadow.getSpotTexId
 of.Shadow.getTextureTarget
 of.Shadow.hasActiveShadows
