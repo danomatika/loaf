@@ -632,7 +632,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 2700;
 			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "loaf" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -770,6 +770,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = of.entitlements;
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = 3567T5L8KK;
 				ENABLE_TESTABILITY = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_UNUSED_VARIABLE = NO;
@@ -778,6 +779,7 @@
 					src,
 				);
 				OTHER_CPLUSPLUSFLAGS = "-D__MACOSX_CORE__";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Debug;
 		};
@@ -787,6 +789,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = of.entitlements;
 				COPY_PHASE_STRIP = YES;
+				DEVELOPMENT_TEAM = 3567T5L8KK;
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_UNROLL_LOOPS = YES;
 				HEADER_SEARCH_PATHS = (
@@ -794,6 +797,7 @@
 					src,
 				);
 				OTHER_CPLUSPLUSFLAGS = "-D__MACOSX_CORE__";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Release;
 		};
@@ -803,9 +807,11 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 3567T5L8KK;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../../../addons/ofxSyphon/libs/Syphon/lib/osx,
@@ -858,7 +864,7 @@
 					../../../addons/ofxSyphon/src,
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.9.0;
 				OTHER_CFLAGS = (
 					"-DLUA_USE_MACOSX",
@@ -887,9 +893,11 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
 				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 3567T5L8KK;
+				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					../../../addons/ofxSyphon/libs/Syphon/lib/osx,
@@ -941,7 +949,7 @@
 					../../../addons/ofxSyphon/src,
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MARKETING_VERSION = 1.9.0;
 				OTHER_CFLAGS = (
 					"-DLUA_USE_MACOSX",
