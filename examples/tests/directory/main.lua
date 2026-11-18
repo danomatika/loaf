@@ -8,5 +8,5 @@ end
 function draw()
 	of.setColor(255, 10, 200)
 	of.translate(of.getWidth()/2, of.getHeight()/2)
-	of.drawBitmapString("it works", 0, 0)
+	of.drawBitmapString("it works", -32, 0)
 end
