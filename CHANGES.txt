@@ -1,4 +1,4 @@
-1.9.0
+1.9.0: 2026 Nov 18
 
 * updated to ofxLua 1.7.0 (OF 0.12.2 and Lua 5.5.1)
 
@@ -6,6 +6,9 @@
   - wrap syphon bindings to avoid compiling unless LOAF_USE_SYPHON is defined
   - access() requires macro for Windows
   - update Util win32 check and include unistd
+
+* updated Xcode project
+* min deployment target now macOS 14
 
 1.8.0: 2025 Apr 17
 
